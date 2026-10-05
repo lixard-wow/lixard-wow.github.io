@@ -8,8 +8,9 @@
 <meta name="color-scheme" content="dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/previews.css">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -58,6 +59,7 @@
       <nav aria-label="On this page">
         <p>On this page</p>
         <ol>
+          <li><a href="#preview">Preview</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#start">Getting started</a></li>
           <li><a href="#reading">Reading the display</a></li>
@@ -70,6 +72,19 @@
     </aside>
 
     <div class="guide-body">
+<section id="preview" aria-label="Preview">
+<h2>Preview</h2>
+<figure class="preview">
+<div class="preview-stage">
+<div class="hm-wrap wowfont" id="hm-display" data-style="icons"><div class="hm"><div class="hm-cell " style="--cc:#ffffff"><div class="hm-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M6 9h12"/></svg><b class="outlined">87%</b></div><div class="hm-name outlined">Lumina</div></div><div class="hm-cell " style="--cc:#ff7d0a"><div class="hm-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 10 10 5 19 5c0 9-5 14-14 14z"/><path d="M5 19l9-9"/></svg><b class="outlined">62%</b></div><div class="hm-name outlined">Thornroot</div></div><div class="hm-cell " style="--cc:#0070de"><div class="hm-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14c3 0 3-4 6-4s3 4 6 4 3-4 6-4"/><path d="M3 19c3 0 3-4 6-4s3 4 6 4 3-4 6-4"/></svg><b class="outlined">34%</b></div><div class="hm-name outlined">Tidecall</div></div><div class="hm-cell far" style="--cc:#00ff99"><div class="hm-icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5s6 6.4 6 10.8a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5z"/></svg><b class="outlined">100%</b></div><div class="hm-name outlined">Mistpaw</div></div></div><div class="hm-bars"><div class="hm-bar " style="--cc:#ffffff"><i style="width:calc(87% - 2px)"></i><span class="n outlined">Lumina</span><span class="p outlined">87%</span></div><div class="hm-bar " style="--cc:#ff7d0a"><i style="width:calc(62% - 2px)"></i><span class="n outlined">Thornroot</span><span class="p outlined">62%</span></div><div class="hm-bar " style="--cc:#0070de"><i style="width:calc(34% - 2px)"></i><span class="n outlined">Tidecall</span><span class="p outlined">34%</span></div><div class="hm-bar far" style="--cc:#00ff99"><i style="width:calc(100% - 2px)"></i><span class="n outlined">Mistpaw</span><span class="p outlined">100%</span></div></div></div>
+</div>
+<div class="preview-controls" data-group="#hm-display">
+<button type="button" data-set="data-style" data-value="icons" aria-pressed="true">Icons</button>
+<button type="button" data-set="data-style" data-value="bars" aria-pressed="false">Bars</button>
+</div>
+<figcaption>Illustration of four healers in a horizontal layout, with one out of range. The game shows each healer's real spec icon where this uses a simple symbol.</figcaption>
+</figure>
+</section>
       <section id="features">
         <h2>Features</h2>
         <ul>
@@ -231,5 +246,6 @@
     <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
   </div>
 </footer>
+<script src="/assets/previews.js" defer></script>
 </body>
 </html>

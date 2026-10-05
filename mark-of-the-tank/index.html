@@ -8,8 +8,9 @@
 <meta name="color-scheme" content="dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/previews.css">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -57,6 +58,7 @@
       <nav aria-label="On this page">
         <p>On this page</p>
         <ol>
+          <li><a href="#preview">Preview</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#start">Getting started</a></li>
           <li><a href="#targets">Choosing a target</a></li>
@@ -68,6 +70,41 @@
     </aside>
 
     <div class="guide-body">
+<section id="preview" aria-label="Preview">
+<h2>Preview</h2>
+<figure class="preview">
+<div class="preview-stage">
+<div class="mott-row"><div class="mott-pop wowfont">
+<div class="h"><span class="mott-ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4"/></svg></span><span class="t"><b>Mark of the Tank</b><span>Misdirection</span></span><span class="mott-x">X</span></div>
+<div class="row hover">Set to Party Tank</div>
+<div class="row">Set to Target</div>
+<div class="row">Set to Target of Target</div>
+<div class="row">Set to Focus</div>
+<div class="row">Set to Pet</div>
+<div class="div"></div>
+<div class="row clear">Clear Target</div>
+<div class="f">Target:<b>Bramblehide</b></div>
+</div>
+<div class="mott-cfg wowfont">
+<div class="tb">Mark of the Tank<span class="x">X</span></div>
+<div class="bd">
+<div class="sh">MACRO</div>
+<div class="ln">Name:<span class="eb">Misdirection</span><span class="ap">Apply</span></div>
+<div class="ln">Current target: <span class="val">Bramblehide</span></div>
+<div class="gap"></div>
+<div class="sh">AUTOMATION</div>
+<div class="cb"><i></i>Auto-set tank when joining group</div>
+<div class="cb"><i></i>Auto-set pet when leaving group</div>
+<div class="gap"></div>
+<div class="sh">MINIMAP</div>
+<div class="cb"><i></i>Show minimap button</div>
+</div>
+</div></div>
+</div>
+
+<figcaption>Illustration of the minimap quick menu and the /mott settings window for a Hunter in a party, using the addon's own colors and sizes. The game shows the real Misdirection icon where this uses a simple symbol.</figcaption>
+</figure>
+</section>
       <section id="features">
         <h2>Features</h2>
         <ul>
@@ -167,5 +204,6 @@
     <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
   </div>
 </footer>
+<script src="/assets/previews.js" defer></script>
 </body>
 </html>
