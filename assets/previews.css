@@ -353,3 +353,12 @@
   border: 1px solid #c79a3e; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
   color: #ffd100; font-size: 13px;
 }
+
+@media (max-width: 720px) {
+  .preview-stage { padding: 24px 8px; }
+  .pkt { zoom: 0.82; }
+  .cs { zoom: 1.3; }
+  .hm-wrap { zoom: 1; }
+  .aef { zoom: 1; }
+  .mott-row { zoom: 0.82; }
+}
