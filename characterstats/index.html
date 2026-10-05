@@ -8,8 +8,9 @@
 <meta name="color-scheme" content="dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/previews.css">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -57,6 +58,7 @@
       <nav aria-label="On this page">
         <p>On this page</p>
         <ol>
+          <li><a href="#preview">Preview</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#start">Getting started</a></li>
           <li><a href="#looks">The four looks</a></li>
@@ -71,6 +73,20 @@
     </aside>
 
     <div class="guide-body">
+<section id="preview" aria-label="Preview">
+<h2>Preview</h2>
+<figure class="preview">
+<div class="preview-stage">
+<div class="cs tt-border wowfont" id="cs-frame" data-look="original"><div class="headline only-ledger"><b>678</b><span>Item Level</span></div><div class="r only-original" style="color:#a335ee"><span>Item Level<span class="colon">:</span></span><span>678</span></div><div class="r only-meters" style="color:#a335ee"><span>Item Level<span class="colon">:</span></span><span class="big">678</span></div><div class="hd only-grouped">Primary<i></i></div><div class="r " style="color:#fff569"><span>Agility<span class="colon">:</span></span><span>41,250</span></div><div class="r " style="color:#ffffff"><span>Stamina<span class="colon">:</span></span><span>312,480</span></div><div class="hd only-grouped">Secondary<i></i></div><div class="r " style="color:#abd473"><span>Critical Strike<span class="colon">:</span></span><span>27%</span></div><div class="m only-meters"><i style="width:54%;background:#abd473"></i></div><div class="r " style="color:#0070de"><span>Haste<span class="colon">:</span></span><span>19%</span></div><div class="m only-meters"><i style="width:38%;background:#0070de"></i></div><div class="r " style="color:#ff7d0a"><span>Mastery<span class="colon">:</span></span><span>42%</span></div><div class="m only-meters"><i style="width:84%;background:#ff7d0a"></i></div><div class="r " style="color:#8787ed"><span>Versatility<span class="colon">:</span></span><span>11%</span></div><div class="m only-meters"><i style="width:22%;background:#8787ed"></i></div><div class="hd only-grouped">Utility<i></i></div><div class="r " style="color:#33947f"><span>Leech<span class="colon">:</span></span><span>3%</span></div><div class="m only-meters"><i style="width:6%;background:#33947f"></i></div><div class="hd only-grouped">Defense<i></i></div><div class="r " style="color:#f58cba"><span>Armor<span class="colon">:</span></span><span>18,932</span></div></div>
+</div>
+<div class="preview-controls" data-group="#cs-frame">
+<button type="button" data-set="data-look" data-value="original" aria-pressed="true">Original</button>
+<button type="button" data-set="data-look" data-value="ledger" aria-pressed="false">Ledger</button>
+<button type="button" data-set="data-look" data-value="meters" aria-pressed="false">Meters</button>
+</div>
+<figcaption>Illustration of the on-screen stat panel using the addon's default colors, with sample numbers. Switch between three of the four looks.</figcaption>
+</figure>
+</section>
       <section id="features">
         <h2>Features</h2>
         <ul>
@@ -240,5 +256,6 @@
     <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
   </div>
 </footer>
+<script src="/assets/previews.js" defer></script>
 </body>
 </html>
