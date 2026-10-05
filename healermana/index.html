@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HealerMana Guide</title>
+<meta name="description" content="How to use HealerMana: see every healer's mana in one display, choose icons or bars, set it up for the content you run, and every command and setting explained.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16h11"/></svg></span>
+      Lixard's Addons
+    </a>
+    <nav class="site-nav" aria-label="Addons">
+      <ul>
+        <li><a href="/profession-knowledge-treasures/">Knowledge Treasures</a></li>
+        <li><a href="/characterstats/">CharacterStats</a></li>
+        <li><a href="/healermana/" aria-current="page">HealerMana</a></li>
+        <li><a href="/mark-of-the-tank/">Mark of the Tank</a></li>
+        <li><a href="/auto-expansion-filter/">Auto Expansion Filter</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap addon-hero">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s6 6.4 6 10.8a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5z"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"/></svg></span>
+      <div>
+        <p class="eyebrow">User guide</p>
+        <h1>HealerMana</h1>
+        <p class="lede">Know your healers' mana before the pull goes sideways. HealerMana shows the mana of every healer in your group or raid in one small display, so a glance tells you who's about to run dry.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://www.curseforge.com/wow/addons/healermana">Download on CurseForge</a>
+          <a class="btn" href="https://github.com/lixard-wow/HealerMana">Source on GitHub</a>
+        </div>
+        <ul class="facts">
+          <li><strong>Command:</strong> <code>/hm</code></li>
+          <li><strong>Game:</strong> Retail, Midnight</li>
+          <li><strong>Works with:</strong> every healer spec</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap guide">
+    <aside class="toc">
+      <nav aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#start">Getting started</a></li>
+          <li><a href="#reading">Reading the display</a></li>
+          <li><a href="#settings">Settings</a></li>
+          <li><a href="#commands">Commands</a></li>
+          <li><a href="#faq">Tips and FAQ</a></li>
+          <li><a href="#new">What's new</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <div class="guide-body">
+      <section id="features">
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Every healer's mana</strong>, updated live, as icons or bars.</li>
+          <li><strong>Your choice of layout:</strong> a horizontal row, a vertical list or a grid.</li>
+          <li><strong>Out-of-range dimming</strong>, so you can see who's too far away.</li>
+          <li><strong>Class colors and spec icons</strong> for each healer.</li>
+          <li><strong>Status at a glance:</strong> Dead and Offline labels, a food and drink icon while a healer is drinking, and a marker when a Druid healer is in Cat, Bear or Moonkin Form.</li>
+          <li><strong>Choose where it shows:</strong> open world, dungeons, raids, scenarios, battlegrounds and arenas, each on or off.</li>
+          <li><strong>Sort</strong> alphabetically or by class.</li>
+          <li><strong>Move, resize and lock it.</strong> Your settings are saved.</li>
+        </ul>
+        <p class="muted">Works with Holy and Discipline Priest, Restoration Druid, Holy Paladin, Restoration Shaman, Mistweaver Monk and Preservation Evoker.</p>
+      </section>
+
+      <section id="start">
+        <h2>Getting started</h2>
+        <ol class="steps">
+          <li>Install the addon and log in. Chat shows "HealerMana loaded. Type /hm for options."</li>
+          <li>Join a group that has a healer, including yourself if you play one. The display appears just right of the middle of your screen.</li>
+          <li>Type <code>/hm</code> or click the minimap button to open settings. Pick icons or bars, then adjust the size, spacing and sorting.</li>
+          <li>Drag the display where you want it, then turn on Lock frame so you don't move it by accident.</li>
+        </ol>
+        <div class="panel note">
+          <p><strong>Want to set it up without a group?</strong> Press Start Preview at the bottom of the settings window, or type <code>/hm raid 5</code>, to show fake healers. <code>/hm raid off</code> goes back to your real group.</p>
+        </div>
+      </section>
+
+      <section id="reading">
+        <h2>Reading the display</h2>
+        <ul>
+          <li>The number is the healer's mana as a percentage.</li>
+          <li>A faded healer is out of range.</li>
+          <li><strong>Dead</strong> and <strong>Offline</strong> replace the percentage when they apply. A healer who is both shows Offline.</li>
+          <li>In icon style, a food and drink icon shows while the healer is eating or drinking.</li>
+          <li>A Druid healer in Cat, Bear or Moonkin Form shows that form's icon (icon style) or a [Cat], [Bear] or [Moonkin] tag (bar style). Mana is hidden in Cat and Bear Form, since they don't use it.</li>
+        </ul>
+      </section>
+
+      <section id="settings">
+        <h2>Settings</h2>
+        <p>Open settings with <code>/hm</code> or the minimap button. The bottom of the window has Start Preview, Reset Position and Close.</p>
+
+        <h3>General</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Display Style</dt><dd>Icons or Bars. Icons by default.</dd>
+            <dt>Dim when out of range</dt><dd>On by default, with an opacity slider for how faded out-of-range healers look.</dd>
+            <dt>Hide own bar</dt><dd>Leave yourself out of the display. Off by default.</dd>
+            <dt>Lock frame</dt><dd>Lock the display and let clicks pass through it. Off by default.</dd>
+            <dt>Show minimap icon</dt><dd>On by default.</dd>
+          </dl>
+        </div>
+
+        <h3>Layout</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Layout Mode</dt><dd>Horizontal, Vertical or Grid. Vertical by default.</dd>
+            <dt>Icon Size and Spacing</dt><dd>How big the icons are and how far apart.</dd>
+            <dt>Grid Columns</dt><dd>How many healers per row in grid mode.</dd>
+            <dt>Bar Width, Height and Texture</dt><dd>Shown when you use bars.</dd>
+          </dl>
+        </div>
+
+        <h3>Fill Color</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Fill Color Mode</dt><dd>Use each healer's class color or one custom color.</dd>
+            <dt>Opacity</dt><dd>Bar opacity, and how strongly icons are tinted.</dd>
+          </dl>
+        </div>
+
+        <h3>Background and Border</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Bars</dt><dd>Background color.</dd>
+            <dt>Icons</dt><dd>Class-colored border, or a border color of your choice.</dd>
+          </dl>
+        </div>
+
+        <h3>Text</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Names</dt><dd>Show names, class-color them or pick a color, and choose whether long names shrink to fit or get cut short.</dd>
+            <dt>Percent</dt><dd>Show the % symbol, and class-color the number or pick a color.</dd>
+            <dt>Font and sizes</dt><dd>Change the font and set name and percent sizes separately.</dd>
+          </dl>
+        </div>
+
+        <h3>Sort and Visibility</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Sort By</dt><dd>Alphabetical or Healer Class.</dd>
+            <dt>Show when Solo</dt><dd>Show the display even when you're not in a group. Off by default.</dd>
+            <dt>Show in</dt><dd>Open World, Dungeons, Raids, Scenarios, Battlegrounds and Arenas. All on by default.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section id="commands">
+        <h2>Commands</h2>
+        <div class="table-box">
+          <table>
+            <thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead>
+            <tbody>
+              <tr><td><code>/hm</code></td><td>Open settings.</td></tr>
+              <tr><td><code>/hm lock</code></td><td>Lock or unlock the display.</td></tr>
+              <tr><td><code>/hm alpha</code></td><td>Sort healers alphabetically.</td></tr>
+              <tr><td><code>/hm class</code></td><td>Sort healers by class.</td></tr>
+              <tr><td><code>/hm layout</code></td><td>Switch between horizontal and vertical.</td></tr>
+              <tr><td><code>/hm reset</code></td><td>Put the display back in its default position.</td></tr>
+              <tr><td><code>/hm raid 5</code></td><td>Show fake healers to preview a layout, up to 20.</td></tr>
+              <tr><td><code>/hm raid off</code></td><td>Go back to your real group.</td></tr>
+              <tr><td><code>/hm help</code></td><td>List the commands in chat.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted"><code>/healermana</code> works the same as <code>/hm</code>.</p>
+      </section>
+
+      <section id="faq" class="faq">
+        <h2>Tips and FAQ</h2>
+        <details>
+          <summary>The food and drink icon doesn't show in Mythic+.</summary>
+          <p>Blizzard blocks addons from seeing this during an entire Mythic+ run, not just during pulls. There's no way around it, and it works everywhere else.</p>
+        </details>
+        <details>
+          <summary>A healer's icon is generic for a moment.</summary>
+          <p>HealerMana looks up each healer's spec in the background, one player every couple of seconds. Until it knows, it uses the role they picked and a class icon. It pauses while you have someone's Inspect window open, so it never gets in your way.</p>
+        </details>
+        <details>
+          <summary>The Druid Moonkin marker is slow to change.</summary>
+          <p>Moonkin Form only updates outside combat. Cat and Bear Form update during combat too.</p>
+        </details>
+        <details>
+          <summary>I don't see the Font or Bar Texture options.</summary>
+          <p>Those lists come from a shared library that many other addons install. If none of your addons include it, HealerMana uses its default font and texture.</p>
+        </details>
+        <details>
+          <summary>The display isn't showing.</summary>
+          <p>It only shows when you're grouped with a healer, in content you've turned on in Sort and Visibility. Turn on Show when Solo to see it on your own.</p>
+        </details>
+      </section>
+
+      <section id="new">
+        <h2>What's new in 1.0.5</h2>
+        <ul>
+          <li>Fixed HealerMana's background spec lookup blocking you from inspecting other players. It now pauses while your Inspect window is open and stops once every healer's spec is known.</li>
+        </ul>
+        <p class="muted">The full list of changes is on the <a href="https://www.curseforge.com/wow/addons/healermana">CurseForge page</a>.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Made by Lixard.</p>
+    <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
+  </div>
+</footer>
+</body>
+</html>
