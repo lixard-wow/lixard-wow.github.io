@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mark of the Tank Guide</title>
+<meta name="description" content="How to use Mark of the Tank: a Misdirection and Tricks of the Trade macro that follows your tank automatically, with a minimap quick-target menu.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16h11"/></svg></span>
+      Lixard's Addons
+    </a>
+    <nav class="site-nav" aria-label="Addons">
+      <ul>
+        <li><a href="/profession-knowledge-treasures/">Knowledge Treasures</a></li>
+        <li><a href="/characterstats/">CharacterStats</a></li>
+        <li><a href="/healermana/">HealerMana</a></li>
+        <li><a href="/mark-of-the-tank/" aria-current="page">Mark of the Tank</a></li>
+        <li><a href="/auto-expansion-filter/">Auto Expansion Filter</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap addon-hero">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6"/><path d="M12 2.5v4"/><path d="M12 17.5v4"/><path d="M2.5 12h4"/><path d="M17.5 12h4"/></svg></span>
+      <div>
+        <p class="eyebrow">User guide</p>
+        <h1>Mark of the Tank</h1>
+        <p class="lede">Never edit your Misdirection or Tricks of the Trade macro again. Mark of the Tank builds the macro for you and keeps it pointed at the right player, switching to your tank automatically when you join a group.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://www.curseforge.com/wow/addons/mark-of-the-tank">Download on CurseForge</a>
+        </div>
+        <ul class="facts">
+          <li><strong>Command:</strong> <code>/mott</code></li>
+          <li><strong>Game:</strong> Retail, Midnight</li>
+          <li><strong>Classes:</strong> Hunter, Rogue</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap guide">
+    <aside class="toc">
+      <nav aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#start">Getting started</a></li>
+          <li><a href="#targets">Choosing a target</a></li>
+          <li><a href="#classes">Hunter and Rogue</a></li>
+          <li><a href="#settings">Settings</a></li>
+          <li><a href="#faq">Tips and FAQ</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <div class="guide-body">
+      <section id="features">
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Builds your macro for you:</strong> one macro for Misdirection or Tricks of the Trade, with the spell's icon, kept up to date automatically.</li>
+          <li><strong>Finds the tank:</strong> when you join a group or the group changes, it points the macro at your tank.</li>
+          <li><strong>Quick target menu:</strong> hover the minimap button to switch the macro to your tank, target, target of target, focus or pet in one click.</li>
+          <li><strong>Sensible fallback:</strong> if the player you chose isn't there, the macro falls back to your pet, then to a normal cast.</li>
+          <li><strong>Reminds you when you zone in:</strong> if you're in a group with no target set, the quick menu pops up.</li>
+          <li><strong>Combat safe:</strong> changes you make in combat are applied as soon as combat ends.</li>
+        </ul>
+      </section>
+
+      <section id="start">
+        <h2>Getting started</h2>
+        <ol class="steps">
+          <li>Install the addon and log in on your Hunter or Rogue.</li>
+          <li>The addon creates a macro named after your spell, such as "Misdirection".</li>
+          <li>Open your Macros window (<code>/macro</code>) and drag the macro onto your action bar.</li>
+          <li>Join a group. The macro now points at your tank, and the minimap button shows who it's set to.</li>
+        </ol>
+        <div class="panel note">
+          <p><strong>Macro slots full?</strong> The addon needs one free general macro slot. If all 18 are used, it tells you in chat. Delete one and log in again.</p>
+        </div>
+      </section>
+
+      <section id="targets">
+        <h2>Choosing a target</h2>
+        <p>Hover the minimap button to open the quick menu. The bottom of the menu shows who the macro is set to now.</p>
+        <div class="table-box">
+          <table>
+            <thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead>
+            <tbody>
+              <tr><td>Set to Party Tank / Raid Tank</td><td>Point the macro at your group's tank. Shown while you're in a group.</td></tr>
+              <tr><td>Set to Target</td><td>Point it at whoever you're targeting when you press the macro.</td></tr>
+              <tr><td>Set to Target of Target</td><td>Point it at your target's target.</td></tr>
+              <tr><td>Set to Focus</td><td>Point it at your focus target.</td></tr>
+              <tr><td>Set to Pet</td><td>Point it at your pet. Hunters only, while a pet is out.</td></tr>
+              <tr><td>Clear Target</td><td>Remove the target so the spell casts normally.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted">When finding the tank, the addon checks for a player set as main tank first, then anyone in the tank role, then the tank-capable player with the most health.</p>
+      </section>
+
+      <section id="classes">
+        <h2>Hunter and Rogue</h2>
+        <div class="panel">
+          <h3>Hunter: Misdirection</h3>
+          <p class="muted">Starts pointed at your pet. Switches to the tank when you join a group, and back to your pet when you leave.</p>
+        </div>
+        <div class="panel">
+          <h3>Rogue: Tricks of the Trade</h3>
+          <p class="muted">Starts pointed at your focus target. Switches to the tank when you join a group.</p>
+        </div>
+      </section>
+
+      <section id="settings">
+        <h2>Settings</h2>
+        <p>Type <code>/mott</code> or right-click the minimap button to open settings. Settings are saved separately for each character.</p>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Name</dt><dd>Rename your macro, up to 32 characters, then press Apply or Enter. The existing macro is renamed, so it stays on your action bar.</dd>
+            <dt>Current target</dt><dd>Shows who the macro is set to.</dd>
+            <dt>Auto-set tank when joining group</dt><dd>On by default.</dd>
+            <dt>Auto-set pet when leaving group</dt><dd>Hunters only. On by default.</dd>
+            <dt>Show minimap button</dt><dd>On by default.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section id="faq" class="faq">
+        <h2>Tips and FAQ</h2>
+        <details>
+          <summary>The quick menu won't open.</summary>
+          <p>It can't open during combat, and entering combat closes it. Open it again once combat ends.</p>
+        </details>
+        <details>
+          <summary>It says "No tank found in group".</summary>
+          <p>Nobody in your group is set as a tank or can tank. Pick a target from the quick menu instead.</p>
+        </details>
+        <details>
+          <summary>The macro has a question-mark icon.</summary>
+          <p>You don't know the spell yet. Once you learn Misdirection, the macro uses the real icon.</p>
+        </details>
+        <details>
+          <summary>Which classes does it support?</summary>
+          <p>Hunter and Rogue. On other classes the addon stays quiet.</p>
+        </details>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Made by Lixard.</p>
+    <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
+  </div>
+</footer>
+</body>
+</html>

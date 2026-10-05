@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Expansion Filter Guide</title>
+<meta name="description" content="How to use Auto Expansion Filter: turn on Current Expansion Only automatically in the Auction House and Crafting Orders browser.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16h11"/></svg></span>
+      Lixard's Addons
+    </a>
+    <nav class="site-nav" aria-label="Addons">
+      <ul>
+        <li><a href="/profession-knowledge-treasures/">Knowledge Treasures</a></li>
+        <li><a href="/characterstats/">CharacterStats</a></li>
+        <li><a href="/healermana/">HealerMana</a></li>
+        <li><a href="/mark-of-the-tank/">Mark of the Tank</a></li>
+        <li><a href="/auto-expansion-filter/" aria-current="page">Auto Expansion Filter</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap addon-hero">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6.2 7.2v5.8l-3.6 1.8v-7.6z"/></svg></span>
+      <div>
+        <p class="eyebrow">User guide</p>
+        <h1>Auto Expansion Filter</h1>
+        <p class="lede">Stop wading through old-expansion items. Auto Expansion Filter turns on "Current Expansion Only" for you every time you open the Auction House or the Crafting Orders browser.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://www.curseforge.com/wow/addons/auto-expansion-filter">Download on CurseForge</a>
+          <a class="btn" href="https://github.com/lixard-wow/AutoExpansionFilter">Source on GitHub</a>
+        </div>
+        <ul class="facts">
+          <li><strong>Command:</strong> <code>/aef</code></li>
+          <li><strong>Game:</strong> Retail, Midnight</li>
+          <li><strong>Setup:</strong> none needed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap guide">
+    <aside class="toc">
+      <nav aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#features">What it does</a></li>
+          <li><a href="#start">Getting started</a></li>
+          <li><a href="#settings">Settings</a></li>
+          <li><a href="#commands">Commands</a></li>
+          <li><a href="#faq">Tips and FAQ</a></li>
+          <li><a href="#new">What's new</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <div class="guide-body">
+      <section id="features">
+        <h2>What it does</h2>
+        <ul>
+          <li><strong>Auction House:</strong> every time the search bar appears, "Current Expansion Only" is turned on in its Filter menu.</li>
+          <li><strong>Crafting Orders:</strong> the same filter is turned on when you browse customer orders.</li>
+          <li><strong>Separate switches:</strong> turn each one on or off on its own.</li>
+          <li><strong>Reliable:</strong> it checks a few times as the window opens, because the game doesn't always accept the change on the first try.</li>
+        </ul>
+        <p class="muted">It doesn't change any other window or filter.</p>
+      </section>
+
+      <section id="start">
+        <h2>Getting started</h2>
+        <ol class="steps">
+          <li>Install the addon and log in.</li>
+          <li>Open the Auction House or browse Crafting Orders. "Current Expansion Only" is already on.</li>
+        </ol>
+        <p>That's it. Both filters are on from the start, and your settings apply to every character on your account.</p>
+      </section>
+
+      <section id="settings">
+        <h2>Settings</h2>
+        <p>Type <code>/aef</code> to open the settings window. It shows the addon version under the title. Drag it to move it, and press Close or Escape to close it.</p>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Auto-filter: Auction House</dt><dd>On by default.</dd>
+            <dt>Auto-filter: Crafting Orders</dt><dd>On by default.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section id="commands">
+        <h2>Commands</h2>
+        <div class="table-box">
+          <table>
+            <thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead>
+            <tbody>
+              <tr><td><code>/aef</code></td><td>Open the settings window.</td></tr>
+              <tr><td><code>/aef on</code></td><td>Turn on both filters.</td></tr>
+              <tr><td><code>/aef off</code></td><td>Turn off both filters.</td></tr>
+              <tr><td><code>/aef help</code></td><td>List the commands in chat.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted"><code>/autofilter</code> and <code>/expfilter</code> work the same as <code>/aef</code>.</p>
+      </section>
+
+      <section id="faq" class="faq">
+        <h2>Tips and FAQ</h2>
+        <details>
+          <summary>I unticked the filter in the Auction House, but it came back.</summary>
+          <p>The addon sets the filter every time the window opens, so a change you make by hand lasts until the next time you open it. To keep it off, untick that window in <code>/aef</code>.</p>
+        </details>
+        <details>
+          <summary>What happens when I turn a switch off?</summary>
+          <p>The addon then turns "Current Expansion Only" off each time that window opens, instead of on.</p>
+        </details>
+        <details>
+          <summary>It says "Config not loaded yet".</summary>
+          <p>You typed the command before the game finished loading. Wait a moment and try again.</p>
+        </details>
+      </section>
+
+      <section id="new">
+        <h2>What's new in 1.2.2</h2>
+        <ul>
+          <li>Updated for World of Warcraft Patch 12.0.7, and checked for Patch 12.1.0.</li>
+        </ul>
+        <p class="muted">The full list of changes is on the <a href="https://www.curseforge.com/wow/addons/auto-expansion-filter">CurseForge page</a>.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Made by Lixard.</p>
+    <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
+  </div>
+</footer>
+</body>
+</html>

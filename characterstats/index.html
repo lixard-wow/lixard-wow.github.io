@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CharacterStats Guide</title>
+<meta name="description" content="How to use CharacterStats: an on-screen stat panel, character window stats and gear badges, four looks, sharing, profiles and every setting explained.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16h11"/></svg></span>
+      Lixard's Addons
+    </a>
+    <nav class="site-nav" aria-label="Addons">
+      <ul>
+        <li><a href="/profession-knowledge-treasures/">Knowledge Treasures</a></li>
+        <li><a href="/characterstats/" aria-current="page">CharacterStats</a></li>
+        <li><a href="/healermana/">HealerMana</a></li>
+        <li><a href="/mark-of-the-tank/">Mark of the Tank</a></li>
+        <li><a href="/auto-expansion-filter/">Auto Expansion Filter</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap addon-hero">
+      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20v-8"/><path d="M10 20V5"/><path d="M15 20v-6"/><path d="M20 20V9"/><path d="M3 20h18"/></svg></span>
+      <div>
+        <p class="eyebrow">User guide</p>
+        <h1>CharacterStats</h1>
+        <p class="lede">Keep your item level and stats on screen without opening the character window. CharacterStats adds a small stat panel you can place anywhere, a stat list and gear badges in the character window, and a quick way to share your stats in chat.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://www.curseforge.com/wow/addons/characterstats">Download on CurseForge</a>
+        </div>
+        <ul class="facts">
+          <li><strong>Command:</strong> <code>/cs</code></li>
+          <li><strong>Game:</strong> Retail and Mists of Pandaria Classic</li>
+          <li><strong>Languages:</strong> 12</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap guide">
+    <aside class="toc">
+      <nav aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#start">Getting started</a></li>
+          <li><a href="#looks">The four looks</a></li>
+          <li><a href="#character">Character window</a></li>
+          <li><a href="#share">Sharing your stats</a></li>
+          <li><a href="#settings">Settings</a></li>
+          <li><a href="#commands">Commands</a></li>
+          <li><a href="#faq">Tips and FAQ</a></li>
+          <li><a href="#new">What's new</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <div class="guide-body">
+      <section id="features">
+        <h2>Features</h2>
+        <ul>
+          <li><strong>An on-screen stat panel</strong> showing item level, primary and secondary stats, defensive and utility stats, and movement speed. Move it anywhere and lock it in place.</li>
+          <li><strong>Stats in the character window</strong>, right next to your gear.</li>
+          <li><strong>Gear badges</strong> showing each item's level, colored by upgrade track from Explorer to Myth, plus Crafted. They also flag missing enchants and empty gem sockets.</li>
+          <li><strong>Four looks</strong> to choose from, each one previewed live before you pick.</li>
+          <li><strong>Sharing:</strong> right-click the panel to post your stats to your raid, party, target or a Battle.net friend.</li>
+          <li><strong>Profiles</strong>, including automatic switching when you change specialization.</li>
+          <li><strong>Pick your stats:</strong> turn any stat on or off, drag them into your own order, and recolor them.</li>
+          <li><strong>Plays nicely with other addons:</strong> it notices when another addon also changes the character window and lets you choose which one to keep.</li>
+        </ul>
+      </section>
+
+      <section id="start">
+        <h2>Getting started</h2>
+        <ol class="steps">
+          <li>Install the addon and log in. Chat shows "CharacterStats loaded. Type /cs to toggle."</li>
+          <li>A window opens asking you to choose a look. Click a look to preview it live, then press Use This Look. Pick Later closes it for now.</li>
+          <li>The stat panel appears on screen. Drag it with the left mouse button to where you want it.</li>
+          <li>Open the options with <code>/cs config</code>, right-click the minimap button, or click the options button on the character window.</li>
+        </ol>
+        <div class="panel note">
+          <p><strong>Minimap button:</strong> left-click shows or hides the stat panel, right-click opens options, and shift-click puts the panel back in its default position.</p>
+        </div>
+      </section>
+
+      <section id="looks">
+        <h2>The four looks</h2>
+        <p>Change your look any time with <code>/cs style</code> or in Appearance in the options.</p>
+        <div class="panel"><h3>Original</h3><p class="muted">The classic list from earlier versions.</p></div>
+        <div class="panel"><h3>Ledger</h3><p class="muted">A big item level, with stats grouped under headers.</p></div>
+        <div class="panel"><h3>Meters</h3><p class="muted">A colored bar under every stat.</p></div>
+        <div class="panel"><h3>Companion</h3><p class="muted">Compact cells, plus a gear drawer on the character window with Stats, Gear and Ratings tabs.</p></div>
+      </section>
+
+      <section id="character">
+        <h2>The character window</h2>
+        <p>Open your character window and you'll see your stats listed beside your gear, and badges on each gear slot:</p>
+        <ul>
+          <li>The item level of each piece, colored by its upgrade track.</li>
+          <li>A dot when a piece is missing an enchant or has an empty gem socket.</li>
+          <li>Your enchants and gems shown next to each slot, as a quality icon (hover for the name) or as the enchant's name.</li>
+        </ul>
+        <p class="muted">Everything here can be turned off in the Character Frame page of the options.</p>
+      </section>
+
+      <section id="share">
+        <h2>Sharing your stats</h2>
+        <p>Right-click the stat panel to open the Share menu, then choose where to post: Raid, Party, your current target as a whisper, or a Battle.net friend. Stats the game is currently hiding are left out of what you share.</p>
+      </section>
+
+      <section id="settings">
+        <h2>Settings</h2>
+        <p>Open the options with <code>/cs config</code>. They're split into pages.</p>
+
+        <h3>General</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Show Stats Frame</dt><dd>Show or hide the on-screen panel. On by default.</dd>
+            <dt>Lock Position</dt><dd>Stop the panel from being dragged. Off by default.</dd>
+            <dt>Clamp to Screen</dt><dd>Keep the panel inside the edges of your screen. On by default.</dd>
+            <dt>Show Minimap Button</dt><dd>On by default.</dd>
+            <dt>Display Mode</dt><dd>Show stats as a Percent, a Rating, or Both. Percent by default.</dd>
+            <dt>Decimal Places</dt><dd>Show 0, 1 or 2 decimal places.</dd>
+          </dl>
+        </div>
+
+        <h3>Stats</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Shown Stats</dt><dd>Tick the stats you want to see, drag them to reorder, click a color to change it, and right-click a color to reset it.</dd>
+            <dt>Enable All, Disable All, Reset Colors, Reset Order</dt><dd>Quick buttons for the whole list. Item level is colored automatically by item quality.</dd>
+          </dl>
+        </div>
+
+        <h3>Appearance</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Look</dt><dd>Original, Ledger, Meters or Companion.</dd>
+            <dt>Text</dt><dd>Font, font size (8 to 16), text opacity, outline, abbreviated stat names, and whether a colon follows each label.</dd>
+            <dt>Layout</dt><dd>Direction, alignment (left, center, right or justify), grouping stats under headers, row spacing, and a separator line with its own color.</dd>
+            <dt>Background and border</dt><dd>Background opacity, border style (none, thin, thick, tooltip or dialog), border opacity and color, or your class color for the border.</dd>
+            <dt>Accent color</dt><dd>Pick a theme color or use your class color.</dd>
+            <dt>Options Window Scale</dt><dd>Make the options window itself bigger or smaller.</dd>
+          </dl>
+        </div>
+
+        <h3>Character Frame</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Show Stats on Character Frame</dt><dd>On by default.</dd>
+            <dt>Show Options Button on Character Frame</dt><dd>On by default.</dd>
+            <dt>Check for Conflicting Character Frame Addons</dt><dd>On by default. Check Again runs the check now, and Reset Keep-Both Choices forgets earlier answers.</dd>
+            <dt>Gear slots</dt><dd>Show item level on slots, flag missing enchants and empty sockets, show enchants and gems next to slots, and choose icon or name for enchants.</dd>
+            <dt>Gear slot colors</dt><dd>A color for each upgrade track, plus the missing-enchant and empty-socket dots.</dd>
+          </dl>
+        </div>
+
+        <h3>Profiles</h3>
+        <div class="panel">
+          <dl class="settings">
+            <dt>Active Profile</dt><dd>Switch profiles, or make a New one, Copy, Delete or Reset. The Default profile and specialization profiles can't be deleted.</dd>
+            <dt>Automatically switch by specialization</dt><dd>Pick a profile for each of your specs and it changes when you do.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section id="commands">
+        <h2>Commands</h2>
+        <div class="table-box">
+          <table>
+            <thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead>
+            <tbody>
+              <tr><td><code>/cs</code></td><td>Show or hide the stat panel.</td></tr>
+              <tr><td><code>/cs config</code></td><td>Open the options. <code>/cs options</code> also works.</td></tr>
+              <tr><td><code>/cs style</code></td><td>Choose a look. <code>/cs look</code> also works.</td></tr>
+              <tr><td><code>/cs show</code> / <code>/cs hide</code></td><td>Show or hide the stat panel.</td></tr>
+              <tr><td><code>/cs reset</code></td><td>Put the stat panel back in its default position.</td></tr>
+              <tr><td><code>/cs resetminimap</code></td><td>Put the minimap button back in its default position.</td></tr>
+              <tr><td><code>/cs refresh</code></td><td>Update your stats right now.</td></tr>
+              <tr><td><code>/cs help</code></td><td>List the commands in chat.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted"><code>/charstats</code> and <code>/cstats</code> work the same as <code>/cs</code>.</p>
+      </section>
+
+      <section id="faq" class="faq">
+        <h2>Tips and FAQ</h2>
+        <details>
+          <summary>Some of my stats show a dash in combat.</summary>
+          <p>In Midnight the game hides some values during combat. CharacterStats never guesses at hidden numbers, so it shows a dash until the game makes them available again.</p>
+        </details>
+        <details>
+          <summary>Why is Versatility an estimate in Mythic+ and Delves?</summary>
+          <p>The game restricts that value in those places, so the addon shows its best estimate instead.</p>
+        </details>
+        <details>
+          <summary>I can't open the options.</summary>
+          <p>The options window, the look picker and the Share menu can't open during combat. Try again once combat ends.</p>
+        </details>
+        <details>
+          <summary>Another addon also changes my character window.</summary>
+          <p>Addons like ElvUI or EllesmereUI can overlap with CharacterStats. When it notices one, it asks whether to turn off CharacterStats' part, turn off the other addon, or keep both.</p>
+        </details>
+        <details>
+          <summary>Does it work on Classic?</summary>
+          <p>Yes, on Mists of Pandaria Classic, with the stats that matter there such as Spirit, Hit and Expertise. The missing-enchant check is retail only.</p>
+        </details>
+      </section>
+
+      <section id="new">
+        <h2>What's new in 2.1.4</h2>
+        <ul>
+          <li>Fixed the stat panel sometimes showing as a plain white box with no text or border color.</li>
+        </ul>
+        <p class="muted">The full list of changes is on the <a href="https://www.curseforge.com/wow/addons/characterstats">CurseForge page</a>.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Made by Lixard.</p>
+    <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
+  </div>
+</footer>
+</body>
+</html>
