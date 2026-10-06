@@ -6,11 +6,12 @@
 <title>Profession Knowledge Treasures Guide</title>
 <meta name="description" content="How to use Profession Knowledge Treasures: route to every Midnight profession knowledge treasure, minimize the tracker, and follow the Darkmoon Faire quests step by step.">
 <meta name="color-scheme" content="dark">
+<script>try{var q=/[?&]theme=(\w+)/.exec(location.search),t=q?q[1]:localStorage.getItem("lixard-theme");if(t==="workbench"||t==="ledger"||t==="classic")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Barlow:wght@400;600&family=Barlow+Condensed:wght@700&family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=3">
-<link rel="stylesheet" href="/assets/previews.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Barlow:wght@400;600;700&amp;family=Barlow+Condensed:wght@600;700&amp;family=Cinzel:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="stylesheet" href="/assets/previews.css?v=4">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -18,9 +19,10 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16h11"/></svg></span>
-      Lixard's Addons
+      <span class="brand-mark" aria-hidden="true"><span class="brand-l">L</span></span>
+      <span class="brand-name">Lixard's Addons</span>
     </a>
+    <div class="header-tools">
     <nav class="site-nav" aria-label="Addons">
       <ul>
         <li><a href="/profession-knowledge-treasures/" aria-current="page">Knowledge Treasures</a></li>
@@ -30,6 +32,12 @@
         <li><a href="/auto-expansion-filter/">Auto Expansion Filter</a></li>
       </ul>
     </nav>
+      <div class="theme-picker" role="group" aria-label="Site theme">
+        <button type="button" data-theme-pick="classic" aria-pressed="true">Classic</button>
+        <button type="button" data-theme-pick="workbench" aria-pressed="false">Workbench</button>
+        <button type="button" data-theme-pick="ledger" aria-pressed="false">Ledger</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -310,6 +318,7 @@
     <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
   </div>
 </footer>
-<script src="/assets/previews.js?v=3" defer></script>
+<script src="/assets/previews.js?v=4" defer></script>
+<script src="/assets/theme.js?v=4" defer></script>
 </body>
 </html>

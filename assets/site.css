@@ -1,3 +1,9 @@
+@property --hue {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 45;
+}
+
 :root {
   --bg: #0b0b0b;
   --surface: #141414;
@@ -5,15 +11,67 @@
   --border: #2e2e2e;
   --border-strong: #3d3d3d;
   --text: #ebe8db;
+  --heading: #ebe8db;
   --muted: #b3b3b3;
   --faint: #8f8f8f;
   --gold: #c7a838;
   --gold-strong: #dcc060;
   --gold-ink: #141414;
-  --radius: 6px;
+  --primary: #161616;
+  --primary-border: #c7a838;
+  --primary-hover: #202020;
+  --primary-ink: #ebe8db;
+  --header-bg: rgba(11, 11, 11, 0.94);
+  --radius: 0px;
   --max: 1120px;
   --font: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --heading-font: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+:root[data-theme="workbench"] {
+  --bg: #12151a;
+  --surface: #1d2127;
+  --surface-2: #262b32;
+  --border: #2c323a;
+  --border-strong: #3a414b;
+  --text: #e8ebee;
+  --heading: #e8ebee;
+  --muted: #9aa3ad;
+  --faint: #7d8692;
+  --gold: #4fbf8f;
+  --gold-strong: #6fd3a6;
+  --gold-ink: #0d1f17;
+  --primary: #2f8f68;
+  --primary-border: #2f8f68;
+  --primary-hover: #36a377;
+  --primary-ink: #ffffff;
+  --header-bg: rgba(23, 26, 31, 0.95);
+  --radius: 10px;
+  --font: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --heading-font: "Barlow Condensed", "Barlow", "Segoe UI", system-ui, sans-serif;
+}
+
+:root[data-theme="ledger"] {
+  --bg: #1c1611;
+  --surface: #241c15;
+  --surface-2: #2e241b;
+  --border: #3a2e22;
+  --border-strong: #5a4630;
+  --text: #efe6d6;
+  --heading: #f3e6c8;
+  --muted: #bfb19e;
+  --faint: #9a8b78;
+  --gold: #c9a35a;
+  --gold-strong: #e2c07a;
+  --gold-ink: #1c1611;
+  --primary: #c9a35a;
+  --primary-border: #e2c07a;
+  --primary-hover: #d6b06a;
+  --primary-ink: #1c1611;
+  --header-bg: rgba(28, 22, 17, 0.95);
+  --radius: 4px;
+  --heading-font: "Cinzel", Georgia, serif;
 }
 
 * { box-sizing: border-box; }
@@ -47,7 +105,7 @@ img, svg { display: block; max-width: 100%; }
 
 .site-header {
   position: sticky; top: 0; z-index: 5;
-  background: rgba(11, 11, 11, 0.94);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(6px);
 }
@@ -60,9 +118,33 @@ img, svg { display: block; max-width: 100%; }
   color: var(--text); text-decoration: none; font-weight: 700; font-size: 18px;
 }
 .brand-mark {
-  width: 30px; height: 30px; display: grid; place-items: center;
-  border: 1px solid var(--gold); border-radius: var(--radius); color: var(--gold);
+  width: 34px; height: 34px; display: grid; place-items: center;
+  background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius);
+  overflow: hidden;
 }
+.brand-l {
+  font-family: "Allura", cursive; font-weight: 400; font-size: 34px; line-height: 1;
+  transform: translate(1px, 3px);
+  color: hsl(var(--hue) 72% 62%);
+  animation: brand-cycle 12s linear infinite;
+}
+@keyframes brand-cycle {
+  from { --hue: 45; }
+  to { --hue: 405; }
+}
+.brand-name { font-family: var(--heading-font); }
+
+.header-tools { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.theme-picker {
+  display: inline-flex; border: 1px solid var(--border-strong); border-radius: var(--radius); overflow: hidden;
+}
+.theme-picker button {
+  min-height: 34px; padding: 4px 10px; border: 0; border-left: 1px solid var(--border-strong);
+  background: var(--surface); color: var(--muted); font: 600 13px/1 var(--font); cursor: pointer;
+}
+.theme-picker button:first-child { border-left: 0; }
+.theme-picker button:hover { color: var(--text); background: var(--surface-2); }
+.theme-picker button[aria-pressed="true"] { color: var(--gold-ink); background: var(--gold); }
 .site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 18px; }
 .site-nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--text); }
@@ -71,6 +153,8 @@ img, svg { display: block; max-width: 100%; }
 main { padding-bottom: 72px; }
 
 .hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); }
+h1, h2, h3 { font-family: var(--heading-font); color: var(--heading); overflow-wrap: break-word; }
+.addon-hero > * { min-width: 0; }
 .hero h1 { margin: 0 0 12px; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; letter-spacing: -0.01em; }
 .hero .lede { margin: 0; max-width: 680px; color: var(--muted); font-size: 19px; }
 .eyebrow {
@@ -92,8 +176,8 @@ main { padding-bottom: 72px; }
   font-weight: 600; font-size: 16px; text-decoration: none;
 }
 .btn:hover { background: var(--surface-2); color: var(--text); border-color: var(--faint); }
-.btn-primary { background: var(--gold); border-color: var(--gold); color: var(--gold-ink); }
-.btn-primary:hover { background: var(--gold-strong); border-color: var(--gold-strong); color: var(--gold-ink); }
+.btn-primary { background: var(--primary); border-color: var(--primary-border); color: var(--primary-ink); }
+.btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-border); color: var(--primary-ink); }
 
 .icon-tile {
   width: 52px; height: 52px; flex-shrink: 0;
@@ -200,6 +284,30 @@ dl.settings dd { margin: 2px 0 0; color: var(--muted); }
   td:first-child { white-space: normal; }
 }
 
+:root[data-theme="workbench"] .site-header {
+  border-bottom: 0;
+  box-shadow: 0 1px 0 var(--border);
+  background-image: linear-gradient(90deg, #4fbf8f 0 25%, #a98cf0 25% 50%, #e0a03a 50% 75%, #6fa8e8 75%);
+  background-size: 100% 2px; background-repeat: no-repeat; background-position: bottom;
+}
+:root[data-theme="workbench"] .hero h1,
+:root[data-theme="workbench"] .section-title { letter-spacing: 0.01em; }
+:root[data-theme="ledger"] .addon-card,
+:root[data-theme="ledger"] .panel,
+:root[data-theme="ledger"] .about div {
+  box-shadow: inset 0 0 0 3px var(--surface), inset 0 0 0 4px var(--border);
+}
+@media (max-width: 720px) {
+  :root[data-theme="ledger"] .hero h1 { font-size: clamp(24px, 7vw, 34px); }
+  :root[data-theme="ledger"] .guide-body h2, :root[data-theme="ledger"] .section-title { font-size: 22px; }
+}
+:root[data-theme="ledger"] .eyebrow,
+:root[data-theme="ledger"] .toc p { font-family: var(--heading-font); }
+
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-l { animation: none; color: var(--gold); }
 }
