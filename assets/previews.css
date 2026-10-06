@@ -287,7 +287,8 @@
   outline: 3px solid var(--cc); outline-offset: 2px; border-radius: 2px;
 }
 .hm-icon::after { content: ""; position: absolute; inset: 0; background: var(--cc); opacity: 0.22; }
-.hm-icon svg { width: 34px; height: 34px; color: var(--cc); opacity: 0.3; }
+.hm-icon { overflow: hidden; }
+.hm-icon img { position: absolute; inset: 0; width: 100%; height: 100%; transform: scale(1.19); }
 .hm-icon b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 14px; font-weight: 400; color: #fff; z-index: 1; }
 .hm-name { margin-top: 5px; font-size: 10px; color: var(--cc); white-space: nowrap; }
 .hm-cell.far { opacity: 0.35; }
