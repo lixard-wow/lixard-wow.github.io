@@ -206,9 +206,9 @@
         <ul>
           <li><strong>Where:</strong> the same places Platynator's author uses for <a href="https://plusmouse.com/platynator/performance/">his performance page</a>. <em>Cinderbrew idle</em> stands just inside Cinderbrew Meadery (follower dungeon) with 34 enemy nameplates in view, without moving or pulling. <em>Big pull</em> chain-pulls the start of Nexus-Point Xenas.</li>
           <li><strong>One addon at a time:</strong> only the addon being tested is enabled, and Blizzard's own nameplates are tested the same way as the baseline.</li>
-          <li><strong>Same conditions:</strong> same character, spot, camera and graphics settings, no FPS cap. Each run starts with a UI reload, waits 20 seconds for loading to settle, then measures for 60 seconds.</li>
+          <li><strong>Same conditions:</strong> same character, spot, camera and graphics settings, no FPS cap. Each run starts with a UI reload. Out of the box, it waits 20 seconds for loading to settle and measures for 60 seconds; the matched test waits 30 seconds and measures 30 seconds.</li>
           <li><strong>Three runs each:</strong> the result is the median of three runs, so one unusual run can't decide it.</li>
-          <li><strong>Two setups:</strong> <em>out of the box</em> uses each addon's untouched defaults. <em>Matched</em> sets every addon to show the same things: health bar, name, cast bar and enemies only.</li>
+          <li><strong>Two setups:</strong> <em>out of the box</em> uses each addon's untouched defaults. <em>Matched</em> uses a profile named "lixard for testing" in every addon, set to show only the features all of them can match, so the differences come from how efficiently each addon draws them. Matched runs are only compared with other matched runs.</li>
         </ul>
         <h3>What's measured</h3>
         <dl class="settings">
