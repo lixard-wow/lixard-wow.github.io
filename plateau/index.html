@@ -201,7 +201,7 @@
 
       <section id="performance">
         <h2>Performance</h2>
-        <p>Plateau is measured against Blizzard's own nameplates and the other popular nameplate addons with PlateBench, a benchmark addon that records every frame. In the first tests, standing among 34 enemy nameplates, <strong>Plateau and EllesmereUI's nameplates used the least CPU of the addons tested: 20% less than Platynator and about 18 times less than Plater</strong>. Plateau and Platynator had the best frame rates, both about 7% above Blizzard's own nameplates.</p>
+        <p>Plateau is measured against Blizzard's own nameplates and the other popular nameplate addons with PlateBench, a benchmark addon that records every frame. In the first test, standing among 34 enemy nameplates with each addon's default settings, <strong>Plateau and Platynator had the best frame rates, about 7% above Blizzard's own nameplates, and Plateau used less CPU than every full nameplate replacement</strong>: 20% less than Platynator and about 18 times less than Plater.</p>
         <h3>How it's tested</h3>
         <ul>
           <li><strong>Where:</strong> the same places Platynator's author uses for <a href="https://plusmouse.com/platynator/performance/">his performance page</a>. <em>Cinderbrew idle</em> stands just inside Cinderbrew Meadery (follower dungeon) with 34 enemy nameplates in view, without moving or pulling. <em>Big pull</em> chain-pulls the start of Nexus-Point Xenas.</li>
@@ -224,6 +224,7 @@
             <thead><tr><th scope="col">Nameplates</th><th scope="col">Addon CPU per frame</th><th scope="col">CPU per nameplate</th><th scope="col">Average FPS</th><th scope="col">1% low FPS</th><th scope="col">Memory churn over Blizzard</th><th scope="col">Hitches</th></tr></thead>
             <tbody>
               <tr><td><strong>Plateau</strong></td><td><strong>0.010 ms</strong></td><td><strong>0.0003 ms</strong></td><td><strong>236.8</strong></td><td><strong>175.4</strong></td><td><strong>+4.5 KB/s</strong></td><td><strong>0</strong></td></tr>
+              <tr><td>BetterBlizzPlates</td><td>0.007 ms*</td><td>0.0002 ms*</td><td>228.1</td><td>167.6</td><td>+1.7 KB/s</td><td>0</td></tr>
               <tr><td>EllesmereUI</td><td>0.010 ms</td><td>0.0003 ms</td><td>224.8*</td><td>159.7*</td><td>+6.0 KB/s</td><td>0</td></tr>
               <tr><td>Platynator</td><td>0.012 ms</td><td>0.0004 ms</td><td>236.9</td><td>181.8</td><td>+5.4 KB/s</td><td>0</td></tr>
               <tr><td>Threat Plates</td><td>0.017 ms</td><td>0.0005 ms</td><td>162.5</td><td>121.8</td><td>+2.7 KB/s</td><td>0</td></tr>
@@ -232,7 +233,7 @@
             </tbody>
           </table>
         </div>
-        <p class="muted">Median of 3 runs each, 34 enemy nameplates, 2560x1440, October 10, 2026. Plateau and Platynator have the same average FPS; Platynator's 1% low is 3.5% higher, a small gap that the matched test will check. *EllesmereUI's frame rate includes its other UI modules, which were loaded for its runs, so it isn't directly comparable. Threat Plates uses little addon CPU but has the lowest frame rate, so most of its cost is in drawing, outside its own code. Out of the box the addons don't show the same things: Platynator's defaults show only a bar and health text on minor enemies, while Plateau shows its full layout. BetterBlizzPlates, the matched setup and the big pull are still being tested and will be added here.</p>
+        <p class="muted">Median of 3 runs each, 34 enemy nameplates, 2560x1440, October 10, 2026. Plateau and Platynator have the same average FPS; Platynator's 1% low is 3.5% higher, a small gap that the matched test will check. *BetterBlizzPlates restyles Blizzard's own nameplates, so the game's nameplate work isn't counted in its CPU. EllesmereUI's frame rate includes its other UI modules, which were loaded for its runs, so it isn't directly comparable. Threat Plates uses little addon CPU but has the lowest frame rate, so most of its cost is in drawing, outside its own code. Out of the box the addons don't show the same things: Platynator's defaults show only a bar and health text on minor enemies, while Plateau shows its full layout. The matched setup and the big pull are still being tested and will be added here.</p>
       </section>
 
       <section id="commands">
