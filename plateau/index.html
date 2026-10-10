@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Barlow:wght@400;600;700&amp;family=Barlow+Condensed:wght@600;700&amp;family=Cinzel:wght@600;700&amp;family=Roboto+Condensed:wght@400;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v=4">
-<link rel="stylesheet" href="/assets/previews.css?v=6">
+<link rel="stylesheet" href="/assets/previews.css?v=7">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -234,6 +234,26 @@
           </table>
         </div>
         <p class="muted">Median of 3 runs each, 34 enemy nameplates, 2560x1440, October 10, 2026. Plateau and Platynator have the same average FPS; Platynator's 1% low is 3.5% higher, a small gap that the matched test will check. *BetterBlizzPlates restyles Blizzard's own nameplates, so the game's nameplate work isn't counted in its CPU. EllesmereUI's frame rate includes its other UI modules, which were loaded for its runs, so it isn't directly comparable. Threat Plates uses little addon CPU but has the lowest frame rate, so most of its cost is in drawing, outside its own code. Out of the box the addons don't show the same things: Platynator's defaults show only a bar and health text on minor enemies, while Plateau shows its full layout. The matched setup and the big pull are still being tested and will be added here.</p>
+        <h3>How the plates look: matched profile</h3>
+        <p>These are from the matched "lixard for testing" runs: each addon shows the same enemy nameplates (about 36) in the same spot in Cinderbrew Meadery, cropped to the nameplates only. Red and yellow are the addons' threat colors. Each addon draws them in its own way: Threat Plates keeps every plate bright, while Plater, Platynator and Plateau fade the farther ones. Bar sizes are close but not exactly matched.</p>
+        <div class="compare-grid">
+          <figure>
+            <img src="img/plateau-cinderbrew.jpg" width="1600" height="198" loading="lazy" alt="Plateau nameplates in Cinderbrew Meadery: red and yellow threat-colored health bars with names above them, nearer plates brighter than distant ones">
+            <figcaption>Plateau</figcaption>
+          </figure>
+          <figure>
+            <img src="img/platynator-cinderbrew.jpg" width="1600" height="297" loading="lazy" alt="Platynator nameplates in the same scene: red and yellow health bars with names above, distant plates faded">
+            <figcaption>Platynator</figcaption>
+          </figure>
+          <figure>
+            <img src="img/plater-cinderbrew.jpg" width="1600" height="272" loading="lazy" alt="Plater nameplates in the same scene: red and yellow health bars with small names below, distant plates faded">
+            <figcaption>Plater</figcaption>
+          </figure>
+          <figure>
+            <img src="img/threatplates-cinderbrew.jpg" width="1786" height="372" loading="lazy" alt="Threat Plates nameplates in the same scene: red and yellow health bars with large names above, every plate fully bright">
+            <figcaption>Threat Plates</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section id="commands">

@@ -424,3 +424,8 @@
   .mott-row { zoom: 0.82; }
   .np { --u: 1.8px; }
 }
+
+.compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 18px; margin: 18px 0 8px; }
+.compare-grid figure { margin: 0; }
+.compare-grid img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; }
+.compare-grid figcaption { margin-top: 6px; color: var(--faint); font-size: 14px; }
