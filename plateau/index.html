@@ -76,6 +76,7 @@
           <li><a href="#window">The settings window</a></li>
           <li><a href="#looks">Looks and profiles</a></li>
           <li><a href="#midnight">Midnight's rules</a></li>
+          <li><a href="#performance">Performance</a></li>
           <li><a href="#commands">Commands</a></li>
           <li><a href="#faq">Tips and FAQ</a></li>
         </ol>
@@ -196,6 +197,39 @@
         <h2>How Midnight's rules affect Plateau</h2>
         <p>Since patch 12.0 the game hides some information from addons in combat and in instances, such as enemy health values, casts and which enemy a unit is. Plateau never reads or compares those hidden values; it hands them straight to the game's own functions, which is why cast colors, aura filters and buff warnings keep working in dungeons and raids.</p>
         <p>A few things the game doesn't allow at all. Friendly nameplates are drawn by the game itself in dungeons, raids and arenas, and threat can be hidden in some fights. Any setting that depends on hidden information shows a warning icon, and its tooltip explains what happens.</p>
+      </section>
+
+      <section id="performance">
+        <h2>Performance</h2>
+        <p>Plateau is measured against Blizzard's own nameplates and the other popular nameplate addons with PlateBench, a benchmark addon that records every frame. In the first tests, standing among 34 enemy nameplates, <strong>Plateau ran about 8% faster than Blizzard's own nameplates and tied with Platynator</strong>.</p>
+        <h3>How it's tested</h3>
+        <ul>
+          <li><strong>Where:</strong> the same places Platynator's author uses for <a href="https://plusmouse.com/platynator/performance/">his performance page</a>. <em>Cinderbrew idle</em> stands just inside Cinderbrew Meadery (follower dungeon) with 34 enemy nameplates in view, without moving or pulling. <em>Big pull</em> chain-pulls the start of Nexus-Point Xenas.</li>
+          <li><strong>One addon at a time:</strong> only the addon being tested is enabled, and Blizzard's own nameplates are tested the same way as the baseline.</li>
+          <li><strong>Same conditions:</strong> same character, spot, camera and graphics settings, no FPS cap. Each run starts with a UI reload, waits 20 seconds for loading to settle, then measures for 60 seconds.</li>
+          <li><strong>Three runs each:</strong> the result is the median of three runs, so one unusual run can't decide it.</li>
+          <li><strong>Two setups:</strong> <em>out of the box</em> uses each addon's untouched defaults. <em>Matched</em> sets every addon to show the same things: health bar, name, cast bar and enemies only.</li>
+        </ul>
+        <h3>What's measured</h3>
+        <dl class="settings">
+          <dt>Average FPS</dt><dd>Frames per second over the whole run. It depends mostly on your graphics card, so small differences are noise.</dd>
+          <dt>1% low FPS</dt><dd>The average of the slowest 1% of frames. This is what you feel as smoothness.</dd>
+          <dt>Hitches</dt><dd>Frames slower than 50 ms, which you see as a stutter.</dd>
+          <dt>Addon CPU</dt><dd>Time the nameplate addon itself spends each frame, from the game's own addon profiler, also shown per nameplate. The most direct measure of how light an addon is.</dd>
+          <dt>Memory churn</dt><dd>Memory created per second, compared with Blizzard's run. Less churn means less garbage collection, which can cause stutters.</dd>
+        </dl>
+        <h3>Results: Cinderbrew idle, out of the box</h3>
+        <div class="table-box">
+          <table>
+            <thead><tr><th scope="col">Nameplates</th><th scope="col">Average FPS</th><th scope="col">1% low FPS</th><th scope="col">0.1% low FPS</th><th scope="col">Hitches</th></tr></thead>
+            <tbody>
+              <tr><td>Platynator</td><td>241.5</td><td>185.5</td><td>158.9</td><td>0</td></tr>
+              <tr><td><strong>Plateau</strong></td><td><strong>240.5</strong></td><td><strong>183.5</strong></td><td><strong>156.5</strong></td><td><strong>0</strong></td></tr>
+              <tr><td>Blizzard (baseline)</td><td>223.0</td><td>170.9</td><td>146.9</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted">Median of 3 runs each, 34 enemy nameplates, 2560x1440, October 10, 2026. Plateau and Platynator are within run-to-run noise of each other. Out of the box they don't show the same things: Platynator's defaults show only a bar and health text on minor enemies, while Plateau shows its full layout. Plater, EllesmereUI, Threat Plates and BetterBlizzPlates, the matched setup, addon CPU and memory churn are still being tested and will be added here.</p>
       </section>
 
       <section id="commands">
