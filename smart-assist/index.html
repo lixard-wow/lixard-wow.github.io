@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SmartAssist Guide</title>
-<meta name="description" content="How to use SmartAssist: a Misdirection and Tricks of the Trade macro that follows your tank automatically, with a minimap quick-target menu.">
+<meta name="description" content="How to use SmartAssist: a Misdirection, Tricks of the Trade and Power Infusion macro that follows your tank automatically, with a minimap quick-target menu.">
 <meta name="color-scheme" content="dark">
 <script>try{var q=/[?&]theme=(\w+)/.exec(location.search),t=q?q[1]:localStorage.getItem("lixard-theme");if(t==="workbench"||t==="ledger"||t==="classic")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Barlow:wght@400;600;700&amp;family=Barlow+Condensed:wght@600;700&amp;family=Cinzel:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css?v=4">
 <link rel="stylesheet" href="/assets/previews.css?v=5">
+<link rel="stylesheet" href="/assets/smartassist.css?v=1">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
@@ -49,7 +50,7 @@
       <div>
         <p class="eyebrow">User guide</p>
         <h1>SmartAssist</h1>
-        <p class="lede">Never edit your Misdirection or Tricks of the Trade macro again. SmartAssist builds the macro for you and keeps it pointed at the right player, switching to your tank automatically when you join a group.</p>
+        <p class="lede">Never edit your Misdirection, Tricks of the Trade or Power Infusion macro again. SmartAssist builds the macro for you and keeps it pointed at the right player, switching to your tank automatically when you join a group.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://www.curseforge.com/wow/addons/mark-of-the-tank">Download on CurseForge</a>
           <a class="btn" href="https://github.com/lixard-wow/SmartAssist">Source on GitHub</a>
@@ -57,7 +58,7 @@
         <ul class="facts">
           <li><strong>Command:</strong> <code>/smartassist</code></li>
           <li><strong>Game:</strong> Retail, Midnight</li>
-          <li><strong>Classes:</strong> Hunter, Rogue</li>
+          <li><strong>Classes:</strong> Hunter, Rogue, Priest</li>
         </ul>
       </div>
     </div>
@@ -72,7 +73,8 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#start">Getting started</a></li>
           <li><a href="#targets">Choosing a target</a></li>
-          <li><a href="#classes">Hunter and Rogue</a></li>
+          <li><a href="#classes">Classes</a></li>
+          <li><a href="#looks">Looks</a></li>
           <li><a href="#settings">Settings</a></li>
           <li><a href="#faq">Tips and FAQ</a></li>
         </ol>
@@ -84,56 +86,62 @@
 <h2>Preview</h2>
 <figure class="preview">
 <div class="preview-stage">
-<div class="mott-row"><div class="mott-pop wowfont">
-<div class="h"><span class="mott-ic"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4"/></svg></span><span class="t"><b>SmartAssist</b><span>Misdirection</span></span><span class="mott-x">X</span></div>
-<div class="row hover">Set to Party Tank</div>
-<div class="row">Set to Target</div>
-<div class="row">Set to Target of Target</div>
-<div class="row">Set to Focus</div>
-<div class="row">Set to Pet</div>
-<div class="div"></div>
-<div class="row clear">Clear Target</div>
-<div class="f">Target:<b>Bramblehide</b></div>
+<div class="sa-row">
+<div class="sa-win sa-pop">
+<div class="sa-h"><span class="sa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4"/></svg></span><span class="sa-t"><b>SmartAssist</b><span>Misdirection</span></span><span class="sa-ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2.4" fill="currentColor"/><circle cx="15" cy="17" r="2.4" fill="currentColor"/></svg></span><span class="sa-ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+<div class="sa-rows">
+<div class="sa-r on">Set to Party Tank</div>
+<div class="sa-r">Set to Target</div>
+<div class="sa-r">Set to Target of Target</div>
+<div class="sa-r">Set to Focus</div>
+<div class="sa-r">Set to Pet</div>
+<div class="sa-sep"></div>
+<div class="sa-r clear">Clear Target</div>
 </div>
-<div class="mott-cfg wowfont">
-<div class="tb">SmartAssist<span class="x">X</span></div>
-<div class="bd">
-<div class="sh">MACRO</div>
-<div class="ln">Name:<span class="eb">Misdirection</span><span class="ap">Apply</span></div>
-<div class="ln">Current target: <span class="val">Bramblehide</span></div>
-<div class="gap"></div>
-<div class="sh">AUTOMATION</div>
-<div class="cb"><i></i>Auto-set tank when joining group</div>
-<div class="cb"><i></i>Auto-set pet when leaving group</div>
-<div class="gap"></div>
-<div class="sh">MINIMAP</div>
-<div class="cb"><i></i>Show minimap button</div>
+<div class="sa-f"><span class="k">Target:</span><span class="v">Bramblehide</span></div>
 </div>
-</div></div>
+<div class="sa-win sa-cfg">
+<div class="sa-h"><span class="sa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4"/></svg></span><span class="sa-t"><b>SmartAssist</b><span>Misdirection</span></span><span class="sa-ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2.4" fill="currentColor"/><circle cx="15" cy="17" r="2.4" fill="currentColor"/></svg></span><span class="sa-ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></span></div>
+<div class="sa-bd">
+<div class="sa-sh">MACRO</div>
+<div class="sa-ln">Name:<span class="sa-eb">Misdirection</span><span class="sa-ap">Apply</span></div>
+<div class="sa-ln">Current target:<span class="sa-val">Bramblehide</span></div>
+<div class="sa-gap"></div>
+<div class="sa-sh">AUTOMATION</div>
+<div class="sa-cb"><i></i>Auto-set tank when joining group</div>
+<div class="sa-cb"><i></i>Auto-set pet when leaving group</div>
+<div class="sa-gap"></div>
+<div class="sa-sh">MINIMAP</div>
+<div class="sa-cb"><i></i>Show minimap button</div>
+</div>
+</div>
+</div>
 </div>
 
-<figcaption>Illustration of the minimap quick menu and the /smartassist settings window for a Hunter in a party, using the addon's own colors and sizes. The game shows the real Misdirection icon where this uses a simple symbol.</figcaption>
+<figcaption>Illustration of the minimap quick menu and the /smartassist settings window for a Hunter in a party, using the addon's own colors and fonts. Use the Classic, Workbench and Ledger buttons at the top of this page to see each look. In game, Lixard Classic uses your class color as its accent, and the real Misdirection icon replaces the simple symbol.</figcaption>
 </figure>
 </section>
       <section id="features">
         <h2>Features</h2>
         <ul>
-          <li><strong>Builds your macro for you:</strong> one macro for Misdirection or Tricks of the Trade, with the spell's icon, kept up to date automatically.</li>
+          <li><strong>Builds your macro for you:</strong> one macro for Misdirection, Tricks of the Trade or Power Infusion, with the spell's icon, kept up to date automatically.</li>
           <li><strong>Finds the tank:</strong> when you join a group or the group changes, it points the macro at your tank.</li>
           <li><strong>Quick target menu:</strong> hover the minimap button to switch the macro to your tank, target, target of target, focus or pet in one click.</li>
           <li><strong>Sensible fallback:</strong> if the player you chose isn't there, the macro falls back to your pet, then to a normal cast.</li>
           <li><strong>Reminds you when you zone in:</strong> if you're in a group with no target set, the quick menu pops up.</li>
           <li><strong>Combat safe:</strong> changes you make in combat are applied as soon as combat ends.</li>
+          <li><strong>Warns you if the spell is missing:</strong> if you aren't talented into the spell, the quick menu says so.</li>
+          <li><strong>Three looks:</strong> Workbench, Artisan's Ledger and Lixard Classic, the same looks as my other addons.</li>
         </ul>
       </section>
 
       <section id="start">
         <h2>Getting started</h2>
         <ol class="steps">
-          <li>Install the addon and log in on your Hunter or Rogue.</li>
+          <li>Install the addon and log in on your Hunter, Rogue or Priest.</li>
           <li>The addon creates a macro named after your spell, such as "Misdirection".</li>
           <li>Open your Macros window (<code>/macro</code>) and drag the macro onto your action bar.</li>
-          <li>Join a group. The macro now points at your tank, and the minimap button shows who it's set to.</li>
+          <li>Join a group. The macro now points at your tank, and the minimap button shows who it's set to. Priests choose their target instead (see Classes).</li>
         </ol>
         <div class="panel note">
           <p><strong>Macro slots full?</strong> The addon needs one free general macro slot. If all 18 are used, it tells you in chat. Delete one and log in again.</p>
@@ -147,7 +155,8 @@
           <table>
             <thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead>
             <tbody>
-              <tr><td>Set to Party Tank / Raid Tank</td><td>Point the macro at your group's tank. Shown while you're in a group.</td></tr>
+              <tr><td>Set to Party Tank / Raid Tank</td><td>Point the macro at your group's tank. Hunters and Rogues, while you're in a group.</td></tr>
+              <tr><td>Save Target's Name</td><td>Priests only. Lock the macro onto the player you're targeting right now.</td></tr>
               <tr><td>Set to Target</td><td>Point it at whoever you're targeting when you press the macro.</td></tr>
               <tr><td>Set to Target of Target</td><td>Point it at your target's target.</td></tr>
               <tr><td>Set to Focus</td><td>Point it at your focus target.</td></tr>
@@ -160,7 +169,7 @@
       </section>
 
       <section id="classes">
-        <h2>Hunter and Rogue</h2>
+        <h2>Classes</h2>
         <div class="panel">
           <h3>Hunter: Misdirection</h3>
           <p class="muted">Starts pointed at your pet. Switches to the tank when you join a group, and back to your pet when you leave.</p>
@@ -168,6 +177,25 @@
         <div class="panel">
           <h3>Rogue: Tricks of the Trade</h3>
           <p class="muted">Starts pointed at your focus target. Switches to the tank when you join a group.</p>
+        </div>
+        <div class="panel">
+          <h3>Priest: Power Infusion</h3>
+          <p class="muted">Power Infusion goes on a damage dealer, not the tank, so there's no automatic tank switching. Target the player you want and choose Save Target's Name, or set the macro to your target, target of target or focus.</p>
+        </div>
+      </section>
+
+      <section id="looks">
+        <h2>Looks</h2>
+        <p>Click the sliders button next to the close button, in the quick menu or the settings window, to switch between three looks. Your choice is saved for each character.</p>
+        <div class="table-box">
+          <table>
+            <thead><tr><th scope="col">Look</th><th scope="col">Style</th></tr></thead>
+            <tbody>
+              <tr><td>Workbench</td><td>Flat and modern, charcoal with a green accent. The default.</td></tr>
+              <tr><td>Artisan's Ledger</td><td>Warm walnut and brass, like a craftsman's notebook.</td></tr>
+              <tr><td>Lixard Classic</td><td>Black, grey and gold, with your class color as the accent.</td></tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -178,7 +206,7 @@
           <dl class="settings">
             <dt>Name</dt><dd>Rename your macro, up to 32 characters, then press Apply or Enter. The existing macro is renamed, so it stays on your action bar.</dd>
             <dt>Current target</dt><dd>Shows who the macro is set to.</dd>
-            <dt>Auto-set tank when joining group</dt><dd>On by default.</dd>
+            <dt>Auto-set tank when joining group</dt><dd>Hunters and Rogues. On by default.</dd>
             <dt>Auto-set pet when leaving group</dt><dd>Hunters only. On by default.</dd>
             <dt>Show minimap button</dt><dd>On by default.</dd>
           </dl>
@@ -197,11 +225,15 @@
         </details>
         <details>
           <summary>The macro has a question-mark icon.</summary>
-          <p>You don't know the spell yet. Once you learn Misdirection, the macro uses the real icon.</p>
+          <p>You don't know the spell yet. Once you learn it, the macro uses the real icon.</p>
         </details>
         <details>
           <summary>Which classes does it support?</summary>
-          <p>Hunter and Rogue. On other classes the addon stays quiet.</p>
+          <p>Hunter, Rogue and Priest. On other classes the addon stays quiet.</p>
+        </details>
+        <details>
+          <summary>I used Mark of the Tank. What changed?</summary>
+          <p>Mark of the Tank is now called SmartAssist. The command is <code>/smartassist</code> instead of <code>/mott</code>, and your settings start fresh. Your macro keeps its name, so your action bar button keeps working. If a MOTT folder is still in your AddOns folder, delete it, or both addons will fight over the same macro.</p>
         </details>
       </section>
     </div>

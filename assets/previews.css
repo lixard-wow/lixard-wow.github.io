@@ -305,37 +305,6 @@
 .hm-bar.far { opacity: 0.35; }
 .hm-wrap[data-style="icons"] .hm-bars, .hm-wrap[data-style="bars"] .hm { display: none; }
 
-.mott-row { display: flex; gap: 28px; flex-wrap: wrap; justify-content: center; align-items: flex-start; }
-.mott-pop { width: 214px; background: rgba(15, 15, 15, 0.97); border: 1px solid #383838; font-size: 12px; }
-.mott-pop .h { height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 6px 0 10px; background: #171717; border-bottom: 1px solid #c7a838; }
-.mott-ic { width: 20px; height: 20px; display: grid; place-items: center; background: #2a2418; border: 1px solid #5a4a20; color: #e8c766; }
-.mott-ic svg { width: 14px; height: 14px; }
-.mott-pop .h .t { flex: 1; line-height: 1.1; }
-.mott-pop .h .t b { display: block; color: #ffd100; font-weight: 400; font-size: 13px; }
-.mott-pop .h .t span { display: block; color: #616161; font-size: 11px; }
-.mott-x { width: 20px; height: 20px; display: grid; place-items: center; color: #c7a838; font-size: 13px; }
-.mott-pop .row { position: relative; height: 26px; display: flex; align-items: center; padding: 0 10px 0 14px; background: #141414; color: #9e9e9e; }
-.mott-pop .row::after { content: ">"; margin-left: auto; color: #2a2a2a; }
-.mott-pop .row.hover { background: #242424; color: #ebe8db; }
-.mott-pop .row.hover::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #c7a838; }
-.mott-pop .row.hover::after { color: #c7a838; }
-.mott-pop .div { height: 1px; background: #2e2e2e; }
-.mott-pop .row.clear { background: #1c0f0f; color: #d96b6b; }
-.mott-pop .f { height: 24px; display: flex; align-items: center; gap: 5px; padding: 0 14px; background: #0d0d0d; border-top: 1px solid #2e2e2e; color: #616161; }
-.mott-pop .f b { color: #c7a838; font-weight: 400; }
-.mott-cfg { width: 360px; background: rgba(15, 15, 15, 0.98); border: 1px solid #383838; font-size: 12px; color: #b3b3b3; }
-.mott-cfg .tb { height: 32px; display: flex; align-items: center; justify-content: center; position: relative; background: #141414; border-bottom: 1px solid #383838; color: #ffd100; font-size: 15px; }
-.mott-cfg .tb .x { position: absolute; right: 6px; width: 24px; height: 24px; display: grid; place-items: center; background: #262626; border: 1px solid #4d4d4d; color: #b3b3b3; font-size: 12px; }
-.mott-cfg .bd { padding: 14px 12px 16px; }
-.mott-cfg .sh { color: #c7a838; font-size: 11px; letter-spacing: 0.06em; padding-bottom: 4px; border-bottom: 1px solid #474747; margin: 0 0 12px; }
-.mott-cfg .ln { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.mott-cfg .eb { width: 150px; height: 24px; display: flex; align-items: center; padding: 0 6px; background: #1a1a1a; border: 1px solid #4d4d4d; color: #ebe8db; }
-.mott-cfg .ap { width: 46px; height: 24px; display: grid; place-items: center; background: #1a1a1a; border: 1px solid #4d4d4d; color: #ebe8db; }
-.mott-cfg .val { color: #ebe8db; }
-.mott-cfg .cb { display: flex; align-items: center; gap: 8px; height: 26px; }
-.mott-cfg .cb i { width: 14px; height: 14px; background: #1a1a1a; border: 1px solid #4d4d4d; position: relative; }
-.mott-cfg .cb i::after { content: ""; position: absolute; inset: 2px; background: #c7a838; }
-.mott-cfg .gap { height: 14px; }
 
 .aef { position: relative; width: 320px; height: 190px; background: rgba(0, 0, 0, 0.8); }
 .aef .t { position: absolute; top: 15px; left: 0; right: 0; text-align: center; color: #ffd100; font-size: 16px; }
@@ -421,7 +390,6 @@
   .cs { zoom: 1.3; }
   .hm-wrap { zoom: 1; }
   .aef { zoom: 1; }
-  .mott-row { zoom: 0.82; }
   .np { --u: 1.8px; }
 }
 
