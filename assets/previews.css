@@ -213,9 +213,6 @@
 .pkt[data-mini="true"] .mini { display: flex; }
 .mini { align-items: center; gap: 6px; height: 50px; padding: 0 10px 0 12px; }
 .mini .tx { margin-left: 4px; }
-.pkt .i-sliders { display: none; }
-.pkt[data-look="workbench"] .i-sliders { display: block; }
-.pkt[data-look="workbench"] .i-gear { display: none; }
 .row .nm { grid-column: 1; grid-row: 1; }
 .row .bar { grid-column: 2; grid-row: 1; }
 .row .cnt { grid-column: 3; grid-row: 1; }
