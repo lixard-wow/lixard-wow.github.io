@@ -7,6 +7,7 @@ Plain HTML and CSS, served by GitHub Pages from the `main` branch. No build step
 | Page | Folder |
 |---|---|
 | Home | `index.html` |
+| LixardUI (in development) | `lixardui/` |
 | Profession Knowledge Treasures | `profession-knowledge-treasures/` |
 | CharacterStats | `characterstats/` |
 | HealerMana | `healermana/` |

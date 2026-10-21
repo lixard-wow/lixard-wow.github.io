@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LixardUI Guide</title>
+<meta name="description" content="LixardUI is a full World of Warcraft interface in development: unit, party and raid frames, action bars, bags, chat, minimap, quest tracker, tooltips, an addon manager and more, all in one look.">
+<meta name="color-scheme" content="dark">
+<script>try{var q=/[?&]theme=(\w+)/.exec(location.search),t=q?q[1]:localStorage.getItem("lixard-theme");if(t==="workbench"||t==="ledger"||t==="classic")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Barlow:wght@400;600;700&amp;family=Barlow+Condensed:wght@600;700&amp;family=Cinzel:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"><span class="brand-l">L</span></span>
+      <span class="brand-name">Lixard's Addons</span>
+    </a>
+    <div class="header-tools">
+    <nav class="site-nav" aria-label="Addons">
+      <ul>
+        <li><a href="/lixardui/" aria-current="page">LixardUI</a></li>
+        <li><a href="/plateau/">Plateau</a></li>
+        <li><a href="/profession-knowledge-treasures/">Knowledge Treasures</a></li>
+        <li><a href="/characterstats/">CharacterStats</a></li>
+        <li><a href="/healermana/">HealerMana</a></li>
+        <li><a href="/smart-assist/">SmartAssist</a></li>
+        <li><a href="/auto-expansion-filter/">Auto Expansion Filter</a></li>
+      </ul>
+    </nav>
+      <div class="theme-picker" role="group" aria-label="Site theme">
+        <button type="button" data-theme-pick="classic" aria-pressed="true">Classic</button>
+        <button type="button" data-theme-pick="workbench" aria-pressed="false">Workbench</button>
+        <button type="button" data-theme-pick="ledger" aria-pressed="false">Ledger</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap addon-hero">
+      <span class="icon-tile" aria-hidden="true" style="background:none;border:0;overflow:hidden"><img src="/assets/lixardui-logo.png" alt="" width="76" height="76" style="width:100%;height:100%;display:block"></span>
+      <div>
+        <p class="eyebrow">User guide &middot; In development</p>
+        <h1>LixardUI</h1>
+        <p class="lede">A full replacement for the game's interface, one module per part, all in one clean look with rounded or square corners, your choice of accent color and five themes. Every module can be turned off on its own, and then Blizzard's version comes back.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#status">Release status</a>
+          <a class="btn" href="#modules">What it covers</a>
+        </div>
+        <ul class="facts">
+          <li><strong>Command:</strong> <code>/lui</code></li>
+          <li><strong>Game:</strong> WoW Forever and retail (Midnight), in testing</li>
+          <li><strong>Language:</strong> English</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap guide">
+    <aside class="toc">
+      <nav aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#status">Release status</a></li>
+          <li><a href="#modules">What it covers</a></li>
+          <li><a href="#start">Getting started</a></li>
+          <li><a href="#move">Moving things</a></li>
+          <li><a href="#addons">The addon manager</a></li>
+          <li><a href="#looks">Looks and themes</a></li>
+          <li><a href="#midnight">Midnight's rules</a></li>
+          <li><a href="#commands">Commands</a></li>
+          <li><a href="#faq">Tips and FAQ</a></li>
+        </ol>
+      </nav>
+    </aside>
+    <div class="guide-body">
+      <section id="status">
+        <h2>Release status</h2>
+        <div class="panel note">
+          <p><strong>LixardUI is in development and not released yet.</strong> It's being built and tested on WoW Forever first, with retail testing under way. There's no download yet; this page will link one when it's ready.</p>
+        </div>
+      </section>
+
+      <section id="modules">
+        <h2>What it covers</h2>
+        <p>Each part is its own module that loads only when it's on.</p>
+        <ul>
+          <li><strong>Unit frames:</strong> player, target, target of target, focus, pet, boss and arena frames, with buffs and debuffs, cast bars, class resources, portraits, totem timers and the encounter bar.</li>
+          <li><strong>Party and raid frames:</strong> class-colored health with incoming heals and shields, role and leader icons, range fading, debuffs with dispel colors, your heals over time, an aggro border and a dispel glow, plus a preview to set them up while you're alone.</li>
+          <li><strong>Action bars:</strong> eight bars with fading, the stance and pet bars, the game menu and bag buttons, and the extra and zone ability buttons.</li>
+          <li><strong>Your buffs and debuffs</strong>, with weapon enchants and right click to cancel.</li>
+          <li><strong>Bags and bank:</strong> one window with sections, sorting, junk tools, your other characters' items and search.</li>
+          <li><strong>Chat:</strong> styled windows, shorter channel names, chat kept across reloads, and a whisper history shared with the friends list.</li>
+          <li><strong>Friends list</strong> with messages, groups and quick chat.</li>
+          <li><strong>Minimap:</strong> round or square, zone, clock and coordinates, and one container for every addon button.</li>
+          <li><strong>Quest tracker</strong> with groups, sorting, sounds and automation.</li>
+          <li><strong>Tooltips and menus</strong> in the same look.</li>
+          <li><strong>Info bars:</strong> experience, reputation and honor.</li>
+          <li><strong>Cooldowns:</strong> countdown numbers everywhere and a restyled Cooldown Manager.</li>
+          <li><strong>World map:</strong> coordinates, fading while you move, and <code>/lui way</code> map pins.</li>
+          <li><strong>Quality of life:</strong> move and resize any Blizzard window, and an addon manager.</li>
+          <li><strong>Skins</strong> for dozens of Blizzard windows, each with its own switch.</li>
+        </ul>
+      </section>
+
+      <section id="start">
+        <h2>Getting started</h2>
+        <ol>
+          <li>Turn off other full interface addons (for example ElvUI) on the character you use LixardUI on. They change the same frames.</li>
+          <li>Log in. A short first-time setup opens after a moment.</li>
+          <li>Type <code>/lui</code> any time for the settings window. Each module has its own page, split into sub-pages and tabs.</li>
+        </ol>
+      </section>
+
+      <section id="move">
+        <h2>Moving things</h2>
+        <p>Type <code>/lui move</code> (or open Blizzard's Edit Mode). Every LixardUI frame gets a box you can drag; the arrow keys nudge the selected one. Each box has a small gear in its corner that opens its position, size and options. Type <code>/lui move</code> again to finish.</p>
+      </section>
+
+      <section id="addons">
+        <h2>The addon manager</h2>
+        <p>Type <code>/lui addons</code>, or press the AddOns button in the game menu. You get every installed addon with its own colors and icon, its memory and CPU use, and filters for on and off. Addon families such as DBM or RaiderIO fold into one row. Lock the addons you always want on, and save the ones that are on as a named profile from the menu at the bottom left.</p>
+      </section>
+
+      <section id="looks">
+        <h2>Looks and themes</h2>
+        <p>Settings &gt; General has the theme (Black, Workbench, Artisan Ledger, Horde, Alliance or Slate), your accent color or your class color, and the border color for every window. Most modules can pick rounded or square corners and their own border color.</p>
+      </section>
+
+      <section id="midnight">
+        <h2>How Midnight's rules affect LixardUI</h2>
+        <p>The game hides some numbers from addons during fights, such as health, threat and range. LixardUI never reads them; it hands them straight to the game to draw, so health bars, the aggro border, range fading and the dispel glow keep working in dungeons and raids.</p>
+      </section>
+
+      <section id="commands">
+        <h2>Commands</h2>
+        <div class="table-box">
+          <table>
+            <thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead>
+            <tbody>
+              <tr><td><code>/lui</code></td><td>Open the settings window</td></tr>
+              <tr><td><code>/lui move</code></td><td>Move and size LixardUI frames</td></tr>
+              <tr><td><code>/lui addons</code></td><td>Open the addon manager</td></tr>
+              <tr><td><code>/lui grouptest party</code></td><td>Preview party frames while alone (<code>raid</code>, <code>raid40</code>, <code>off</code>)</td></tr>
+              <tr><td><code>/lui way 45 63</code></td><td>Put a map pin at those coordinates</td></tr>
+              <tr><td><code>/lui whispers</code></td><td>Open your whisper history</td></tr>
+              <tr><td><code>/lui modules</code></td><td>List the modules and whether they're on</td></tr>
+              <tr><td><code>/lui export</code> / <code>/lui import</code></td><td>Share a profile as text</td></tr>
+              <tr><td><code>/lui help</code></td><td>Every command</td></tr>
+              <tr><td><code>/rl</code></td><td>Reload the interface</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="faq" class="faq">
+        <h2>Tips and FAQ</h2>
+        <details>
+          <summary>Can I use only part of it?</summary>
+          <p>Yes. Settings &gt; Modules turns each part on or off. A module that's off never loads, and Blizzard's version of that part stays.</p>
+        </details>
+        <details>
+          <summary>Something looks wrong after an update.</summary>
+          <p>Type <code>/rl</code>. If the update added new files, restart the game fully, since a reload doesn't load new files.</p>
+        </details>
+        <details>
+          <summary>When will it be released?</summary>
+          <p>When testing on WoW Forever and retail is done. This page will get the download link then.</p>
+        </details>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Made by Lixard.</p>
+    <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
+  </div>
+</footer>
+<script src="/assets/theme.js?v=4" defer></script>
+</body>
+</html>
