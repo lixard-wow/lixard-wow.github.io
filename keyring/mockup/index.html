@@ -108,6 +108,7 @@ h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;lett
 .tile i{width:32px;height:32px;border-radius:4px;flex:none;border:1px solid #a335ee}
 .set{width:400px;min-width:400px;background:var(--window);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.5)}
 .set .sec{padding:0 14px}
+.sh{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:15px;margin:12px 0 6px}
 .set h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:15px;margin:14px 0 6px}
 .chk{display:flex;align-items:center;gap:8px;height:24px;font-size:12px}
 .cb{width:16px;height:16px;border-radius:4px;background:var(--field);border:1px solid var(--border);display:grid;place-items:center;font-size:11px;color:var(--accent);flex:none}
@@ -118,18 +119,30 @@ h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;lett
 .chg{background:var(--window);border:1px solid var(--border);border-radius:8px;padding:10px 12px;line-height:1.4}
 .chg h4{margin:0 0 4px;font-size:13px}
 .chg p{margin:0;color:var(--muted);font-size:12px}
+.sorth{cursor:pointer;user-select:none}
+.sorth:hover{color:var(--text)}
+.sorth.on{color:var(--accent)}
+.sorth.on::after{content:" ▾"}
+.tw-only{display:none}
+body.tw .tw-only{display:block}
+body.tw .gc.tw-only,body.tw .grow .tw-only{display:grid}
+.toggle{display:inline-flex;gap:2px;background:var(--well);border:1px solid var(--line);border-radius:5px;padding:2px}
+.toggle .btn{height:20px}
+.ibtn.on{background:var(--primary);color:#fff}
+.scols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .side-note{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.4}
 </style>
 </head>
 <body>
 <div class="page">
 <h1>Keyring · proposed changes</h1>
-<p class="lead">Mockup of 0.6.45 with the market-gap features added. Fake characters and numbers. Click the tabs and the Alts view buttons. Nothing here is built yet.</p>
+<p class="lead">Version 2. This Week stays as it is now, apart from clickable sort headers. New tracking lives in a new Alts → Weekly view. Settings opens inside the main window (click the gear). Fake characters and numbers. Nothing here is built yet.</p>
 <div class="legend">
   <span><span class="badge new">NEW</span> proposed, buildable now</span>
   <span><span class="badge later">LATER</span> needs an in-game probe first (ID unknown)</span>
   <span><span class="badge fix">FIX</span> data fix, no UI change</span>
   <span>Dashed outline = changed area</span>
+  <span class="toggle"><span class="btn sel" data-week="normal">Normal week</span><span class="btn" data-week="tw">Timewalking week</span></span>
 </div>
 
 <div class="stage">
@@ -138,7 +151,7 @@ h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;lett
     <div class="wtitle">Keyring</div>
     <div class="winfo">Reset in 5d 14h</div>
     <div><span class="affix" style="background:#7a4a2a"></span><span class="affix" style="background:#3a5a7a"></span><span class="affix" style="background:#5a3a6a"></span></div>
-    <span class="ibtn" title="Settings">⚙</span><span class="ibtn">✕</span>
+    <span class="ibtn mark" id="gear" title="Settings">⚙</span><span class="badge new" style="margin:0 4px 0 -6px">NEW</span><span class="ibtn">✕</span>
   </div>
   <div class="tabs">
     <div class="tab on" data-tab="week">This Week</div>
@@ -154,13 +167,9 @@ h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;lett
     <div class="next"><span class="kick">Next up</span><span><span class="cls-dr">Lixardo</span>: time a +12 to raise dungeon vault slot 3 to item level 334.</span></div>
     <div class="week">
       <div class="list box">
-        <div class="ltools mark">
-          <span class="btn drop">Sort: Item level</span><span class="badge new">NEW</span>
-          <span class="btn drop" style="margin-left:8px">Group: All</span><span class="badge new">NEW</span>
-        </div>
-        <div class="lhead"><span class="kick">Character</span><span class="kick">ilvl</span><span class="kick">Score</span><span class="kick">Keystone</span><span class="kick">Vault</span></div>
+                <div class="lhead mark"><span class="kick sorth" data-sort="name">Character</span><span class="kick sorth on" data-sort="ilvl">ilvl</span><span class="kick sorth" data-sort="sc">Score</span><span class="kick">Keystone</span><span class="kick">Vault</span></div>
         <div id="weekRows"></div>
-        <div class="side-note" style="padding:8px 10px">Bankalt (level 80) is hidden by “Hide characters below max level”.<span class="badge new">NEW</span></div>
+        <div class="side-note" style="padding:8px 10px">Click Character, ilvl or Score to sort, the same as the Alts headers. Click again to go back to most recent.<span class="badge new">NEW</span></div>
       </div>
       <div class="detail">
         <div class="dname cls-dr">Lixardo <span class="muted" style="font-family:Barlow;font-size:12px;font-weight:400">you</span></div>
@@ -179,22 +188,13 @@ h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;lett
         </div>
         <div class="kick" style="margin-top:10px">Raid this week</div>
         <div class="bosses" id="bossBoxes"></div>
-        <div class="mark" style="margin-top:10px;padding:4px">
-          <div class="kick">Timewalking<span class="badge new">NEW</span></div>
+        <div class="tw-only mark" style="margin-top:10px;padding:4px">
+          <div class="kick">Timewalking this week<span class="badge new">NEW</span></div>
           <div class="bosses">
             <div class="bossb" style="width:150px"><span>Ulduar · Timewalking</span><span class="ok">9/14 bosses</span></div>
             <div class="bossb" style="width:170px"><span>A Frozen Path Through Time</span><span class="part">3/5 · in quest log</span></div>
           </div>
-        </div>
-        <div class="mark" style="margin-top:10px;padding:4px">
-          <div class="kick">Weekly</div>
-          <div class="weekly">
-            <div class="wk">Nemesis: Azta'rec<span class="badge later">LATER</span><b class="ok">Killed</b></div>
-            <div class="wk">Gilded Stash<span class="badge later">LATER</span><b class="part">2/4</b></div>
-            <div class="wk">Lair: Tidebound Grotto <span class="muted">(your quest)</span><span class="badge new">NEW</span><b class="no">Not done</b></div>
-            <div class="wk">Spark of Radiance <span class="muted">(your quest)</span><span class="badge new">NEW</span><b class="ok">Done</b></div>
-          </div>
-          <div class="side-note">Quests you add in Settings → Quests show here too. In the real addon this section scrolls if it runs long.</div>
+          <div class="side-note">Only shows during Timewalking weeks. Switch the toggle above the window to see a normal week.</div>
         </div>
       </div>
     </div>
@@ -209,21 +209,21 @@ h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;lett
       <span class="btn" data-view="curs">Currencies</span>
       <span class="btn" data-view="cons">Consumables</span>
       <span class="btn" data-view="void">Voidcore</span>
-      <span class="btn mark" data-view="quests">Quests<span class="badge new">NEW</span></span>
+      <span class="btn mark" data-view="quests">Weekly<span class="badge new">NEW</span></span>
       <span style="flex:1"></span>
       <span class="btn drop mark">Group: All</span><span class="badge new">NEW</span>
     </div>
     <div class="view on" id="v-dun">
       <div class="kick" style="margin-top:10px">Best timed key per dungeon <span class="muted" style="text-transform:none;font-family:Barlow;font-weight:400;letter-spacing:0">· Click a character to open their week.</span></div>
       <div class="grid" id="dunGrid"></div>
-      <div class="foot">The <span style="color:#c9a35a">4pc</span> next to the item level is the tier set count.<span class="badge new">NEW</span></div>
+      <div class="foot">The <span style="color:#c9a35a">4pc</span> next to the item level is the tier set count.<span class="badge new">NEW</span> Group filter (top right) shows only Main, Alts, Bank or your own group.<span class="badge new">NEW</span></div>
     </div>
     <div class="view" id="v-runs"><div class="note">Runs view: unchanged.</div></div>
     <div class="view" id="v-raids">
       <div class="kick" style="margin-top:10px">Raid bosses killed this week</div>
       <div class="grid" id="raidGrid"></div>
       <div class="foot"><span class="btn drop">Difficulty: All</span> Color = highest difficulty killed. Bright = this week, faint = before.</div>
-      <div class="foot"><span class="mark" style="padding:2px 4px">Timewalking raid columns appear on the right when a character has a Timewalking lockout this week.<span class="badge new">NEW</span></span></div>
+      <div class="foot tw-only"><span class="mark" style="padding:2px 4px">Timewalking raid columns (orange headers) show on the right during Timewalking weeks.<span class="badge new">NEW</span></span></div>
     </div>
     <div class="view" id="v-curs">
       <div class="kick" style="margin-top:10px">Currencies on every character</div>
@@ -237,9 +237,9 @@ h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;lett
       <div class="foot">Earned = season total from the currency. If Blizzard reports 0, it falls back to rolls logged + left.</div>
     </div>
     <div class="view" id="v-quests">
-      <div class="kick" style="margin-top:10px">Tracked quests<span class="badge new">NEW</span></div>
+      <div class="kick" style="margin-top:10px">Weekly checklist<span class="badge new">NEW</span></div>
       <div class="grid" id="questGrid"></div>
-      <div class="foot">✓ done · ◐ in quest log · – not started · ? not logged in since reset. Add quests in Settings → Quests.</div>
+      <div class="foot">✓ done · ◐ in progress · – not started · ? not logged in since reset. Add your own quests in Settings → Quests. The Timewalking column only shows during Timewalking weeks.</div>
     </div>
   </div>
 
@@ -270,6 +270,46 @@ h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;lett
     <div class="note">Party tab: no changes proposed. Shown for reference.</div>
   </div>
 
+
+  <!-- SETTINGS -->
+  <div class="pane" id="p-settings">
+    <div class="note" style="margin-top:0;margin-bottom:10px">Settings opens here, inside the main window, instead of a separate box. Click the gear again or any tab to go back.<span class="badge new">NEW</span></div>
+    <div class="scols">
+    <div>
+    <h3 class="sh">Theme</h3>
+    <div style="display:flex;gap:3px;flex-wrap:wrap"><span class="btn sel">Workbench</span><span class="btn">Artisan Ledger</span><span class="btn">Horde</span><span class="btn">Alliance</span><span class="btn">Slate</span></div>
+    <h3 class="sh">Behavior</h3>
+    <div class="chk"><span class="cb">✓</span>Minimap button</div>
+    <div class="chk"><span class="cb"></span>Track characters below max level</div>
+    <div class="chk mark"><span class="cb">✓</span>Hide characters below max level<span class="badge new">NEW</span></div>
+    <div class="chk"><span class="cb">✓</span>Remind me to roll for favorites</div>
+    <div class="chk"><span class="cb"></span>Show hidden characters</div>
+    <div class="chk"><span class="field" style="width:60px;color:var(--text)">334</span>Max item level for dungeon gear and Voidcore rolls</div>
+    <h3 class="sh">Data</h3>
+    <div style="display:flex;flex-direction:column;gap:6px"><span class="btn" style="width:180px">Import from AlterEgo</span><span class="btn" style="width:260px">Import Voidcore rolls from KeystoneLoot</span></div>
+    </div>
+    <div>
+    <h3 class="sh">Character groups<span class="badge new">NEW</span></h3>
+    <div class="mark" style="padding:4px">
+      <div class="qrow"><span>Main</span><span class="muted">1 character</span><span class="x">✕</span></div>
+      <div class="qrow"><span>Alts</span><span class="muted">3 characters</span><span class="x">✕</span></div>
+      <div class="qrow"><span>Bank</span><span class="muted">1 character</span><span class="x">✕</span></div>
+      <div style="display:flex;gap:6px;margin-top:6px"><span class="field" style="flex:1">New group name</span><span class="btn">Add</span></div>
+      <div class="side-note">Right-click a character row → Group to move it. Groups only filter the Alts tab.</div>
+    </div>
+    <h3 class="sh">Quests<span class="badge new">NEW</span></h3>
+    <div class="mark" style="padding:4px">
+      <div class="qrow"><span>Lair: Tidebound Grotto</span><span class="muted">Weekly</span><span class="x">✕</span></div>
+      <div class="qrow"><span>Spark of Radiance</span><span class="muted">Weekly</span><span class="x">✕</span></div>
+      <div class="qrow"><span>Darkmoon Faire: Test Your Strength</span><span class="muted">Once</span><span class="x">✕</span></div>
+      <div style="display:flex;gap:6px;margin-top:6px"><span class="field" style="flex:1">Quest ID</span><span class="btn drop">Weekly</span><span class="btn">Add</span></div>
+      <div style="margin-top:6px"><span class="btn drop">Add from quest log</span></div>
+      <div class="side-note">These show as columns in Alts → Weekly.</div>
+    </div>
+    </div>
+    </div>
+  </div>
+
   <!-- LOOT -->
   <div class="pane" id="p-loot">
     <div style="display:flex;gap:6px;align-items:center"><span class="field" style="width:360px">Search every dungeon and raid: name, slot, place or boss</span><span class="btn drop">Spec</span><span class="btn drop">Slot</span><span class="btn drop">M+ dungeons</span></div>
@@ -280,68 +320,32 @@ h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;lett
   </div>
 </div>
 
-<!-- SETTINGS -->
-<div class="set">
-  <div class="whead"><div class="wtitle">Settings</div><span class="ibtn">✕</span></div>
-  <div class="sec">
-    <h3>Theme</h3>
-    <div style="display:flex;gap:3px;flex-wrap:wrap"><span class="btn sel">Workbench</span><span class="btn">Artisan Ledger</span><span class="btn">Horde</span><span class="btn">Alliance</span><span class="btn">Slate</span></div>
-    <h3>Behavior</h3>
-    <div class="chk"><span class="cb">✓</span>Minimap button</div>
-    <div class="chk"><span class="cb"></span>Track characters below max level</div>
-    <div class="chk mark"><span class="cb">✓</span>Hide characters below max level<span class="badge new">NEW</span></div>
-    <div class="chk"><span class="cb">✓</span>Remind me to roll for favorites</div>
-    <div class="chk"><span class="cb"></span>Show hidden characters</div>
-    <div class="chk"><span class="field" style="width:60px;color:var(--text)">334</span>Max item level for dungeon gear and Voidcore rolls</div>
-    <h3>Character groups<span class="badge new">NEW</span></h3>
-    <div class="mark" style="padding:4px">
-      <div class="qrow"><span>Main</span><span class="muted">1 character</span><span class="x">✕</span></div>
-      <div class="qrow"><span>Alts</span><span class="muted">3 characters</span><span class="x">✕</span></div>
-      <div class="qrow"><span>Bank</span><span class="muted">1 character</span><span class="x">✕</span></div>
-      <div style="display:flex;gap:6px;margin-top:6px"><span class="field" style="flex:1">New group name</span><span class="btn">Add</span></div>
-      <div class="side-note">Right-click a character row → Group to move it.</div>
-    </div>
-    <h3>Quests<span class="badge new">NEW</span></h3>
-    <div class="mark" style="padding:4px">
-      <div class="qrow"><span>A Frozen Path Through Time</span><span class="muted">Weekly</span><span class="x">✕</span></div>
-      <div class="qrow"><span>Lair: Tidebound Grotto</span><span class="muted">Weekly</span><span class="x">✕</span></div>
-      <div class="qrow"><span>Spark of Radiance</span><span class="muted">Weekly</span><span class="x">✕</span></div>
-      <div class="qrow"><span>Darkmoon Faire: Test Your Strength</span><span class="muted">Once</span><span class="x">✕</span></div>
-      <div style="display:flex;gap:6px;margin-top:6px"><span class="field" style="flex:1">Quest ID</span><span class="btn drop">Weekly</span><span class="btn">Add</span></div>
-      <div style="margin-top:6px"><span class="btn drop">Add from quest log</span></div>
-    </div>
-    <h3>Data</h3>
-    <div style="display:flex;flex-direction:column;gap:6px;padding-bottom:14px"><span class="btn" style="width:180px">Import from AlterEgo</span><span class="btn" style="width:260px">Import Voidcore rolls from KeystoneLoot</span></div>
-  </div>
-</div>
 </div>
 
 <div class="changes">
-  <div class="chg"><h4>1 · Timewalking <span class="badge new">NEW</span></h4><p>This Week detail: Timewalking raid lockout + the weekly "Path Through Time" quest. Alts → Raids: Timewalking columns when locked.</p></div>
-  <div class="chg"><h4>2 · Nemesis boss <span class="badge later">LATER</span></h4><p>Weekly box on This Week. Needs <code>/kr probe</code> on a kill to find the weekly flag.</p></div>
-  <div class="chg"><h4>3 · Flexible Mythic lockouts <span class="badge fix">FIX</span></h4><p>Two lockouts with the same raid and difficulty no longer overwrite each other. Kills merge per boss.</p></div>
-  <div class="chg"><h4>4 · Gilded Stash x/4 <span class="badge later">LATER</span></h4><p>Weekly box. The max is read from the game, not hard-coded. Needs the widget ID found in a delve.</p></div>
-  <div class="chg"><h4>5 · Voidcore earned vs left <span class="badge new">NEW</span></h4><p>Alts → Voidcore gets an Earned column, and the Currencies box shows "3 left · 11 earned".</p></div>
-  <div class="chg"><h4>6 · Sort on This Week <span class="badge new">NEW</span></h4><p>Sort dropdown on the character list. It uses the same setting as the Alts headers, which already sort.</p></div>
-  <div class="chg"><h4>7 · Hide and group characters <span class="badge new">NEW</span></h4><p>"Hide characters below max level" setting. Groups (Main / Alts / Bank / custom) with a Group filter on This Week and Alts.</p></div>
-  <div class="chg"><h4>8 · Gold totals</h4><p>Already in Alts → Currencies. Only a small all-characters total added to the Currencies tab.</p></div>
-  <div class="chg"><h4>9 · Your own quests <span class="badge new">NEW</span></h4><p>Settings → Quests (by ID or from your quest log, weekly / daily / once). New Alts → Quests grid.</p></div>
-  <div class="chg"><h4>10 · Tier set count <span class="badge new">NEW</span></h4><p>"4pc" on This Week rows, the detail line and Alts names, read from equipped head, shoulders, chest, hands and legs.</p></div>
+  <div class="chg"><h4>This Week <span class="badge new">NEW</span></h4><p>Same look as now. Click the Character / ilvl / Score headers to sort. Tier count ("Tier 4/5") is added to the line under the name. Timewalking only shows during Timewalking weeks.</p></div>
+  <div class="chg"><h4>Alts → Weekly <span class="badge new">NEW</span></h4><p>One grid for everything weekly: Nemesis and Gilded Stash (LATER), the Timewalking quest (Timewalking weeks only), and your own quests.</p></div>
+  <div class="chg"><h4>Alts → other views <span class="badge new">NEW</span></h4><p>Tier count next to ilvl. Voidcore gets an Earned column. Raids gets Timewalking columns during Timewalking weeks. Group filter top right.</p></div>
+  <div class="chg"><h4>Settings in the main window <span class="badge new">NEW</span></h4><p>The gear swaps the body to Settings, and the tabs stay. New: hide below max level, character groups, quests.</p></div>
+  <div class="chg"><h4>Currencies <span class="badge new">NEW</span></h4><p>All-characters gold total next to the character's gold. The Voidcore box shows left and earned.</p></div>
+  <div class="chg"><h4>Raid data fix <span class="badge fix">FIX</span></h4><p>Two lockouts for the same raid and difficulty merge per boss instead of one overwriting the other.</p></div>
 </div>
 </div>
 
 <script>
 const CH=[
- {n:"Lixardo",c:"dr",il:331,tier:4,sc:3124,key:"+12 RLP",kc:"#a335ee",v:5,grp:"Main"},
- {n:"Thornvale",c:"wa",il:327,tier:4,sc:2876,key:"+10 VSA",kc:"#a335ee",v:4,grp:"Alts"},
- {n:"Emberlyn",c:"ma",il:322,tier:2,sc:2540,key:"+9 MR",kc:"#0070dd",v:3,grp:"Alts"},
- {n:"Quillspark",c:"pr",il:318,tier:2,sc:2210,key:"+7 KR",kc:"#0070dd",v:2,grp:"Alts"},
- {n:"Graveknot",c:"dk",il:309,tier:0,sc:1640,key:"No key",kc:"#9aa3ad",v:1,grp:"Alts"}
+ {n:"Lixardo",seen:1,c:"dr",il:331,tier:4,sc:3124,key:"+12 RLP",kc:"#a335ee",v:5,grp:"Main"},
+ {n:"Thornvale",seen:3,c:"wa",il:327,tier:4,sc:2876,key:"+10 VSA",kc:"#a335ee",v:4,grp:"Alts"},
+ {n:"Emberlyn",seen:2,c:"ma",il:322,tier:2,sc:2540,key:"+9 MR",kc:"#0070dd",v:3,grp:"Alts"},
+ {n:"Quillspark",seen:5,c:"pr",il:318,tier:2,sc:2210,key:"+7 KR",kc:"#0070dd",v:2,grp:"Alts"},
+ {n:"Graveknot",seen:4,c:"dk",il:309,tier:0,sc:1640,key:"No key",kc:"#9aa3ad",v:1,grp:"Alts"}
 ];
 const MAPS=["KR","TOS","RLP","BV","VSA","DON","MR","AOF"];
 const $=id=>document.getElementById(id);
 function nm(c){return `<span class="nm cls-${c.c}">${c.n}</span>`}
-$("weekRows").innerHTML=CH.map((c,i)=>`<div class="lrow${i?"":" sel"}"><span style="display:flex;align-items:center">${nm(c)}${c.tier?`<span class="tier mark">${c.tier}pc</span>`:""}</span><span>${c.il}</span><span>${c.sc}</span><span style="color:${c.kc}">${c.key}</span><span class="pips">${Array.from({length:9},(_,k)=>`<span class="pip${k<c.v?" f":""}"></span>`).join("")}</span></div>`).join("");
+function weekRows(){$("weekRows").innerHTML=CH.map((c,i)=>`<div class="lrow${c.n==="Lixardo"?" sel":""}"><span style="display:flex;align-items:center">${nm(c)}</span><span>${c.il}</span><span>${c.sc}</span><span style="color:${c.kc}">${c.key}</span><span class="pips">${Array.from({length:9},(_,k)=>`<span class="pip${k<c.v?" f":""}"></span>`).join("")}</span></div>`).join("")}
+weekRows();
+document.querySelectorAll(".sorth").forEach(h=>h.onclick=()=>{const k=h.dataset.sort;const was=h.classList.contains("on");document.querySelectorAll(".sorth").forEach(x=>x.classList.remove("on"));if(!was){h.classList.add("on");CH.sort((a,b)=>k==="name"?a.n.localeCompare(b.n):k==="ilvl"?b.il-a.il:b.sc-a.sc)}else{CH.sort((a,b)=>a.seen-b.seen)}weekRows()});
 const B=[["Rotmire","NHM"],["Vex'thiel","NH"],["Coil Matron","NH"],["Azuremaw","N"],["Ssa'rek","N"],["Queen Xal'atath","" ]];
 $("bossBoxes").innerHTML=B.map(b=>`<div class="bossb"><span>${b[0]}</span><span class="lt">${["L","N","H","M"].map(d=>`<span class="d${d}${b[1].includes(d)?"":" dim"}">${d}</span>`).join("")}</span></div>`).join("");
 function heat(l){if(!l)return["#1a1e23","–","#9aa3ad"];const t=Math.min(1,(l-4)/11);const a=[23,26,31],b=[47,143,104];const m=a.map((x,i)=>Math.round(x+(b[i]-x)*t*0.8));return[`rgb(${m})`,"+"+l,"#e8ebee"]}
@@ -355,22 +359,31 @@ const rc={M:"255,128,0",H:"163,53,238",N:"0,112,221",L:"30,255,0"};
 const rk=[["M","H","H","N","N","",""],["H","H","N","N","","",""],["N","N","N","L","L","L",""],["L","L","","","","",""],["","","","","","",""]];
 const tw=[["N","N","N","N"],["","","",""],["N","N","",""],["","","",""],["","","",""]];
 function rcell(d,w){if(!d)return `<div class="gc">-</div>`;return `<div class="gc" style="background:rgba(${rc[d]},${w?.42:.18});color:#e8ebee">${w?d:"·"}</div>`}
-$("raidGrid").innerHTML=`<div class="grow h"><div class="gname kick">Character</div><div class="gsc kick">Score</div>${RB.map(x=>`<div class="gc">${x}</div>`).join("")}${TW.map(x=>`<div class="gc mark" style="color:#e0a03a">${x.split(":")[0].slice(0,4)}</div>`).join("")}</div>`+CH.map((c,i)=>`<div class="grow">${rowName(c)}${rk[i].map((d,k)=>rcell(d,k<4)).join("")}${tw[i].map(d=>rcell(d,true)).join("")}</div>`).join("");
+$("raidGrid").innerHTML=`<div class="grow h"><div class="gname kick">Character</div><div class="gsc kick">Score</div>${RB.map(x=>`<div class="gc">${x}</div>`).join("")}${TW.map(x=>`<div class="gc tw-only" style="color:#e0a03a">${x.split(":")[0].slice(0,4)}</div>`).join("")}</div>`+CH.map((c,i)=>`<div class="grow">${rowName(c)}${rk[i].map((d,k)=>rcell(d,k<4)).join("")}${tw[i].map(d=>rcell(d,true).replace('class="gc"','class="gc tw-only"')).join("")}</div>`).join("");
 const CU=["Myth","Hero","Champ","Vet","Void","Keys"];
 const cv=[[30,64,88,120,3,2],[18,40,70,96,1,1],[6,22,50,80,2,0],[0,10,34,60,0,0],[0,0,8,30,0,1]];
 $("curGrid").innerHTML=`<div class="grow h"><div class="gname kick">Character</div><div class="gsc kick">Score</div><div class="gc" style="flex:0 0 100px">GOLD</div>${CU.map(x=>`<div class="gc">${x}</div>`).join("")}</div>`+CH.map((c,i)=>`<div class="grow">${rowName(c)}<div class="gc" style="flex:0 0 100px;background:none">${[182450,301200,95440,412000,213790][i].toLocaleString()}g</div>${cv[i].map(v=>`<div class="gc">${v}</div>`).join("")}</div>`).join("");
 const vl=[[3,11,8],[1,9,8],[2,6,4],[0,3,3],[0,0,0]];
 const icols=["#a335ee","#ff8000","#0070dd","#a335ee","#a335ee","#a335ee","#0070dd","#ff8000"];
 $("voidGrid").innerHTML=`<div class="grow h"><div class="gname kick">Character</div><div class="gsc kick">Left</div><div class="gc mark" style="flex:0 0 70px;color:var(--accent)">EARNED</div><div class="gc" style="flex:0 0 60px">ROLLS</div><div class="gc"></div></div>`+CH.map((c,i)=>`<div class="grow"><div class="gname">${nm(c)}<span class="il">${c.il}</span></div><div class="gsc">${vl[i][0]}</div><div class="gc mark" style="flex:0 0 70px;background:#1f2a26">${vl[i][1]||"-"}</div><div class="gc" style="flex:0 0 60px;background:none">${vl[i][2]||"-"}</div><div class="gc" style="background:none;justify-content:start;display:flex;gap:3px;padding-left:4px">${Array.from({length:vl[i][2]},(_,k)=>`<span style="width:20px;height:20px;border-radius:3px;border:1px solid ${icols[k]};background:#2a2f36"></span>`).join("")||'<span class="muted" style="font-weight:400">No rolls yet</span>'}</div></div>`).join("");
-const Q=["Path Through Time","Lair: Grotto","Spark","DMF: Strength"];
-const qs=[["✓","✓","✓","✓"],["◐","✓","✓","–"],["–","◐","✓","–"],["–","–","–","–"],["?","?","?","?"]];
-const qc={"✓":"ok","◐":"part","–":"muted","?":"muted"};
-$("questGrid").innerHTML=`<div class="grow h"><div class="gname kick">Character</div><div class="gsc kick">Score</div>${Q.map(x=>`<div class="gc" style="text-transform:none">${x}</div>`).join("")}</div>`+CH.map((c,i)=>`<div class="grow">${rowName(c)}${qs[i].map(s=>`<div class="gc ${qc[s]}">${s}</div>`).join("")}</div>`).join("");
+const Q=[["Nemesis","later"],["Gilded Stash","later"],["Path Through Time","tw"],["Lair: Grotto","mine"],["Spark","mine"],["DMF: Strength","mine"]];
+const qs=[["✓","2/4","◐ 3/5","✓","✓","✓"],["✓","4/4","✓","✓","✓","–"],["–","1/4","–","◐","✓","–"],["–","0/4","–","–","–","–"],["?","?","?","?","?","?"]];
+const qc=v=>v.startsWith("✓")||v==="4/4"?"ok":v.startsWith("◐")||/^[1-3]\/4/.test(v)?"part":"muted";
+const qh=q=>q[1]==="later"?`${q[0]}<span class="badge later" style="margin-left:3px">LATER</span>`:q[1]==="tw"?`<span style="color:#e0a03a">${q[0]}</span>`:q[0];
+$("questGrid").innerHTML=`<div class="grow h"><div class="gname kick">Character</div><div class="gsc kick">Score</div>${Q.map(q=>`<div class="gc${q[1]==="tw"?" tw-only":""}" style="text-transform:none">${qh(q)}</div>`).join("")}</div>`+CH.map((c,i)=>`<div class="grow">${rowName(c)}${qs[i].map((v,k)=>`<div class="gc ${qc(v)}${Q[k][1]==="tw"?" tw-only":""}">${v}</div>`).join("")}</div>`).join("");
 const P=[{n:"Lixardo",c:"dr"},{n:"Thornvale",c:"wa"},{n:"Partyhealer",c:"pr"},{n:"Partymage",c:"ma"},{n:"Partyhunter",c:"hu"}];
 $("partyGrid").innerHTML=head(MAPS)+P.map((c,i)=>`<div class="grow"><div class="gname">${nm(c)}</div><div class="gsc">${[3124,2876,2950,2701,3010][i]}</div>${MAPS.map((m,k)=>{const l=14-((i+k)%6);const h=heat(l);return `<div class="gc" style="background:${h[0]}">${h[1]}</div>`}).join("")}</div>`).join("");
 $("tiles").innerHTML=["Gaze of the Coiled Watcher","Abyssal Broodfiend's Bardiche","Coiled Hex Legguards","Strand of Warding Fangs","Toxin-Coated Warstaff","Gauntlets of Fevered Defense","Zul'jin's Guillotine Technique","Venomfang Signet","Shroud of the Deep","Tideworn Treads"].map(n=>`<div class="tile"><i style="background:#2a2f36"></i><span>${n}<br><span class="muted">334</span></span></div>`).join("");
-document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===t));document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+t.dataset.tab))});
+function show(key){document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.dataset.tab===key));document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id==="p-"+key));$("gear").classList.toggle("on",key==="settings")}
+let lastTab="week";
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{lastTab=t.dataset.tab;show(lastTab)});
+$("gear").onclick=()=>show($("p-settings").classList.contains("on")?lastTab:"settings");
+document.querySelectorAll("[data-week]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-week]").forEach(x=>x.classList.toggle("sel",x===b));document.body.classList.toggle("tw",b.dataset.week==="tw")});
 document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-view]").forEach(x=>x.classList.toggle("sel",x===b));document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+b.dataset.view))});
+const H=location.hash.slice(1).split(",");
+if(H.includes("tw"))document.querySelector('[data-week="tw"]').click();
+if(H.includes("settings"))$("gear").click();
+if(H.includes("weekly")){document.querySelector('[data-tab="alts"]').click();document.querySelector('[data-view="quests"]').click()}
 </script>
 </body>
 </html>
