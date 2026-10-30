@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Plateau Test List</title>
+<style>
+:root {
+  --bg: #121315;
+  --panel: #1a1c1f;
+  --panel-2: #212428;
+  --line: #2e3237;
+  --fg: #e6e2da;
+  --muted: #9b968c;
+  --accent: #d9874a;
+  --accent-ink: #1b1007;
+  --ok: #5fbf86;
+  --ok-bg: #1b3326;
+  --bad: #ee7a66;
+  --bad-bg: #3d211c;
+  --sans: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.55 var(--sans);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 96px;
+}
+.wrap { max-width: 760px; margin: 0 auto; }
+header.hero { padding-block: 28px 12px; display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+h1 { margin: 0; font-size: clamp(26px, 6vw, 36px); line-height: 1.12; }
+.lede { margin: 0; color: var(--muted); }
+.callout { margin: 14px 0 0; padding: 12px 14px; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0 8px 8px 0; }
+.callout b { color: var(--fg); }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 10px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.progress { flex: 1 1 180px; display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.track { height: 6px; background: var(--panel-2); border-radius: 3px; overflow: hidden; display: flex; }
+.track span { display: block; height: 100%; transition: width .2s; }
+.track .ok { background: var(--ok); }
+.track .bad { background: var(--bad); }
+button { font: inherit; cursor: pointer; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); padding: 8px 12px; min-height: 40px; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h2 { margin: 28px 0 10px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+li.item { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+li.item.ok { border-color: var(--ok); background: linear-gradient(var(--ok-bg), var(--panel) 70%); }
+li.item.bad { border-color: var(--bad); background: linear-gradient(var(--bad-bg), var(--panel) 70%); }
+.head { display: flex; gap: 10px; align-items: baseline; }
+.num { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; min-width: 1.6em; }
+.title { font-weight: 650; }
+.steps { margin: 6px 0 0; padding-left: 1.2em; color: var(--fg); }
+.steps li { margin: 2px 0; }
+.expect { margin: 6px 0 0; color: var(--muted); }
+.expect b { color: var(--fg); font-weight: 600; }
+.actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.actions button { flex: 1 1 120px; }
+.actions button[aria-pressed="true"].works { background: var(--ok); color: #08170e; border-color: var(--ok); font-weight: 700; }
+.actions button[aria-pressed="true"].problem { background: var(--bad); color: #1d0a06; border-color: var(--bad); font-weight: 700; }
+textarea { width: 100%; margin-top: 8px; min-height: 64px; resize: vertical; font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+textarea[hidden] { display: none; }
+.open { margin-top: 28px; padding: 14px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); }
+.open b { color: var(--fg); }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: var(--accent); color: var(--accent-ink); padding: 10px 16px; border-radius: 8px; font-weight: 700; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Plateau · branch restyle-survey</div>
+  <h1>In-game test list: audit phases 4 and 5</h1>
+  <p class="lede">Mark each check as Works or Problem. If something's wrong, add a note. Your marks stay on this device. When you're done, tap Copy results and paste them into chat.</p>
+  <p class="callout"><b>First:</b> do a full game restart, not just /reload. Core/Zone.lua is a new file in the toc.</p>
+</header>
+
+<div class="bar">
+  <div class="progress"><span id="count">0 of 0 checked</span><div class="track"><span class="ok" id="okBar"></span><span class="bad" id="badBar"></span></div></div>
+  <button class="primary" id="copy" type="button">Copy results</button>
+  <button id="reset" type="button">Clear</button>
+</div>
+
+<main id="list"></main>
+
+<p class="open"><b>Still open, not on this list:</b> the hover and select tint doesn't go all the way around the health and cast bars. Send clips when you're home.</p>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const GROUPS = [
+  { name: "Settings window (phase 4)", items: [
+    ["Open and close", ["Open /plt, close it with Esc, then reopen."], "Comes back on the <b>same page and scroll position</b>."],
+    ["Scrollbars", ["Scroll a long page with the mouse wheel.", "Drag the thumb."], "Both work, and the <b>thumb size matches the page length</b>."],
+    ["Change marks", ["Change any setting.", "Turn on \"Changed only\"."], "A mark shows on the <b>row and its rail page</b>; Changed only shows <b>just that row</b>."],
+    ["Right-click reset", ["Right-click a changed row."], "It resets <b>straight away, with no menu</b>."],
+    ["Dropdowns", ["Pick a value in a dropdown, including a CVar one (e.g. the stacking type).", "Right-click it to reset."], "The value <b>saves and resets</b>."],
+    ["Text boxes", ["Click into the search box and a profile name box.", "Click out."], "The ochre <b>focus border shows, then goes away</b>."],
+    ["Gated rows", ["Turn off Cast bar → Show spell name.", "Turn it back on."], "The rows under it <b>hide, then come back with the same wording</b>."],
+    ["Spell name size", ["Open Cast bar → Spell name alignment."], "\"Spell name size\" is <b>right under it and works</b>."],
+    ["Occluded fade", ["Toggle the dungeon, raid, delve and pvp switches."], "<b>Each one saves</b> on its own."],
+    ["Tooltips", ["Hover a few rows."], "<b>Title in ochre</b>, with the text below."],
+    ["Profiles", ["Make, rename, copy and delete a test profile (not Default)."], "The <b>status line updates</b>; the dropdowns <b>list the right profiles</b>."],
+    ["Presets", ["Click a look preset.", "Click again to apply, or wait."], "It asks to <b>confirm in ochre with its own text</b>; it applies, or goes back to normal."],
+    ["Keyboard shortcuts", ["Ctrl+Z / Ctrl+Y.", "Arrow keys and Shift+arrow on a selected part.", "Press them in combat."], "Undo and redo work and the label <b>names the right change</b>; arrows nudge, Shift moves 10 px; <b>no errors in combat</b>."],
+  ]},
+  { name: "Preview (phase 4)", items: [
+    ["Hover and click", ["Hover and click each part.", "Skip health and cast bar (known bug)."], "The part's own border turns <b>white on hover, green when selected</b>."],
+    ["Dragging", ["Drag a part near another part.", "Click a readout number, type a value, press Enter."], "<b>Snaps to the same spots</b> as before; the x/y readout <b>shows and takes typed values</b>."],
+    ["Health text", ["Switch the format: percent, value/max and others."], "The preview <b>matches live plates</b>."],
+  ]},
+  { name: "Plates (phase 5)", items: [
+    ["Buffs and shield alerts in combat", ["Pull a pack.", "During combat, change the enemy buff border size and the shield alert colour."], "<b>Nothing changes during combat</b>; both update <b>within a frame or two after it ends</b>."],
+    ["Plate events", ["Watch health, casts, auras and target changes on new plates.", "Turn threat colouring off and back on."], "Everything <b>updates as before</b>; threat colours <b>work on plates that appear afterwards</b>."],
+    ["Zones", ["Zone into a dungeon."], "Auto-profile <b>switches as before</b>; mob-type colours <b>only show inside</b>; instance pets <b>hide</b>; occluded fade <b>follows your dungeon setting</b>; level \"hide in instances\" <b>works</b>; boss phase lines <b>only show inside</b> if set."],
+    ["Party kicks", ["Join a party.", "Have someone type \"kick {skull}\" in party chat.", "Have someone leave."], "Kick icons <b>appear</b>; their <b>kicker marker shows</b>; the leaver's entries <b>go away</b>."],
+    ["Options colours", ["Open /plt and drag a part."], "<b>Exactly the same look</b>: ochre accent, crosshair and x/y tags."],
+    ["Debug log", ["Open /plt debug and turn on Event log.", "Pull something, then open Show log."], "You see <b>\"plate added\"</b> and <b>\"cast start\"</b> lines."],
+  ]},
+];
+
+const KEY = "plateau-test-list-v1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+const list = document.getElementById("list");
+const all = [];
+let n = 0;
+for (const group of GROUPS) {
+  const h = document.createElement("h2");
+  h.textContent = group.name;
+  list.appendChild(h);
+  const ol = document.createElement("ol");
+  for (const [title, steps, expect] of group.items) {
+    n += 1;
+    const id = String(n);
+    all.push({ id, title });
+    const li = document.createElement("li");
+    li.className = "item";
+    li.innerHTML =
+      '<div class="head"><span class="num">' + n + '</span><span class="title"></span></div>' +
+      '<ul class="steps"></ul><p class="expect">Expect: ' + expect + '</p>' +
+      '<div class="actions"><button type="button" class="works" aria-pressed="false">✓ Works</button>' +
+      '<button type="button" class="problem" aria-pressed="false">✗ Problem</button></div>' +
+      '<textarea hidden placeholder="What went wrong?" aria-label="Notes for check ' + n + '"></textarea>';
+    li.querySelector(".title").textContent = title;
+    const ul = li.querySelector(".steps");
+    for (const s of steps) { const x = document.createElement("li"); x.textContent = s; ul.appendChild(x); }
+    const works = li.querySelector(".works"), problem = li.querySelector(".problem"), note = li.querySelector("textarea");
+    function paint() {
+      const s = state[id] || {};
+      li.classList.toggle("ok", s.mark === "ok");
+      li.classList.toggle("bad", s.mark === "bad");
+      works.setAttribute("aria-pressed", s.mark === "ok");
+      problem.setAttribute("aria-pressed", s.mark === "bad");
+      note.hidden = s.mark !== "bad";
+      note.value = s.note || "";
+      updateBar();
+    }
+    function mark(m) {
+      const s = state[id] || {};
+      s.mark = s.mark === m ? undefined : m;
+      state[id] = s; save(); paint();
+      if (s.mark === "bad") note.focus();
+    }
+    works.addEventListener("click", () => mark("ok"));
+    problem.addEventListener("click", () => mark("bad"));
+    note.addEventListener("input", () => { state[id] = state[id] || {}; state[id].note = note.value; save(); });
+    li.paint = paint;
+    ol.appendChild(li);
+  }
+  list.appendChild(ol);
+}
+
+function updateBar() {
+  let ok = 0, bad = 0;
+  for (const { id } of all) { const m = (state[id] || {}).mark; if (m === "ok") ok++; else if (m === "bad") bad++; }
+  document.getElementById("count").textContent = (ok + bad) + " of " + all.length + " checked · " + ok + " work · " + bad + " problem" + (bad === 1 ? "" : "s");
+  document.getElementById("okBar").style.width = (ok / all.length * 100) + "%";
+  document.getElementById("badBar").style.width = (bad / all.length * 100) + "%";
+}
+document.querySelectorAll("li.item").forEach(li => li.paint());
+
+function toast(text) {
+  const t = document.getElementById("toast");
+  t.textContent = text; t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 1800);
+}
+
+document.getElementById("copy").addEventListener("click", async () => {
+  const lines = ["Plateau test results (phases 4 and 5):"];
+  for (const { id, title } of all) {
+    const s = state[id] || {};
+    const mark = s.mark === "ok" ? "works" : s.mark === "bad" ? "PROBLEM" : "not tested";
+    lines.push(id + ". " + title + ": " + mark + (s.mark === "bad" && s.note ? " (" + s.note.trim() + ")" : ""));
+  }
+  const text = lines.join("\n");
+  try { await navigator.clipboard.writeText(text); toast("Copied"); }
+  catch (e) {
+    const area = document.createElement("textarea");
+    area.value = text; document.body.appendChild(area); area.select();
+    try { document.execCommand("copy"); toast("Copied"); } catch (e2) { toast("Couldn't copy"); }
+    area.remove();
+  }
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  if (!confirm("Clear every mark and note?")) return;
+  state = {}; save();
+  document.querySelectorAll("li.item").forEach(li => li.paint());
+});
+</script>
+</body>
+</html>
