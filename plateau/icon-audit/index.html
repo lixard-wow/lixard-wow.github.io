@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Plateau Icon Engine Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a sticky section index on wide screens; tables scroll inside their own box. */
+:root {
+  --bg: #f3f1ec;
+  --panel: #fbfaf7;
+  --fg: #23211d;
+  --muted: #6b665c;
+  --rule: #d9d4c8;
+  --accent: #b5622a;
+  --accent-soft: #f2dfcf;
+  --good: #2f7a4b;
+  --good-soft: #dcefe2;
+  --warn: #9a6a12;
+  --warn-soft: #f4e8c9;
+  --bad: #a83d2c;
+  --bad-soft: #f4d9d3;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1b1a18; --panel: #232220; --fg: #ebe7de; --muted: #a39d90; --rule: #3a3833;
+    --accent: #e08a4f; --accent-soft: #3a2a1e;
+    --good: #6cc68e; --good-soft: #1f3327; --warn: #e2b553; --warn-soft: #3a3020; --bad: #ef8a78; --bad-soft: #3d2420;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1b1a18; --panel: #232220; --fg: #ebe7de; --muted: #a39d90; --rule: #3a3833;
+  --accent: #e08a4f; --accent-soft: #3a2a1e;
+  --good: #6cc68e; --good-soft: #1f3327; --warn: #e2b553; --warn-soft: #3a3020; --bad: #ef8a78; --bad-soft: #3d2420;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0;
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 64px;
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; }
+@media (max-width: 860px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px; } nav.index { position: static; } }
+nav.index { position: sticky; top: calc(24px + env(safe-area-inset-top, 0px)); align-self: start; font-family: var(--display); font-size: 14px; }
+nav.index ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+nav.index a { color: var(--muted); text-decoration: none; display: block; padding: 4px 0 4px 10px; border-left: 2px solid var(--rule); }
+nav.index a:hover, nav.index a:focus-visible { color: var(--accent); border-left-color: var(--accent); outline: none; }
+main { min-width: 0; display: grid; gap: 56px; }
+header.top { display: grid; gap: 10px; border-bottom: 1px solid var(--rule); padding-bottom: 24px; }
+.eyebrow { font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 700; font-size: 24px; line-height: 1.25; margin: 0 0 14px; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 17px; margin: 0 0 6px; }
+p { margin: 0 0 12px; max-width: 68ch; }
+.lede { font-size: 19px; color: var(--muted); max-width: 64ch; }
+.meta { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+code, .path { font-family: var(--mono); font-size: 0.86em; background: var(--accent-soft); padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+section { display: grid; gap: 4px; scroll-margin-top: 24px; }
+
+.verdict { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 8px; }
+.verdict div { background: var(--panel); border: 1px solid var(--rule); padding: 14px 16px; border-radius: 6px; display: grid; gap: 4px; }
+.verdict .q { font-family: var(--display); font-size: 13px; color: var(--muted); }
+.verdict .a { font-family: var(--display); font-weight: 800; font-size: 20px; }
+.verdict .a.no { color: var(--bad); }
+.verdict .a.part { color: var(--warn); }
+
+.table-box { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 14px; line-height: 1.45; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--display); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--bg); position: sticky; top: 0; }
+tr:last-child td { border-bottom: none; }
+td.name { font-family: var(--display); font-weight: 700; white-space: nowrap; }
+.chip { display: inline-block; font-family: var(--display); font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.chip.yes { background: var(--good-soft); color: var(--good); }
+.chip.no { background: var(--bad-soft); color: var(--bad); }
+.chip.part { background: var(--warn-soft); color: var(--warn); }
+
+ol.steps { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 14px; counter-reset: step; }
+ol.steps > li { counter-increment: step; background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px 14px 58px; position: relative; }
+ol.steps > li::before { content: counter(step); position: absolute; left: 16px; top: 14px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--panel); font-family: var(--display); font-weight: 800; font-size: 14px; display: grid; place-items: center; }
+.risk { font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.risk.low { color: var(--good); } .risk.med { color: var(--warn); } .risk.high { color: var(--bad); }
+ul.tight { margin: 4px 0 0; padding-left: 20px; display: grid; gap: 4px; }
+ul.tight li { max-width: 66ch; }
+
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.split > div { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; min-width: 0; }
+.decide { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; display: grid; gap: 4px; }
+.decide + .decide { margin-top: 14px; }
+.decide .opt { color: var(--muted); font-size: 15px; }
+footer { border-top: 1px solid var(--rule); padding-top: 16px; color: var(--muted); font-size: 14px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="index" aria-label="Sections">
+    <ol>
+      <li><a href="#verdict">Verdict</a></li>
+      <li><a href="#inventory">Every icon</a></li>
+      <li><a href="#drift">Where they differ</a></li>
+      <li><a href="#plan">Recommended plan</a></li>
+      <li><a href="#keep">Leave as is</a></li>
+      <li><a href="#risks">Risks</a></li>
+      <li><a href="#decide">Your decisions</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="top">
+      <span class="eyebrow">Plateau · branch restyle-survey · read-only audit</span>
+      <h1>One engine for every icon</h1>
+      <p class="lede">The goal: every icon is created, sized, placed, bordered and highlighted by the same code, so no icon can round a pixel differently from its neighbour. This page lists what exists today, where icons drift apart, and the order I recommend for unifying them.</p>
+      <p class="meta">Audited at commit 85494b6 · 30 Oct 2026 · no files changed by the audit</p>
+    </header>
+
+    <section id="verdict">
+      <h2>Verdict</h2>
+      <p>Shared building blocks exist, but only some icons use them. The rest create and place themselves, which is how the 1-pixel differences keep appearing.</p>
+      <div class="verdict">
+        <div><span class="q">One creation function?</span><span class="a no">No, several</span><span>3 of 9 icon types use it.</span></div>
+        <div><span class="q">One placement function?</span><span class="a part">Partly</span><span>6 types use it; 6 spots still call <code>SetPoint</code> directly.</span></div>
+        <div><span class="q">One settings path?</span><span class="a no">No</span><span>Each element styles itself; only the border call is shared.</span></div>
+      </div>
+    </section>
+
+    <section id="inventory">
+      <h2>Every icon today</h2>
+      <p>Line numbers are from the audit commit. "Builder" means <code>ns.CreateIcon</code> / <code>ns.DecorateIcon</code> in <span class="path">Core/Border.lua</span>. "Placer" means <code>ns.PlaceAt</code> / <code>ns.PlaceIcon</code> in <span class="path">Core/Layout.lua</span>.</p>
+      <div class="table-box">
+        <table>
+          <thead><tr><th>Icon</th><th>Built by</th><th>Placed by</th><th>Size in whole pixels</th><th>Border</th><th>Where</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Live aura buttons</td><td><span class="chip part">Blizzard + builder</span></td><td><span class="chip no">Blizzard grid</span></td><td><span class="chip yes">Yes</span></td><td>Icon ring + Blizzard dispel art</td><td><span class="path">Auras.lua</span> 98–132, 167–218, 669–678</td></tr>
+            <tr><td class="name">Preview aura icons</td><td><span class="chip yes">Builder</span></td><td><span class="chip part">Group: placer · icons: SetPoint</span></td><td><span class="chip yes">Yes</span></td><td>Icon ring + sample dispel ring</td><td><span class="path">Auras.lua</span> 869–888, 911–970</td></tr>
+            <tr><td class="name">Kicker icons</td><td><span class="chip yes">Builder</span></td><td><span class="chip part">Holder: placer · icons: SetPoint</span></td><td><span class="chip yes">Yes</span></td><td>Icon ring, class colour</td><td><span class="path">Kickers.lua</span> 205–297, 316–352, 363–389</td></tr>
+            <tr><td class="name">Cast-bar spell icon</td><td><span class="chip no">Bare texture</span></td><td><span class="chip no">SetPoint, 2 branches</span></td><td><span class="chip no">No</span></td><td>Four-sided bar border</td><td><span class="path">Castbar.lua</span> 343–349, 480–519</td></tr>
+            <tr><td class="name">Raid marker</td><td><span class="chip no">Bare texture</span></td><td><span class="chip yes">Placer</span></td><td><span class="chip no">No</span></td><td>None (separate ring on plate)</td><td><span class="path">RaidMarker.lua</span> 23–31, 76–80</td></tr>
+            <tr><td class="name">Elite icon</td><td><span class="chip no">Bare texture</span></td><td><span class="chip yes">Placer</span></td><td><span class="chip no">No</span></td><td>None</td><td><span class="path">Classification.lua</span> 21–40, 73</td></tr>
+            <tr><td class="name">Quest icon</td><td><span class="chip no">Bare texture</span></td><td><span class="chip yes">Placer</span></td><td><span class="chip no">No</span></td><td>None</td><td><span class="path">Quest.lua</span> 28–61, 89</td></tr>
+            <tr><td class="name">Faction icon</td><td><span class="chip no">Bare texture</span></td><td><span class="chip part">Placer · SetPoint in name-only mode</span></td><td><span class="chip no">No</span></td><td>None</td><td><span class="path">Faction.lua</span> 29–55</td></tr>
+            <tr><td class="name">Class resource</td><td><span class="chip no">Frame + status bars</span></td><td><span class="chip part">Holder: placer · pips: SetPoint</span></td><td><span class="chip no">No</span></td><td>Glow only</td><td><span class="path">ClassPower.lua</span> 103–114, 145–155</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="drift">
+      <h2>Where they differ</h2>
+      <div class="split">
+        <div>
+          <h3>Anchoring</h3>
+          <ul class="tight">
+            <li>Placer: top-left corner, rounded to a whole pixel.</li>
+            <li>Icons inside aura groups and kicker sections: the group's corner, not rounded.</li>
+            <li>Cast icon: top-left or top-right of the plate when spanning, otherwise left or right of the bar.</li>
+            <li>Live aura containers: the group's corner on the plate, not rounded.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Offset maths</h3>
+          <ul class="tight">
+            <li>Three sign systems: the position table, the aura grow direction, and hand-written <code>gap</code> / <code>-gap</code> on the cast icon.</li>
+            <li>Only live auras multiply by the aura scale factor; the preview icons do not.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Parent and level</h3>
+          <ul class="tight">
+            <li>Overlay +0: preview aura groups, elite, quest, faction.</li>
+            <li>Overlay +1: live aura containers.</li>
+            <li>Overlay +5: kicker holder, raid marker layer.</li>
+            <li>Cast bar level: spell icon.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Size, border, crop</h3>
+          <ul class="tight">
+            <li>Whole pixels only for auras and kickers.</li>
+            <li>Two border systems: the icon ring and the four-sided bar border.</li>
+            <li>Crop: fixed for auras, per picture style for kickers, a setting for the cast icon, never for glyphs.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Text on icons</h3>
+          <ul class="tight">
+            <li>Auras: Plateau's own timer and stack text, placed by one helper.</li>
+            <li>Kickers: Blizzard's built-in countdown number, re-centred by hand.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Updates and scale changes</h3>
+          <ul class="tight">
+            <li>Auras redraw on scale change through their own hook; the cast bar has another.</li>
+            <li>Kickers rely on their borders' registration.</li>
+            <li>Glyph icons never redraw on scale change.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan">
+      <h2>Recommended plan</h2>
+      <p>Ordered so each step is safe on its own and the riskiest step, renaming saved settings, comes last and is optional. Steps 1–5 change no saved settings.</p>
+      <ol class="steps">
+        <li>
+          <h3>One icon builder for every icon</h3>
+          <span class="risk low">Low risk</span>
+          <p>Build the cast icon, raid marker, elite, quest and faction icons with the same builder the auras and kickers use. Glyph icons get the builder's border turned off. Every icon then has the same picture texture, border, rounding and hover/selected highlight.</p>
+        </li>
+        <li>
+          <h3>One sizing rule</h3>
+          <span class="risk low">Low risk</span>
+          <p>Route every icon size through the whole-pixel helper: glyph sizes, the cast icon's bar height, and class-resource pip width and spacing. Apply the aura scale factor in the preview as well, so the preview matches live plates.</p>
+        </li>
+        <li>
+          <h3>One placement routine, including inside groups</h3>
+          <span class="risk med">Medium risk</span>
+          <p>Add one grid helper on top of the placer so icons inside aura groups, kicker sections and class-resource pips are placed by the same top-left, whole-pixel rule as everything else. Convert the cast icon's two branches into placer calls. Give the faction icon's name-only mode a placer call anchored to the name.</p>
+        </li>
+        <li>
+          <h3>One text rule on icons</h3>
+          <span class="risk low">Low risk</span>
+          <p>Use Plateau's own countdown text on kicker icons, placed by the same helper as aura timers, instead of Blizzard's number. Timers and stacks then sit identically on every icon.</p>
+        </li>
+        <li>
+          <h3>One table of frame levels and one scale-change hook</h3>
+          <span class="risk low">Low risk</span>
+          <p>Name the layer each icon type sits on in one place, and register every icon with one scale-change redraw so glyph icons stop going stale after a scale change.</p>
+        </li>
+        <li>
+          <h3>One settings shape (optional)</h3>
+          <span class="risk high">High risk</span>
+          <p>First read every icon's settings through one adapter that turns each element's own keys into a common shape (size, border, crop, placement). Rename the saved keys only if you want the options pages unified too. That needs a profile migration.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="keep">
+      <h2>Leave as is</h2>
+      <ul class="tight">
+        <li>Blizzard creates the live aura buttons and lays them out in its aura container. Plateau can decorate them but not build or place them.</li>
+        <li>Blizzard sizes the live aura containers as auras come and go, so they keep their corner anchor. That corner already lands on a whole pixel.</li>
+        <li>Class-resource pips stay status bars. Only their size and placement move to the shared code.</li>
+        <li>The cast icon keeps the option to span the plate and the bar. The span becomes an input to the placer rather than its own branch.</li>
+      </ul>
+    </section>
+
+    <section id="risks">
+      <h2>Risks</h2>
+      <div class="split">
+        <div>
+          <h3>Real differences</h3>
+          <ul class="tight">
+            <li>Multi-icon grids with growth direction (auras).</li>
+            <li>Clipped kicker sections that open by raid-marker value.</li>
+            <li>A cast icon sized from the bar that can span two frames.</li>
+            <li>Atlas glyphs that may not be square.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Accidental differences</h3>
+          <ul class="tight">
+            <li>Direct <code>SetPoint</code> against the placer.</li>
+            <li>Rounded against unrounded sizes.</li>
+            <li>Frame levels.</li>
+            <li>Missing aura scale in the preview.</li>
+            <li>Two border systems on icons.</li>
+            <li>Two kinds of countdown text.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Blizzard restrictions and combat</h3>
+          <ul class="tight">
+            <li>Live aura buttons are restricted: no Lua functions stored on them and no nil passed to their setters.</li>
+            <li>Restyling waits while Blizzard's restriction is active.</li>
+            <li>Sizes and scales can be hidden values in combat, so the placer must keep its guards.</li>
+            <li>Plateau's own plate frames aren't secure, so there's no taint risk there.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Saved settings</h3>
+          <ul class="tight">
+            <li>Auras use <code>side</code> / <code>align</code> / <code>grow</code>.</li>
+            <li>Other icons use <code>position</code> / <code>gap</code>.</li>
+            <li>The cast icon uses <code>iconSide</code> / <code>iconSpan</code>.</li>
+            <li>Renaming means migrating every profile, Default included.</li>
+            <li>The defaults, the options rows and the drag-snap code would all have to change together.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="decide">
+      <h2>Your decisions</h2>
+      <div class="decide">
+        <h3>Cast-icon border</h3>
+        <span class="opt">Match the cast bar's border style (today), or use the same icon border as auras and kickers?</span>
+      </div>
+      <div class="decide">
+        <h3>Kicker countdown</h3>
+        <span class="opt">Switch to Plateau's own timer text like the auras (recommended), or keep Blizzard's number?</span>
+      </div>
+      <div class="decide">
+        <h3>Saved settings</h3>
+        <span class="opt">Stop at the adapter in step 6 (no migration), or rename the keys and migrate profiles?</span>
+      </div>
+      <div class="decide">
+        <h3>Where to start</h3>
+        <span class="opt">Steps 1–2 together are the smallest change that puts every icon on the same builder and sizing.</span>
+      </div>
+    </section>
+
+    <footer>Nothing on this page has been implemented yet. In-game checks of the current branch are still pending.</footer>
+  </main>
+</div>
+
+</body>
+</html>
