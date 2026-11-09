@@ -4,192 +4,177 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lixard's WoW Addons</title>
-<meta name="description" content="Guides for Lixard's World of Warcraft addons: LixardUI, Profession Knowledge Treasures, CharacterStats, HealerMana, SmartAssist and Auto Expansion Filter.">
+<meta name="description" content="Free World of Warcraft addons by Lixard, with guides and GitHub links.">
 <meta name="color-scheme" content="dark">
-<script>try{var q=/[?&]theme=(\w+)/.exec(location.search),t=q?q[1]:localStorage.getItem("lixard-theme");if(t==="workbench"||t==="ledger"||t==="classic")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Barlow:wght@400;600;700&amp;family=Barlow+Condensed:wght@600;700&amp;family=Cinzel:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css?v=5">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/" aria-current="page">
-      <span class="brand-mark" aria-hidden="true"><span class="brand-l">L</span></span>
-      <span class="brand-name">Lixard's Addons</span>
-    </a>
-    <div class="header-tools">
-    <nav class="site-nav" aria-label="Addons">
-      <ul>
-        <li><a href="/lixardui/">LixardUI</a></li>
-        <li><a href="/plateau/">Plateau</a></li>
-        <li><a href="/profession-knowledge-treasures/">Knowledge Treasures</a></li>
-        <li><a href="/characterstats/">CharacterStats</a></li>
-        <li><a href="/healermana/">HealerMana</a></li>
-        <li><a href="/smart-assist/">SmartAssist</a></li>
-        <li><a href="/auto-expansion-filter/">Auto Expansion Filter</a></li>
-      </ul>
-    </nav>
-      <div class="theme-picker" role="group" aria-label="Site theme">
-        <button type="button" data-theme-pick="classic" aria-pressed="true">Classic</button>
-        <button type="button" data-theme-pick="workbench" aria-pressed="false">Workbench</button>
-        <button type="button" data-theme-pick="ledger" aria-pressed="false">Ledger</button>
-      </div>
-    </div>
+    <a class="brand" href="/"><span class="slit" aria-hidden="true"></span><span class="brand-name">Lixard</span><span class="brand-sub">WoW addons</span></a>
+    <nav class="site-nav" aria-label="Site"><a href="/#addons" aria-current=page>Addons</a><a href="/#install">Install</a><a href="https://github.com/lixard-wow/">GitHub</a></nav>
   </div>
+  <div class="scutes" aria-hidden="true"></div>
 </header>
-
 <main id="main">
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">World of Warcraft addons</p>
-      <h1>Small addons that do one job well.</h1>
-      <p class="lede">Free addons for World of Warcraft, each with a full guide: what it does, how to set it up, every command and setting, and answers to common questions.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#addons">Browse the addons</a>
-        <a class="btn" href="#install">How to install</a>
-      </div>
+      <p class="eyebrow"><span class="slit" aria-hidden="true"></span>World of Warcraft addons</p>
+      <h1>Addons by Lixard</h1>
+      <p class="lede">Free addons for retail World of Warcraft and WoW Forever, from single-job tools to a complete interface. Every one is open on GitHub; the released ones are also on CurseForge.</p>
     </div>
   </section>
 
   <div class="wrap">
-    <h2 class="section-title" id="addons">The addons</h2>
-    <p class="section-intro">The released ones work with the current retail game. LixardUI is still in development, Plateau is in beta and downloads from GitHub, and the rest are on CurseForge. Pick one to read its guide.</p>
-
+    <div class="section-head" id="addons"><h2>The addons</h2></div>
+    <ul class="filters" aria-label="Show"><li><button type="button" data-filter="all" aria-pressed="true">All<span class="count">17</span></button></li><li><button type="button" data-filter="released" aria-pressed="false">Released<span class="count">6</span></button></li><li><button type="button" data-filter="beta" aria-pressed="false">Beta<span class="count">1</span></button></li><li><button type="button" data-filter="dev" aria-pressed="false">In development<span class="count">10</span></button></li></ul>
     <div class="addon-grid">
-      <article class="addon-card">
-        <header>
-          <span class="icon-tile" aria-hidden="true" style="background:none;border:0;overflow:hidden"><img src="/assets/lixardui-logo.png" alt="" width="52" height="52" style="width:100%;height:100%;display:block"></span>
-          <div>
-            <h3>LixardUI</h3>
-            <p class="tag">Full interface &middot; In development</p>
-          </div>
-        </header>
-        <p>A full replacement for the game's interface: unit, party and raid frames, action bars, bags, chat, minimap, quest tracker, tooltips, an addon manager and more, all in one look. Not released yet.</p>
-        <div class="card-links">
-          <a class="btn btn-primary" href="/lixardui/">Read the guide</a>
-        </div>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3><a href="/lixardui/">LixardUI</a></h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail · Forever</li><li><code>/lui</code></li></ul>
+        <p>A complete replacement for the game&#x27;s interface in one look: unit, party and raid frames, action bars, bags, chat, minimap, world map and quest tracker, tooltips, info bars, skins for Blizzard&#x27;s windows and an addon manager.</p>
+        <div class="links"><a class="btn btn-main" href="/lixardui/">Guide <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 8h9M8.5 4l4 4-4 4"/></svg></a></div>
       </article>
-
-      <article class="addon-card">
-        <header>
-          <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h8"/><rect x="3" y="9" width="18" height="5" rx="1"/><path d="M3 11.5h11"/><rect x="3" y="16" width="18" height="3" rx="1"/></svg></span>
-          <div>
-            <h3>Plateau Nameplates</h3>
-            <p class="tag">Nameplates &middot; Beta</p>
-          </div>
-        </header>
-        <p>Fast, readable enemy nameplates built for Midnight's addon rules, with cast bars that follow your interrupt, threat colors, and a settings window where you click and drag a live sample plate.</p>
-        <div class="card-links">
-          <a class="btn btn-primary" href="/plateau/">Read the guide</a>
-          <a class="btn" href="https://github.com/lixard-wow/Plateau">GitHub</a>
-        </div>
+      <article class="addon panel" data-status="beta">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3><a href="/plateau/">Plateau</a></h3><span class="tag tag-beta">Beta</span></div>
+        <ul class="meta"><li>Retail · Forever</li><li><code>/plt</code></li></ul>
+        <p>Fast, readable enemy nameplates built for Midnight&#x27;s addon rules. Cast bars that follow your interrupt, threat colors for your role, enemy type colors, and a settings window where you click and drag a live sample plate.</p>
+        <div class="links"><a class="btn btn-main" href="/plateau/">Guide <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 8h9M8.5 4l4 4-4 4"/></svg></a><a class="btn" href="https://github.com/lixard-wow/Plateau"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a><a class="btn" href="https://www.curseforge.com/projects/1749349"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 5h9.5c1.2-1.6 3-2.4 5.5-2.5v1.8c-1.6.1-2.4.6-3 1.4.9.8 1.4 1.9 1.4 3.2 0 1.7-1 3-2.6 3.6v1.5H4.2V12c-1.5-.6-2.3-1.7-2.5-3.4H1z"/></svg> CurseForge</a></div>
       </article>
-
-      <article class="addon-card">
-        <header>
-          <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h16V20H4z"/><path d="M4 9.5 6 5h12l2 4.5"/><path d="M10 13.5h4"/></svg></span>
-          <div>
-            <h3>Profession Knowledge Treasures</h3>
-            <p class="tag">Professions &middot; Midnight</p>
-          </div>
-        </header>
-        <p>Routes you to every profession knowledge treasure in Midnight, moves the waypoint on as you loot, and walks you through the Darkmoon Faire quests one step at a time.</p>
-        <div class="card-links">
-          <a class="btn btn-primary" href="/profession-knowledge-treasures/">Read the guide</a>
-          <a class="btn" href="https://www.curseforge.com/wow/addons/profession-knowledge-treasures">CurseForge</a>
-        </div>
+      <article class="addon panel" data-status="released">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>Keyfolio</h3><span class="tag tag-released">Released</span></div>
+        <ul class="meta"><li>Retail</li><li><code>/kf</code></li></ul>
+        <p>Every character&#x27;s Mythic+ week in one window: Great Vault, keystone, best runs, crests, raid lockouts, weekly quests, currencies and gold, plus your party&#x27;s keys and dungeon loot.</p>
+        <div class="links"><a class="btn" href="https://www.curseforge.com/projects/1769983"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 5h9.5c1.2-1.6 3-2.4 5.5-2.5v1.8c-1.6.1-2.4.6-3 1.4.9.8 1.4 1.9 1.4 3.2 0 1.7-1 3-2.6 3.6v1.5H4.2V12c-1.5-.6-2.3-1.7-2.5-3.4H1z"/></svg> CurseForge</a></div>
       </article>
-
-      <article class="addon-card">
-        <header>
-          <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20v-8"/><path d="M10 20V5"/><path d="M15 20v-6"/><path d="M20 20V9"/><path d="M3 20h18"/></svg></span>
-          <div>
-            <h3>CharacterStats</h3>
-            <p class="tag">Character &middot; Stats</p>
-          </div>
-        </header>
-        <p>Keeps your item level and stats in a small on-screen panel, adds a stat list and gear slot details to the character window, and lets you share your stats in chat.</p>
-        <div class="card-links">
-          <a class="btn btn-primary" href="/characterstats/">Read the guide</a>
-          <a class="btn" href="https://www.curseforge.com/wow/addons/characterstats">CurseForge</a>
-        </div>
+      <article class="addon panel" data-status="released">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3><a href="/profession-knowledge-treasures/">Profession Knowledge Treasures</a></h3><span class="tag tag-released">Released</span></div>
+        <ul class="meta"><li>Retail</li><li><code>/pkt</code></li></ul>
+        <p>Routes you to every profession knowledge treasure in Midnight for your own professions, moves the waypoint on as you loot, suggests portals, and walks you through the Darkmoon Faire quests.</p>
+        <div class="links"><a class="btn btn-main" href="/profession-knowledge-treasures/">Guide <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 8h9M8.5 4l4 4-4 4"/></svg></a><a class="btn" href="https://github.com/lixard-wow/ProfessionKnowledgeTreasures"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a><a class="btn" href="https://www.curseforge.com/projects/1488283"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 5h9.5c1.2-1.6 3-2.4 5.5-2.5v1.8c-1.6.1-2.4.6-3 1.4.9.8 1.4 1.9 1.4 3.2 0 1.7-1 3-2.6 3.6v1.5H4.2V12c-1.5-.6-2.3-1.7-2.5-3.4H1z"/></svg> CurseForge</a></div>
       </article>
-
-      <article class="addon-card">
-        <header>
-          <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s6 6.4 6 10.8a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5z"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"/></svg></span>
-          <div>
-            <h3>HealerMana</h3>
-            <p class="tag">Group &middot; Healing</p>
-          </div>
-        </header>
-        <p>Shows the mana of every healer in your group or raid in one small display, so you can see who is running low before the pull.</p>
-        <div class="card-links">
-          <a class="btn btn-primary" href="/healermana/">Read the guide</a>
-          <a class="btn" href="https://www.curseforge.com/wow/addons/healermana">CurseForge</a>
-        </div>
+      <article class="addon panel" data-status="released">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3><a href="/characterstats/">CharacterStats</a></h3><span class="tag tag-released">Released</span></div>
+        <ul class="meta"><li>Retail · Forever · MoP Classic</li><li><code>/cs</code></li></ul>
+        <p>Your item level and stats in a small on-screen panel, a stat list and gear details on the character window, and a quick way to share your stats in chat.</p>
+        <div class="links"><a class="btn btn-main" href="/characterstats/">Guide <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 8h9M8.5 4l4 4-4 4"/></svg></a><a class="btn" href="https://github.com/lixard-wow/CharacterStats"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a><a class="btn" href="https://www.curseforge.com/projects/1386469"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 5h9.5c1.2-1.6 3-2.4 5.5-2.5v1.8c-1.6.1-2.4.6-3 1.4.9.8 1.4 1.9 1.4 3.2 0 1.7-1 3-2.6 3.6v1.5H4.2V12c-1.5-.6-2.3-1.7-2.5-3.4H1z"/></svg> CurseForge</a></div>
       </article>
-
-      <article class="addon-card">
-        <header>
-          <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1.6"/><path d="M12 2.5v4"/><path d="M12 17.5v4"/><path d="M2.5 12h4"/><path d="M17.5 12h4"/></svg></span>
-          <div>
-            <h3>SmartAssist</h3>
-            <p class="tag">Hunter &middot; Rogue &middot; Priest</p>
-          </div>
-        </header>
-        <p>Keeps your Misdirection, Tricks of the Trade or Power Infusion macro pointed at the right player, switching to the tank automatically when you join a group.</p>
-        <div class="card-links">
-          <a class="btn btn-primary" href="/smart-assist/">Read the guide</a>
-          <a class="btn" href="https://www.curseforge.com/wow/addons/mark-of-the-tank">CurseForge</a>
-        </div>
+      <article class="addon panel" data-status="released">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3><a href="/healermana/">HealerMana</a></h3><span class="tag tag-released">Released</span></div>
+        <ul class="meta"><li>Retail</li><li><code>/healermana</code></li></ul>
+        <p>The mana of every healer in your group or raid in one small display, so you can see who is running low before the pull.</p>
+        <div class="links"><a class="btn btn-main" href="/healermana/">Guide <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 8h9M8.5 4l4 4-4 4"/></svg></a><a class="btn" href="https://github.com/lixard-wow/HealerMana"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a><a class="btn" href="https://www.curseforge.com/projects/1647742"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 5h9.5c1.2-1.6 3-2.4 5.5-2.5v1.8c-1.6.1-2.4.6-3 1.4.9.8 1.4 1.9 1.4 3.2 0 1.7-1 3-2.6 3.6v1.5H4.2V12c-1.5-.6-2.3-1.7-2.5-3.4H1z"/></svg> CurseForge</a></div>
       </article>
-
-      <article class="addon-card">
-        <header>
-          <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16l-6.2 7.2v5.8l-3.6 1.8v-7.6z"/></svg></span>
-          <div>
-            <h3>Auto Expansion Filter</h3>
-            <p class="tag">Auction House &middot; Crafting Orders</p>
-          </div>
-        </header>
-        <p>Turns on "Current Expansion Only" for you every time you open the Auction House or the Crafting Orders browser, so old-expansion items stay out of your results.</p>
-        <div class="card-links">
-          <a class="btn btn-primary" href="/auto-expansion-filter/">Read the guide</a>
-          <a class="btn" href="https://www.curseforge.com/wow/addons/auto-expansion-filter">CurseForge</a>
-        </div>
+      <article class="addon panel" data-status="released">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3><a href="/smart-assist/">SmartAssist</a></h3><span class="tag tag-released">Released</span></div>
+        <ul class="meta"><li>Retail</li><li><code>/smartassist</code></li></ul>
+        <p>Keeps your Misdirection, Tricks of the Trade or Power Infusion macro pointed at the right player, switching to the tank by itself when you join a group.</p>
+        <div class="links"><a class="btn btn-main" href="/smart-assist/">Guide <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 8h9M8.5 4l4 4-4 4"/></svg></a><a class="btn" href="https://github.com/lixard-wow/SmartAssist"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a><a class="btn" href="https://www.curseforge.com/projects/1508635"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 5h9.5c1.2-1.6 3-2.4 5.5-2.5v1.8c-1.6.1-2.4.6-3 1.4.9.8 1.4 1.9 1.4 3.2 0 1.7-1 3-2.6 3.6v1.5H4.2V12c-1.5-.6-2.3-1.7-2.5-3.4H1z"/></svg> CurseForge</a></div>
+      </article>
+      <article class="addon panel" data-status="released">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3><a href="/auto-expansion-filter/">Auto Expansion Filter</a></h3><span class="tag tag-released">Released</span></div>
+        <ul class="meta"><li>Retail</li><li><code>/aef</code></li></ul>
+        <p>Ticks “Current Expansion Only” for you every time you open the Auction House or the Crafting Orders browser.</p>
+        <div class="links"><a class="btn btn-main" href="/auto-expansion-filter/">Guide <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 8h9M8.5 4l4 4-4 4"/></svg></a><a class="btn" href="https://github.com/lixard-wow/AutoExpansionFilter"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a><a class="btn" href="https://www.curseforge.com/projects/1450270"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 5h9.5c1.2-1.6 3-2.4 5.5-2.5v1.8c-1.6.1-2.4.6-3 1.4.9.8 1.4 1.9 1.4 3.2 0 1.7-1 3-2.6 3.6v1.5H4.2V12c-1.5-.6-2.3-1.7-2.5-3.4H1z"/></svg> CurseForge</a></div>
+      </article>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>Spellscript</h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail</li><li><code>/sps</code></li></ul>
+        <p>A macro editor that checks your macro as you type, explains every line in plain English, shows what it would do right now, keeps every version, and has a library of popular macros for each spec.</p>
+        <div class="links"></div>
+      </article>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>Pub</h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail · Forever</li><li><code>/pub</code></li></ul>
+        <p>A friends window that shows who is free to play right now, remembers every character your Battle.net friends play, and keeps a history of everyone you&#x27;ve grouped with.</p>
+        <div class="links"></div>
+      </article>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>ErrorLens</h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail · Forever</li><li><code>/errorlens</code></li></ul>
+        <p>A cleaner error window for BugGrabber: search, filters, ignore, copying that stays safe when an error repeats, and a one-click wipe.</p>
+        <div class="links"></div>
+      </article>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>FocusControl</h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail · Forever</li><li><code>/fc</code></li></ul>
+        <p>Builds a focus-and-mark macro and an interrupt-your-focus macro for your class, set up per character.</p>
+        <div class="links"></div>
+      </article>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>Debrief</h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail</li><li><code>/debrief</code></li></ul>
+        <p>A post-fight coach: after a pull, boss or key it compares your presses with SimulationCraft&#x27;s priority list, with a timeline, graphs, an opener check and concrete tips.</p>
+        <div class="links"></div>
+      </article>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>Ultimate Keystone Reminder</h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail</li><li><code>/ukr</code></li></ul>
+        <p>Shows your party&#x27;s keystones, reminds you to change your key after a dungeon, and lists whose key fits the dungeon on ready check.</p>
+        <div class="links"></div>
+      </article>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>QuietDungeon</h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail</li><li><code>/quietdungeon</code></li></ul>
+        <p>Hides Blizzard&#x27;s popups, banners and toasts while you&#x27;re inside a dungeon.</p>
+        <div class="links"></div>
+      </article>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>CraftersMark</h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail</li></ul>
+        <p>Finds crafters for an item and predicts the crafting quality you&#x27;ll get, including inspiration chances.</p>
+        <div class="links"></div>
+      </article>
+      <article class="addon panel" data-status="dev">
+        <span class="slit marker" aria-hidden="true"></span>
+        <div class="addon-top"><h3>Fieldtest</h3><span class="tag tag-dev">In development</span></div>
+        <ul class="meta"><li>Retail · Forever</li><li><code>/ft</code></li></ul>
+        <p>In-game test checklists for any addon: tick what works, note what doesn&#x27;t, then copy the results or save a log.</p>
+        <div class="links"></div>
       </article>
     </div>
 
-    <h2 class="section-title" id="install">Installing an addon</h2>
-    <p class="section-intro">The easiest way is the CurseForge app, which also keeps your addons up to date.</p>
-    <div class="about">
-      <div>
-        <h3>With the CurseForge app</h3>
-        <p>Search for the addon by name in the World of Warcraft section and click Install. Updates arrive automatically.</p>
-      </div>
-      <div>
-        <h3>By hand</h3>
-        <p>Download the zip from the addon's CurseForge page and unzip it into <code>World of Warcraft\<wbr>_retail_\<wbr>Interface\<wbr>AddOns</code>. For Plateau, follow the <a href="/plateau/#install">GitHub steps in its guide</a>.</p>
-      </div>
-      <div>
-        <h3>Then in game</h3>
-        <p>Restart the game or type <code>/reload</code>, and make sure the addon is ticked in the AddOns list on the character select screen.</p>
-      </div>
+    <div class="section-head" id="install"><h2>Installing</h2></div>
+    <div class="install">
+      <div class="panel"><h3><span class="num">1</span>CurseForge app</h3><p>For released addons: search the name in the World of Warcraft section and click Install. Updates arrive by themselves.</p></div>
+      <div class="panel"><h3><span class="num">2</span>From GitHub</h3><p>On the addon's GitHub page click <strong>Code</strong>, then <strong>Download ZIP</strong>, and copy the addon folders from the zip into <code>_retail_\Interface\AddOns</code>.</p></div>
+      <div class="panel"><h3><span class="num">3</span>In game</h3><p>Restart the game the first time, then tick the addon in the AddOns list on the character screen. After updates, <code>/reload</code> is enough.</p></div>
     </div>
   </div>
 </main>
-
 <footer class="site-footer">
   <div class="wrap">
-    <p>Made by Lixard.</p>
+    <p>Made by Lixard &middot; <a href="https://github.com/lixard-wow">github.com/lixard-wow</a></p>
     <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
   </div>
 </footer>
-<script src="/assets/theme.js?v=4" defer></script>
+<script>
+document.querySelectorAll(".filters button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var f = b.dataset.filter;
+    document.querySelectorAll(".filters button").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+    document.querySelectorAll(".addon").forEach(function (c) { c.hidden = f !== "all" && c.dataset.status !== f; });
+  });
+});
+</script>
 </body>
 </html>

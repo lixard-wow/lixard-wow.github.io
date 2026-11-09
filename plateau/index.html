@@ -3,258 +3,194 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plateau Nameplates Guide</title>
-<meta name="description" content="How to use Plateau Nameplates: fast, readable enemy nameplates built for Midnight's addon rules, with a live settings preview, six looks, interrupt-aware cast bars, threat colors and profiles.">
+<title>Plateau Nameplates guide · Lixard's WoW Addons</title>
+<meta name="description" content="Enemy nameplates that stay fast and easy to read in big pulls, and keep working in dungeons and raids under Midnight&#x27;s addon rules. The settings window has a live sample nameplate: click a part to edit it, drag it to move it.">
 <meta name="color-scheme" content="dark">
-<script>try{var q=/[?&]theme=(\w+)/.exec(location.search),t=q?q[1]:localStorage.getItem("lixard-theme");if(t==="workbench"||t==="ledger"||t==="classic")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Barlow:wght@400;600;700&amp;family=Barlow+Condensed:wght@600;700&amp;family=Cinzel:wght@600;700&amp;family=Roboto+Condensed:wght@400;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=4">
-<link rel="stylesheet" href="/assets/previews.css?v=7">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css?v=5">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true"><span class="brand-l">L</span></span>
-      <span class="brand-name">Lixard's Addons</span>
-    </a>
-    <div class="header-tools">
-    <nav class="site-nav" aria-label="Addons">
-      <ul>
-        <li><a href="/lixardui/">LixardUI</a></li>
-        <li><a href="/plateau/" aria-current="page">Plateau</a></li>
-        <li><a href="/profession-knowledge-treasures/">Knowledge Treasures</a></li>
-        <li><a href="/characterstats/">CharacterStats</a></li>
-        <li><a href="/healermana/">HealerMana</a></li>
-        <li><a href="/mark-of-the-tank/">Mark of the Tank</a></li>
-        <li><a href="/auto-expansion-filter/">Auto Expansion Filter</a></li>
-      </ul>
-    </nav>
-      <div class="theme-picker" role="group" aria-label="Site theme">
-        <button type="button" data-theme-pick="classic" aria-pressed="true">Classic</button>
-        <button type="button" data-theme-pick="workbench" aria-pressed="false">Workbench</button>
-        <button type="button" data-theme-pick="ledger" aria-pressed="false">Ledger</button>
-      </div>
-    </div>
+    <a class="brand" href="/"><span class="slit" aria-hidden="true"></span><span class="brand-name">Lixard</span><span class="brand-sub">WoW addons</span></a>
+    <nav class="site-nav" aria-label="Site"><a href="/#addons">Addons</a><a href="/#install">Install</a><a href="https://github.com/lixard-wow/">GitHub</a></nav>
   </div>
+  <div class="scutes" aria-hidden="true"></div>
 </header>
-
 <main id="main">
-  <section class="hero">
-    <div class="wrap addon-hero">
-      <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h8"/><rect x="3" y="9" width="18" height="5" rx="1"/><path d="M3 11.5h11"/><rect x="3" y="16" width="18" height="3" rx="1"/></svg></span>
-      <div>
-        <p class="eyebrow">User guide &middot; Beta</p>
-        <h1>Plateau Nameplates</h1>
-        <p class="lede">Enemy nameplates that stay fast and easy to read in a big pull, built to work inside Midnight's addon rules. A settings window with a live sample plate lets you click any part to edit it and drag it where you want it.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://github.com/lixard-wow/Plateau">Download on GitHub</a>
-          <a class="btn" href="#install">How to install</a>
-        </div>
-        <ul class="facts">
-          <li><strong>Command:</strong> <code>/plt</code></li>
-          <li><strong>Game:</strong> Retail (Midnight); WoW Forever in testing</li>
-          <li><strong>Language:</strong> English</li>
-        </ul>
-      </div>
+  <section class="guide-hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="slit" aria-hidden="true"></span>User guide <span class="tag tag-beta" style="margin-left:6px">Beta</span></p>
+      <h1>Plateau Nameplates</h1>
+      <p class="lede">Enemy nameplates that stay fast and easy to read in big pulls, and keep working in dungeons and raids under Midnight&#x27;s addon rules. The settings window has a live sample nameplate: click a part to edit it, drag it to move it.</p>
+      <div class="actions"><a class="btn btn-main" href="https://github.com/lixard-wow/Plateau"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> GitHub</a><a class="btn" href="https://www.curseforge.com/projects/1749349"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M1 5h9.5c1.2-1.6 3-2.4 5.5-2.5v1.8c-1.6.1-2.4.6-3 1.4.9.8 1.4 1.9 1.4 3.2 0 1.7-1 3-2.6 3.6v1.5H4.2V12c-1.5-.6-2.3-1.7-2.5-3.4H1z"/></svg> CurseForge</a><a class="btn" href="#install">How to install</a></div>
+      <ul class="facts"><li><span>Command</span><code>/plt</code></li><li><span>Game</span>Retail · WoW Forever</li><li><span>Version</span>0.1.5</li><li><span>Language</span>English</li></ul>
     </div>
   </section>
-
   <div class="wrap guide">
-    <aside class="toc">
-      <nav aria-label="On this page">
-        <p>On this page</p>
-        <ol>
-          <li><a href="#preview">Preview</a></li>
-          <li><a href="#beta">Beta status</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#install">Installing</a></li>
-          <li><a href="#start">Getting started</a></li>
-          <li><a href="#window">The settings window</a></li>
-          <li><a href="#looks">Looks and profiles</a></li>
-          <li><a href="#midnight">Midnight's rules</a></li>
-          <li><a href="#commands">Commands</a></li>
-          <li><a href="#faq">Tips and FAQ</a></li>
-        </ol>
-      </nav>
-    </aside>
+    <aside class="toc"><nav aria-label="On this page"><p>On this page</p><ol><li><a href="#features">Features</a></li><li><a href="#install">Installing</a></li><li><a href="#start">Getting started</a></li><li><a href="#settings">Settings</a></li><li><a href="#commands">Commands</a></li><li><a href="#whats-new">What&#x27;s new</a></li><li><a href="#faq">Tips and FAQ</a></li></ol></nav></aside>
     <div class="guide-body">
-<section id="preview" aria-label="Preview">
-<h2>Preview</h2>
-<figure class="preview">
-<div class="preview-stage">
-<div class="np" id="np-plate" data-target="on" data-kick="ready">
-<div class="np-auras"><span style="background-image:url(/assets/icons/spell_shadow_shadowwordpain.jpg)"><i>14</i></span><span style="background-image:url(/assets/icons/spell_shadow_abominationexplosion.jpg)"><i>6</i></span></div>
-<div class="np-health"><i></i><b></b><div class="np-name-anchor"><div class="np-name">Wastelander Phaseblade</div></div><div class="np-glow"></div></div>
-<div class="np-cast"><i></i><span>Shadow Bolt</span></div>
-<div class="np-icon" style="background-image:url(/assets/icons/spell_shadow_shadowbolt.jpg)"></div>
-</div>
-</div>
-<div class="preview-controls" data-group="#np-plate">
-<button type="button" data-set="data-target" data-value="on" aria-pressed="true">Your target</button>
-<button type="button" data-set="data-target" data-value="off" aria-pressed="false">Not targeted</button>
-</div>
-<div class="preview-controls" data-group="#np-plate">
-<button type="button" data-set="data-kick" data-value="ready" aria-pressed="true">Interrupt ready</button>
-<button type="button" data-set="data-kick" data-value="cooldown" aria-pressed="false">Interrupt on cooldown</button>
-</div>
-<figcaption>Illustration of an enemy casting, drawn in the default Minimal look from its real sizes and colors: name on the bar's edge, a slim cast bar with a spell icon beside both bars, your debuffs above, and a soft blue glow on your target. Plates you aren't targeting fade during combat. The cast bar is green while your interrupt is ready and red while it's on cooldown.</figcaption>
-</figure>
+<section id="features" data-toc="Features">
+  <h2>Features</h2>
+  <h3>The nameplate</h3>
+  <ul>
+    <li>A health bar with your choice of size, texture, overlay pattern and border, plus absorbs, an execute tint and health marker lines.</li>
+    <li>Health text in many formats (percent, value, both, missing health and more), the name and the level, each placed where you like.</li>
+    <li>Who the enemy is attacking, shown in that player's class color.</li>
+    <li>Icons for raid markers, elites, rares and bosses, quest enemies (with objective progress) and a Horde or Alliance icon on players.</li>
+    <li>Your class resource (combo points, holy power, runes and so on) on your target, and a power bar on bosses.</li>
+  </ul>
+  <h3>Cast bar</h3>
+  <ul>
+    <li>Colors that follow your own interrupt: one while it's ready, another while it's on cooldown, and separate colors for important and uninterruptible casts.</li>
+    <li>A line on the bar shows where your interrupt comes back during the cast. Specs without an interrupt see the ready colors on casts that can be kicked, so healers can call them out.</li>
+    <li>The spell icon, a timer, who the cast is aimed at, who interrupted it, and a glow on important casts.</li>
+    <li>The cast bar can join the health bar inside one shared border.</li>
+  </ul>
+  <h3>Colors</h3>
+  <ul>
+    <li>Colors by enemy type: bosses, lieutenants, higher-level elites, elites, casters and minor enemies. You can limit these to dungeons, raids and delves.</li>
+    <li>Threat colors that follow your role, with an off-tank color for enemies another tank is holding. On WoW Forever, the role you pick in the group (tank, healer or DPS) decides which threat colors you see.</li>
+    <li>Colors for quest enemies, tapped enemies and enemy players (class colors), plus red-green and blue-yellow colorblind presets.</li>
+  </ul>
+  <h3>Auras</h3>
+  <ul>
+    <li>Your debuffs, crowd control, enemy buffs you can remove, and important auras, each with its own place, size and count.</li>
+    <li>Spells can be hidden or allowed, and these lists are saved per specialization.</li>
+    <li>Buff warnings mark an enemy that gains an important buff, a big defensive, an enrage or a magic buff you can purge.</li>
+  </ul>
+  <h3>In combat</h3>
+  <ul>
+    <li>Highlight your target, focus and mouseover with borders, glows, arrows or corner brackets, and fade the nameplates you aren't targeting.</li>
+    <li>Kick tracker: a party member's icon shows on the enemy they are marked to kick and on the one they last kicked, with their interrupt's cooldown. Plateau learns the markers from party chat and works with FocusControl.</li>
+    <li>Boss phase lines show where a fight changes phase. This season's bosses are built in, and you can edit any boss.</li>
+    <li>Mythic+ enemy forces shows how much each enemy is worth (retail only), and a threat percent can show on each nameplate.</li>
+  </ul>
+  <h3>Size, stacking and friendly names</h3>
+  <ul>
+    <li>Scale nameplates by enemy type, by combat, and for your target, focus, casters and mouseover.</li>
+    <li>Stacking presets, and an adjustable clickable area that can include the name and cast bar.</li>
+    <li>Friendly nameplates can show names only, with a guild or title line, in the open world and delves.</li>
+  </ul>
 </section>
-
-      <section id="beta">
-        <h2>Beta status</h2>
-        <div class="panel note">
-          <p><strong>Plateau is in beta.</strong> It has been played in the open world and in Mythic dungeons. Raids, PvP and WoW Forever are still being tested, and some settings may change before the first release. A CurseForge release is coming later; until then, download it from GitHub.</p>
-        </div>
-      </section>
-
-      <section id="features">
-        <h2>Features</h2>
-        <h3>The plate</h3>
-        <ul>
-          <li><strong>Health bar</strong> with your choice of texture and border, health text as percent, value or both, and the name above, below or in any corner.</li>
-          <li><strong>Who the enemy is attacking</strong>, shown on the bar in that player's class color.</li>
-          <li><strong>Absorb shields</strong>, <strong>execute range</strong> tinting and marker lines, and <strong>boss phase lines</strong> at the percentages where the boss you're fighting changes phase.</li>
-          <li><strong>Icons:</strong> raid markers, elite, rare and boss badges, quest enemies, a Horde or Alliance crest on players, and how much of the Mythic+ enemy forces each enemy is worth.</li>
-          <li><strong>Your class resource</strong> (combo points, holy power, runes and so on) on your target's plate, only for specs that use one.</li>
-        </ul>
-        <h3>The cast bar</h3>
-        <ul>
-          <li>Colors that follow <strong>your own interrupt</strong>: one while it's ready, another while it's on cooldown, and separate colors for casts Blizzard marks as important or that can't be interrupted.</li>
-          <li>A <strong>line on the bar</strong> showing where your interrupt comes back during the cast.</li>
-          <li>A glow on important casts, who the cast is aimed at, who interrupted it, and a short flash when it's interrupted.</li>
-          <li>Optionally join the cast bar to the health bar inside one shared border.</li>
-        </ul>
-        <h3>Colors</h3>
-        <ul>
-          <li><strong>By enemy type:</strong> bosses, lieutenants, elites, casters, melee and minor enemies.</li>
-          <li><strong>Threat</strong> using the right rule for your role, with an <strong>off-tank color</strong> for enemies another tank is holding.</li>
-          <li>Class colors for enemy players, your own reaction colors, and colorblind palettes.</li>
-        </ul>
-        <h3>Auras</h3>
-        <ul>
-          <li><strong>Your debuffs</strong>, <strong>crowd control</strong>, <strong>enemy buffs</strong> you can remove, and <strong>important auras</strong>, each placed and sized on its own.</li>
-          <li><strong>Buff warnings:</strong> a colored border, overlay and icon when an enemy gains an important buff, a big defensive, an enrage or a magic buff you can purge.</li>
-        </ul>
-        <h3>Target, focus and more</h3>
-        <ul>
-          <li>Highlight your target and focus with glows, borders, arrows or brackets, and fade the plates you aren't targeting.</li>
-          <li>Size enemies by type, grow casting enemies, and bring your target and casters to the front.</li>
-          <li>Friendly names only, with an optional guild line under players and titles such as &lt;Banker&gt; under NPCs (open world and delves).</li>
-        </ul>
-      </section>
-
-      <section id="install">
-        <h2>Installing</h2>
-        <ol class="steps">
-          <li>Open the <a href="https://github.com/lixard-wow/Plateau">Plateau page on GitHub</a>, click <strong>Code</strong>, then <strong>Download ZIP</strong>.</li>
-          <li>Open the zip. Inside the <code>Plateau-main</code> folder are two folders: <code>Plateau</code> and <code>Plateau_Options</code>.</li>
-          <li>Copy both into <code>World of Warcraft\<wbr>_retail_\<wbr>Interface\<wbr>AddOns</code>.</li>
-          <li>Restart the game. A full restart is needed the first time, and whenever an update adds new files.</li>
-        </ol>
-        <div class="panel note">
-          <p><strong>Only one nameplate addon at a time.</strong> If another one is enabled, Plateau offers to turn it off the first time it loads, since two would fight over the same plates.</p>
-        </div>
-      </section>
-
-      <section id="start">
-        <h2>Getting started</h2>
-        <ol class="steps">
-          <li>The first time you log in, Plateau asks you to pick one of six ready-made looks. Click one to use it.</li>
-          <li>Type <code>/plt</code> to open the settings. A short tour shows you around the first time.</li>
-          <li>Click any part of the sample plate at the top of the window to jump to its settings, or drag it to move it.</li>
-        </ol>
-        <p class="muted">You can also open the settings from the <strong>Plateau Nameplates</strong> button in the game menu (Escape), or from the minimap button.</p>
-      </section>
-
-      <section id="window">
-        <h2>The settings window</h2>
-        <dl class="settings">
-          <dt>Live preview</dt><dd>A sample plate shows every change as you make it. Click a part to edit it; drag it to move it, and hold Shift to place it freely.</dd>
-          <dt>Nameplate types</dt><dd>Enemy is the base. Enemy player, Friendly, My target and My focus follow it and only differ where you change them.</dd>
-          <dt>Undo and redo</dt><dd>Every change is remembered by name, so you can step back several at once.</dd>
-          <dt>Search</dt><dd>Find any setting by name or by words in its description.</dd>
-          <dt>Reset</dt><dd>Right-click a setting to reset it, or reset the whole page with Reset this section.</dd>
-          <dt>Help</dt><dd>A Help page with 44 topics covering every page and the common how-tos.</dd>
-        </dl>
-      </section>
-
-      <section id="looks">
-        <h2>Looks and profiles</h2>
-        <p>Six ready-made looks are shown as live cards: <strong>Minimal</strong> (the default), <strong>Familiar layout</strong>, <strong>Classic unit frames</strong>, <strong>Compact</strong>, <strong>Clean and flat</strong> and <strong>Bold and crisp</strong>. Each is a profile you can keep tweaking, and a built-in one can be restored to how it shipped.</p>
-        <ul>
-          <li><strong>Switch automatically:</strong> pick a profile for the open world, dungeons, raids, delves, or each specialization. Switches wait until combat ends.</li>
-          <li><strong>Share:</strong> export a profile as a text string and import it on another computer or give it to a friend.</li>
-        </ul>
-      </section>
-
-      <section id="midnight">
-        <h2>How Midnight's rules affect Plateau</h2>
-        <p>Since patch 12.0 the game hides some information from addons in combat and in instances, such as enemy health values, casts and which enemy a unit is. Plateau never reads or compares those hidden values; it hands them straight to the game's own functions, which is why cast colors, aura filters and buff warnings keep working in dungeons and raids.</p>
-        <p>A few things the game doesn't allow at all. Friendly nameplates are drawn by the game itself in dungeons, raids and arenas, and threat can be hidden in some fights. Any setting that depends on hidden information shows a warning icon, and its tooltip explains what happens.</p>
-      </section>
-
-      <section id="commands">
-        <h2>Commands</h2>
-        <div class="table-box">
-          <table>
-            <thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead>
-            <tbody>
-              <tr><td><code>/plt</code></td><td>Open the settings. <code>/plateau</code> also works.</td></tr>
-              <tr><td><code>/plt setup</code></td><td>Pick a ready-made look.</td></tr>
-              <tr><td><code>/plt minimap</code></td><td>Show or hide the minimap button.</td></tr>
-              <tr><td><code>/plt debug</code></td><td>Print the version, memory and CPU numbers. Paste it when you report a bug.</td></tr>
-              <tr><td><code>/plt debug reset</code></td><td>Start counting slow frames from now.</td></tr>
-              <tr><td><code>/plt reset</code></td><td>Put every setting in the current profile back to its default.</td></tr>
-              <tr><td><code>/plt cvars restore</code></td><td>Undo every game nameplate setting Plateau changed.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section id="faq" class="faq">
-        <h2>Tips and FAQ</h2>
-        <details>
-          <summary>Something looks wrong after an update.</summary>
-          <p>Type <code>/reload</code>. If the update added new files, restart the game fully, since a reload doesn't load new files.</p>
-        </details>
-        <details>
-          <summary>A plate is the wrong color.</summary>
-          <p>Colors on the Health bar page are checked top to bottom, and your target and focus colors win over all of them. Threat and tagged colors win over enemy type colors. <code>/plt debug</code> with the enemy targeted tells you which rule picked the color.</p>
-        </details>
-        <details>
-          <summary>Why don't friendly nameplates change in dungeons?</summary>
-          <p>The game locks friendly nameplates in dungeons, raids and arenas and draws them itself. Plateau's friendly options apply in the open world and in delves.</p>
-        </details>
-        <details>
-          <summary>I want my old game nameplate settings back.</summary>
-          <p>Plateau remembers every game setting it changes. Type <code>/plt cvars restore</code> to put them all back, or right-click one on the Game settings page.</p>
-        </details>
-        <details>
-          <summary>Is it available in other languages?</summary>
-          <p>Plateau is in English for now, and translations are welcome. Every string can be translated, and the license allows you to edit the language files to send one in; translators are credited. The <a href="https://github.com/lixard-wow/Plateau/blob/main/localization/README.md">translation guide</a> explains how.</p>
-        </details>
-        <details>
-          <summary>How do I report a bug?</summary>
-          <p>Copy the error from BugSack (or the game's error window) and the output of <code>/plt debug</code>, and open an issue on the <a href="https://github.com/lixard-wow/Plateau/issues">GitHub page</a>.</p>
-        </details>
-      </section>
+<section id="install" data-toc="Installing">
+  <h2>Installing</h2>
+  <p>The easiest way is the CurseForge app: search for <strong>Plateau Nameplates</strong> and click Install.</p>
+  <p>To install by hand:</p>
+  <ol class="steps">
+    <li>Download the zip from CurseForge, or from GitHub at <a href="https://github.com/lixard-wow/Plateau">github.com/lixard-wow/Plateau</a> (<strong>Code</strong> &gt; <strong>Download ZIP</strong>).</li>
+    <li>Open the zip and find the two folders <code>Plateau</code> and <code>Plateau_Options</code>.</li>
+    <li>Copy both into <code>World of Warcraft\_retail_\Interface\AddOns</code>. For WoW Forever, copy them into <code>World of Warcraft\_forever_\Interface\AddOns</code>.</li>
+    <li>Restart the game the first time. A reload isn't enough to load new files.</li>
+  </ol>
+  <div class="note"><p>Use one nameplate addon at a time. If another one is turned on, Plateau lists it the first time it loads. You can disable it, keep it, or disable Plateau instead. Either choice reloads your UI.</p></div>
+</section>
+<section id="start" data-toc="Getting started">
+  <h2>Getting started</h2>
+  <ol class="steps">
+    <li>The first time you log in, Plateau asks you to pick a look: <strong>Minimal</strong>, <strong>Blizzard-like</strong>, <strong>Unit frame</strong>, <strong>Compact</strong>, <strong>Flat</strong> or <strong>Heavy</strong>. All six put things in the same places and only the bars differ. You can also use a profile you already have, or paste a profile string.</li>
+    <li>Type <code>/plt</code> to open the settings. You can also use the Plateau button in the game menu (Escape) or the minimap button.</li>
+    <li>Click a part of the sample nameplate at the top to jump to its settings, or drag it to move it.</li>
+  </ol>
+  <p>Each new character gets the same setup the first time, so you can pick a profile for it. Type <code>/plt setup</code> to see the list of looks again.</p>
+</section>
+<section id="settings" data-toc="Settings">
+  <h2>Settings</h2>
+  <h3>Using the window</h3>
+  <dl class="settings">
+    <dt>Preview</dt><dd>A sample nameplate shows every change as you make it. Drag a part to move it; it snaps to the bar when dropped near it. Hold Shift to place it anywhere. The arrow keys nudge the selected part, and you can click the offset readout to type an exact value.</dd>
+    <dt>Turned off tray</dt><dd>Drag a part into the tray to turn it off, and out again to turn it on.</dd>
+    <dt>Changed only</dt><dd>Settings you changed from the default are marked. Changed only shows just those.</dd>
+    <dt>Undo, redo and search</dt><dd>Ctrl+Z undoes, Ctrl+Y redoes and Ctrl+F jumps to search.</dd>
+    <dt>Reset</dt><dd>Right-click a setting to put it back to its default.</dd>
+  </dl>
+  <h3>Plate</h3>
+  <p><strong>Health bar</strong>, <strong>Colors</strong>, <strong>Text</strong>, <strong>Cast bar</strong>, <strong>Auras</strong> and <strong>Icons</strong> control how each nameplate looks.</p>
+  <dl class="settings">
+    <dt>Pixel-perfect borders</dt><dd>Keeps bars and borders sharp at any UI scale.</dd>
+    <dt>Enemy type colors</dt><dd>Colors enemies by type. Turn on <em>Only in dungeons, raids and delves</em> to keep the open world plain.</dd>
+    <dt>Threat colors</dt><dd>Colors enemies by threat in combat, on the health bar, its border or both. Add a warning color, a safe color and an <em>Off-tank color</em> (tanks only).</dd>
+    <dt>Join cast bar to health bar</dt><dd>Puts both bars inside one shared border.</dd>
+    <dt>Auras</dt><dd>Tabs for Your debuffs, Crowd control, Enemy buffs, Important auras, Warnings and Tooltips.</dd>
+  </dl>
+  <h3>In combat</h3>
+  <dl class="settings">
+    <dt>Target and focus</dt><dd>Tabs for Target, Focus and Mouseover: border, health bar texture, arrows, corner brackets and glow. <em>Glow around the cast bar</em> wraps the glow around your target's cast bar.</dd>
+    <dt>Interrupts</dt><dd>The kick tracker. Turn on <em>Show kicker icons</em>, then pick the <em>Icon picture</em>, <em>Where it shows</em> and whether to show <em>Countdown numbers</em>.</dd>
+    <dt>Dungeons and raids</dt><dd>Mythic+ enemy forces, Threat percent and Boss phase lines.</dd>
+  </dl>
+  <h3>Showing</h3>
+  <dl class="settings">
+    <dt>Visibility</dt><dd>Which nameplates show at all, fading for nameplates out of interrupt range or not targeted, and a separate look for out-of-combat nameplates.</dd>
+    <dt>Size</dt><dd>Scale by enemy type, by combat, and for your target, focus, casters and mouseover.</dd>
+    <dt>Stacking and clicks</dt><dd>Stacking presets, <em>Instant movement</em>, the stacking box size, and the clickable area. <em>Include name in clickable area</em> lets you click an enemy's name to target it.</dd>
+  </dl>
+  <h3>Friendly, Profiles and Window</h3>
+  <dl class="settings">
+    <dt>Friendly</dt><dd><em>Style friendly nameplates with Plateau</em>, show names only, and shorten names. You can also set the size of the friendly nameplates the game draws.</dd>
+    <dt>Profiles</dt><dd>Create, copy, rename and delete profiles. <em>Switch automatically</em> picks a profile by content (open world, dungeons, raids, delves and more) or by specialization, after combat ends. <em>Share</em> exports a profile as a text string or imports one, and shows the look before you apply it.</dd>
+    <dt>Window</dt><dd>Settings window scale, settings tooltips, the game menu button, the minimap button and the addon compartment entry. It also lists other nameplate addons and lets you disable Plateau for this character.</dd>
+    <dt>Help</dt><dd>What's new and help topics for things the settings can't show.</dd>
+  </dl>
+</section>
+<section id="commands" data-toc="Commands">
+  <h2>Commands</h2>
+  <div class="table-box"><table><thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead><tbody>
+    <tr><td><code>/plt</code></td><td>Open the settings. <code>/plateau</code> also works.</td></tr>
+    <tr><td><code>/plt setup</code></td><td>Pick a ready-made look.</td></tr>
+    <tr><td><code>/plt whatsnew</code></td><td>Open What's new on the Help page.</td></tr>
+    <tr><td><code>/plt minimap</code></td><td>Show or hide the minimap button.</td></tr>
+    <tr><td><code>/plt reset</code></td><td>Reset every setting in the active profile.</td></tr>
+    <tr><td><code>/plt cvars restore</code></td><td>Undo every game nameplate setting Plateau changed.</td></tr>
+  </tbody></table></div>
+</section>
+<section id="whats-new" data-toc="What's new">
+  <h2>What's new</h2>
+  <h3>0.1.5</h3>
+  <ul>
+    <li>On WoW Forever, colors set to dungeons only no longer show in the open world.</li>
+    <li>Corpses no longer keep an empty nameplate after you loot or skin them.</li>
+  </ul>
+  <h3>0.1.4</h3>
+  <ul>
+    <li>New kick tracker shows who is kicking which enemy, with their interrupt cooldown.</li>
+    <li>A new settings window: drag parts on the preview to place them, a turned off tray, Changed only, and Ctrl+Z, Ctrl+Y and Ctrl+F shortcuts.</li>
+    <li>Setup and import show a look before you apply it.</li>
+    <li>You can disable Plateau for one character only.</li>
+    <li>Enemy nameplates stack by default, and all nameplate text shares one font.</li>
+    <li>Bars, borders and icons line up to the exact pixel at any UI scale.</li>
+  </ul>
+</section>
+<section id="faq" class="faq" data-toc="Tips and FAQ">
+  <h2>Tips and FAQ</h2>
+  <details><summary>Something looks wrong after an update.</summary><p>Type <code>/reload</code>. If the update added new files, restart the game fully, since a reload doesn't load new files.</p></details>
+  <details><summary>Why don't friendly nameplates change in dungeons?</summary><p>The game draws friendly nameplates itself in dungeons, raids and arenas. Plateau's friendly options apply in the open world and in delves.</p></details>
+  <details><summary>Does Plateau work in dungeons and raids?</summary><p>Since patch 12.0 the game hides some information from addons in combat and in instances. Plateau never reads those values; it passes them to the game's own functions, so cast colors, aura filters and warnings keep working. Settings that depend on hidden values say so in their tooltip.</p></details>
+  <details><summary>How do threat colors work on WoW Forever?</summary><p>Threat colors follow your group role. On WoW Forever, the role you pick (tank, healer or DPS) decides whether you see tank or non-tank threat colors.</p></details>
+  <details><summary>I want my old game nameplate settings back.</summary><p>Plateau remembers every game setting it changes. Type <code>/plt cvars restore</code> to put them all back.</p></details>
+  <details><summary>Can I use my setup on another character or computer?</summary><p>Yes. Open the Profiles page, export the profile under Share, and import the string on the other character or computer. New characters can also pick an existing profile during setup.</p></details>
+  <details><summary>How do I report a bug?</summary><p>Copy the error text and open an issue on <a href="https://github.com/lixard-wow/Plateau/issues">GitHub</a>, or leave a comment on CurseForge.</p></details>
+</section>
     </div>
   </div>
 </main>
-
 <footer class="site-footer">
   <div class="wrap">
-    <p>Made by Lixard.</p>
+    <p>Made by Lixard &middot; <a href="https://github.com/lixard-wow">github.com/lixard-wow</a></p>
     <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
   </div>
 </footer>
-<script src="/assets/previews.js?v=4" defer></script>
-<script src="/assets/theme.js?v=4" defer></script>
+<script>
+var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+function mark() {
+  var i = 0;
+  secs.forEach(function (s, n) { if (s && s.getBoundingClientRect().top < 140) i = n; });
+  links.forEach(function (a, n) { a.classList.toggle("on", n === i); });
+}
+addEventListener("scroll", mark, { passive: true }); mark();
+</script>
 </body>
 </html>
