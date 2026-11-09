@@ -147,6 +147,7 @@ strong { color: var(--bone); }
   transition: background 0.15s;
 }
 .addon:hover { background: var(--raised); }
+.addon[hidden] { display: none; }
 .addon .marker { position: absolute; left: 13px; top: 30px; opacity: 0; transition: opacity 0.15s; }
 .addon:hover .marker { opacity: 1; }
 .addon-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }

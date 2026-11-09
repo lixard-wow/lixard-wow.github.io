@@ -84,7 +84,7 @@ def page(title, desc, body, current=None, script=""):
 <meta name="color-scheme" content="dark">
 {FONTS}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=5">
+<link rel="stylesheet" href="/assets/site.css?v=6">
 </head>
 <body>
 {header(current)}
