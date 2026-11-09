@@ -1,0 +1,160 @@
+<!--meta
+title: CharacterStats
+status: released
+lede: Keep your item level and stats on screen without opening the character window. CharacterStats adds a small stat panel you can place anywhere, a stat list and gear slot details in the character window, and a quick way to share your stats in chat.
+command: /cs
+game: Retail · MoP Classic · WoW Forever
+version: 2.2.1
+curseforge: 1386469
+-->
+<section id="features" data-toc="Features">
+  <h2>Features</h2>
+  <h3>The stat panel</h3>
+  <ul>
+    <li><strong>An on-screen stat panel</strong> with item level, primary and secondary stats, defensive and utility stats, and movement speed. Move it anywhere, lock it, and scale it.</li>
+    <li><strong>Four looks:</strong> Original, Ledger, Meters and Companion. Each one is previewed live before you pick it.</li>
+    <li><strong>Pick your stats:</strong> turn any stat on or off, drag them into your own order, and recolor them.</li>
+    <li><strong>Sharing:</strong> right-click the panel to post your stats to your raid, party, target or a Battle.net friend.</li>
+  </ul>
+  <h3>The character window</h3>
+  <ul>
+    <li><strong>Stats in the character window</strong>, right next to your gear. Names are light gray and values white, or turn on per-stat colors.</li>
+    <li><strong>Gear slot details:</strong> item level colored by upgrade track, upgrade level (4/6 or 4/6 Hero), enchants and gems, and flags for missing enchants and empty sockets. You choose where each one sits.</li>
+    <li><strong>A wider character window</strong> that gives those details room next to your character.</li>
+    <li><strong>A gear drawer</strong> with Stats, Gear and Ratings tabs when you use the Companion look.</li>
+  </ul>
+  <h3>Diminishing returns</h3>
+  <ul>
+    <li>Hover critical strike, haste, mastery, versatility, leech, avoidance or speed to see your current penalty, the rating until the next penalty, and your effective rating.</li>
+    <li>In the Meters look, bars fill up to where the penalty starts, then a darker shade shows how far past it you are.</li>
+    <li>Item tooltips can show what each stat on an item is worth after diminishing returns.</li>
+    <li>The drawer's Ratings tab shows the rating you need for 1% more at your current penalty.</li>
+  </ul>
+  <h3>Everything else</h3>
+  <ul>
+    <li><strong>Profiles</strong>, with automatic switching when you change specialization.</li>
+    <li><strong>Window themes</strong> for the options window and popups: Classic, Workbench, Artisan Ledger, Horde and Alliance.</li>
+    <li><strong>Your language:</strong> show the addon in any of its 12 languages, whatever language your game uses.</li>
+    <li><strong>Character window check:</strong> it can notice when another addon also changes the character window and let you choose which one to keep.</li>
+  </ul>
+</section>
+<section id="install" data-toc="Installing">
+  <h2>Installing</h2>
+  <p>The easiest way is the CurseForge app: search for <strong>CharacterStats</strong> and click Install.</p>
+  <p>To install by hand:</p>
+  <ol class="steps">
+    <li>Download the zip from <a href="https://www.curseforge.com/wow/addons/characterstats">CurseForge</a> or from <a href="https://github.com/lixard-wow/CharacterStats">GitHub</a> (Code &gt; Download ZIP).</li>
+    <li>Copy the <code>CharacterStats</code> folder into <code>World of Warcraft\_retail_\Interface\AddOns</code>. For Mists of Pandaria Classic use <code>_classic_</code>, and for WoW Forever use <code>_forever_</code>, instead of <code>_retail_</code>.</li>
+    <li>Restart the game the first time, so it finds the new addon.</li>
+  </ol>
+</section>
+<section id="start" data-toc="Getting started">
+  <h2>Getting started</h2>
+  <ol class="steps">
+    <li>Log in. The stat panel appears on screen. Drag it with the left mouse button to where you want it.</li>
+    <li>Optional: type <code>/cs style</code> to pick a different look. Click a look to preview it, then click Use This Look.</li>
+    <li>Open your character window to see your stats beside your gear.</li>
+    <li>Open the options with <code>/cs config</code> or left-click the minimap button. The gear slot details and other character window extras are on the Character Frame page.</li>
+  </ol>
+  <div class="note"><p><strong>Minimap button:</strong> left-click opens the options, right-click shows or hides the stat panel, and Shift-click puts the panel back in its default position.</p></div>
+</section>
+<section id="settings" data-toc="Settings">
+  <h2>Settings</h2>
+  <p>Open the options with <code>/cs config</code>. Pages are listed in the sidebar.</p>
+  <h3>General</h3>
+  <dl class="settings">
+    <dt>Show Stats Frame</dt><dd>Show or hide the on-screen panel. On by default.</dd>
+    <dt>Lock Position</dt><dd>Stop the panel from being dragged.</dd>
+    <dt>Clamp to Screen</dt><dd>Keep the panel inside the edges of your screen. On by default.</dd>
+    <dt>Show Minimap Button</dt><dd>Show or hide the minimap button.</dd>
+    <dt>Display Mode</dt><dd>Show stats as a Percent, a Rating, or Both. Percent by default.</dd>
+    <dt>Decimal Places</dt><dd>Show 0, 1 or 2 decimal places.</dd>
+    <dt>Show Value After Diminishing Returns on Item Tooltips</dt><dd>Adds the after-penalty value to item tooltips. Retail only, off by default.</dd>
+    <dt>Addon Language (reloads the UI)</dt><dd>Use your game's language or pick any of the addon's languages.</dd>
+  </dl>
+  <h3>Stats</h3>
+  <dl class="settings">
+    <dt>Shown Stats</dt><dd>Tick the stats you want to see, drag them to reorder, and click a color to change it.</dd>
+    <dt>Enable All, Disable All, Reset Colors, Reset Order</dt><dd>Quick buttons for the whole list.</dd>
+  </dl>
+  <h3>Appearance</h3>
+  <dl class="settings">
+    <dt>Look</dt><dd>Original, Ledger, Meters or Companion. Applies to the stat panel and the character window.</dd>
+    <dt>Text</dt><dd>Font, Font Size (4 to 16), Text Opacity, Font Outline, Use Abbreviated Names and Show Colon After Label.</dd>
+    <dt>Frame Scale</dt><dd>Make the whole stat panel bigger or smaller.</dd>
+    <dt>Layout</dt><dd>Layout Direction, Alignment, Group Stats Under Headers, Row Spacing, and a separator line with its own color. In the Meters look you also get Bar Thickness and Show Diminishing Returns on Bars.</dd>
+    <dt>Background &amp; Border</dt><dd>Background Opacity, Border Style, Border Opacity and Border Color, or Use Class Color for Border.</dd>
+  </dl>
+  <h3>Character Frame</h3>
+  <dl class="settings">
+    <dt>Show Stats on Character Frame</dt><dd>List your stats in the character window. On by default.</dd>
+    <dt>Color Each Stat on Character Frame</dt><dd>Give each stat its own color in the character window. Off by default, which shows names in light gray and values in white.</dd>
+    <dt>Show Options Button on Character Frame</dt><dd>Adds a button to the character window that opens the options. Off by default.</dd>
+    <dt>Check for Conflicting Character Frame Addons</dt><dd>Off by default. Check Again runs the check now, and Reset Keep-Both Choices forgets your earlier answers.</dd>
+    <dt>Extra Character Frame Width</dt><dd>0 to 120 px. 50 by default; 0 keeps the game's original size.</dd>
+    <dt>Stat Bar Thickness</dt><dd>Bar size in the character window when you use the Meters look.</dd>
+    <dt>Gear Slots</dt><dd>Show Item Level on Gear Slots, Show Upgrade Level on Gear Slots (4/6 Hero), Flag Missing Enchants and Empty Gem Sockets, and Show Enchants and Gems Next to Gear Slots. All are off by default. Each part has its own size and placement: on the icon, or beside it at the top, middle or bottom.</dd>
+    <dt>Show Enchants As</dt><dd>A quality icon (name on hover) or the enchant name.</dd>
+    <dt>Gear Slot Colors</dt><dd>A color for each upgrade track, plus Missing Enchant and Empty Gem Socket Dot.</dd>
+  </dl>
+  <h3>Profiles</h3>
+  <dl class="settings">
+    <dt>Active Profile</dt><dd>Switch profiles, or use New, Copy, Delete or Reset.</dd>
+    <dt>Automatically switch by specialization</dt><dd>Pick a profile for each of your specs and it changes when you do.</dd>
+  </dl>
+  <h3>Window settings</h3>
+  <p>The gear button in the options window's title bar opens the window's own settings. The minimize button next to it folds the window down to its title bar.</p>
+  <dl class="settings">
+    <dt>Theme</dt><dd>Classic (the default), Workbench, Artisan Ledger, Horde or Alliance.</dd>
+    <dt>Accent Color</dt><dd>Pick a color or use your class color. Used by the Classic theme.</dd>
+    <dt>Options Window Scale</dt><dd>Make the options window bigger or smaller.</dd>
+  </dl>
+</section>
+<section id="commands" data-toc="Commands">
+  <h2>Commands</h2>
+  <div class="table-box"><table>
+    <thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead>
+    <tbody>
+      <tr><td><code>/cs</code></td><td>Show or hide the stat panel.</td></tr>
+      <tr><td><code>/cs config</code></td><td>Open the options. <code>/cs options</code> also works.</td></tr>
+      <tr><td><code>/cs style</code></td><td>Choose a look. <code>/cs look</code> also works.</td></tr>
+      <tr><td><code>/cs theme</code></td><td>Switch to the next window theme.</td></tr>
+      <tr><td><code>/cs locale</code></td><td>Choose the addon's language. <code>/cs language</code> also works.</td></tr>
+      <tr><td><code>/cs show</code> or <code>/cs hide</code></td><td>Show or hide the stat panel.</td></tr>
+      <tr><td><code>/cs reset</code></td><td>Put the stat panel back in its default position.</td></tr>
+      <tr><td><code>/cs resetminimap</code></td><td>Put the minimap button back in its default position.</td></tr>
+      <tr><td><code>/cs refresh</code></td><td>Update your stats right now.</td></tr>
+      <tr><td><code>/cs help</code></td><td>List the commands in chat.</td></tr>
+    </tbody>
+  </table></div>
+  <p><code>/charstats</code> and <code>/cstats</code> work the same as <code>/cs</code>.</p>
+</section>
+<section id="whats-new" data-toc="What's new">
+  <h2>What's new</h2>
+  <h3>2.2.1</h3>
+  <ul>
+    <li>Two new window themes: Horde (blood red and iron) and Alliance (royal blue and gold).</li>
+    <li>Stats in the character window now use neutral colors: names light gray, values white. Turn on Color Each Stat on Character Frame to get the per-stat colors back.</li>
+    <li>Updated for patch 12.1.5.</li>
+    <li>WoW Forever: Mastery is no longer listed, and Haste, Expertise and Hit are hidden while they're 0.</li>
+    <li>Primary stat and caster detection no longer break when the game hides stats in combat.</li>
+  </ul>
+  <h3>2.2.0</h3>
+  <ul>
+    <li>Four looks for the stat panel and the character window, picked with <code>/cs style</code>.</li>
+    <li>Gear slot details, a wider character window and a gear drawer with Stats, Gear and Ratings tabs.</li>
+    <li>Diminishing returns on hover, on the Meters bars and on item tooltips.</li>
+    <li>A new options window with a page sidebar and window themes.</li>
+    <li>WoW Forever support and a much better character window on Mists of Pandaria Classic.</li>
+    <li>Choose the addon's language with <code>/cs locale</code>.</li>
+  </ul>
+</section>
+<section id="faq" class="faq" data-toc="Tips and FAQ">
+  <h2>Tips and FAQ</h2>
+  <details><summary>Where did the colors in my character window go?</summary><p>Stats in the character window are now light gray and white by default. Turn on Color Each Stat on Character Frame on the Character Frame page to color each stat again.</p></details>
+  <details><summary>Some of my stats show a dash in combat.</summary><p>The game hides some values from addons during combat. CharacterStats never guesses at hidden numbers, so it shows a dash until the game makes them available again.</p></details>
+  <details><summary>Why is my Versatility lower than the character sheet?</summary><p>CharacterStats shows the versatility from your rating, live in combat. Flat bonuses such as Mark of the Wild are left out because the game hides them from addons in combat.</p></details>
+  <details><summary>I can't open the options.</summary><p>The options window, the look picker and the Share menu can't open during combat. Try again once combat ends.</p></details>
+  <details><summary>Another addon also changes my character window.</summary><p>Turn on Check for Conflicting Character Frame Addons on the Character Frame page. It asks whether to turn off CharacterStats' part, turn off the other addon, or keep both.</p></details>
+  <details><summary>My character window is wider than before.</summary><p>CharacterStats adds 50 px to make room for the gear slot details. Set Extra Character Frame Width to 0 to get the original size back.</p></details>
+</section>

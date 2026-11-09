@@ -1,0 +1,150 @@
+<!--meta
+title: Plateau Nameplates
+status: beta
+lede: Enemy nameplates that stay fast and easy to read in big pulls, and keep working in dungeons and raids under Midnight's addon rules. The settings window has a live sample nameplate: click a part to edit it, drag it to move it.
+command: /plt
+game: Retail · WoW Forever
+version: 0.1.5
+curseforge: 1749349
+-->
+<section id="features" data-toc="Features">
+  <h2>Features</h2>
+  <h3>The nameplate</h3>
+  <ul>
+    <li>A health bar with your choice of size, texture, overlay pattern and border, plus absorbs, an execute tint and health marker lines.</li>
+    <li>Health text in many formats (percent, value, both, missing health and more), the name and the level, each placed where you like.</li>
+    <li>Who the enemy is attacking, shown in that player's class color.</li>
+    <li>Icons for raid markers, elites, rares and bosses, quest enemies (with objective progress) and a Horde or Alliance icon on players.</li>
+    <li>Your class resource (combo points, holy power, runes and so on) on your target, and a power bar on bosses.</li>
+  </ul>
+  <h3>Cast bar</h3>
+  <ul>
+    <li>Colors that follow your own interrupt: one while it's ready, another while it's on cooldown, and separate colors for important and uninterruptible casts.</li>
+    <li>A line on the bar shows where your interrupt comes back during the cast. Specs without an interrupt see the ready colors on casts that can be kicked, so healers can call them out.</li>
+    <li>The spell icon, a timer, who the cast is aimed at, who interrupted it, and a glow on important casts.</li>
+    <li>The cast bar can join the health bar inside one shared border.</li>
+  </ul>
+  <h3>Colors</h3>
+  <ul>
+    <li>Colors by enemy type: bosses, lieutenants, higher-level elites, elites, casters and minor enemies. You can limit these to dungeons, raids and delves.</li>
+    <li>Threat colors that follow your role, with an off-tank color for enemies another tank is holding. On WoW Forever, the role you pick in the group (tank, healer or DPS) decides which threat colors you see.</li>
+    <li>Colors for quest enemies, tapped enemies and enemy players (class colors), plus red-green and blue-yellow colorblind presets.</li>
+  </ul>
+  <h3>Auras</h3>
+  <ul>
+    <li>Your debuffs, crowd control, enemy buffs you can remove, and important auras, each with its own place, size and count.</li>
+    <li>Spells can be hidden or allowed, and these lists are saved per specialization.</li>
+    <li>Buff warnings mark an enemy that gains an important buff, a big defensive, an enrage or a magic buff you can purge.</li>
+  </ul>
+  <h3>In combat</h3>
+  <ul>
+    <li>Highlight your target, focus and mouseover with borders, glows, arrows or corner brackets, and fade the nameplates you aren't targeting.</li>
+    <li>Kick tracker: a party member's icon shows on the enemy they are marked to kick and on the one they last kicked, with their interrupt's cooldown. Plateau learns the markers from party chat and works with FocusControl.</li>
+    <li>Boss phase lines show where a fight changes phase. This season's bosses are built in, and you can edit any boss.</li>
+    <li>Mythic+ enemy forces shows how much each enemy is worth (retail only), and a threat percent can show on each nameplate.</li>
+  </ul>
+  <h3>Size, stacking and friendly names</h3>
+  <ul>
+    <li>Scale nameplates by enemy type, by combat, and for your target, focus, casters and mouseover.</li>
+    <li>Stacking presets, and an adjustable clickable area that can include the name and cast bar.</li>
+    <li>Friendly nameplates can show names only, with a guild or title line, in the open world and delves.</li>
+  </ul>
+</section>
+<section id="install" data-toc="Installing">
+  <h2>Installing</h2>
+  <p>The easiest way is the CurseForge app: search for <strong>Plateau Nameplates</strong> and click Install.</p>
+  <p>To install by hand:</p>
+  <ol class="steps">
+    <li>Download the zip from CurseForge, or from GitHub at <a href="https://github.com/lixard-wow/Plateau">github.com/lixard-wow/Plateau</a> (<strong>Code</strong> &gt; <strong>Download ZIP</strong>).</li>
+    <li>Open the zip and find the two folders <code>Plateau</code> and <code>Plateau_Options</code>.</li>
+    <li>Copy both into <code>World of Warcraft\_retail_\Interface\AddOns</code>. For WoW Forever, copy them into <code>World of Warcraft\_forever_\Interface\AddOns</code>.</li>
+    <li>Restart the game the first time. A reload isn't enough to load new files.</li>
+  </ol>
+  <div class="note"><p>Use one nameplate addon at a time. If another one is turned on, Plateau lists it the first time it loads. You can disable it, keep it, or disable Plateau instead. Either choice reloads your UI.</p></div>
+</section>
+<section id="start" data-toc="Getting started">
+  <h2>Getting started</h2>
+  <ol class="steps">
+    <li>The first time you log in, Plateau asks you to pick a look: <strong>Minimal</strong>, <strong>Blizzard-like</strong>, <strong>Unit frame</strong>, <strong>Compact</strong>, <strong>Flat</strong> or <strong>Heavy</strong>. All six put things in the same places and only the bars differ. You can also use a profile you already have, or paste a profile string.</li>
+    <li>Type <code>/plt</code> to open the settings. You can also use the Plateau button in the game menu (Escape) or the minimap button.</li>
+    <li>Click a part of the sample nameplate at the top to jump to its settings, or drag it to move it.</li>
+  </ol>
+  <p>Each new character gets the same setup the first time, so you can pick a profile for it. Type <code>/plt setup</code> to see the list of looks again.</p>
+</section>
+<section id="settings" data-toc="Settings">
+  <h2>Settings</h2>
+  <h3>Using the window</h3>
+  <dl class="settings">
+    <dt>Preview</dt><dd>A sample nameplate shows every change as you make it. Drag a part to move it; it snaps to the bar when dropped near it. Hold Shift to place it anywhere. The arrow keys nudge the selected part, and you can click the offset readout to type an exact value.</dd>
+    <dt>Turned off tray</dt><dd>Drag a part into the tray to turn it off, and out again to turn it on.</dd>
+    <dt>Changed only</dt><dd>Settings you changed from the default are marked. Changed only shows just those.</dd>
+    <dt>Undo, redo and search</dt><dd>Ctrl+Z undoes, Ctrl+Y redoes and Ctrl+F jumps to search.</dd>
+    <dt>Reset</dt><dd>Right-click a setting to put it back to its default.</dd>
+  </dl>
+  <h3>Plate</h3>
+  <p><strong>Health bar</strong>, <strong>Colors</strong>, <strong>Text</strong>, <strong>Cast bar</strong>, <strong>Auras</strong> and <strong>Icons</strong> control how each nameplate looks.</p>
+  <dl class="settings">
+    <dt>Pixel-perfect borders</dt><dd>Keeps bars and borders sharp at any UI scale.</dd>
+    <dt>Enemy type colors</dt><dd>Colors enemies by type. Turn on <em>Only in dungeons, raids and delves</em> to keep the open world plain.</dd>
+    <dt>Threat colors</dt><dd>Colors enemies by threat in combat, on the health bar, its border or both. Add a warning color, a safe color and an <em>Off-tank color</em> (tanks only).</dd>
+    <dt>Join cast bar to health bar</dt><dd>Puts both bars inside one shared border.</dd>
+    <dt>Auras</dt><dd>Tabs for Your debuffs, Crowd control, Enemy buffs, Important auras, Warnings and Tooltips.</dd>
+  </dl>
+  <h3>In combat</h3>
+  <dl class="settings">
+    <dt>Target and focus</dt><dd>Tabs for Target, Focus and Mouseover: border, health bar texture, arrows, corner brackets and glow. <em>Glow around the cast bar</em> wraps the glow around your target's cast bar.</dd>
+    <dt>Interrupts</dt><dd>The kick tracker. Turn on <em>Show kicker icons</em>, then pick the <em>Icon picture</em>, <em>Where it shows</em> and whether to show <em>Countdown numbers</em>.</dd>
+    <dt>Dungeons and raids</dt><dd>Mythic+ enemy forces, Threat percent and Boss phase lines.</dd>
+  </dl>
+  <h3>Showing</h3>
+  <dl class="settings">
+    <dt>Visibility</dt><dd>Which nameplates show at all, fading for nameplates out of interrupt range or not targeted, and a separate look for out-of-combat nameplates.</dd>
+    <dt>Size</dt><dd>Scale by enemy type, by combat, and for your target, focus, casters and mouseover.</dd>
+    <dt>Stacking and clicks</dt><dd>Stacking presets, <em>Instant movement</em>, the stacking box size, and the clickable area. <em>Include name in clickable area</em> lets you click an enemy's name to target it.</dd>
+  </dl>
+  <h3>Friendly, Profiles and Window</h3>
+  <dl class="settings">
+    <dt>Friendly</dt><dd><em>Style friendly nameplates with Plateau</em>, show names only, and shorten names. You can also set the size of the friendly nameplates the game draws.</dd>
+    <dt>Profiles</dt><dd>Create, copy, rename and delete profiles. <em>Switch automatically</em> picks a profile by content (open world, dungeons, raids, delves and more) or by specialization, after combat ends. <em>Share</em> exports a profile as a text string or imports one, and shows the look before you apply it.</dd>
+    <dt>Window</dt><dd>Settings window scale, settings tooltips, the game menu button, the minimap button and the addon compartment entry. It also lists other nameplate addons and lets you disable Plateau for this character.</dd>
+    <dt>Help</dt><dd>What's new and help topics for things the settings can't show.</dd>
+  </dl>
+</section>
+<section id="commands" data-toc="Commands">
+  <h2>Commands</h2>
+  <div class="table-box"><table><thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead><tbody>
+    <tr><td><code>/plt</code></td><td>Open the settings. <code>/plateau</code> also works.</td></tr>
+    <tr><td><code>/plt setup</code></td><td>Pick a ready-made look.</td></tr>
+    <tr><td><code>/plt whatsnew</code></td><td>Open What's new on the Help page.</td></tr>
+    <tr><td><code>/plt minimap</code></td><td>Show or hide the minimap button.</td></tr>
+    <tr><td><code>/plt reset</code></td><td>Reset every setting in the active profile.</td></tr>
+    <tr><td><code>/plt cvars restore</code></td><td>Undo every game nameplate setting Plateau changed.</td></tr>
+  </tbody></table></div>
+</section>
+<section id="whats-new" data-toc="What's new">
+  <h2>What's new</h2>
+  <h3>0.1.5</h3>
+  <ul>
+    <li>On WoW Forever, colors set to dungeons only no longer show in the open world.</li>
+    <li>Corpses no longer keep an empty nameplate after you loot or skin them.</li>
+  </ul>
+  <h3>0.1.4</h3>
+  <ul>
+    <li>New kick tracker shows who is kicking which enemy, with their interrupt cooldown.</li>
+    <li>A new settings window: drag parts on the preview to place them, a turned off tray, Changed only, and Ctrl+Z, Ctrl+Y and Ctrl+F shortcuts.</li>
+    <li>Setup and import show a look before you apply it.</li>
+    <li>You can disable Plateau for one character only.</li>
+    <li>Enemy nameplates stack by default, and all nameplate text shares one font.</li>
+    <li>Bars, borders and icons line up to the exact pixel at any UI scale.</li>
+  </ul>
+</section>
+<section id="faq" class="faq" data-toc="Tips and FAQ">
+  <h2>Tips and FAQ</h2>
+  <details><summary>Something looks wrong after an update.</summary><p>Type <code>/reload</code>. If the update added new files, restart the game fully, since a reload doesn't load new files.</p></details>
+  <details><summary>Why don't friendly nameplates change in dungeons?</summary><p>The game draws friendly nameplates itself in dungeons, raids and arenas. Plateau's friendly options apply in the open world and in delves.</p></details>
+  <details><summary>Does Plateau work in dungeons and raids?</summary><p>Since patch 12.0 the game hides some information from addons in combat and in instances. Plateau never reads those values; it passes them to the game's own functions, so cast colors, aura filters and warnings keep working. Settings that depend on hidden values say so in their tooltip.</p></details>
+  <details><summary>How do threat colors work on WoW Forever?</summary><p>Threat colors follow your group role. On WoW Forever, the role you pick (tank, healer or DPS) decides whether you see tank or non-tank threat colors.</p></details>
+  <details><summary>I want my old game nameplate settings back.</summary><p>Plateau remembers every game setting it changes. Type <code>/plt cvars restore</code> to put them all back.</p></details>
+  <details><summary>Can I use my setup on another character or computer?</summary><p>Yes. Open the Profiles page, export the profile under Share, and import the string on the other character or computer. New characters can also pick an existing profile during setup.</p></details>
+  <details><summary>How do I report a bug?</summary><p>Copy the error text and open an issue on <a href="https://github.com/lixard-wow/Plateau/issues">GitHub</a>, or leave a comment on CurseForge.</p></details>
+</section>

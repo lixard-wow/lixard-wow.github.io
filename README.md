@@ -16,4 +16,6 @@ Plain HTML and CSS, served by GitHub Pages from the `main` branch. No build step
 | Auto Expansion Filter | `auto-expansion-filter/` |
 | Mark of the Tank (redirects to SmartAssist) | `mark-of-the-tank/` |
 
+Pages are generated: edit `_src/build.py` (home list) or `_src/guides/<slug>.html` (guide text), then run `python _src/build.py .` from the repo root and copy `_src/site.css` to `assets/site.css`. GitHub Pages does not publish `_src/`.
+
 Shared styles live in `assets/site.css`. Bump the `?v=` number on the stylesheet link in every page when it changes.

@@ -1,0 +1,136 @@
+<!--meta
+title: HealerMana
+status: released
+lede: HealerMana shows the mana of every healer in your group or raid in one small display, so a glance tells you who is about to run dry.
+command: /hm
+game: Retail
+version: 1.0.5
+curseforge: 1647742
+-->
+<section id="features" data-toc="Features">
+  <h2>Features</h2>
+  <h3>The display</h3>
+  <ul>
+    <li>Every healer's mana as a percentage, updated live, shown as icons or bars.</li>
+    <li>A horizontal row, a vertical list or a grid.</li>
+    <li>Class colors and spec icons for each healer.</li>
+    <li>Healers who are out of range fade out.</li>
+  </ul>
+  <h3>Status at a glance</h3>
+  <ul>
+    <li><strong>Dead</strong> and <strong>Offline</strong> replace the percentage. A healer who is both shows Offline.</li>
+    <li>In icon style, a healer's icon changes to their food and drink icon while they eat or drink.</li>
+    <li>A Druid healer in Cat, Bear or Moonkin Form shows that form's spec icon (icon style) or a [Cat], [Bear] or [Moonkin] tag (bar style). Mana is hidden in Cat and Bear Form, since neither uses it.</li>
+  </ul>
+  <h3>Your setup</h3>
+  <ul>
+    <li>Choose where it shows: open world, dungeons, raids, scenarios, battlegrounds and arenas, each on or off.</li>
+    <li>Sort healers alphabetically or by class.</li>
+    <li>Move it, resize it and lock it in place. Your settings are saved.</li>
+    <li>A settings window with five themes to pick from.</li>
+  </ul>
+  <p>Works with every healer spec: Holy and Discipline Priest, Restoration Druid, Holy Paladin, Restoration Shaman, Mistweaver Monk and Preservation Evoker.</p>
+</section>
+<section id="install" data-toc="Installing">
+  <h2>Installing</h2>
+  <p>The easiest way is the CurseForge app: search for <strong>HealerMana</strong> and click Install.</p>
+  <p>To install by hand:</p>
+  <ol class="steps">
+    <li>Download the zip from CurseForge, or from GitHub at <a href="https://github.com/lixard-wow/HealerMana">github.com/lixard-wow/HealerMana</a> (Code &gt; Download ZIP).</li>
+    <li>Copy the <code>HealerMana</code> folder into <code>World of Warcraft\_retail_\Interface\AddOns</code>.</li>
+    <li>Restart the game the first time, so it picks up the new addon.</li>
+  </ol>
+</section>
+<section id="start" data-toc="Getting started">
+  <h2>Getting started</h2>
+  <ol class="steps">
+    <li>Join a group that has a healer, including yourself if you play one. The display appears just right of the middle of your screen.</li>
+    <li>Type <code>/hm</code> or click the minimap button to open settings. Pick icons or bars, then adjust the size, spacing and sorting.</li>
+    <li>Drag the display where you want it, then turn on <strong>Lock frame (click-through)</strong> so you don't move it by accident.</li>
+  </ol>
+  <div class="note"><p>Want to set it up without a group? Press <strong>Start Preview</strong> at the bottom of the settings window to show fake healers. The number next to it sets how many (1 to 20). Press <strong>Stop Preview</strong> to go back to your real group.</p></div>
+</section>
+<section id="settings" data-toc="Settings">
+  <h2>Settings</h2>
+  <p>Open settings with <code>/hm</code> or the minimap button. The bottom of the window has <strong>Reset Position</strong>, <strong>Start Preview</strong> and <strong>Close</strong>. Escape also closes the window. The gear in the title bar switches the window's theme.</p>
+  <h3>General</h3>
+  <dl class="settings">
+    <dt>Display Style</dt><dd>Icons or Bars. Icons by default.</dd>
+    <dt>Theme</dt><dd>The look of the settings window: Workbench, Artisan Ledger, Horde, Alliance or Slate.</dd>
+    <dt>Dim when out of range</dt><dd>Fades healers who are too far away. On by default. <strong>Out of Range Opacity</strong> sets how faded they look.</dd>
+    <dt>Hide own bar</dt><dd>Leaves yourself out of the display.</dd>
+    <dt>Lock frame (click-through)</dt><dd>Locks the display in place and lets clicks pass through it.</dd>
+    <dt>Show minimap icon</dt><dd>Shows or hides the minimap button.</dd>
+  </dl>
+  <h3>Layout</h3>
+  <dl class="settings">
+    <dt>Layout Mode</dt><dd>Horizontal, Vertical or Grid. Vertical by default.</dd>
+    <dt>Icon Size and spacing</dt><dd>How big the icons are and how far apart the healers sit.</dd>
+    <dt>Grid Columns</dt><dd>How many healers per row in Grid mode.</dd>
+    <dt>Bar Width, Bar Height, Bar Texture</dt><dd>Used with the Bars style.</dd>
+  </dl>
+  <h3>Fill Color</h3>
+  <dl class="settings">
+    <dt>Fill Color Mode</dt><dd>Class Color or one Custom Color for the bar fill and icon tint.</dd>
+    <dt>Bar Opacity, Icon Tint Opacity</dt><dd>How solid the bar fill is, and how strongly icons are tinted.</dd>
+  </dl>
+  <h3>Background &amp; Border</h3>
+  <p>This tab is called Background with bars and Border with icons.</p>
+  <dl class="settings">
+    <dt>Background Color</dt><dd>The color behind each bar.</dd>
+    <dt>Class color border</dt><dd>Gives each icon a border in the healer's class color. Turn it off to pick a <strong>Border Color</strong>.</dd>
+  </dl>
+  <h3>Text</h3>
+  <dl class="settings">
+    <dt>Show player name</dt><dd>Shows each healer's name. <strong>Long Name Handling</strong> picks Shrink to Fit or Truncate.</dd>
+    <dt>Class color name, Class color percent</dt><dd>Colors the text by class. Turn them off to pick your own color.</dd>
+    <dt>Show % symbol</dt><dd>Adds a % after the number.</dd>
+    <dt>Font, Override font size</dt><dd>Change the font, and set the name and percent sizes yourself.</dd>
+  </dl>
+  <h3>Sort &amp; Visibility</h3>
+  <dl class="settings">
+    <dt>Sort By</dt><dd>Alphabetical or Healer Class.</dd>
+    <dt>Show when Solo</dt><dd>Shows the display even when you're not in a group. Off by default.</dd>
+    <dt>Show in Open World, Dungeons, Raids, Scenarios, Battlegrounds, Arenas</dt><dd>Where the display appears. All on by default.</dd>
+  </dl>
+  <p>The <strong>Help</strong> tab explains each part of the window in game.</p>
+</section>
+<section id="commands" data-toc="Commands">
+  <h2>Commands</h2>
+  <div class="table-box"><table>
+    <thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead>
+    <tbody>
+      <tr><td><code>/hm</code></td><td>Open settings.</td></tr>
+      <tr><td><code>/hm lock</code></td><td>Lock or unlock the display.</td></tr>
+      <tr><td><code>/hm alpha</code></td><td>Sort healers alphabetically.</td></tr>
+      <tr><td><code>/hm class</code></td><td>Sort healers by class.</td></tr>
+      <tr><td><code>/hm layout</code></td><td>Switch between horizontal and vertical.</td></tr>
+      <tr><td><code>/hm reset</code></td><td>Put the display back in its default position.</td></tr>
+      <tr><td><code>/hm raid 5</code></td><td>Show fake healers to preview a layout, up to 20.</td></tr>
+      <tr><td><code>/hm raid off</code></td><td>Go back to your real group.</td></tr>
+      <tr><td><code>/hm help</code></td><td>List the commands in chat.</td></tr>
+    </tbody>
+  </table></div>
+  <p><code>/healermana</code> works the same as <code>/hm</code>.</p>
+</section>
+<section id="whats-new" data-toc="What's new">
+  <h2>What's new</h2>
+  <h3>Coming in the next update</h3>
+  <ul>
+    <li>A new look for the settings window, with five themes. Click the gear in the title bar to switch, or pick one under General.</li>
+    <li>Press Escape to close the settings window.</li>
+  </ul>
+  <h3>1.0.5</h3>
+  <ul>
+    <li>Fixed the background spec lookup getting in the way when you inspect other players. It now pauses while your Inspect window is open and stops once every healer's spec is known.</li>
+  </ul>
+</section>
+<section id="faq" class="faq" data-toc="Tips and FAQ">
+  <h2>Tips and FAQ</h2>
+  <details><summary>The display isn't showing. Why?</summary><p>It only shows when you're grouped with a healer, in content turned on under Sort &amp; Visibility. Turn on Show when Solo to see it on your own, or use Start Preview.</p></details>
+  <details><summary>Why doesn't the food and drink icon show in Mythic+?</summary><p>Blizzard blocks addons from seeing this for the whole Mythic+ run, not just during pulls. There's no way around it. It works everywhere else.</p></details>
+  <details><summary>Why is a healer's icon generic for a moment?</summary><p>HealerMana looks up each healer's spec in the background. Until it knows, it shows a class icon. The lookup pauses while you have someone's Inspect window open.</p></details>
+  <details><summary>Why is the Moonkin marker slow to change?</summary><p>Moonkin Form only updates outside combat. Cat and Bear Form update during combat too.</p></details>
+  <details><summary>I don't see the Font or Bar Texture options.</summary><p>Those lists come from a shared font and texture library that many addons include. If none of your addons have it, HealerMana uses its default font and texture.</p></details>
+  <details><summary>I can't drag the display.</summary><p>It's locked. Turn off Lock frame (click-through) under General, or type <code>/hm lock</code>.</p></details>
+</section>

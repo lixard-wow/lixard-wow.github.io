@@ -1,0 +1,85 @@
+<!--meta
+title: Auto Expansion Filter
+status: released
+lede: Turns on "Current Expansion Only" for you every time you open the Auction House or browse Crafting Orders. No setup needed.
+command: /aef
+game: Retail
+version: 1.2.2
+curseforge: 1450270
+-->
+<section id="features" data-toc="Features">
+  <h2>Features</h2>
+  <h3>Auction House</h3>
+  <ul>
+    <li>Every time the search bar appears, <strong>Current Expansion Only</strong> is turned on in its Filter menu.</li>
+  </ul>
+  <h3>Crafting Orders</h3>
+  <ul>
+    <li>When you browse customer orders, the same filter is turned on there too.</li>
+  </ul>
+  <h3>Your choice</h3>
+  <ul>
+    <li>Each window has its own on/off switch.</li>
+    <li>The filter is set again a few times as the window opens, because the game doesn't always accept the change on the first try.</li>
+    <li>No other window or filter is changed. Settings apply to every character on your account.</li>
+  </ul>
+</section>
+<section id="install" data-toc="Installing">
+  <h2>Installing</h2>
+  <p>The easiest way is the CurseForge app: search for <strong>Auto Expansion Filter</strong> and press Install.</p>
+  <p>To install by hand:</p>
+  <ol class="steps">
+    <li>Download the zip from <a href="https://www.curseforge.com/wow/addons/auto-expansion-filter">CurseForge</a>, or from <a href="https://github.com/lixard-wow/AutoExpansionFilter">GitHub</a> (Code &gt; Download ZIP).</li>
+    <li>Copy the <code>AutoExpansionFilter</code> folder into <code>World of Warcraft\_retail_\Interface\AddOns</code>. If you downloaded from GitHub, rename the folder to <code>AutoExpansionFilter</code> if it has a different name.</li>
+    <li>Restart the game the first time, so it finds the new addon.</li>
+  </ol>
+</section>
+<section id="start" data-toc="Getting started">
+  <h2>Getting started</h2>
+  <ol class="steps">
+    <li>Install the addon and log in.</li>
+    <li>Open the Auction House or browse Crafting Orders. <strong>Current Expansion Only</strong> is already on.</li>
+  </ol>
+  <p>That's it. Both filters are on from the start.</p>
+</section>
+<section id="settings" data-toc="Settings">
+  <h2>Settings</h2>
+  <p>Type <code>/aef</code> to open the settings window. It shows the addon version under the title. Drag it to move it, and press <strong>Close</strong> or Escape to close it.</p>
+  <dl class="settings">
+    <dt>Auto-filter: Auction House</dt>
+    <dd>Turns <strong>Current Expansion Only</strong> on each time the Auction House opens. When unticked, the addon turns the filter off there instead. On by default.</dd>
+    <dt>Auto-filter: Crafting Orders</dt>
+    <dd>Does the same for the Crafting Orders browser. On by default.</dd>
+  </dl>
+</section>
+<section id="commands" data-toc="Commands">
+  <h2>Commands</h2>
+  <div class="table-box"><table><thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead><tbody>
+    <tr><td><code>/aef</code></td><td>Open the settings window.</td></tr>
+    <tr><td><code>/aef on</code></td><td>Turn on both filters.</td></tr>
+    <tr><td><code>/aef off</code></td><td>Turn off both filters.</td></tr>
+    <tr><td><code>/aef help</code></td><td>List the commands in chat.</td></tr>
+  </tbody></table></div>
+  <p><code>/autofilter</code> and <code>/expfilter</code> work the same as <code>/aef</code>. You can also type <code>/aef config</code>, <code>/aef enable</code> or <code>/aef disable</code>.</p>
+</section>
+<section id="whats-new" data-toc="What's new">
+  <h2>What's new</h2>
+  <h3>1.2.2</h3>
+  <ul>
+    <li>Updated for World of Warcraft Patch 12.0.7, and checked for Patch 12.1.0.</li>
+  </ul>
+  <h3>1.2.1</h3>
+  <ul>
+    <li><strong>Current Expansion Only</strong> now also turns on in the Crafting Orders browser.</li>
+    <li>The Auction House and Crafting Orders can be switched on or off separately.</li>
+    <li>The settings window shows the addon version.</li>
+    <li>Fixed the filter not staying on in Crafting Orders, and the Auction House checkbox not updating after Blizzard UI changes.</li>
+  </ul>
+</section>
+<section id="faq" class="faq" data-toc="Tips and FAQ">
+  <h2>Tips and FAQ</h2>
+  <details><summary>I unticked the filter in the Auction House, but it came back.</summary><p>The addon sets the filter every time the window opens, so a change you make by hand lasts until the next time you open it. To keep it off, untick that window in <code>/aef</code>.</p></details>
+  <details><summary>What happens when I turn a switch off?</summary><p>The addon then turns <strong>Current Expansion Only</strong> off each time that window opens, instead of on.</p></details>
+  <details><summary>It says "Config not loaded yet".</summary><p>You typed the command before the game finished loading. Wait a moment and try again.</p></details>
+  <details><summary>Do I need to set it up on each character?</summary><p>No. Your settings are shared by every character on your account.</p></details>
+</section>

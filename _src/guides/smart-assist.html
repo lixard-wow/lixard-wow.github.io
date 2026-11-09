@@ -1,0 +1,141 @@
+<!--meta
+title: SmartAssist
+status: released
+lede: SmartAssist builds your Misdirection, Tricks of the Trade or Power Infusion macro and keeps it aimed at the right player. Join a group and it switches to your tank on its own.
+command: /smartassist
+game: Retail
+version: 2.1.0
+curseforge: 1508635
+-->
+<section id="features" data-toc="Features">
+  <h2>Features</h2>
+  <h3>Your macro, kept up to date</h3>
+  <ul>
+    <li><strong>Builds the macro for you.</strong> One macro for your spell, with the spell's icon, made the first time you log in.</li>
+    <li><strong>Rewrites it when you pick someone new.</strong> You never open the macro window, and your action bar button keeps working.</li>
+    <li><strong>Never wastes the cast.</strong> If the player you picked isn't there or is dead, Hunters fall back to their pet, then everyone falls back to a normal cast on your target.</li>
+    <li><strong>Safe in combat.</strong> Macros can't change during combat, so anything you pick mid-fight is applied as soon as combat ends.</li>
+    <li><strong>Tells you if the spell is missing.</strong> If you haven't learned the spell, the quick menu says so and the macro shows a question mark until you do.</li>
+  </ul>
+  <h3>Finds your tank</h3>
+  <ul>
+    <li>Hunters and Rogues: when you join a group, or the group changes, the macro points at the tank.</li>
+    <li>Hunters: when you leave the group, it switches back to your pet.</li>
+    <li>Zone in with your group and no target set, and the quick menu pops up so you can pick one.</li>
+  </ul>
+  <h3>Supported classes</h3>
+  <div class="table-box"><table>
+    <thead><tr><th scope="col">Class</th><th scope="col">Spell</th><th scope="col">Starts aimed at</th></tr></thead>
+    <tbody>
+      <tr><td>Hunter</td><td>Misdirection</td><td>Your pet</td></tr>
+      <tr><td>Rogue</td><td>Tricks of the Trade</td><td>Your focus</td></tr>
+      <tr><td>Priest</td><td>Power Infusion</td><td>Nobody, until you pick a player</td></tr>
+    </tbody>
+  </table></div>
+  <p>Power Infusion goes on a damage dealer, so Priests don't get automatic tank switching. Instead, pick a player and their name goes straight into the macro.</p>
+  <h3>Five looks</h3>
+  <p>Click the gear button at the top of any SmartAssist window to switch between <strong>Workbench</strong>, <strong>Artisan Ledger</strong>, <strong>Horde</strong>, <strong>Alliance</strong> and <strong>Slate</strong> (which uses your class color as its accent). Your choice is saved for each character.</p>
+</section>
+
+<section id="install" data-toc="Installing">
+  <h2>Installing</h2>
+  <ol class="steps">
+    <li>The easy way: open the CurseForge app, search for <strong>SmartAssist</strong> and click Install.</li>
+    <li>By hand: download the zip from CurseForge, or from GitHub (<a href="https://github.com/lixard-wow/SmartAssist">github.com/lixard-wow/SmartAssist</a>: Code &gt; Download ZIP).</li>
+    <li>Copy the <code>SmartAssist</code> folder into <code>World of Warcraft\_retail_\Interface\AddOns</code>.</li>
+    <li>Restart the game the first time, so it finds the new addon.</li>
+  </ol>
+</section>
+
+<section id="start" data-toc="Getting started">
+  <h2>Getting started</h2>
+  <ol class="steps">
+    <li>Log in on your Hunter, Rogue or Priest. On other classes the addon stays quiet.</li>
+    <li>The setup guide opens a few seconds after you log in. It shows once for each character.</li>
+    <li>Choose how it behaves: whether it finds the tank on its own, who the macro is aimed at, and whether to show the minimap button.</li>
+    <li>Choose where the macro is saved: your character's own macro tab (recommended) or General Macros, shared by all your characters.</li>
+    <li>Drag the icon from the guide onto your action bar, or click it and then click a slot. The guide tells you when it finds the macro on your bars.</li>
+    <li>Join a group. The macro now points at your tank. Priests pick a damage dealer from the quick menu instead.</li>
+  </ol>
+  <h3>The quick menu</h3>
+  <p>Hover the minimap button to open the quick menu. The bottom line shows who the macro is aimed at right now. The menu can't open during combat.</p>
+  <div class="table-box"><table>
+    <thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead>
+    <tbody>
+      <tr><td>Set to Party Tank / Set to Raid Tank</td><td>Aim the macro at your group's tank. Hunters and Rogues, while in a group.</td></tr>
+      <tr><td>Set to <em>name</em></td><td>Priests in a party: one line for each damage dealer. Click one to put their name in the macro.</td></tr>
+      <tr><td>Save Target's Name</td><td>Priests: put the name of the player you're targeting into the macro.</td></tr>
+      <tr><td>Set to Target</td><td>Aim it at whoever you have targeted when you press it.</td></tr>
+      <tr><td>Set to Target of Target</td><td>Aim it at your target's target.</td></tr>
+      <tr><td>Set to Focus</td><td>Aim it at your focus.</td></tr>
+      <tr><td>Set to Pet</td><td>Hunters, while a pet is out.</td></tr>
+      <tr><td>Clear Target</td><td>Remove the target so the spell casts normally.</td></tr>
+    </tbody>
+  </table></div>
+  <p>To find the tank, SmartAssist looks for a player set as Main Tank first, then anyone in the Tank role, then the tank-capable player with the most health.</p>
+</section>
+
+<section id="settings" data-toc="Settings">
+  <h2>Settings</h2>
+  <p>Type <code>/smartassist</code> or right-click the minimap button to open settings. Settings are saved for each character.</p>
+  <h3>Macro</h3>
+  <dl class="settings">
+    <dt>Name</dt><dd>Rename the macro (up to 32 characters), then press Apply or Enter. The existing macro is renamed, so it stays on your action bar.</dd>
+    <dt>Current target</dt><dd>Shows who the macro is aimed at.</dd>
+    <dt>Saved in</dt><dd>Shows which macro tab holds the macro. Click <strong>Switch</strong> to move it between your character's tab and General Macros.</dd>
+    <dt>Drag onto your action bar</dt><dd>Drag the macro icon onto a bar slot, or click it and then click a slot.</dd>
+  </dl>
+  <h3>Automation</h3>
+  <dl class="settings">
+    <dt>Auto-set tank when joining group</dt><dd>Hunters and Rogues. On by default.</dd>
+    <dt>Auto-set pet when leaving group</dt><dd>Hunters only. On by default.</dd>
+  </dl>
+  <h3>Minimap</h3>
+  <dl class="settings">
+    <dt>Show minimap button</dt><dd>On by default. Without it, use <code>/smartassist</code>.</dd>
+  </dl>
+  <h3>Help</h3>
+  <dl class="settings">
+    <dt>Open setup guide</dt><dd>Opens the setup guide again.</dd>
+  </dl>
+</section>
+
+<section id="commands" data-toc="Commands">
+  <h2>Commands</h2>
+  <div class="table-box"><table>
+    <thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead>
+    <tbody>
+      <tr><td><code>/smartassist</code></td><td>Open or close the settings</td></tr>
+      <tr><td><code>/smartassist setup</code></td><td>Open the setup guide (<code>/smartassist guide</code> also works)</td></tr>
+    </tbody>
+  </table></div>
+  <p>Minimap button: hover it for the quick menu, right-click it for settings.</p>
+</section>
+
+<section id="whats-new" data-toc="What's new">
+  <h2>What's new</h2>
+  <h3>Next update</h3>
+  <ul>
+    <li>Two new looks: Horde (blood red and bronze) and Alliance (royal blue and gold).</li>
+    <li>The Lixard Classic look is now called Slate.</li>
+  </ul>
+  <h3>Version 2.1.0</h3>
+  <ul>
+    <li>New setup guide on each character's first login. Open it again with <code>/smartassist setup</code>.</li>
+    <li>Choose whether the macro is saved in your character's tab or in General Macros.</li>
+    <li>Drag the macro straight from the settings window.</li>
+    <li>Priests can pick a damage dealer by name from the quick menu, so no focus is needed.</li>
+    <li>New Priests no longer start aimed at focus.</li>
+    <li>Tanks from another realm are now set by their full name, so the macro finds them.</li>
+  </ul>
+</section>
+
+<section id="faq" class="faq" data-toc="Tips and FAQ">
+  <h2>Tips and FAQ</h2>
+  <details><summary>The quick menu won't open.</summary><p>It can't open during combat, and entering combat closes it. Hover the minimap button again once combat ends.</p></details>
+  <details><summary>It says "No tank found in group".</summary><p>Nobody in your group is set as a tank or can tank. Pick a target from the quick menu instead.</p></details>
+  <details><summary>The macro has a question-mark icon.</summary><p>You haven't learned the spell yet. Once you take the talent, the macro uses the real icon and works on its own.</p></details>
+  <details><summary>It says my macro tab is full.</summary><p>The macro needs one free slot in the tab it's saved in. Delete a macro there, or click Switch in the settings to save it in the other tab.</p></details>
+  <details><summary>I picked a new target in combat, but nothing changed.</summary><p>Macros can't change during combat. Your choice is applied as soon as combat ends.</p></details>
+  <details><summary>I used Mark of the Tank. What changed?</summary><p>Mark of the Tank is now called SmartAssist, and the command is <code>/smartassist</code> instead of <code>/mott</code>. Your settings start fresh, but your macro keeps its name, so your action bar button keeps working. If a MOTT folder is still in your AddOns folder, delete it, or the two will fight over the same macro.</p></details>
+</section>
