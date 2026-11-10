@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><title>LixardUI settings report</title><meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css?v=6">
+<style>
+.audit{max-width:1200px;margin:0 auto;padding:24px 16px 80px}
+.audit table{display:block;overflow-x:auto;border-collapse:collapse;font-size:13px;margin:12px 0}
+.audit th,.audit td{border:1px solid rgba(255,255,255,.12);padding:4px 8px;vertical-align:top;text-align:left}
+.audit th{background:#2a2119}
+.audit tr:nth-child(even) td{background:rgba(255,255,255,.03)}
+.audit code{font-size:12px;word-break:break-word}
+.audit li{margin:2px 0}
+</style></head><body>
+<main class="audit" id="main"><p class="eyebrow">Unlisted · branch config-simplify · final report</p>
+<h1>Settings simplification: final report</h1>
+<p>Branch <code>config-simplify</code>, builds 0.0.855 to 0.0.865 (commits c13ac854 to e0487f9a). <code>main</code> was not touched.
+Nothing here is tested in game yet. No SavedVariables key was renamed or removed, no default changed, no slash command changed.</p>
+<h2>What changed, in one list</h2>
+<ol>
+<li><strong>Sidebar navigation.</strong> The chapter buttons and the index tray are gone. A left sidebar lists every module once, under Start here, Frames, On screen, Social, Items, Helpers and Setup. A module's sub-pages are tabs under its title.</li>
+<li><strong>Up front plus More options.</strong> Every tab shows its common rows (4 to 6, hand-picked per module), then a folded MORE OPTIONS card with small group headings. Tabs with 6 or fewer rows show everything.</li>
+<li><strong>Look rows live with their module.</strong> Corners, borders, opacity, fonts and textures that a module adds to General now sit on that module's Look tab.</li>
+<li><strong>Change markers and Reset page.</strong> On every page, a changed switch, slider or dropdown gets an amber diamond; clicking it resets that row. Reset page (n) resets the open tab after a second click.</li>
+<li><strong>Shared look (Chat pilot).</strong> Chat font and outline can follow the shared setting (Use shared / Override). Only Chat uses this so far.</li>
+<li><strong>Search.</strong> Press / to search; results show the working control plus where it lives.</li>
+<li><strong>Move mode popover.</strong> The gear popover shows position, Reset position, All settings and only size and arrangement rows. Look and behaviour rows stay on the settings page.</li>
+<li><strong>Segmented control</strong> for 2 to 3 choice settings (Chat outline, active tab style).</li>
+<li><strong>Timing.</strong> Opening the settings window logs any step over 30 ms to <code>/lui perf slow</code>.</li>
+</ol>
+<h2>Changed files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LixardUI/Core/Entry.lua</code></td>
+<td><code>ns.Common(list, ...)</code> and <code>ns.CommonLabels(page, labels)</code> to pick up-front rows; settings load timed</td>
+</tr>
+<tr>
+<td><code>LixardUI/Layout/Dialog.lua</code></td>
+<td>gear popover keeps only placement rows (<code>PLACEMENT_LABELS</code>, or <code>spec.placement</code>)</td>
+</tr>
+<tr>
+<td><code>LixardUI/Layout/Blizzard.lua</code></td>
+<td>Hide it marked <code>placement</code> so it stays in the popover</td>
+</tr>
+<tr>
+<td><code>LixardUI/Widgets/Segmented.lua</code></td>
+<td>new segmented control (added to <code>LixardUI.toc</code>)</td>
+</tr>
+<tr>
+<td><code>LixardUI/Widgets/TextStyle.lua</code></td>
+<td><code>SharedFlags</code>, <code>SharedOutlineText</code> for Chat's shared outline</td>
+</tr>
+<tr>
+<td><code>LixardUI_Options/Options.lua</code></td>
+<td>sidebar (<code>NAV</code>), tabs, More options with headings, auto picks, Reset page, / search, live search controls, tab padding fit, timing</td>
+</tr>
+<tr>
+<td><code>LixardUI_Options/Builder.lua</code></td>
+<td>markers, default lookup (<code>path</code>, <code>default</code>, or probe), shared rows, segmented and heading rows</td>
+</tr>
+<tr>
+<td><code>LixardUI_Options/Pages/General.lua</code></td>
+<td>look rows homed to each module's Look tab</td>
+</tr>
+<tr>
+<td><code>LixardUI_Options/Pages/Skins.lua</code></td>
+<td>every window skin switch up front</td>
+</tr>
+<tr>
+<td><code>LixardUI_Chat/Options.lua</code>, <code>OptionsMore.lua</code>, <code>Mover.lua</code>, <code>Chat.lua</code></td>
+<td>Chat pilot (see below)</td>
+</tr>
+<tr>
+<td><code>LixardUI_Bags/Options.lua</code></td>
+<td>Open bags rows back on the Bags page</td>
+</tr>
+<tr>
+<td><code>LixardUI_ActionBars</code>, <code>Auras</code>, <code>Cooldowns</code>, <code>DataBars</code>, <code>Friends</code>, <code>GroupFrames</code>, <code>Mail</code>, <code>Maps</code>, <code>Meters</code>, <code>Minimap</code>, <code>QoL</code>, <code>Tooltips</code>, <code>Tracker</code>, <code>UnitFrames</code>, <code>Vendor</code> <code>/Options.lua</code></td>
+<td>up-front picks only (<code>common</code> flags)</td>
+</tr>
+<tr>
+<td><code>docs/config-audit.md</code>, <code>docs/regression-checklist.md</code>, this file</td>
+<td>docs</td>
+</tr>
+</tbody>
+</table>
+<h2>Where every setting moved</h2>
+<p>Rows not listed kept their page and tab. "More" means the row is on the same tab, under More options.</p>
+<h3>Moved to a different page or tab</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Old place</th>
+<th>New place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chat font, Text outline</td>
+<td>General › Fonts</td>
+<td>Chat › Window (shared with General font)</td>
+</tr>
+<tr>
+<td>Chat background opacity, Tab opacity, Active tab style</td>
+<td>General › Backgrounds</td>
+<td>Chat › Window</td>
+</tr>
+<tr>
+<td>Chat border, border color, Color the chat border</td>
+<td>General › Borders and corners</td>
+<td>Chat › Window</td>
+</tr>
+<tr>
+<td>Typing box position</td>
+<td>Chat › Window</td>
+<td>Chat › Typing</td>
+</tr>
+<tr>
+<td>Clickable web links</td>
+<td>Chat › Typing</td>
+<td>Chat › Messages</td>
+</tr>
+<tr>
+<td>Keep chat after reload (History)</td>
+<td>Chat › History</td>
+<td>Chat › Messages</td>
+</tr>
+<tr>
+<td>Chat Width, Height</td>
+<td>Chat mover gear only</td>
+<td>Chat › Size and position (and the gear)</td>
+</tr>
+<tr>
+<td>Chat Typing box, opacity rows in the gear</td>
+<td>Chat mover gear</td>
+<td>Chat › Window / Typing only</td>
+</tr>
+<tr>
+<td>Auction house look rows</td>
+<td>Auction house › General</td>
+<td>Auction house › Look</td>
+</tr>
+<tr>
+<td>Buffs and debuffs Corners, border</td>
+<td>Buffs and debuffs › General</td>
+<td>Buffs and debuffs › Look</td>
+</tr>
+<tr>
+<td>Cooldowns Corners, border, Cooldown bars texture</td>
+<td>Cooldowns › General</td>
+<td>Cooldowns › Look</td>
+</tr>
+<tr>
+<td>Info bars Corners, border</td>
+<td>Info bars › Data text bars</td>
+<td>Info bars › Look</td>
+</tr>
+<tr>
+<td>Friends look rows</td>
+<td>Friends › Friends</td>
+<td>Friends › Look</td>
+</tr>
+<tr>
+<td>Mail border</td>
+<td>Mailbox › General</td>
+<td>Mailbox › Look</td>
+</tr>
+<tr>
+<td>Damage meter Background, texture</td>
+<td>Damage meter › Layout</td>
+<td>Damage meter › Look</td>
+</tr>
+<tr>
+<td>Minimap map corners, border, outline</td>
+<td>Minimap › Map</td>
+<td>Minimap › Look</td>
+</tr>
+<tr>
+<td>Vendor border</td>
+<td>Vendor › View</td>
+<td>Vendor › Look</td>
+</tr>
+<tr>
+<td>Open bags with, Closing</td>
+<td>Quality of life › Open bags</td>
+<td>Bags › Open bags</td>
+</tr>
+</tbody>
+</table>
+<h3>Navigation</h3>
+<table>
+<thead>
+<tr>
+<th>Old</th>
+<th>New</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chapter buttons along the top plus a view bar</td>
+<td>Left sidebar groups</td>
+</tr>
+<tr>
+<td>Unit frames (one page with party and raid tabs)</td>
+<td>Unit frames and Party and raid as two sidebar entries (same page key)</td>
+</tr>
+<tr>
+<td>Quality of life (all tabs)</td>
+<td>Mythic+ and groups (Mythic+, Readiness, Group tools) and Quality of life (the rest)</td>
+</tr>
+<tr>
+<td>Index tray on the right</td>
+<td>removed; the tray is only used for previews</td>
+</tr>
+</tbody>
+</table>
+<h3>Up front per tab (everything else is under More)</h3>
+<table>
+<thead>
+<tr>
+<th>Page › tab</th>
+<th>Up front</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit frames › each unit</td>
+<td>Use the LixardUI frame, Width, Height, Portrait, Health text, Use the LixardUI cast bar</td>
+</tr>
+<tr>
+<td>Unit frames › General</td>
+<td>Text size, Corners, Bar texture, Bar brightness, Health color</td>
+</tr>
+<tr>
+<td>Unit frames › Class resource</td>
+<td>Class resource bar, Show, Width, Height, Main power under it</td>
+</tr>
+<tr>
+<td>Unit frames › Extras</td>
+<td>Totem timers, icon size, Encounter bar, Width, Height</td>
+</tr>
+<tr>
+<td>Party and raid › Party</td>
+<td>Use LixardUI party frames, Show yourself, Sort by, Width, Height, Out of range</td>
+</tr>
+<tr>
+<td>Party and raid › Raid 20/30/40</td>
+<td>Preview, (Use LixardUI raid frames), Groups as, Width, Height, Out of range</td>
+</tr>
+<tr>
+<td>Party and raid › Tanks, Assists</td>
+<td>on, Width, Height, Show their targets</td>
+</tr>
+<tr>
+<td>Action Bars › Bar 1-8</td>
+<td>Show this bar, Buttons, Buttons per row, Button size, Fade when idle, Show on mouseover</td>
+</tr>
+<tr>
+<td>Action Bars › Stance, Pet</td>
+<td>Show this bar, Button size, Fade when idle, Show on mouseover</td>
+</tr>
+<tr>
+<td>Buffs and debuffs › Buffs, Debuffs</td>
+<td>Icon size, Icons per row, Rows, Grow, Time left</td>
+</tr>
+<tr>
+<td>Cooldowns › Essential, Utility</td>
+<td>Icon size, Icons per row, Grow, Center each row, Show, Countdown size</td>
+</tr>
+<tr>
+<td>Cooldowns › Buff icons</td>
+<td>Icon size, Icons per row, Grow, Close gaps, Show, Countdown size</td>
+</tr>
+<tr>
+<td>Cooldowns › Buff bars</td>
+<td>Bar height, Width, Close gaps, Show, Text size</td>
+</tr>
+<tr>
+<td>Minimap › Info texts</td>
+<td>Zone name, Clock, Clock format, Clock time, Coordinates</td>
+</tr>
+<tr>
+<td>Minimap › Map buttons</td>
+<td>Button style, Button size, where each button shows (9 rows)</td>
+</tr>
+<tr>
+<td>Minimap › Extras</td>
+<td>Zoom back out after, Fade until hovered, Rotate the map, North marker, Middle-click the map</td>
+</tr>
+<tr>
+<td>Quest tracker › General</td>
+<td>Use the LixardUI tracker, Show quest level, Show quest icons, Width, Max height, Quest name size</td>
+</tr>
+<tr>
+<td>Quest tracker › Quests</td>
+<td>Group by zone, Sort by, Finished quests, Only quests in this zone, Show quest item buttons</td>
+</tr>
+<tr>
+<td>Quest tracker › Automation</td>
+<td>Track new quests, Show every quest, Fold other zones, Hide when empty, Fade until hovered, In combat</td>
+</tr>
+<tr>
+<td>Quest tracker › Sounds and party</td>
+<td>Quest accepted, Objective done, Quest done sounds, Tell my party, Show party on quests</td>
+</tr>
+<tr>
+<td>Quest tracker › Look</td>
+<td>Style, Compact, Progress bars, Quest type colors, Background, Corners</td>
+</tr>
+<tr>
+<td>Bags › Look</td>
+<td>Columns, Item size, Scale, Show item level, Quality colors, Show bag slots</td>
+</tr>
+<tr>
+<td>Bags › Sorting</td>
+<td>View, New items section, Sort by, Combine stacks first, Junk at the end</td>
+</tr>
+<tr>
+<td>Bags › Open bags</td>
+<td>Vendor, Bank, Auction house, Mailbox, Trade, Close bags with the window</td>
+</tr>
+<tr>
+<td>Bags › Bank and characters</td>
+<td>Use the LixardUI bank, Show bank items, Sort bank by, Bank columns, Item counts in tooltips</td>
+</tr>
+<tr>
+<td>Tooltips › Tooltip</td>
+<td>Position, Scale, In combat, Class colored names, Show item level</td>
+</tr>
+<tr>
+<td>World map › Waypoint</td>
+<td>In-world waypoint, Style, Size, Beam of light, Quest and place text, Arrival time</td>
+</tr>
+<tr>
+<td>Quality of life › Play helpers</td>
+<td>WoW Token alert, Cursor finder, Faster loot, Menu with a modifier, Hide talking head, Icon search</td>
+</tr>
+<tr>
+<td>Quality of life › Auctions and crafting</td>
+<td>both expansion filters, Crafting order helpers, Materials you bring, Profit column, Prices from</td>
+</tr>
+<tr>
+<td>Quality of life › Readiness</td>
+<td>Talent loadout reminder, When you enter, On ready check, Buff reminder, Show</td>
+</tr>
+<tr>
+<td>Info bars › Data text bars</td>
+<td>Bar to change, New bar, Spots, Spot 1-5 (8 rows)</td>
+</tr>
+<tr>
+<td>Info bars › Experience</td>
+<td>Show, Width, Height, Text, Quest XP</td>
+</tr>
+<tr>
+<td>Damage meter › General</td>
+<td>Damage meter, Show the windows, Windows, Lock windows, Only in combat</td>
+</tr>
+<tr>
+<td>Damage meter › Layout</td>
+<td>Width, Bars, Bar height, Text size, Class colors</td>
+</tr>
+<tr>
+<td>Damage meter › Interrupts</td>
+<td>Interrupt tracker, Show, Include me, Width, Bar height</td>
+</tr>
+<tr>
+<td>Friends › Row options</td>
+<td>Class colors, Zone, Status, Notes, Main character</td>
+</tr>
+<tr>
+<td>Mailbox › Open all</td>
+<td>Open all button, Open all when the mailbox opens, Keep bag slots free</td>
+</tr>
+<tr>
+<td>Vendor › Repair and sell</td>
+<td>all 7 rows</td>
+</tr>
+<tr>
+<td>Blizzard windows › Windows</td>
+<td>every window skin switch</td>
+</tr>
+<tr>
+<td>Chat › each tab</td>
+<td>4-6 rows set in the pilot</td>
+</tr>
+<tr>
+<td>General, Auction house, small tabs</td>
+<td>chosen automatically (first 5, or all when 6 or fewer)</td>
+</tr>
+</tbody>
+</table>
+<h3>Move mode gear popover</h3>
+<table>
+<thead>
+<tr>
+<th>Before</th>
+<th>Now</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Position, Reset position, All settings, then the module's full mover list (size, look and behaviour)</td>
+<td>Position, Reset position, All settings, then only Width, Height, Size, Scale, Button/Icon size, Bar height, Max height, Buttons, per row, Rows, Columns, Spacing, Grow, Buttons go, New rows go, Direction, Groups as, Arrange, Stretch across the screen, Mythic+ timer size, Progress line size; Blizzard movers keep Hide it</td>
+</tr>
+<tr>
+<td>Rows dropped from the popover</td>
+<td>still on the frame's settings page (All settings opens it)</td>
+</tr>
+</tbody>
+</table>
+<h2>Skipped or not built</h2>
+<ul>
+<li><strong>Per-frame scale and anchor in the popover.</strong> Most frames have no scale or anchor setting; adding them is new functionality, so the popover only shows the size rows a frame already has.</li>
+<li><strong>Frame chips</strong> for Unit frames and Party and raid: the tabs already pick the frame. Instead the tab bar tightens its padding to fit one row.</li>
+<li><strong>Shared look beyond Chat.</strong> Font, size, outline, bar texture and accent inherit through the existing "Same as General" values; only Chat got the Use shared / Override row. Other modules would need the same per-row work.</li>
+<li><strong>One-line descriptions:</strong> existing rows keep their text; no new descriptions were written.</li>
+<li><strong>Position stored once:</strong> the six window position stores were left as they are (a merge would be a migration; you chose not to).</li>
+<li><strong>Audit bugs not fixed</strong> (need your OK): unreachable role-icon switches, Minimap gear label mismatch, chat resize grip ignoring the lock, <code>Hide()</code> calls without combat guards.</li>
+</ul>
+<h2>Uncertain</h2>
+<ul>
+<li><strong>Default probe.</strong> Markers on pages without a <code>path</code> find the default by running the row's getter against a read-only copy of the default profile. A getter that computes from something else (another addon, per-character data, a cached table) may show no marker; a wrong default would show a diamond on a row you never touched. Color pickers, buttons, lists, per-character and account-wide settings (Friends, Vendor sell rules, Addon manager) are never marked or reset.</li>
+<li><strong>Reset page</strong> calls each row's own setter; rows that need /rl will ask for it.</li>
+<li><strong>Over-limit tabs:</strong> Minimap › Map buttons (9), Info bars › Data text bars (8), Unit frames › Pet (7).</li>
+<li><strong>Placement labels</strong> in the popover are matched by English label text; a translated client would show the full list (no loss, just not trimmed) until labels get keys.</li>
+</ul>
+<h2>Check against current Midnight behaviour</h2>
+<ul>
+<li><code>SetPropagateKeyboardInput</code> (used for the / search key) is protected in combat; the code skips it in combat and retries after. Confirm no ADDON_ACTION_BLOCKED when pressing / in combat with the window open.</li>
+<li>The settings window still builds a page's rows on first open; confirm no taint or blocked-action errors when opening it in combat (it touches no secure frames).</li>
+<li>Reset page on a page that enables or disables Blizzard frame replacements (unit frames, action bars, bags) in combat: those setters already queue through <code>ns.Combat:Run</code>; confirm nothing errors.</li>
+</ul>
+<h2>Test</h2>
+<p>Regression checklist: <code>docs/regression-checklist.md</code> (sections Settings window layout, Markers and Reset page, Move mode popover). In-game items are in Fieldtest under <code>cfg_*</code>.</p>
+</main></body></html>
