@@ -221,7 +221,7 @@
 </tr>
 </tbody>
 </table></section><section class="part" id="p1"><p class="eyebrow">Part 1</p><h1>Settings audit: Chat (pilot), Friends, Meters, Maps, Tooltips, Vendor, Mail, Auction</h1>
-<p>Repo: C:\Users\pnutj\Projects\LixardUI (read-only audit, 2026-11-10, version 0.0.854).</p>
+<p>Repo: LixardUI (read-only audit, 2026-11-10, version 0.0.854).</p>
 <h2>How the rows reach the page (read this first)</h2>
 <ul>
 <li>A module's <code>Options.lua</code> calls <code>ns:AddOptionsPage(page)</code> (LixardUI/Core/Entry.lua:25-32). This drops <code>retailOnly</code> sections and specs when not on retail, and <code>foreverOnly</code> ones when not on Forever.</li>
@@ -5940,7 +5940,7 @@
   - Keys: <code>uf.&lt;u&gt;.places[element] = { position, x, y }</code> (<code>Frames.lua:93-104</code>), the legacy <code>offsets</code>, <code>gf.&lt;k&gt;.places[...]</code> (<code>Buttons.lua:337-358</code>), and the GF aura and cast spots <code>gf.&lt;k&gt;.&lt;aura&gt;.place</code>.
   - Written by both the Layout-tab dropdowns (which reset x/y to 0, <code>UF/Options.lua:71</code>, <code>GF/Options.lua:118</code>) and preview dragging through <code>W.PlaceEditor</code> (<code>Widgets/PlaceEditor.lua:54-252</code>, which snaps to the nearest spot using the <code>W.POSITIONS</code> table in <code>Positions.lua</code>).
   - These have nothing to do with the screen mover. Picking a spot from the dropdown throws away any drag offset.</p></section><section class="part" id="p3"><p class="eyebrow">Part 3</p><h1>Settings audit: ActionBars, Cooldowns, DataBars, Auras</h1>
-<p>Read-only audit of <code>C:\Users\pnutj\Projects\LixardUI</code>. Paths are relative to the repo root.</p>
+<p>Read-only audit of <code>LixardUI</code>. Paths are relative to the repo root.</p>
 <p>How the rows are placed (this decides what counts as a sub-page):
 - <code>LixardUI_Options/Options.lua:122-157</code> <code>Index()</code>: if no section has <code>sub</code> and the page has 2 or more sections, <strong>each section becomes its own sub-page</strong>, named after the section title. That applies to Action Bars. A section with no <code>sub</code> on a page that has subs goes to the "General" sub-page. A section with no <code>tab</code> in a sub that has tabs goes to the "General" tab.
 - <code>ns:AddLookSpecs</code> (<code>LixardUI/Core/Entry.lua:11-13</code>) rows are moved onto the module page by <code>LixardUI_Options/Pages/General.lua:271-324</code> (<code>HOMES</code> + <code>MoveHome</code>). The section is titled after the kind ("Borders and corners" / "Bars"), or after the entry title if a section with the kind's name already exists in that sub. This runs before <code>Pages/Extra.lua</code> indexes the module pages, so the moved rows do get sub-pages.
@@ -7455,7 +7455,7 @@ The per-text-bar defaults are in Panels.lua:26-43, not Data.lua. <code>icons</co
 - <code>/lui micro reset|center</code> moves or resets <code>microMenu</code>/<code>bagsBar</code> (Micro.lua:506-511).</p>
 <p><strong>How it fits together.</strong> Each mover's gear opens <code>Dialog.lua</code>'s SettingsPanel (Dialog.lua:102-120). It renders <code>options.settings()</code> with <code>Builder.Row</code>, using the same spec closures as the options page, so values stay in sync. The dialog is the <strong>only</strong> place for the four AB scale/size keys (microScale, bagsBarScale, eyeScale, leaveSize), and it shows advanced rows unfiltered. Its "All settings" jump uses <code>options.page</code> (Dialog.lua:43-46), which for action/stance/pet bars has no sub-page.
 <code>Widgets/Positions.lua</code> (anchor table for placing text and icons inside a frame) and <code>Widgets/PlaceEditor.lua</code> (drag-to-place elements) are not used by any of these four modules (grep). They only serve unit/group frames, so they play no part in these frames' position or size.</p></section><section class="part" id="p4"><p class="eyebrow">Part 4</p><h1>Settings audit: LixardUI_Tracker and LixardUI_Bags</h1>
-<p>Read-only audit. Paths relative to <code>C:\Users\pnutj\Projects\LixardUI</code>.</p>
+<p>Read-only audit. Paths relative to <code>LixardUI</code>.</p>
 <p>How rows reach the screen (this decides where each row ends up):</p>
 <ul>
 <li>The module's <code>Options.lua</code> registers its page with <code>ns:AddOptionsPage</code> (<code>LixardUI/Core/Entry.lua:25</code>). <code>retailOnly</code> rows are dropped on Forever (<code>Entry.lua:15-23</code>).</li>
@@ -8949,7 +8949,7 @@ Bags load order (<code>LixardUI_Bags.toc</code>): Data, Look, Buttons, BagBar, C
 - The resize grip writes <code>columns</code>/<code>bankColumns</code> <strong>and</strong> re-anchors the window to TOPLEFT and saves the point (<code>Window.lua:355-361,466</code>; <code>Bank.lua:929</code>).
 - Options rows that write position: "Window position" Reset sets <code>bags.point = nil</code> (o:550-559); "Bank position" Reset sets <code>bankPoint = nil</code> (o:445-451).
 - Because these windows are outside <code>ns.Layout</code>, they do not appear in /lui move or Edit Mode, have no snapping, and are <strong>not</strong> part of <code>profile.layouts</code>. Layout presets or "Default" layout sharing therefore never carry bag or bank positions. Their positions are per profile in the bags table instead.</p></section><section class="part" id="p5"><p class="eyebrow">Part 5</p><h1>Settings audit: LixardUI_Minimap and LixardUI_QoL</h1>
-<p>Read-only audit, 2026-11-10. Paths are relative to <code>C:\Users\pnutj\Projects\LixardUI</code>.</p>
+<p>Read-only audit, 2026-11-10. Paths are relative to <code>LixardUI</code>.</p>
 <p>How the pages are put together (needed to read the tables):</p>
 <ul>
 <li>Minimap .toc order: Data, Frame, Texts, Buttons, Difficulty, Drawer, Extras, North, Probe, Options, Init. Options.lua runs after Buttons.lua, so <code>M.BUTTONS</code> exists when the Map buttons spec loop runs (<code>LixardUI_Minimap/Options.lua:155-264</code>).</li>
@@ -10664,7 +10664,7 @@ Bags load order (<code>LixardUI_Bags.toc</code>): Data, Look, Buttons, BagBar, C
 <li>The mover popup exposes a hand-picked subset of the page rows by label (PickSpecs). Because the match is by label, renamed labels break it silently (P13), and generic labels are fragile (P18).</li>
 <li><code>Widgets/PlaceEditor.lua</code> and <code>Widgets/Positions.lua</code> are not used by either module. Only GroupFrames uses them (GroupFrames/Preview.lua:659, GroupFrames/Options.lua:115,282,432, GroupFrames/Buttons.lua:400,448). Minimap keeps its own place enums (<code>M.TEXT_PLACES</code>, <code>M.BUTTON_SPOTS</code>, <code>M.BUTTON_SPOTS_ANGLE</code>, <code>M.DRAWER_SIDES</code>).</li>
 </ul></section><section class="part" id="p6"><p class="eyebrow">Part 6</p><h1>LixardUI audit: settings window core + move mode</h1>
-<p>Repo <code>C:\Users\pnutj\Projects\LixardUI</code>, build 0.0.854 (<code>LixardUI_Options/LixardUI_Options.toc:5</code>). Read-only audit; nothing was changed.
+<p>Repo <code>LixardUI</code>, build 0.0.854 (<code>LixardUI_Options/LixardUI_Options.toc:5</code>). Read-only audit; nothing was changed.
 Paths are relative to the repo root. <code>Options.lua</code> means <code>LixardUI_Options/Options.lua</code>.</p>
 <hr />
 <h1>PART A: settings window core</h1>
