@@ -5,7 +5,7 @@ GH = "https://github.com/lixard-wow/"
 CF = "https://www.curseforge.com/projects/"
 
 ADDONS = [
-    dict(name="LixardUI", status="dev", repo="LixardUI", cf=None, guide="lixardui/", cmd="/lui", game="Retail · Forever",
+    dict(name="LixardUI", status="dev", repo="LixardUI", cf=None, guide="lixardui/", mockup="/lixardui/mockup/", cmd="/lui", game="Retail · Forever",
          desc="A complete replacement for the game's interface in one look: unit, party and raid frames, action bars, bags, chat, minimap, world map and quest tracker, tooltips, info bars, skins for Blizzard's windows and an addon manager."),
     dict(name="Plateau", status="beta", repo="Plateau", cf="1749349", guide="plateau/", cmd="/plt", game="Retail · Forever",
          desc="Fast, readable enemy nameplates built for Midnight's addon rules. Cast bars that follow your interrupt, threat colors for your role, enemy type colors, and a settings window where you click and drag a live sample plate."),
@@ -183,6 +183,8 @@ def guide(a):
         acts.append(f'<a class="btn{"" if acts else " btn-main"}" href="{CF}{cf}">{CF_ICON} CurseForge</a>')
     if any(t[0] == "install" for t in toc):
         acts.append('<a class="btn" href="#install">How to install</a>')
+    if a.get("mockup"):
+        acts.append(f'<a class="btn" href="{a["mockup"]}">Mock up</a>')
     facts = [("Command", f'<code>{html.escape(meta["command"])}</code>' if meta.get("command") and meta["command"] != "none" else None),
              ("Game", html.escape(meta.get("game", ""))),
              ("Version", html.escape(meta.get("version", "")) if a["status"] != "dev" else None),
