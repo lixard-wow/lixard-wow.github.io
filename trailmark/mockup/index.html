@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Trailmark Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya+Sans:wght@400;500;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page: #0d0f14;
+  --page-ink: #d9cfb8;
+  --page-mute: #8d8471;
+  --page-line: #2a2a2e;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--page-ink); font: 15px/1.5 "Alegreya Sans", system-ui, sans-serif; }
+header.top { max-width: 1240px; margin: 0 auto; padding: 28px 16px 8px; }
+header.top h1 { font: 30px/1.1 "Marcellus", serif; margin: 0 0 6px; color: #e9dcb8; }
+header.top p { margin: 0 0 10px; color: var(--page-mute); max-width: 760px; }
+.controls { position: sticky; top: 0; z-index: 5; background: rgba(13,15,20,.94); border-bottom: 1px solid var(--page-line); }
+.controls .in { max-width: 1240px; margin: 0 auto; padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid #3a3730; }
+.seg button { background: transparent; color: var(--page-mute); border: 0; padding: 6px 12px; font: 14px "Alegreya Sans", sans-serif; cursor: pointer; }
+.seg button + button { border-left: 1px solid #3a3730; }
+.seg button.on { background: #2a2418; color: #f0dfae; }
+.controls label { color: var(--page-mute); font-size: 13px; }
+main { max-width: 1240px; margin: 0 auto; padding: 8px 16px 60px; }
+section.dir { padding: 26px 0 34px; border-bottom: 1px solid var(--page-line); }
+section.dir h2 { font: 24px "Marcellus", serif; margin: 0; color: #eadcb5; }
+section.dir .lede { color: var(--page-mute); margin: 4px 0 18px; max-width: 820px; }
+.stage { display: flex; flex-wrap: wrap; gap: 26px 52px; align-items: flex-start; padding: 26px; border: 1px solid #23242a; background:
+  radial-gradient(ellipse at 30% 20%, rgba(120,140,90,.18), transparent 60%),
+  radial-gradient(ellipse at 80% 90%, rgba(90,110,140,.16), transparent 60%),
+  linear-gradient(160deg, #2a3324, #1b2230 70%); }
+.stage .col { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.caption { font-size: 12px; color: #a59c88; margin-top: -6px; }
+.notes { margin: 14px 0 0; padding-left: 18px; color: #b9ae96; max-width: 900px; }
+.notes li { margin: 3px 0; }
+
+/* ===== shared window skeleton ===== */
+.tm { position: relative; width: 330px; font-family: "Alegreya Sans", sans-serif; }
+.tm .tabs { display: flex; gap: 2px; padding-left: 10px; }
+.tm .tab { font-size: 12px; padding: 2px 10px; cursor: default; white-space: nowrap; }
+.tm .win { position: relative; }
+.tm .head { display: flex; align-items: center; gap: 8px; padding: 8px 10px; }
+.tm .zone { flex: 1; min-width: 0; }
+.tm .zone b { display: block; font: 17px/1.1 "Marcellus", serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tm .zone span { font-size: 12px; }
+.tm .glyphs { display: flex; gap: 2px; }
+.tm .g { width: 22px; height: 22px; display: grid; place-items: center; }
+.tm .g svg { width: 12px; height: 12px; }
+.tm .prog { display: flex; align-items: center; gap: 10px; padding: 0 10px 8px; font-size: 12px; }
+.tm .bar { flex: 1; height: 4px; position: relative; }
+.tm .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 21%; }
+.tm .notice { margin: 0 10px 8px; padding: 6px 8px; font-size: 13px; display: none; }
+body.s-out .tm .notice { display: block; }
+.tm .rows { padding: 2px 0 6px; }
+body.s-min .tm .rows, body.s-min .tm .prog, body.s-min .tm .next, body.s-min .tm .foot { display: none; }
+.tm .row { display: grid; grid-template-columns: 16px 20px 1fr auto; gap: 0 8px; padding: 7px 10px 7px 12px; position: relative; }
+.tm .row .ck { width: 14px; height: 14px; margin-top: 2px; }
+.tm .row .ic { width: 18px; height: 18px; margin-top: 1px; }
+.tm .row .t { font-size: 14px; line-height: 1.25; }
+.tm .row .lv { font-size: 12px; margin-right: 4px; }
+.tm .row .q { color: #ffd34d; }
+.tm .row .d { grid-column: 3 / 5; font-size: 12.5px; line-height: 1.3; margin-top: 2px; }
+.tm .row .why { grid-column: 3 / 5; font-size: 12.5px; margin-top: 3px; }
+.tm .row .xp { font-size: 12px; white-space: nowrap; align-self: start; margin-top: 2px; }
+.tm .obj { grid-column: 3 / 5; display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; margin-top: 5px; font-size: 12.5px; }
+.tm .obj .ob { height: 3px; grid-column: 1 / 3; position: relative; margin-bottom: 3px; }
+.tm .obj .ob i { position: absolute; left: 0; top: 0; bottom: 0; }
+.tm .row.dim { opacity: .5; }
+.tm .next { padding: 6px 10px 8px; font-size: 12.5px; }
+.tm .foot { display: flex; gap: 6px; padding: 0 10px 10px; }
+.tm .slot { width: 38px; height: 38px; position: relative; display: grid; place-items: center; }
+.tm .slot svg { width: 24px; height: 24px; }
+.tm .slot kbd { position: absolute; right: 2px; top: 1px; font: 10px "Alegreya Sans"; }
+
+/* nameplate */
+.plate { width: 200px; text-align: center; padding: 10px 0 4px; }
+.plate .cnt { font: 700 15px "Alegreya Sans"; color: #ffd34d; text-shadow: 0 0 2px #000, 0 0 2px #000, 1px 1px 0 #000; }
+.plate .nm { font: 13px "Alegreya Sans"; color: #f2d0c8; text-shadow: 1px 1px 0 #000; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.plate .hp { width: 130px; height: 9px; margin: 3px auto 0; background: #3b0f0d; border: 1px solid #000; position: relative; }
+.plate .hp i { position: absolute; inset: 0 30% 0 0; background: linear-gradient(#d23a2a, #8f1c12); }
+.skull { width: 16px; height: 16px; }
+
+/* settings */
+.cfg { width: 600px; max-width: 100%; display: grid; grid-template-columns: 150px 1fr; }
+.cfg .ch { grid-column: 1 / 3; display: flex; align-items: center; gap: 8px; padding: 8px 10px; }
+.cfg .ch b { flex: 1; font: 17px "Marcellus", serif; }
+.cfg .ch small { font-size: 12px; }
+.cfg nav { padding: 8px 0; }
+.cfg nav a { display: block; padding: 6px 12px; font-size: 14px; text-decoration: none; cursor: pointer; }
+.cfg .pane { padding: 10px 14px 14px; min-height: 360px; }
+.cfg h4 { font: 15px "Marcellus", serif; margin: 4px 0 8px; }
+.cfg .preset { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+.cfg .pb { padding: 8px 10px; cursor: pointer; }
+.cfg .pb b { display: block; font-size: 14px; }
+.cfg .pb span { font-size: 12px; line-height: 1.3; display: block; margin-top: 2px; }
+.cfg .opt { display: grid; grid-template-columns: 18px 1fr; gap: 0 8px; padding: 5px 0; }
+.cfg .opt .box { width: 14px; height: 14px; margin-top: 3px; position: relative; }
+.cfg .opt .box.on::after { content: ""; position: absolute; left: 4px; top: 1px; width: 4px; height: 8px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.cfg .opt b { font-weight: 500; font-size: 14px; }
+.cfg .opt span:not(.box) { grid-column: 2; font-size: 12px; line-height: 1.3; }
+.cfg .sl { padding: 6px 0 4px; font-size: 14px; }
+.cfg .sl .track { height: 4px; margin: 6px 0 2px; position: relative; }
+.cfg .sl .track i { position: absolute; top: -5px; width: 10px; height: 14px; }
+.cfg .pg { display: none; }
+.cfg .pg.on { display: block; }
+.cfg .foot2 { display: flex; gap: 8px; margin-top: 12px; }
+.cfg .btn { padding: 5px 12px; font-size: 13px; }
+
+/* ===== A: Cartographer (navy + gold, map lines) ===== */
+.A .tab { background: #101a2e; color: #8b93a6; border: 1px solid #2e3a55; border-bottom: 0; }
+.A .tab.on { background: #15223d; color: #f1d78d; border-color: #b8933f; box-shadow: inset 0 2px 0 #d9b25a; padding-top: 4px; margin-top: -2px; }
+.A .win, .A.cfg { background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='330' height='240'%3E%3Cg fill='none' stroke='%23324a74' stroke-opacity='.35' stroke-width='1'%3E%3Cpath d='M-10 60 C60 20 120 90 190 50 S300 10 350 40'/%3E%3Cpath d='M-10 80 C70 40 120 110 200 70 S300 30 350 62'/%3E%3Cpath d='M-10 170 C40 140 110 200 180 160 S290 130 350 150'/%3E%3Cpath d='M-10 192 C50 160 120 220 190 182 S290 150 350 172'/%3E%3C/g%3E%3Cg stroke='%23324a74' stroke-opacity='.18'%3E%3Cpath d='M0 120H330M110 0V240M220 0V240'/%3E%3C/g%3E%3C/svg%3E"),
+  linear-gradient(180deg, #13203a, #0c1426); border: 1px solid #b8933f; box-shadow: 0 0 0 1px #050a14, 0 10px 30px rgba(0,0,0,.5); color: #dfe4ee; }
+.A .head { border-bottom: 1px solid rgba(184,147,63,.45); }
+.A .zone b { color: #f3dc98; }
+.A .zone span, .A .prog, .A .row .d, .A .next { color: #9ba6bd; }
+.A .g { color: #d9b25a; }
+.A .bar { background: #0a1122; border: 1px solid #2f3d5c; }
+.A .bar i { background: linear-gradient(90deg, #9a7429, #e6c063); }
+.A .prog { padding-top: 8px; }
+.A .notice { background: rgba(217,178,90,.12); border: 1px solid rgba(217,178,90,.45); color: #f1d78d; }
+.A .row.cur { background: linear-gradient(90deg, rgba(217,178,90,.16), rgba(217,178,90,.03)); }
+.A .row.cur::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: #d9b25a; }
+.A .row .ck { border: 1px solid #4b5a7d; background: #0a1122; }
+.A .row .ck.done { background: #3c6a3a; border-color: #6aa45d; }
+.A .row .lv.g1 { color: #3fbf3f; } .A .row .lv.y { color: #ffd34d; } .A .row .lv.o { color: #ff8c26; }
+.A .row .why { color: #c9b27a; }
+.A .row .xp { color: #a7c27a; }
+.A .obj .ob { background: #0a1122; } .A .obj .ob i { background: #d9b25a; }
+.A .obj { color: #dfe4ee; } .A .obj em { color: #9ba6bd; font-style: normal; }
+.A .next { border-top: 1px dashed rgba(184,147,63,.35); }
+.A .slot { background: #0a1122; border: 1px solid #b8933f; box-shadow: inset 0 0 0 1px #050a14; color: #f1d78d; }
+.A .slot kbd { color: #dfe4ee; }
+.A.cfg .ch { border-bottom: 1px solid rgba(184,147,63,.45); }
+.A.cfg .ch b { color: #f3dc98; } .A.cfg .ch small { color: #9ba6bd; }
+.A.cfg nav { border-right: 1px solid rgba(184,147,63,.3); background: rgba(5,10,20,.35); }
+.A.cfg nav a { color: #9ba6bd; } .A.cfg nav a.on { color: #f3dc98; background: rgba(217,178,90,.12); box-shadow: inset 3px 0 0 #d9b25a; }
+.A.cfg h4 { color: #f3dc98; }
+.A.cfg .pb { border: 1px solid #2f3d5c; background: #0f1930; } .A.cfg .pb.on { border-color: #d9b25a; background: #1b2640; }
+.A.cfg .pb b { color: #f1d78d; } .A.cfg .pb span, .A.cfg .opt span { color: #9ba6bd; }
+.A.cfg .opt .box { border: 1px solid #4b5a7d; background: #0a1122; color: #f1d78d; }
+.A.cfg .opt .box.on { border-color: #d9b25a; }
+.A.cfg .sl .track { background: #0a1122; border: 1px solid #2f3d5c; } .A.cfg .sl .track i { background: #d9b25a; }
+.A.cfg .btn { background: #0f1930; border: 1px solid #b8933f; color: #f1d78d; }
+
+/* ===== B: Quest Log (parchment) ===== */
+.B .tabs { padding-left: 0; position: absolute; right: -30px; top: 46px; flex-direction: column; gap: 4px; }
+.B .tab { writing-mode: vertical-rl; padding: 10px 3px; background: #6b4423; color: #e7cfa0; border: 1px solid #3b230f; border-left: 0; font-family: "Marcellus", serif; }
+.B .tab.on { background: #a1251b; color: #fbe7bd; padding-right: 6px; }
+.B .win, .B.cfg { color: #3a2512; border: 1px solid #3b230f; box-shadow: 0 0 0 3px #5b3a1d, 0 0 0 4px #2a170a, 0 12px 30px rgba(0,0,0,.55);
+  background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .24 0 0 0 0 .12 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"),
+  radial-gradient(ellipse at 50% 40%, #f1dfb4, #ddc28c 75%, #c9a86c); }
+.B .head { padding: 10px 12px 6px; }
+.B .zone b { font: 20px "IM Fell English", serif; color: #3a1d08; }
+.B .zone span, .B .prog { color: #6d5032; }
+.B .g { color: #5b3a1d; }
+.B .bar { background: rgba(91,58,29,.18); height: 5px; } .B .bar i { background: #8a2a1a; }
+.B .prog { border-bottom: 1px solid rgba(91,58,29,.35); margin: 0 12px 6px; padding: 0 0 8px; }
+.B .notice { background: rgba(161,37,27,.1); border: 1px solid rgba(161,37,27,.45); color: #6f160d; margin: 0 12px 8px; }
+.B .row { padding-left: 14px; }
+.B .row.cur { background: rgba(255,248,225,.45); }
+.B .row.cur::before { content: ""; position: absolute; left: 4px; top: 10px; width: 0; height: 0; border-left: 6px solid #8a2a1a; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.B .row .ck { border: 1px solid #6d5032; background: rgba(255,248,225,.5); }
+.B .row .ck.done { background: #4e6b2b; border-color: #2e4416; }
+.B .row .t { color: #2e1a08; font-family: "Alegreya Sans"; }
+.B .row .q { color: #6f160d; font-weight: 700; }
+.B .row .lv.g1 { color: #2f7a1f; } .B .row .lv.y { color: #8a6a00; } .B .row .lv.o { color: #b0520c; }
+.B .row .d { color: #6d5032; }
+.B .row .why { color: #5b3a1d; font-family: "IM Fell English", serif; font-style: italic; font-size: 13.5px; }
+.B .row .xp { color: #4e6b2b; }
+.B .obj { color: #3a2512; } .B .obj em { color: #6d5032; font-style: normal; }
+.B .obj .ob { background: rgba(91,58,29,.2); } .B .obj .ob i { background: #8a2a1a; }
+.B .next { color: #6d5032; border-top: 1px solid rgba(91,58,29,.35); margin: 0 12px; padding: 6px 0 8px; }
+.B .foot { padding: 0 12px 12px; }
+.B .slot { background: #2a170a; border: 2px solid #8a6a3a; box-shadow: inset 0 0 0 1px #000; color: #f1dfb4; }
+.B .slot kbd { color: #f1dfb4; }
+.B.cfg .ch { border-bottom: 1px solid rgba(91,58,29,.45); }
+.B.cfg .ch b { font: 21px "IM Fell English", serif; color: #3a1d08; } .B.cfg .ch small { color: #6d5032; }
+.B.cfg nav { border-right: 1px solid rgba(91,58,29,.35); }
+.B.cfg nav a { color: #6d5032; font-family: "Marcellus", serif; } .B.cfg nav a.on { color: #2e1a08; background: rgba(255,248,225,.5); box-shadow: inset 3px 0 0 #8a2a1a; }
+.B.cfg h4 { font-family: "IM Fell English", serif; font-size: 18px; color: #3a1d08; }
+.B.cfg .pb { border: 1px solid rgba(91,58,29,.5); background: rgba(255,248,225,.35); } .B.cfg .pb.on { border-color: #8a2a1a; background: rgba(255,248,225,.7); }
+.B.cfg .pb b { color: #2e1a08; } .B.cfg .pb span, .B.cfg .opt span { color: #6d5032; }
+.B.cfg .opt b { color: #2e1a08; }
+.B.cfg .opt .box { border: 1px solid #6d5032; background: rgba(255,248,225,.5); color: #8a2a1a; }
+.B.cfg .sl { color: #2e1a08; } .B.cfg .sl .track { background: rgba(91,58,29,.25); } .B.cfg .sl .track i { background: #8a2a1a; }
+.B.cfg .btn { background: #8a2a1a; border: 1px solid #4a0f08; color: #fbe7bd; }
+
+/* ===== C: Waystone (slate + gold engraving + rune glow) ===== */
+.C .tabs { padding-left: 0; }
+.C .tab { display: none; }
+.C .win, .C.cfg { color: #e4ddd0; border: 1px solid #0b0b0c;
+  box-shadow: inset 0 0 0 1px #5e574b, inset 0 0 0 3px #1c1b1a, inset 0 0 0 4px #8f7c4f, 0 12px 30px rgba(0,0,0,.55);
+  background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .14 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E"),
+  linear-gradient(180deg, #34322f, #232220); padding: 4px; }
+.C .head { padding: 8px 10px; background: linear-gradient(180deg, rgba(0,0,0,.25), transparent); }
+.C .zone b { color: #f0d48a; font-family: "Marcellus SC", serif; font-size: 17px; }
+.C .zone span { color: #a8a090; }
+.C .picker { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #5e574b; background: #1c1b1a; color: #d8c690; padding: 2px 8px; font-size: 12px; }
+.C .g { color: #c8b27a; }
+.C .prog { color: #a8a090; }
+.C .bar { background: #121211; border: 1px solid #4a453c; height: 6px; } .C .bar i { background: linear-gradient(90deg, #2c7fb8, #7fd0ff); box-shadow: 0 0 6px rgba(127,208,255,.6); }
+.C .notice { background: rgba(127,208,255,.08); border: 1px solid rgba(127,208,255,.4); color: #bfe6ff; }
+.C .row.cur { background: rgba(240,212,138,.08); box-shadow: inset 0 1px 0 rgba(240,212,138,.18), inset 0 -1px 0 rgba(240,212,138,.18); }
+.C .row.cur::before { content: ""; position: absolute; left: 3px; top: 9px; width: 6px; height: 6px; transform: rotate(45deg); background: #7fd0ff; box-shadow: 0 0 6px #7fd0ff; }
+.C .row .ck { border: 1px solid #6b6455; background: #151514; }
+.C .row .ck.done { background: #3d5f2c; border-color: #7aa45d; }
+.C .row .lv.g1 { color: #45c845; } .C .row .lv.y { color: #ffd34d; } .C .row .lv.o { color: #ff8c26; }
+.C .row .d { color: #a8a090; } .C .row .why { color: #9fd6f5; } .C .row .xp { color: #b6c98a; }
+.C .obj em { color: #a8a090; font-style: normal; }
+.C .obj .ob { background: #121211; } .C .obj .ob i { background: #d8b866; }
+.C .next { color: #a8a090; border-top: 1px solid #4a453c; }
+.C .slot { background: #151514; border: 1px solid #8f7c4f; box-shadow: inset 0 0 0 1px #000, 0 0 0 1px #000; color: #f0d48a; }
+.C .slot kbd { color: #e4ddd0; }
+.C.cfg { padding: 4px; }
+.C.cfg .ch { background: linear-gradient(180deg, rgba(0,0,0,.25), transparent); border-bottom: 1px solid #4a453c; }
+.C.cfg .ch b { font-family: "Marcellus SC", serif; color: #f0d48a; } .C.cfg .ch small { color: #a8a090; }
+.C.cfg nav { border-right: 1px solid #4a453c; background: rgba(0,0,0,.18); }
+.C.cfg nav a { color: #a8a090; } .C.cfg nav a.on { color: #f0d48a; background: rgba(240,212,138,.08); box-shadow: inset 3px 0 0 #7fd0ff; }
+.C.cfg h4 { font-family: "Marcellus SC", serif; color: #f0d48a; }
+.C.cfg .pb { border: 1px solid #4a453c; background: #1c1b1a; } .C.cfg .pb.on { border-color: #7fd0ff; box-shadow: 0 0 8px rgba(127,208,255,.25); }
+.C.cfg .pb b { color: #f0d48a; } .C.cfg .pb span, .C.cfg .opt span { color: #a8a090; }
+.C.cfg .opt .box { border: 1px solid #6b6455; background: #151514; color: #7fd0ff; }
+.C.cfg .sl .track { background: #121211; border: 1px solid #4a453c; } .C.cfg .sl .track i { background: #f0d48a; }
+.C.cfg .btn { background: #1c1b1a; border: 1px solid #8f7c4f; color: #f0d48a; }
+
+@media (max-width: 720px) {
+  .cfg { grid-template-columns: 1fr; }
+  .cfg nav { display: flex; overflow-x: auto; border-right: 0 !important; }
+  .cfg nav a { white-space: nowrap; }
+  .stage { padding: 16px 12px; }
+  .B .tabs { position: static; flex-direction: row; } .B .tab { writing-mode: horizontal-tb; }
+}
+</style>
+</head>
+<body class="s-normal">
+<header class="top">
+  <h1>Trailmark redesign</h1>
+  <p>Three directions that should feel like they were made for WoW Forever: the navy and gold of the 2004 login screen, the parchment quest log, and the waystone of an old Azeroth road. All three are our own frames and textures, not Blizzard's. Each shows the guide window, the in-world bits (quest progress over a mob, item and target buttons) and the full settings window. Click the settings sidebar to change pages.</p>
+</header>
+<div class="controls"><div class="in">
+  <label>Window state</label>
+  <div class="seg" id="state">
+    <button data-s="s-normal" class="on">Normal</button>
+    <button data-s="s-out">Zone outleveled</button>
+    <button data-s="s-min">Minimized</button>
+  </div>
+</div></div>
+<main id="main"></main>
+
+<template id="icons">
+  <svg id="i-accept" viewBox="0 0 20 20"><path d="M10 2v11" stroke="#ffd34d" stroke-width="3.2" stroke-linecap="round"/><circle cx="10" cy="17.2" r="1.9" fill="#ffd34d"/></svg>
+  <svg id="i-turnin" viewBox="0 0 20 20"><path d="M6 6a4 4 0 1 1 6 3.5c-1.4.8-2 1.6-2 3.2" fill="none" stroke="#ffd34d" stroke-width="2.8" stroke-linecap="round"/><circle cx="10" cy="17.2" r="1.8" fill="#ffd34d"/></svg>
+  <svg id="i-kill" viewBox="0 0 20 20"><path d="M4 16 15 5M12 4h4v4M5 12l3 3" stroke="#e8735a" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+  <svg id="i-fp" viewBox="0 0 20 20"><path d="M2 11c3-1 5-4 8-4s5 3 8 4c-3 0-5 2-8 2s-5-2-8-2z" fill="#9cc7e6"/></svg>
+</template>
+
+<script>
+const ICON = id => document.getElementById('icons').content.getElementById(id).outerHTML.replace(/ id="[^"]+"/, '');
+const GL = {
+  prev: '<svg viewBox="0 0 12 12"><path d="M8 2 4 6l4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
+  next: '<svg viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
+  min: '<svg viewBox="0 0 12 12"><path d="M2 8h8" stroke="currentColor" stroke-width="1.6"/></svg>',
+  gear: '<svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 .8v2M6 9.2v2M.8 6h2M9.2 6h2M2.3 2.3l1.4 1.4M8.3 8.3l1.4 1.4M2.3 9.7l1.4-1.4M8.3 3.7l1.4-1.4" stroke="currentColor" stroke-width="1.3"/></svg>',
+  close: '<svg viewBox="0 0 12 12"><path d="M3 3l6 6M9 3 3 9" stroke="currentColor" stroke-width="1.6"/></svg>',
+  down: '<svg viewBox="0 0 12 12" width="9" height="9"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>',
+};
+const SKULL = '<svg class="skull" viewBox="0 0 16 16"><path d="M8 1.5c-3.5 0-5.5 2.3-5.5 5.2 0 1.8.9 3 2 3.7v2.1h1.7v-1.2h1v1.2h1.6v-1.2h1v1.2h1.7v-2.1c1.1-.7 2-1.9 2-3.7 0-2.9-2-5.2-5.5-5.2z" fill="#f4f1ea" stroke="#000" stroke-width=".8"/><circle cx="5.8" cy="7" r="1.4" fill="#000"/><circle cx="10.2" cy="7" r="1.4" fill="#000"/></svg>';
+const BAG = '<svg viewBox="0 0 24 24"><path d="M7 8h10l1.5 12h-13z" fill="#8a5a2b" stroke="#2a170a"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="#d8b866" stroke-width="1.6"/><circle cx="12" cy="13" r="2" fill="#d8b866"/></svg>';
+const CROSS = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v6M12 16v6M2 12h6M16 12h6" stroke="currentColor" stroke-width="1.8"/></svg>';
+
+const DIRS = [
+  { key: 'A', name: 'A. Cartographer', lede: 'Deep navy and gold like the 2004 login screen and loading bars, with faint contour lines of an old map behind the steps. Tabs sit on top like folder tabs with the level range. Closest to what you have now, so the cheapest to build.',
+    notes: ['Map texture: one white TGA of contour lines, tinted navy, very low alpha.', 'Gold only for the frame edge, the current step and the progress bar. Quest yellow stays the game\'s quest yellow.', 'Font: Marcellus (OFL) for the zone name, the game font for steps so it matches quest text.'] },
+  { key: 'B', name: 'B. Quest Log', lede: 'Parchment and dark wood, like the classic quest log you opened a thousand times in 2005. Guide tabs become red bookmarks down the right edge. The why line is written in an old book hand. Most "Forever" of the three, but a light window is a bigger change on screen.',
+    notes: ['Parchment: one tiled noise TGA plus a warm gradient. Readable in daylight zones and at night.', 'Bookmarks hold the level range; the active one is red. A + bookmark adds a guide.', 'Font: IM Fell English (OFL) for the zone title and the why line only; steps stay plain for reading speed.'] },
+  { key: 'C', name: 'C. Waystone', lede: 'Carved slate with a gold inlay, and a faint blue rune glow for "where to go now" (current step, progress, the why line). Tabs are replaced by one picker under the zone name, so the window is narrower and calmer. Feels like the stones on old Azeroth roads.',
+    notes: ['Slate: one tiled noise TGA tinted grey; gold inlay is three 1-px lines.', 'Blue is used for one meaning only: "this is where you are going". Gold is the frame.', 'The picker opens the guide list (same as /trail guides) instead of tabs.'] },
+];
+
+function windowHTML(d) {
+  const tabs = d.key === 'C' ? '' : `<div class="tabs"><span class="tab">10-15</span><span class="tab on">12-17</span><span class="tab">17-22</span><span class="tab">+</span></div>`;
+  const sub = d.key === 'C'
+    ? `<span class="picker">Westfall 12-17 ${GL.down}</span>`
+    : `<span>Sentinel Hill · step 14 of 67</span>`;
+  return `
+  <div class="tm ${d.key}">
+    ${d.key === 'B' ? '' : tabs}
+    <div class="win">
+      ${d.key === 'B' ? tabs : ''}
+      <div class="head">
+        <div class="zone"><b>Westfall</b>${sub}</div>
+        <div class="glyphs"><span class="g">${GL.prev}</span><span class="g">${GL.next}</span><span class="g">${GL.min}</span><span class="g">${GL.gear}</span></div>
+      </div>
+      <div class="prog"><span>14 / 67</span><div class="bar"><i></i></div><span>21%</span></div>
+      <div class="notice">Most quests left in Westfall are grey or nearly grey for you. Click to go to Redridge Mountains (17-22).</div>
+      <div class="rows">
+        <div class="row cur">
+          <span class="ck"></span><span class="ic">${ICON('i-kill')}</span>
+          <span class="t"><span class="lv y">14</span>Kill Fleshrippers for <span class="q">Patrolling Westfall</span></span><span class="xp">780 xp</span>
+          <div class="obj"><span>Fleshripper</span><em>3 / 8</em><span class="ob"><i style="width:37%"></i></span><span>Young Fleshripper</span><em>6 / 8</em><span class="ob"><i style="width:75%"></i></span></div>
+          <div class="why">Why: Needed for Patrolling Westfall, part 2 (Gryan Stoutmantle)</div>
+        </div>
+        <div class="row">
+          <span class="ck"></span><span class="ic">${ICON('i-accept')}</span>
+          <span class="t"><span class="lv o">16</span>Accept <span class="q">The Defias Brotherhood</span></span><span class="xp">1,050 xp</span>
+          <div class="d">Gryan Stoutmantle, Sentinel Hill</div>
+        </div>
+        <div class="row">
+          <span class="ck"></span><span class="ic">${ICON('i-turnin')}</span>
+          <span class="t"><span class="lv g1">12</span>Turn in <span class="q">The Forgotten Heirloom</span></span><span class="xp">660 xp</span>
+          <div class="d">Farmer Furlbrow, The Furlbrow Pumpkin Farm</div>
+        </div>
+        <div class="row dim">
+          <span class="ck done"></span><span class="ic">${ICON('i-fp')}</span>
+          <span class="t">Get the flight path at Sentinel Hill</span><span class="xp"></span>
+        </div>
+      </div>
+      <div class="next">Then: Jangolode Mine, 3 quests, 420 yd north</div>
+      <div class="foot"><span class="slot">${BAG}<kbd>F</kbd></span><span class="slot">${CROSS}<kbd>G</kbd></span></div>
+    </div>
+  </div>`;
+}
+
+const PAGES = [
+  ['Quick setup', `
+    <h4>How do you want to level?</h4>
+    <div class="preset">
+      <div class="pb on"><b>Do everything</b><span>Every quest in the guide, grey ones too, in order. Fewest surprises.</span></div>
+      <div class="pb"><b>Fastest leveling</b><span>Skips grey quests, leaves a zone once you outlevel it, quest automation and flight routing on.</span></div>
+    </div>
+    <h4>Guide</h4>
+    <div class="opt"><span class="box on"></span><b>Show the guide window</b></div>
+    <div class="opt"><span class="box on"></span><b>Start a guide for me at login</b><span>Picks the guide for your zone and level when no tab is open.</span></div>
+    <div class="foot2"><span class="btn">Pick a guide</span><span class="btn">Open the recorder</span></div>`],
+  ['Window', `
+    <h4>Guide window</h4>
+    <div class="opt"><span class="box"></span><b>Lock position</b></div>
+    <div class="opt"><span class="box on"></span><b>Fade in combat</b><span>The window goes to 35% while you fight.</span></div>
+    <div class="sl">Scale 100%<div class="track"><i style="left:45%"></i></div></div>
+    <div class="sl">Width 330<div class="track"><i style="left:38%"></i></div></div>
+    <div class="sl">Steps shown 6<div class="track"><i style="left:30%"></i></div></div>
+    <div class="sl">Text size 12<div class="track"><i style="left:40%"></i></div></div>
+    <div class="opt"><span class="box on"></span><b>Say why for the current step</b><span>"Starts the chain to ...", "Ready to hand in", "Nearest of 3 here".</span></div>`],
+  ['Finding the way', `
+    <h4>Finding the way</h4>
+    <div class="opt"><span class="box on"></span><b>Point the waypoint at each step</b></div>
+    <div class="opt"><span class="box on"></span><b>Route through flight paths and your hearthstone</b><span>Only when it is clearly faster.</span></div>
+    <div class="opt"><span class="box"></span><b>Numbered step pins on the world map</b></div>
+    <div class="opt"><span class="box on"></span><b>Target button</b><span>Bind a key under Key Bindings > AddOns.</span></div>
+    <div class="opt"><span class="box on"></span><b>Quest item button</b></div>
+    <div class="opt"><span class="box on"></span><b>Mark the step's NPC or mob</b><span>Skull on the mob, star on the NPC.</span></div>
+    <div class="opt"><span class="box on"></span><b>Quest progress over mobs</b><span>3/8 above the mobs you still need.</span></div>
+    <div class="opt"><span class="box on"></span><b>Sound when a step is done</b></div>`],
+  ['Quests', `
+    <h4>Quests</h4>
+    <div class="opt"><span class="box on"></span><b>Accept guide quests for me</b><span>Hold Shift at the NPC to stop it.</span></div>
+    <div class="opt"><span class="box on"></span><b>Turn in guide quests for me</b></div>
+    <div class="opt"><span class="box"></span><b>Every quest, not only guide quests</b></div>
+    <div class="opt"><span class="box"></span><b>Pick the reward that sells for most</b></div>
+    <div class="opt"><span class="box on"></span><b>Nearest quest first in a block</b></div>`],
+  ['Leveling pace', `
+    <h4>Leveling pace</h4>
+    <div class="opt"><span class="box on"></span><b>Do every quest</b><span>Grey quests stay; lower quests often open higher ones.</span></div>
+    <div class="opt"><span class="box"></span><b>Leave a zone when I outlevel it</b><span>Offers the zone with the most quests for your level. Turns off Do every quest.</span></div>
+    <div class="opt"><span class="box"></span><b>Skip grey quests</b><span>Only when Do every quest is off.</span></div>
+    <div class="opt"><span class="box on"></span><b>Tell me when I outlevel a zone</b></div>`],
+];
+
+function cfgHTML(d) {
+  return `
+  <div class="cfg ${d.key}" data-cfg>
+    <div class="ch"><b>Trailmark</b><small>Settings</small><span class="g" style="width:22px;height:22px;display:grid;place-items:center;color:inherit">${GL.close}</span></div>
+    <nav>${PAGES.map((p, i) => `<a data-p="${i}" class="${i === 0 ? 'on' : ''}">${p[0]}</a>`).join('')}</nav>
+    <div class="pane">${PAGES.map((p, i) => `<div class="pg ${i === 0 ? 'on' : ''}" data-pg="${i}">${p[1]}</div>`).join('')}</div>
+  </div>`;
+}
+
+const plate = `<div class="plate"><div class="cnt">3/8</div><div class="nm">${SKULL}Fleshripper</div><div class="hp"><i></i></div></div>`;
+
+document.getElementById('main').innerHTML = DIRS.map(d => `
+  <section class="dir">
+    <h2>${d.name}</h2>
+    <p class="lede">${d.lede}</p>
+    <div class="stage">
+      <div class="col">${windowHTML(d)}<div class="caption">Guide window: current block, why line, then-line, item and target buttons</div></div>
+      <div class="col">${plate}<div class="caption">In the world: skull marker and 3/8 above the mob</div>${cfgHTML(d)}<div class="caption">Settings: sidebar pages, Quick setup first</div></div>
+    </div>
+    <ul class="notes">${d.notes.map(n => `<li>${n}</li>`).join('')}</ul>
+  </section>`).join('');
+
+document.querySelectorAll('[data-cfg]').forEach(c => {
+  c.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => {
+    c.querySelectorAll('nav a').forEach(x => x.classList.toggle('on', x === a));
+    c.querySelectorAll('.pg').forEach(p => p.classList.toggle('on', p.dataset.pg === a.dataset.p));
+  }));
+  c.querySelectorAll('.pb').forEach(b => b.addEventListener('click', () => {
+    c.querySelectorAll('.pb').forEach(x => x.classList.toggle('on', x === b));
+  }));
+  c.querySelectorAll('.opt .box').forEach(b => b.addEventListener('click', () => b.classList.toggle('on')));
+});
+document.querySelectorAll('#state button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#state button').forEach(x => x.classList.toggle('on', x === b));
+  document.body.className = b.dataset.s;
+}));
+</script>
+</body>
+</html>
