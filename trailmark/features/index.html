@@ -98,6 +98,9 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <p class="lede">Everything not built yet, with what we decided.</p>
 <div class="scroll"><table class="tbl left-table">
 <tr><th>Feature</th><th>Decision</th><th>Why</th></tr>
+<tr><td class="n">Forever's own factions</td><td><span class="chip maybe">Needs in-game data</span></td><td class="why">21 new factions (Emerald Wardens, Kirin Tor, Powderfuse and more) have no data anywhere yet. Trailmark could log where your rep comes from while you play and build guides from that.</td></tr>
+<tr><td class="n">PvP faction guides</td><td><span class="chip maybe">Maybe</span></td><td class="why">Warsong, Arathi Basin and Alterac Valley reputation; mostly battleground play, little to route.</td></tr>
+<tr><td class="n">Mount guides</td><td><span class="chip maybe">Maybe</span></td><td class="why">Rep mounts are already in the reputation rewards; a separate guide would add class mounts and drops.</td></tr>
 <tr><td class="n">Hardcore mode</td><td><span class="chip maybe">Maybe</span></td><td class="why">Cheap as a "safer" switch (hide group and red quests, warn on dangerous elites) if you or your players run Hardcore; skip otherwise.</td></tr>
 <tr><td class="n">Treasures</td><td><span class="chip maybe">Maybe</span></td><td class="why">Rares are done; treasure chests need their own spawn data.</td></tr>
 <tr><td class="n">Puzzle pictures, full quest text</td><td><span class="chip maybe">Maybe</span></td><td class="why">How-to tips already cover most tricky quests.</td></tr>
@@ -108,6 +111,35 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <tr><td class="n">Gamepad support</td><td><span class="chip skip">Skipped</span></td><td class="why">Not needed.</td></tr>
 <tr><td class="n">Anonymous route timing, desktop client</td><td><span class="chip skip">Skipped</span></td><td class="why">Needs an outside server or app.</td></tr>
 </table></div>
+
+
+<h2>Known gaps in what is built</h2>
+<p class="lede">Parts of finished features that still have holes, mostly from missing data.</p>
+<div class="scroll"><table class="tbl left-table">
+<tr><th>Where</th><th>Gap</th></tr>
+<tr><td class="n">Profession plans</td><td class="why">Tailoring 271-300 has no plan (no trainer or vendor pattern with common materials). Some Forever recipe learn levels are estimated.</td></tr>
+<tr><td class="n">Dungeons</td><td class="why">Forever-only dungeons are left out (Excavation Site: Wetlands, The Drowned City and others): sources disagree.</td></tr>
+<tr><td class="n">Class quests</td><td class="why">Chains that need dungeons or zig-zag across the map are left out (Whirlwind, Succubus, Call of Water).</td></tr>
+<tr><td class="n">Boats and docks</td><td class="why">Several dock spots are estimates and say so on the waypoint; no boat timetables.</td></tr>
+<tr><td class="n">Nearest service</td><td class="why">Classic NPC data; Forever additions are missing and mailboxes are thin (59 in the data).</td></tr>
+<tr><td class="n">Exploration</td><td class="why">11 small areas have no map piece and may never count as explored; capital cities have no areas.</td></tr>
+<tr><td class="n">Reputation</td><td class="why">Classic reputation rates; Human bonus and shared city/town reputation are not shown.</td></tr>
+<tr><td class="n">Zephras Isle</td><td class="why">About 30 side-quest steps per faction have no quest giver yet; a recorder run on a Skyborne character would fill them.</td></tr>
+</table></div>
+
+<h2>Waiting on an in-game test</h2>
+<p class="lede">Built and deployed to Forever, not checked in game yet. The Fieldtest list in the addon has a check for each.</p>
+<ul class="built-list">
+<li>Looks, settings sidebar, tabs (0.15)</li>
+<li>Vendor, trainer, gear rewards, also nearby, dungeons, class quests, boats, flight timer, undo, share (0.16)</li>
+<li>Professions and Legacy tabs, guide list selector (0.17, 0.18)</li>
+<li>Restock, pet food, party quest sharing (0.18)</li>
+<li>Waypoint choice, themed marker, screen arrow (0.19)</li>
+<li>Batch 1: nearest service, route line, rares, timers, flights, markers, pace, compact, party tab, profile, tour (0.20)</li>
+<li>Language keys and the group-tag fix (0.20.1)</li>
+<li>Exploration guide (0.21)</li>
+<li>Reputation guides, profession shopping list (0.22)</li>
+</ul>
 
 <details class="done"><summary>Done: everything Trailmark has built (click to show)</summary>
 <h3 style="margin-top:14px">Built so far</h3>
