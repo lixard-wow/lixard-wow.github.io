@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Trailmark Waypoint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Alegreya+Sans:wght@400;500;700&family=IM+Fell+English&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #0d0f14; color: #d9cfb8; font: 15px/1.5 "Alegreya Sans", system-ui, sans-serif; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px 60px; }
+h1 { font: 30px/1.1 "Marcellus", serif; margin: 10px 0 6px; color: #e9dcb8; }
+h2 { font: 23px "Marcellus", serif; margin: 34px 0 6px; color: #eadcb5; }
+.lede { color: #8d8471; max-width: 860px; margin: 0 0 10px; }
+.tmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 8px; }
+.tmnav a { border: 1px solid #b8933f; color: #f1d78d; padding: 5px 14px; text-decoration: none; font-size: 14px; background: #0f1930; }
+.tmnav a.on { background: #1b2640; color: #f3dc98; box-shadow: inset 0 -2px 0 #d9b25a; }
+.bar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 14px 0; }
+.seg { display: inline-flex; border: 1px solid #3a3730; }
+.seg button { background: transparent; color: #8d8471; border: 0; padding: 6px 12px; font: 14px "Alegreya Sans"; cursor: pointer; }
+.seg button + button { border-left: 1px solid #3a3730; }
+.seg button.on { background: #2a2418; color: #f0dfae; }
+.bar label { color: #8d8471; font-size: 13px; }
+
+.scenes { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+.scene { position: relative; height: 300px; overflow: hidden; border: 1px solid #23242a;
+  background: linear-gradient(180deg, #6f8fb0 0%, #b3c6d3 40%, #5d7a4f 41%, #41592f 72%, #2d3f24 100%); }
+.scene.dusk { background: linear-gradient(180deg, #2a3150 0%, #6d6280 40%, #3b4a37 41%, #2a3826 72%, #1b2618 100%); }
+.scene .hill { position: absolute; left: -40px; right: -40px; top: 90px; height: 80px; background: radial-gradient(ellipse at 30% 100%, rgba(70,96,58,.9), transparent 70%), radial-gradient(ellipse at 80% 100%, rgba(62,88,52,.9), transparent 65%); }
+.scene .cap { position: absolute; left: 10px; bottom: 8px; right: 10px; font-size: 12.5px; color: #eee3c8; text-shadow: 1px 1px 0 #000, 0 0 3px #000; }
+.wp { position: absolute; left: 50%; top: 64px; transform: translateX(-50%); text-align: center; }
+.wp .t { white-space: nowrap; font-size: 15px; text-shadow: 0 0 2px #000, 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; }
+.wp .d { font-size: 12px; margin-top: 2px; text-shadow: 1px 1px 0 #000, 0 0 2px #000; }
+.pin { position: relative; margin: 4px auto 0; }
+.pin .g, .pin .s { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; }
+.pin .g { mix-blend-mode: screen; opacity: .55; -webkit-mask-image: url(wayglow.png); mask-image: url(wayglow.png); }
+.pin .s { filter: drop-shadow(0 2px 2px rgba(0,0,0,.6)); }
+.edge { position: absolute; right: 14px; top: 140px; -webkit-mask-image: url(wayarrow.png); mask-image: url(wayarrow.png); -webkit-mask-size: contain; mask-size: contain; transform: rotate(75deg); filter: drop-shadow(0 2px 2px rgba(0,0,0,.6)); }
+.sarrow { position: absolute; left: 16px; top: 14px; text-align: center; width: 72px; }
+.sarrow .a { width: 46px; height: 46px; margin: 0 auto; -webkit-mask-image: url(wayarrow.png); mask-image: url(wayarrow.png); -webkit-mask-size: contain; mask-size: contain; transform: rotate(-32deg); filter: drop-shadow(0 2px 2px rgba(0,0,0,.6)); }
+.sarrow div { font-size: 12.5px; text-shadow: 1px 1px 0 #000, 0 0 2px #000; }
+.hidden { display: none !important; }
+
+.modes { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 10px; }
+.mode { border: 1px solid #b8933f; background: linear-gradient(180deg, #13203a, #0c1426); padding: 12px 14px; }
+.mode h3 { font: 17px "Marcellus", serif; margin: 0 0 4px; color: #f3dc98; }
+.mode p { margin: 0; color: #b9c2d6; font-size: 14px; }
+.mode .when { margin-top: 8px; font-size: 13px; color: #d9b25a; }
+.opts { border: 1px solid #b8933f; background: linear-gradient(180deg, #13203a, #0c1426); padding: 14px; max-width: 560px; margin-top: 10px; }
+.opts h4 { font: 15px "Marcellus", serif; color: #f3dc98; margin: 0 0 8px; }
+.choice { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 6px 0 10px; }
+.choice span { text-align: center; border: 1px solid #2f3d5c; background: #0f1930; padding: 4px 0; font-size: 13px; color: #dfe4ee; cursor: pointer; }
+.choice span.on { border-color: #d9b25a; color: #f3dc98; }
+.opt { display: grid; grid-template-columns: 18px 1fr; gap: 0 8px; padding: 4px 0; color: #dfe4ee; font-size: 14px; }
+.opt .box { width: 14px; height: 14px; margin-top: 3px; border: 1px solid #4b5a7d; background: #0a1122; }
+.opt .box.on { border-color: #d9b25a; box-shadow: inset 0 0 0 3px #0a1122, inset 0 0 0 10px #d9b25a; }
+.opt span:not(.box) { grid-column: 2; font-size: 12px; color: #9ba6bd; }
+.using { font-size: 12px; color: #9ba6bd; margin-left: 8px; }
+.note { color: #8d8471; font-size: 13.5px; max-width: 860px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tmnav"><a href="/trailmark/mockup/">Look mockup</a><a href="/trailmark/features/">Features</a><a href="/trailmark/professions/">Profession plans</a><a class="on" href="/trailmark/waypoint/">Waypoint</a></nav>
+<h1>Trailmark: waypoint</h1>
+<p class="lede">How Trailmark shows where to go. Pick Trailmark's own marker, Blizzard's (which WaypointUI and the LixardUI waypoint draw on), or TomTom. Trailmark's marker follows your look: a brass compass, a red wax seal or a glowing rune stone. These pictures use the real marker art from the addon. Built in 0.19.0, not tested in game yet.</p>
+
+<div class="bar">
+  <label>Look</label>
+  <div class="seg" id="look"><button class="on" data-v="A">Cartographer</button><button data-v="B">Quest Log</button><button data-v="C">Waystone</button></div>
+  <label>Size</label>
+  <div class="seg" id="size"><button data-v="36">Small</button><button class="on" data-v="44">Normal</button><button data-v="60">Large</button></div>
+  <label>Screen arrow</label>
+  <div class="seg" id="arrow"><button class="on" data-v="1">On</button><button data-v="0">Off</button></div>
+</div>
+
+<div class="scenes">
+  <div class="scene" data-state="on">
+    <div class="hill"></div>
+    <div class="sarrow"><div class="a"></div><div class="yd">212 yd</div></div>
+    <div class="wp"><div class="t">Kill Fleshrippers</div><div class="pin"><div class="g"></div><div class="s"></div></div><div class="d">212 yd</div></div>
+    <div class="cap">On screen: the marker stands on the step's spot with the step and the yards left.</div>
+  </div>
+  <div class="scene dusk" data-state="off">
+    <div class="hill"></div>
+    <div class="sarrow"><div class="a" style="transform:rotate(95deg)"></div><div class="yd">340 yd</div></div>
+    <div class="edge"></div>
+    <div class="cap">Off screen: an arrow at the screen edge points the way. The screen arrow turns with you.</div>
+  </div>
+  <div class="scene" data-state="arrived">
+    <div class="hill"></div>
+    <div class="sarrow"><div class="a" style="transform:rotate(0deg)"></div><div class="yd">Arrived</div></div>
+    <div class="wp" style="top:84px"><div class="t">Arrived</div><div class="pin"><div class="g"></div><div class="s"></div></div><div class="d">5 yd</div></div>
+    <div class="cap">Arrived: within 8 yards. The next step moves the marker on.</div>
+  </div>
+</div>
+
+<h2>Which marker is used</h2>
+<p class="lede">Settings > Finding the way > Waypoint. The line next to it says which one is in use right now.</p>
+<div class="modes">
+  <div class="mode"><h3>Automatic</h3><p>Picks for you, so two markers never fight over the same spot.</p><div class="when">WaypointUI or LixardUI waypoint installed: Blizzard's marker (they draw on it). Else TomTom if installed. Else Trailmark's own.</div></div>
+  <div class="mode"><h3>Trailmark</h3><p>The themed marker above, with the step name, yards and an edge arrow. Blizzard's marker is hidden while it shows.</p><div class="when">Best when you use no other waypoint addon.</div></div>
+  <div class="mode"><h3>Blizzard</h3><p>The game's own marker. WaypointUI and the LixardUI waypoint restyle this one, so pick it when you use them.</p><div class="when">Trailmark still sets the spot for every step.</div></div>
+  <div class="mode"><h3>TomTom</h3><p>Each step becomes a TomTom waypoint with TomTom's arrow; the old one is removed.</p><div class="when">Needs TomTom. Steps that only point at a quest area have no exact spot, so TomTom gets nothing for those.</div></div>
+</div>
+
+<h2>The settings</h2>
+<div class="opts">
+  <h4>Finding the way</h4>
+  <div class="opt" style="display:block"><b style="font-weight:500">Waypoint</b><span class="using" id="using">Using: Trailmark</span></div>
+  <div class="choice" id="mode"><span class="on" data-v="Trailmark">Automatic</span><span data-v="Trailmark">Trailmark</span><span data-v="Blizzard">Blizzard</span><span data-v="TomTom">TomTom</span></div>
+  <div class="opt"><span class="box on"></span><b style="font-weight:500">Screen arrow</b><span>A themed arrow you can drag anywhere; it turns toward the waypoint and shows the yards left.</span></div>
+  <div class="opt" style="display:block;color:#dfe4ee">Waypoint size 44<div style="height:4px;background:#0a1122;border:1px solid #2f3d5c;margin:6px 0 2px;position:relative;max-width:420px"><i style="position:absolute;top:-5px;left:30%;width:10px;height:14px;background:#d9b25a"></i></div></div>
+  <div class="opt"><span class="box on"></span><b style="font-weight:500">Point the waypoint at each step</b><span>Turn this off to set your own map pins.</span></div>
+</div>
+<p class="note">Same rules as the rest of Trailmark: our own frames and art, nothing taken from WaypointUI, TomTom or other addons. TomTom is only called through its public waypoint functions.</p>
+</div>
+<script>
+const LOOKS = {
+  A: { pin: 'pincompass.png', tint: '#e0b85c', glow: '#f2cc73', text: '#f5e0a3', font: '"Marcellus", serif' },
+  B: { pin: 'pinseal.png', tint: '#b3291a', glow: '#f28c4d', text: '#fae6b8', font: '"IM Fell English", serif' },
+  C: { pin: 'pinrune.png', tint: '#80d1ff', glow: '#8cd9ff', text: '#f0d48a', font: '"Marcellus SC", serif' },
+};
+let look = 'A', size = 44, arrow = true;
+function apply() {
+  const L = LOOKS[look];
+  document.querySelectorAll('.pin').forEach(p => { p.style.width = size + 'px'; p.style.height = size + 'px'; });
+  document.querySelectorAll('.pin .s').forEach(s => { s.style.width = size + 'px'; s.style.height = size + 'px'; s.style.background = L.tint; s.style.webkitMaskImage = s.style.maskImage = 'url(' + L.pin + ')'; });
+  document.querySelectorAll('.pin .g').forEach(g => { g.style.width = size * 2.2 + 'px'; g.style.height = size * 2.2 + 'px'; g.style.background = L.glow; });
+  document.querySelectorAll('.wp .t').forEach(t => { t.style.color = L.text; t.style.fontFamily = L.font; });
+  document.querySelectorAll('.wp .d, .sarrow .yd').forEach(t => { t.style.color = L.text; });
+  document.querySelectorAll('.edge').forEach(e => { e.style.width = size * 0.75 + 'px'; e.style.height = size * 0.75 + 'px'; e.style.background = L.tint; });
+  document.querySelectorAll('.sarrow .a').forEach(a => { a.style.background = L.tint; });
+  document.querySelectorAll('.sarrow').forEach(a => a.classList.toggle('hidden', !arrow));
+}
+function seg(id, fn) {
+  document.querySelectorAll('#' + id + ' button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#' + id + ' button').forEach(x => x.classList.toggle('on', x === b));
+    fn(b.dataset.v); apply();
+  }));
+}
+seg('look', v => look = v);
+seg('size', v => size = +v);
+seg('arrow', v => arrow = v === '1');
+document.querySelectorAll('#mode span').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#mode span').forEach(x => x.classList.toggle('on', x === b));
+  document.getElementById('using').textContent = 'Using: ' + b.dataset.v;
+}));
+apply();
+</script>
+</body>
+</html>
