@@ -98,6 +98,7 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <li><b>Restock food, drink, ammo and pet food</b> at vendors (0.18.1, 0.18.2)</li>
 <li><b>Share quests with my party</b> when you pick them up, optional (0.18.3)</li>
 <li><b>Waypoint choice</b>: Trailmark, Blizzard/WaypointUI/LixardUI or TomTom, with a <b>themed in-world marker</b> and an optional <b>screen arrow</b> (0.19.0)</li>
+<li><b>Batch 1 (0.20.0)</b>: nearest service, route line on the map, rares, timed quests and sounds, auto flights, wear upgrades, item markers, group tags, pace and leveling stats, compact window, party tab, settings profile, tour</li>
 <li><b>Three looks</b> to pick in settings, tabs on top (0.15.0)</li>
 <li><b>Step numbers</b> and <b>XP per hour</b> with time to level (0.15.0)</li>
 <li><b>Kill progress over mobs</b>, <b>why line</b>, <b>quick setup presets</b> (0.14.0)</li>
@@ -201,40 +202,40 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <tr><th>Feature</th><th>What you get</th><th>Who has it</th><th>Expected</th><th>Effort</th></tr>
 <tr><th colspan="5" style="color:#f3dc98">Finding the way</th></tr>
 <tr><td class="n">Screen arrow <span class="chip done">Built 0.19</span></td><td>A classic arrow with yards left, as well as the in-world marker</td><td>Almost all</td><td>High</td><td>Small</td></tr>
-<tr><td class="n">Nearest service</td><td>One click to the nearest vendor, repair, inn, flight master, trainer, bank or mailbox</td><td>Polestar</td><td>Medium</td><td>Medium</td></tr>
-<tr><td class="n">Route line on the map</td><td>The path between steps drawn on the world map</td><td>Polestar, Absolute</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Nearest service <span class="chip done">Built 0.20</span></td><td>One click to the nearest vendor, repair, inn, flight master, trainer, bank or mailbox</td><td>Polestar</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Route line on the map <span class="chip done">Built 0.20</span></td><td>The path between steps drawn on the world map</td><td>Polestar, Absolute</td><td>Medium</td><td>Medium</td></tr>
 <tr><td class="n">Walking-path arrow</td><td>Arrow that bends around corners, cliffs and caves</td><td>Polestar</td><td>Low-medium</td><td>Large</td></tr>
-<tr><td class="n">Arrival sound, facing colors</td><td>Sound when you arrive; arrow color shows if you face the target</td><td>Quest Pilot, Follow The Arrow</td><td>Low</td><td>Small</td></tr>
+<tr><td class="n">Arrival sound, facing colors <span class="chip done">Built 0.20 (sound)</span></td><td>Sound when you arrive; arrow color shows if you face the target</td><td>Quest Pilot, Follow The Arrow</td><td>Low</td><td>Small</td></tr>
 <tr><td class="n">TomTom handoff <span class="chip done">Built 0.19</span></td><td>Send the step to TomTom if you use it</td><td>WoW-Pro, Leveling Pro</td><td>Low-medium</td><td>Small</td></tr>
 <tr><th colspan="5" style="color:#f3dc98">Guide content</th></tr>
-<tr><td class="n">Group-quest warnings</td><td>Elite quests flagged with a solo alternative</td><td>Polestar, Alenya, RestedXP</td><td>Medium</td><td>Small-medium</td></tr>
+<tr><td class="n">Group-quest warnings <span class="chip done">Built 0.20 (tags)</span></td><td>Elite quests flagged with a solo alternative</td><td>Polestar, Alenya, RestedXP</td><td>Medium</td><td>Small-medium</td></tr>
 <tr><td class="n">Hardcore mode</td><td>Safer route and danger-spot warnings for Hardcore characters</td><td>RestedXP, Absolute, LevelForge</td><td>Medium</td><td>Medium</td></tr>
 <tr><td class="n">Profession guides <span class="chip done">Built 0.17</span></td><td>Leveling routes for each profession</td><td>Polestar, Leveling Pro, Zygor</td><td>Medium</td><td>Large</td></tr>
-<tr><td class="n">Rares and treasures</td><td>Alerts and map marks for rares and treasures near the route</td><td>Polestar, Zygor</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Rares and treasures <span class="chip done">Built 0.20 (rares)</span></td><td>Alerts and map marks for rares and treasures near the route</td><td>Polestar, Zygor</td><td>Medium</td><td>Medium</td></tr>
 <tr><td class="n">Reputation, mount, exploration guides</td><td>Side guides beyond leveling</td><td>Polestar, Leveling Pro, RestedXP</td><td>Low-medium</td><td>Large</td></tr>
 <tr><td class="n">Puzzle pictures, full quest text</td><td>Pictures for tricky spots; Shift-click shows the quest text</td><td>Follow The Arrow, Leveldon</td><td>Low</td><td>Small</td></tr>
 <tr><td class="n">In-game guide editor</td><td>Write or fix steps inside the game</td><td>Wayfinder, Guidelime</td><td>Low</td><td>Medium-large</td></tr>
 <tr><th colspan="5" style="color:#f3dc98">Quests and automation</th></tr>
-<tr><td class="n">Auto flights and gossip</td><td>Takes the flight the step asks for and picks the right talk option</td><td>LevelForge, Leveling Pro</td><td>Medium</td><td>Small</td></tr>
-<tr><td class="n">Quest items</td><td>Auto-loot quest items and keep them out of vendor sales</td><td>Wayfinder, Polestar</td><td>Low-medium</td><td>Small</td></tr>
-<tr><td class="n">Auto-equip upgrades</td><td>Equips a better quest reward out of combat</td><td>Leveling Pro</td><td>Low</td><td>Small</td></tr>
+<tr><td class="n">Auto flights and gossip <span class="chip done">Built 0.20</span></td><td>Takes the flight the step asks for and picks the right talk option</td><td>LevelForge, Leveling Pro</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Quest items <span class="chip done">Built 0.20 (markers)</span></td><td>Auto-loot quest items and keep them out of vendor sales</td><td>Wayfinder, Polestar</td><td>Low-medium</td><td>Small</td></tr>
+<tr><td class="n">Auto-equip upgrades <span class="chip done">Built 0.20</span></td><td>Equips a better quest reward out of combat</td><td>Leveling Pro</td><td>Low</td><td>Small</td></tr>
 <tr><th colspan="5" style="color:#f3dc98">Window and tracker</th></tr>
 <tr><td class="n">Languages</td><td>The addon in German, French, Spanish and more</td><td>Polestar, 4Ever, Leveldon, Leveling Pro</td><td>High</td><td>Medium</td></tr>
-<tr><td class="n">Timers and alerts</td><td>Countdown on timed quests, glow on loot that starts a quest, sound when a quest is ready</td><td>Polestar, Alenya, Quest Pilot</td><td>Medium</td><td>Small</td></tr>
-<tr><td class="n">Compact mode</td><td>A one-line or see-through window while questing</td><td>Polestar, Quest Pilot</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Timers and alerts <span class="chip done">Built 0.20</span></td><td>Countdown on timed quests, glow on loot that starts a quest, sound when a quest is ready</td><td>Polestar, Alenya, Quest Pilot</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Compact mode <span class="chip done">Built 0.20</span></td><td>A one-line or see-through window while questing</td><td>Polestar, Quest Pilot</td><td>Medium</td><td>Small</td></tr>
 <tr><td class="n">Own quest tracker</td><td>Replaces Blizzard's tracker, grouped by zone</td><td>Quest Pilot, WoW-Pro, Questie</td><td>Medium</td><td>Medium</td></tr>
 <tr><td class="n">Gamepad support</td><td>Play the guide with a controller</td><td>Polestar</td><td>Low-medium</td><td>Medium</td></tr>
-<tr><td class="n">Profiles, tutorial, update notice</td><td>Export settings, a first-run walkthrough, a newer-version notice</td><td>Quest Pilot, Polestar</td><td>Low</td><td>Small</td></tr>
+<tr><td class="n">Profiles, tutorial, update notice <span class="chip done">Built 0.20</span></td><td>Export settings, a first-run walkthrough, a newer-version notice</td><td>Quest Pilot, Polestar</td><td>Low</td><td>Small</td></tr>
 <tr><th colspan="5" style="color:#f3dc98">Leveling stats</th></tr>
-<tr><td class="n">On pace</td><td>Ahead or behind the level the guide expects at this step</td><td>Polestar, LevelForge</td><td>Medium</td><td>Small</td></tr>
-<tr><td class="n">Kills and quests to level</td><td>How many kills or quests until the next level, session totals</td><td>Quest Pilot, Leveling Pro</td><td>Medium</td><td>Small</td></tr>
-<tr><td class="n">Rested XP</td><td>Rested bar and where to log out for rest</td><td>Polestar</td><td>Low-medium</td><td>Small</td></tr>
-<tr><td class="n">Speedrun splits</td><td>Time per zone against your best run</td><td>Alenya</td><td>Low</td><td>Small</td></tr>
+<tr><td class="n">On pace <span class="chip done">Built 0.20</span></td><td>Ahead or behind the level the guide expects at this step</td><td>Polestar, LevelForge</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Kills and quests to level <span class="chip done">Built 0.20</span></td><td>How many kills or quests until the next level, session totals</td><td>Quest Pilot, Leveling Pro</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Rested XP <span class="chip done">Built 0.20</span></td><td>Rested bar and where to log out for rest</td><td>Polestar</td><td>Low-medium</td><td>Small</td></tr>
+<tr><td class="n">Speedrun splits <span class="chip done">Built 0.20</span></td><td>Time per zone against your best run</td><td>Alenya</td><td>Low</td><td>Small</td></tr>
 <tr><th colspan="5" style="color:#f3dc98">Group</th></tr>
-<tr><td class="n">Group progress</td><td>See friends' steps, share quests they are missing, sync to one step</td><td>Polestar, Questie (tooltips)</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Group progress <span class="chip done">Built 0.20</span></td><td>See friends' steps, share quests they are missing, sync to one step</td><td>Polestar, Questie (tooltips)</td><td>Medium</td><td>Medium</td></tr>
 <tr><th colspan="5" style="color:#f3dc98">Other</th></tr>
 <tr><td class="n">Talent advice <span class="chip done">In Talentwise</span></td><td>Talent picks while leveling</td><td>Zygor, Leveling Pro, RestedXP</td><td>Medium</td><td>Already in your Talentwise addon: link it</td></tr>
-<tr><td class="n">Bag markers</td><td>Marks items you need later or can sell</td><td>Polestar, Leveldon</td><td>Low-medium</td><td>Small-medium</td></tr>
+<tr><td class="n">Bag markers <span class="chip done">Built 0.20</span></td><td>Marks items you need later or can sell</td><td>Polestar, Leveldon</td><td>Low-medium</td><td>Small-medium</td></tr>
 </table></div>
 
 <footer>Sources: each addon's CurseForge page and public write-ups, November 2026. Download counts as shown on those pages. Nothing here was taken from any addon's code.</footer>
