@@ -59,7 +59,7 @@ section.dir .lede { color: var(--page-mute); margin: 4px 0 18px; max-width: 820p
 body.s-out .tm .notice { display: block; }
 .tm .rows { padding: 2px 0 6px; }
 body.s-min .tm .rows, body.s-min .tm .prog, body.s-min .tm .next, body.s-min .tm .foot { display: none; }
-.tm .row { display: grid; grid-template-columns: 16px 20px 1fr auto; gap: 0 8px; padding: 7px 10px 7px 12px; position: relative; }
+.tm .row { display: grid; grid-template-columns: 20px 1fr auto; gap: 0 8px; padding: 7px 10px 7px 12px; position: relative; }
 .tm .row .ck { width: 14px; height: 14px; margin-top: 2px; }
 .tm .row .ic { width: 18px; height: 18px; margin-top: 1px; }
 .tm .row .t { font-size: 14px; line-height: 1.25; }
@@ -68,10 +68,10 @@ body.s-min .tm .rows, body.s-min .tm .prog, body.s-min .tm .next, body.s-min .tm
 .tm .rate { padding: 0 10px 8px; font-size: 12px; margin-top: -4px; opacity: .8; }
 body.s-min .tm .rate { display: none; }
 .tm .row .q { color: #ffd34d; }
-.tm .row .d { grid-column: 3 / 5; font-size: 12.5px; line-height: 1.3; margin-top: 2px; }
-.tm .row .why { grid-column: 3 / 5; font-size: 12.5px; margin-top: 3px; }
+.tm .row .d { grid-column: 2 / 4; font-size: 12.5px; line-height: 1.3; margin-top: 2px; }
+.tm .row .why { grid-column: 2 / 4; font-size: 12.5px; margin-top: 3px; }
 .tm .row .xp { font-size: 12px; white-space: nowrap; align-self: start; margin-top: 2px; }
-.tm .obj { grid-column: 3 / 5; display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; margin-top: 5px; font-size: 12.5px; }
+.tm .obj { grid-column: 2 / 4; display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; margin-top: 5px; font-size: 12.5px; }
 .tm .obj .ob { height: 3px; grid-column: 1 / 3; position: relative; margin-bottom: 3px; }
 .tm .obj .ob i { position: absolute; left: 0; top: 0; bottom: 0; }
 .tm .row.dim { opacity: .5; }
@@ -304,22 +304,22 @@ function windowHTML(d) {
       <div class="notice">Most quests left in Westfall are grey or nearly grey for you. Click to go to Redridge Mountains (17-22).</div>
       <div class="rows">
         <div class="row dim">
-          <span class="ck done"></span><span class="ic">${ICON('i-fp')}</span>
+          <span class="ic">${ICON('i-fp')}</span>
           <span class="t"><span class="n">13.</span>Get the flight path at Sentinel Hill</span><span class="xp"></span>
         </div>
         <div class="row cur">
-          <span class="ck"></span><span class="ic">${ICON('i-kill')}</span>
+          <span class="ic">${ICON('i-kill')}</span>
           <span class="t"><span class="n">14.</span><span class="lv y">[14]</span>Kill Fleshrippers for <span class="q">Patrolling Westfall</span></span><span class="xp">780 xp</span>
           <div class="obj"><span>Fleshripper</span><em>3 / 8</em><span class="ob"><i style="width:37%"></i></span><span>Young Fleshripper</span><em>6 / 8</em><span class="ob"><i style="width:75%"></i></span></div>
           <div class="why">Why: Needed for Patrolling Westfall, part 2 (Gryan Stoutmantle)</div>
         </div>
         <div class="row">
-          <span class="ck"></span><span class="ic">${ICON('i-accept')}</span>
+          <span class="ic">${ICON('i-accept')}</span>
           <span class="t"><span class="n">15.</span><span class="lv o">[16]</span>Accept <span class="q">The Defias Brotherhood</span></span><span class="xp">1,050 xp</span>
           <div class="d">Gryan Stoutmantle, Sentinel Hill</div>
         </div>
         <div class="row">
-          <span class="ck"></span><span class="ic">${ICON('i-turnin')}</span>
+          <span class="ic">${ICON('i-turnin')}</span>
           <span class="t"><span class="n">16.</span><span class="lv g1">[12]</span>Turn in <span class="q">The Forgotten Heirloom</span></span><span class="xp">660 xp</span>
           <div class="d">Farmer Furlbrow, The Furlbrow Pumpkin Farm</div>
         </div>
