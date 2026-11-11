@@ -268,6 +268,24 @@ body.s-min .tm .pane, body.s-min .tm .near { display: none !important; }
 .C .card { border-color: #4a453c; background: #1c1b1a; } .C .card.on, .C .seg2 span.on { border-color: #7fd0ff; color: #f0d48a; } .C .ph { color: #f0d48a; } .C .near b, .C .dl.warn, .C .hi { color: #9fd6f5; }
 .pk .head { display: flex; align-items: center; gap: 8px; padding: 8px 10px; } .pk .zone { flex: 1; } .pk .zone b { font: 17px/1.1 Marcellus, serif; font-weight: 400; } .pk .glyphs { display: flex; } .pk .g { width: 22px; height: 22px; display: grid; place-items: center; } .pk .g svg { width: 12px; height: 12px; }
 .A.pk .zone b { color: #f3dc98; } .B.pk .zone b { font-family: "IM Fell English", serif; font-size: 20px; color: #3a1d08; } .C.pk .zone b { font-family: "Marcellus SC", serif; color: #f0d48a; }
+
+.world { width: 330px; height: 230px; position: relative; overflow: hidden; border: 1px solid #222;
+  background: linear-gradient(180deg, #6f8fb0 0%, #a9bfd0 38%, #57704a 39%, #3c5233 70%, #2c3d26 100%); }
+.world .hill { position: absolute; left: -40px; right: -40px; top: 70px; height: 70px; background: radial-gradient(ellipse at 30% 100%, #4d6a40, transparent 70%), radial-gradient(ellipse at 80% 100%, #44603a, transparent 65%); }
+.world .wp { position: absolute; left: 150px; top: 62px; text-align: center; transform: translateX(-50%); }
+.world .wp .t { font: 14px "Marcellus", serif; text-shadow: 0 0 2px #000, 1px 1px 0 #000, -1px -1px 0 #000; white-space: nowrap; }
+.world .wp .d { font: 11px "Alegreya Sans", sans-serif; text-shadow: 1px 1px 0 #000, 0 0 2px #000; margin-top: 2px; }
+.world .wp .pinwrap { position: relative; width: 58px; height: 58px; margin: 4px auto 0; filter: drop-shadow(0 2px 2px rgba(0,0,0,.6)); }
+.world .wp .pinwrap svg { position: relative; width: 58px; height: 58px; }
+.world .wp .glow { position: absolute; left: -18px; top: -18px; width: 94px; height: 94px; border-radius: 50%; filter: blur(10px); opacity: .3; }
+.world .edgearrow { position: absolute; right: 12px; top: 120px; width: 30px; height: 30px; transform: rotate(80deg); }
+.world .screen { position: absolute; left: 14px; top: 10px; text-align: center; width: 64px; }
+.world .screen svg { width: 40px; height: 40px; transform: rotate(-35deg); }
+.world .screen div { font: 12px "Alegreya Sans"; text-shadow: 1px 1px 0 #000, 0 0 2px #000; }
+.world .lbl { position: absolute; bottom: 6px; left: 8px; right: 8px; font: 11px "Alegreya Sans"; color: #e9e2cf; text-shadow: 1px 1px 0 #000; }
+.wpchoice { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 4px 0 8px; }
+.wpchoice span { text-align: center; font-size: 12.5px; padding: 4px 0; border: 1px solid rgba(128,128,128,.45); }
+.A .wpchoice span.on { border-color: #d9b25a; color: #f3dc98; } .B .wpchoice span.on { border-color: #8a2a1a; color: #6f160d; } .C .wpchoice span.on { border-color: #7fd0ff; color: #f0d48a; }
 .tmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
 .tmnav a { border: 1px solid #b8933f; color: #f1d78d; padding: 5px 14px; text-decoration: none; font-size: 14px; background: #0f1930; }
 .tmnav a.on { background: #1b2640; color: #f3dc98; box-shadow: inset 0 -2px 0 #d9b25a; }
@@ -320,6 +338,31 @@ const DIRS = [
   { key: 'C', name: 'C. Waystone', lede: 'Carved slate with a gold inlay, and a faint blue rune glow for "where to go now" (current step, progress, the why line). Feels like the stones on old Azeroth roads.',
     notes: ['Slate: one tiled noise TGA tinted grey; gold inlay is three 1-px lines.', 'Blue is used for one meaning only: "this is where you are going". Gold is the frame.'] },
 ];
+
+
+const WP = {
+  A: { tint: '#e0b85c', glow: '#f2cc73', text: '#f5e0a3',
+       svg: '<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="50" cy="50" r="29" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><path d="M50 15 L57 50 L50 50Z M50 85 L43 50 L50 50Z M15 50 L50 43 L50 50Z M85 50 L50 57 L50 50Z" fill="currentColor"/><path d="M50 15 L43 50 L50 50Z M50 85 L57 50 L50 50Z M15 50 L50 57 L50 50Z M85 50 L50 43 L50 50Z" fill="currentColor" opacity=".7"/><circle cx="50" cy="50" r="4" fill="currentColor"/></svg>' },
+  B: { tint: '#b3291a', glow: '#f28c4d', text: '#fae6b8',
+       svg: '<svg viewBox="0 0 100 100"><path d="M50 8 C62 10 66 4 74 12 C82 18 92 20 90 32 C94 42 96 50 90 60 C92 72 84 80 74 86 C66 94 58 92 50 94 C40 94 32 92 26 86 C16 82 10 74 10 62 C4 52 6 42 10 34 C10 22 20 18 28 12 C34 6 42 10 50 8Z" fill="currentColor"/><circle cx="50" cy="50" r="28" fill="none" stroke="#000" stroke-opacity=".3" stroke-width="3"/><path d="M50 32 L55 46 L70 46 L58 55 L62 70 L50 61 L38 70 L42 55 L30 46 L45 46Z" fill="#000" fill-opacity=".3"/></svg>' },
+  C: { tint: '#80d1ff', glow: '#8cd9ff', text: '#f0d48a',
+       svg: '<svg viewBox="0 0 100 100"><path d="M50 6 L82 50 L50 94 L18 50Z" fill="currentColor"/><path d="M50 14 L75 50 L50 86 L25 50Z" fill="none" stroke="#000" stroke-opacity=".25" stroke-width="2"/><path d="M50 28 V72 M50 42 L62 30 M50 42 L38 30 M50 58 L62 70" stroke="#0b2233" stroke-opacity=".55" stroke-width="5" fill="none"/></svg>' },
+};
+const ARROW_SVG = '<svg viewBox="0 0 100 100"><path d="M50 8 L84 66 L62 58 L50 92 L38 58 L16 66Z" fill="currentColor"/></svg>';
+function worldHTML(d) {
+  const w = WP[d.key];
+  return `<div class="world">
+    <div class="hill"></div>
+    <div class="screen" style="color:${w.tint}">${ARROW_SVG}<div style="color:${w.text}">212 yd</div></div>
+    <div class="wp" style="color:${w.text}">
+      <div class="t">Kill Fleshrippers</div>
+      <div class="pinwrap" style="color:${w.tint}"><div class="glow" style="background:${w.glow}"></div>${w.svg}</div>
+      <div class="d">212 yd</div>
+    </div>
+    <div class="edgearrow" style="color:${w.tint}">${ARROW_SVG}</div>
+    <div class="lbl">In the world: Trailmark marker on the spot, screen arrow top left, edge arrow when it is off screen</div>
+  </div>`;
+}
 
 function windowHTML(d) {
   const tabs = `<div class="tabs"><span class="tab" data-v="guide">10-15</span><span class="tab on" data-v="guide">12-17</span><span class="tab" data-v="prof">Professions</span><span class="tab" data-v="dung">Dungeons</span><span class="tab" data-v="leg">Legacy</span><span class="tab plus" data-v="pick">+</span></div>`;
@@ -451,6 +494,10 @@ const PAGES = [
     <div class="opt"><span class="box on"></span><b>Say why for the current step</b><span>"Starts the chain to ...", "Ready to hand in", "Nearest of 3 here".</span></div>`],
   ['Finding the way', `
     <h4>Finding the way</h4>
+    <div class="opt" style="display:block"><b>Waypoint</b> <span style="font-size:12px;opacity:.75">Using: Trailmark</span></div>
+    <div class="wpchoice"><span class="on">Automatic</span><span>Trailmark</span><span>Blizzard</span><span>TomTom</span></div>
+    <div class="opt"><span class="box"></span><b>Screen arrow</b><span>A themed arrow you can drag anywhere; turns toward the waypoint with yards left.</span></div>
+    <div class="sl">Waypoint size 44<div class="track"><i style="left:30%"></i></div></div>
     <div class="opt"><span class="box on"></span><b>Point the waypoint at each step</b></div>
     <div class="opt"><span class="box on"></span><b>Route through flight paths and your hearthstone</b><span>Only when it is clearly faster.</span></div>
     <div class="opt"><span class="box"></span><b>Numbered step pins on the world map</b></div>
@@ -502,7 +549,7 @@ document.getElementById('main').innerHTML = DIRS.map(d => `
     <p class="lede">${d.lede}</p>
     <div class="stage">
       <div class="col">${windowHTML(d)}<div class="caption">Guide window: click the tabs (Professions, Dungeons, Legacy) to switch what it shows</div></div>
-      <div class="col">${plate}<div class="caption">In the world: skull marker and 3/8 above the mob</div>${pickerHTML(d)}<div class="caption">Guide list (the + tab): Guides, Professions, Dungeons or Legacy</div>${cfgHTML(d)}<div class="caption">Settings: sidebar pages, Quick setup first</div></div>
+      <div class="col">${worldHTML(d)}<div class="caption">Waypoint in this look (Settings > Finding the way > Waypoint: Trailmark)</div>${plate}<div class="caption">In the world: skull marker and 3/8 above the mob</div>${pickerHTML(d)}<div class="caption">Guide list (the + tab): Guides, Professions, Dungeons or Legacy</div>${cfgHTML(d)}<div class="caption">Settings: sidebar pages, Quick setup first</div></div>
     </div>
     <ul class="notes">${d.notes.map(n => `<li>${n}</li>`).join('')}</ul>
   </section>`).join('');
