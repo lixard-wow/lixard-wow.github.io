@@ -22,6 +22,9 @@ h2 { font: 23px "Marcellus", serif; margin: 0 0 4px; color: #f3dc98; }
 .seg { display: inline-flex; border: 1px solid #b8933f; margin-right: 6px; }
 .seg button { background: transparent; color: #9ba6bd; border: 0; padding: 4px 12px; font: 14px "Alegreya Sans"; cursor: pointer; }
 .seg button.on { background: #1b2640; color: #f1d78d; }
+.tmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 4px; }
+.tmnav a { border: 1px solid #b8933f; color: #f1d78d; padding: 5px 14px; text-decoration: none; font-size: 14px; background: #0f1930; }
+.tmnav a.on { background: #1b2640; color: #f3dc98; box-shadow: inset 0 -2px 0 #d9b25a; }
 section { margin: 22px 0; padding: 16px; border: 1px solid #b8933f; background: linear-gradient(180deg, #13203a, #0c1426); box-shadow: 0 0 0 1px #050a14; }
 .tbl { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 8px; }
 .tbl th, .tbl td { text-align: left; padding: 6px 8px; border-bottom: 1px solid rgba(47,61,92,.8); vertical-align: top; }
@@ -40,8 +43,9 @@ body.f-Alliance [data-f="Horde"], body.f-Horde [data-f="Alliance"] { display: no
 </head>
 <body class="f-Alliance">
 <div class="wrap">
+<nav class="tmnav"><a href="/trailmark/mockup/">Look mockup</a><a href="/trailmark/features/">Features</a><a class="on" href="/trailmark/professions/">Profession plans</a></nav>
 <h1>Trailmark: profession plans</h1>
-<p class="lede">The same plans the Trailmark Professions window uses, 1 to 300, built from WoW Forever's own recipe data: each step uses a recipe that still gives skill-ups over that range, taught by a trainer or sold by a vendor, with common materials. Counts include a margin for skill-ups you miss. Gathering professions list zones by skill. Pick your faction to see the right steps and trainers. Not checked in game yet. <a href="/trailmark/features/">Feature list</a> · <a href="/trailmark/mockup/">Look mockup</a></p>
+<p class="lede">The same plans the Trailmark Professions window uses, 1 to 300, built from WoW Forever's own recipe data: each step uses a recipe that still gives skill-ups over that range, taught by a trainer or sold by a vendor, with common materials. Counts include a margin for skill-ups you miss. Gathering professions list zones by skill. Pick your faction to see the right steps and trainers. Not checked in game yet.</p>
 <div class="bar"><span class="seg" id="fac"><button class="on" data-v="Alliance">Alliance</button><button data-v="Horde">Horde</button></span><a href="#alchemy">Alchemy</a> <a href="#blacksmithing">Blacksmithing</a> <a href="#enchanting">Enchanting</a> <a href="#engineering">Engineering</a> <a href="#leatherworking">Leatherworking</a> <a href="#tailoring">Tailoring</a> <a href="#herbalism">Herbalism</a> <a href="#mining">Mining</a> <a href="#skinning">Skinning</a> <a href="#cooking">Cooking</a> <a href="#first-aid">First Aid</a> <a href="#fishing">Fishing</a></div>
 <section id="alchemy"><h2>Alchemy <span class="kind">Crafting</span></h2>
 <p class="mute">Apprentice at 1 (to 75, level 5) · Journeyman at 50 (to 150, level 10) · Expert at 125 (to 225, level 20) · Artisan at 200 (to 300, level 35)</p>

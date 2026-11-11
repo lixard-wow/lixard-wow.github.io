@@ -242,10 +242,40 @@ body.s-min .tm .rate { display: none; }
   .stage { padding: 16px 12px; }
   .B .tabs { position: static; flex-direction: row; } .B .tab { writing-mode: horizontal-tb; }
 }
+
+.tm .view, .tm .zone b, .tm .zone span { display: none; }
+.tm[data-view="guide"] .v-guide, .tm[data-view="prof"] .v-prof, .tm[data-view="dung"] .v-dung, .tm[data-view="leg"] .v-leg { display: block; }
+.tm .tab { cursor: pointer; font-size: 11.5px; padding: 2px 7px; }
+.tm .notice { display: none !important; }
+body.s-out .tm .n-out, body.s-fly .tm .n-fly, body.s-undo .tm .n-undo { display: block !important; }
+body.s-min .tm .pane, body.s-min .tm .near { display: none !important; }
+.pane { padding: 6px 10px 10px; font-size: 13px; }
+.ph { font: 13px "Marcellus", serif; margin: 6px 0 4px; }
+.card { display: grid; grid-template-columns: 1fr auto; padding: 6px 8px; margin-bottom: 5px; border: 1px solid rgba(128,128,128,.35); }
+.card b { font-weight: 500; } .card em { font-style: normal; font-size: 12px; opacity: .8; } .card span { grid-column: 1 / 3; font-size: 12px; opacity: .75; }
+.card.dimc { opacity: .6; }
+.det { margin: -2px 0 8px 10px; }
+.dl { display: flex; justify-content: space-between; gap: 8px; padding: 3px 0; font-size: 12.5px; }
+.dl em { font-style: normal; opacity: .75; white-space: nowrap; } .dl em.ok { opacity: 1; color: #6aa45d; }
+.dl.mute { opacity: .7; display: block; } .dl s { opacity: .6; }
+.near { padding: 4px 10px 6px; font-size: 12.5px; } .near b { font-weight: 500; } .near div { display: flex; justify-content: space-between; opacity: .85; } .near em { font-style: normal; opacity: .7; }
+.pk { width: 330px; } .pk .seg2 { display: flex; gap: 4px; padding: 8px 10px 0; } .pk .seg2 span { flex: 1; text-align: center; font-size: 12px; padding: 3px 0; border: 1px solid rgba(128,128,128,.4); cursor: pointer; }
+.pk .pane { display: none; } .pk[data-mode="guides"] .m-guides, .pk[data-mode="profs"] .m-profs, .pk[data-mode="dungs"] .m-dungs, .pk[data-mode="legs"] .m-legs { display: block; }
+.pk .hint { padding: 0 10px 10px; font-size: 12px; opacity: .7; }
+.pk.A .win { color: #dfe4ee; } .pk.B .win { color: #3a2512; } .pk.C .win { color: #e4ddd0; }
+.A .card { border-color: #2f3d5c; background: #0f1930; } .A .card.on, .A .seg2 span.on { border-color: #d9b25a; color: #f3dc98; } .A .ph, .A .near b { color: #d9b25a; } .A .dl.warn, .A .hi { color: #f1d78d; }
+.B .card { border-color: rgba(91,58,29,.5); background: rgba(255,248,225,.35); } .B .card.on, .B .seg2 span.on { border-color: #8a2a1a; color: #6f160d; } .B .ph, .B .near b { color: #8a2a1a; } .B .dl.warn, .B .hi { color: #8a2a1a; }
+.C .card { border-color: #4a453c; background: #1c1b1a; } .C .card.on, .C .seg2 span.on { border-color: #7fd0ff; color: #f0d48a; } .C .ph { color: #f0d48a; } .C .near b, .C .dl.warn, .C .hi { color: #9fd6f5; }
+.pk .head { display: flex; align-items: center; gap: 8px; padding: 8px 10px; } .pk .zone { flex: 1; } .pk .zone b { font: 17px/1.1 Marcellus, serif; font-weight: 400; } .pk .glyphs { display: flex; } .pk .g { width: 22px; height: 22px; display: grid; place-items: center; } .pk .g svg { width: 12px; height: 12px; }
+.A.pk .zone b { color: #f3dc98; } .B.pk .zone b { font-family: "IM Fell English", serif; font-size: 20px; color: #3a1d08; } .C.pk .zone b { font-family: "Marcellus SC", serif; color: #f0d48a; }
+.tmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.tmnav a { border: 1px solid #b8933f; color: #f1d78d; padding: 5px 14px; text-decoration: none; font-size: 14px; background: #0f1930; }
+.tmnav a.on { background: #1b2640; color: #f3dc98; box-shadow: inset 0 -2px 0 #d9b25a; }
 </style>
 </head>
 <body class="s-normal">
 <header class="top">
+  <nav class="tmnav"><a class="on" href="/trailmark/mockup/">Look mockup</a><a href="/trailmark/features/">Features</a><a href="/trailmark/professions/">Profession plans</a></nav>
   <h1>Trailmark redesign</h1>
   <p>Three directions that should feel like they were made for WoW Forever: the navy and gold of the 2004 login screen, the parchment quest log, and the waystone of an old Azeroth road. All three are our own frames and textures, not Blizzard's. Each shows the guide window, the in-world bits (quest progress over a mob, item and target buttons) and the full settings window. Click the settings sidebar to change pages.</p>
 </header>
@@ -254,6 +284,8 @@ body.s-min .tm .rate { display: none; }
   <div class="seg" id="state">
     <button data-s="s-normal" class="on">Normal</button>
     <button data-s="s-out">Zone outleveled</button>
+    <button data-s="s-fly">Flying</button>
+    <button data-s="s-undo">Skip undo</button>
     <button data-s="s-min">Minimized</button>
   </div>
 </div></div>
@@ -290,18 +322,20 @@ const DIRS = [
 ];
 
 function windowHTML(d) {
-  const tabs = `<div class="tabs"><span class="tab">10-15</span><span class="tab on">12-17</span><span class="tab">17-22</span><span class="tab">+</span></div>`;
-  const sub = `<span>Sentinel Hill</span>`;
+  const tabs = `<div class="tabs"><span class="tab" data-v="guide">10-15</span><span class="tab on" data-v="guide">12-17</span><span class="tab" data-v="prof">Professions</span><span class="tab" data-v="dung">Dungeons</span><span class="tab" data-v="leg">Legacy</span><span class="tab plus" data-v="pick">+</span></div>`;
   return `
-  <div class="tm ${d.key}">
+  <div class="tm ${d.key}" data-view="guide">
     ${tabs}
     <div class="win">
       <div class="head">
-        <div class="zone"><b>Westfall</b>${sub}</div>
+        <div class="zone"><b class="v-guide">Westfall</b><b class="v-prof">Professions</b><b class="v-dung">Dungeons</b><b class="v-leg">Legacy</b><span class="v-guide">Sentinel Hill</span></div>
         <div class="glyphs"><span class="g">${GL.prev}</span><span class="g">${GL.next}</span><span class="g">${GL.min}</span><span class="g">${GL.gear}</span></div>
       </div>
+      <div class="view v-guide">
       <div class="prog"><span>Step 14 of 67</span><div class="bar"><i></i></div><span>21%</span></div><div class="rate">18.4k xp/h · 42 min to level</div>
-      <div class="notice">Most quests left in Westfall are grey or nearly grey for you. Click to go to Redridge Mountains (17-22).</div>
+      <div class="notice n-out">Most quests left in Westfall are grey or nearly grey for you. Click to go to Redridge Mountains (17-22).</div>
+      <div class="notice n-fly">Flying to Sentinel Hill. Landing in 0:42.</div>
+      <div class="notice n-undo">Skipped step 15, The Defias Brotherhood. Click to undo.</div>
       <div class="rows">
         <div class="row dim">
           <span class="ic">${ICON('i-fp')}</span>
@@ -324,10 +358,75 @@ function windowHTML(d) {
           <div class="d">Farmer Furlbrow, The Furlbrow Pumpkin Farm</div>
         </div>
       </div>
+      <div class="near"><b>Also nearby</b><div>22. Kill Harvest Watchers <em>60 yd</em></div><div>19. Collect Okra from Riverpaw Gnolls <em>110 yd</em></div></div>
       <div class="next">Then: Jangolode Mine, 3 quests, 420 yd north</div>
       <div class="foot"><span class="slot">${BAG}<kbd>F</kbd></span><span class="slot">${CROSS}<kbd>G</kbd></span></div>
+      </div>
+      <div class="view v-prof pane">
+        <div class="ph">Your professions</div>
+        <div class="card on"><b>Blacksmithing</b><em>97/150</em><span>Journeyman: Runed Copper Belt</span></div>
+        <div class="det">
+          <div class="dl warn">Train Expert at 125: Bengus Deepforge, Ironforge 52.5, 41.6</div>
+          <div class="dl"><span><b>Now:</b> make 25 Runed Copper Belt (90-105). You are at 97, 8 to go.</span></div>
+          <div class="dl">Copper Bar <em>64 / 80</em></div>
+          <div class="dl mute">Then: 14 Heavy Sharpening Stone (105-113), 31 Rough Bronze Leggings (113-135)</div>
+        </div>
+        <div class="card"><b>Mining</b><em>118/150</em><span>Gather in Redridge, Wetlands, Ashenvale: Tin and Silver</span></div>
+        <div class="ph">Learn a profession</div>
+        <div class="card dimc"><b>Engineering</b><span>Crafting</span></div>
+        <div class="card dimc"><b>Cooking</b><span>Secondary</span></div>
+      </div>
+      <div class="view v-dung pane">
+        <div class="ph">For your level</div>
+        <div class="card on"><b>The Deadmines</b><em>17-26</em><span>5 quests: 1 done, 2 in log, 2 to pick up</span></div>
+        <div class="det">
+          <div class="dl">Entrance in Moonbrook, Westfall <em>set waypoint</em></div>
+          <div class="dl"><span class="q">Red Silk Bandanas</span> <em class="ok">done</em></div>
+          <div class="dl"><span class="q">The Defias Brotherhood</span> <em>in log</em></div>
+          <div class="dl"><span class="q">Collecting Memories</span> <em>pick up in Stormwind</em></div>
+          <div class="dl mute">Bosses: <s>Rhahk&#39;Zor</s> · <s>Sneed</s> · Gilnid · Mr. Smite · Captain Greenskin · Edwin VanCleef · Cookie</div>
+        </div>
+        <div class="card"><b>Wailing Caverns</b><em>17-24</em><span>6 quests: 6 to pick up</span></div>
+        <div class="ph">Later</div>
+        <div class="card dimc"><b>Shadowfang Keep</b><em>22-30</em><span>No quests</span></div>
+      </div>
+      <div class="view v-leg pane">
+        <div class="dl"><span>Legacy points: <b class="hi">4 to spend</b> · cap 16 · 3 spent here</span></div>
+        <div class="ph">Best next</div>
+        <div class="dl">Reach level 25 as a Warrior <em>leveling route</em></div>
+        <div class="dl">Blacksmithing 150 <em>97 / 150</em></div>
+        <div class="dl">Explore Westfall <em>9 / 12</em></div>
+        <div class="ph">Challenges</div>
+        <div class="dl">+ Classes: Warrior <em>1 / 3</em></div>
+        <div class="dl">+ Professions <em>2 / 36</em></div>
+        <div class="dl">+ Dungeons <em>0 / 18</em></div>
+        <div class="dl">+ Exploration <em>4 / 40</em></div>
+        <div class="foot2"><span class="btn">Open Legacy</span></div>
+      </div>
     </div>
   </div>`;
+}
+
+function pickerHTML(d) {
+  return `
+  <div class="pk ${d.key}" data-mode="guides"><div class="win">
+    <div class="head"><div class="zone"><b style="display:block">Guides</b></div><div class="glyphs"><span class="g">${GL.close}</span></div></div>
+    <div class="seg2"><span data-m="guides" class="on">Guides</span><span data-m="profs">Professions</span><span data-m="dungs">Dungeons</span><span data-m="legs">Legacy</span></div>
+    <div class="pane m-guides"><div class="ph">Alliance</div>
+      <div class="card on"><b>Westfall</b><em>Best next</em><span>It fits level 14, you are in its zone</span></div>
+      <div class="card"><b>Redridge Mountains</b><span>Levels 17-24</span></div>
+      <div class="card dimc"><b>Elwynn Forest</b><em>Below your level</em><span>Levels 1-10</span></div></div>
+    <div class="pane m-profs"><div class="ph">Your professions</div>
+      <div class="card"><b>Blacksmithing</b><em>97/150</em><span>Crafting · skill 97 of 150</span></div>
+      <div class="card"><b>Mining</b><em>118/150</em><span>Gathering · skill 118 of 150</span></div></div>
+    <div class="pane m-dungs"><div class="ph">For your level</div>
+      <div class="card"><b>The Deadmines</b><em>17-26</em><span>5 quests: 1 done, 2 in log, 2 to pick up</span></div>
+      <div class="card"><b>Wailing Caverns</b><em>17-24</em><span>6 quests: 6 to pick up</span></div></div>
+    <div class="pane m-legs"><div class="ph">Legacy, 4 points to spend</div>
+      <div class="card"><b>Classes: Warrior</b><em>1 / 3</em></div>
+      <div class="card"><b>Professions</b><em>2 / 36</em></div></div>
+    <div class="hint">Opens in a new tab.</div>
+  </div></div>`;
 }
 
 const PAGES = [
@@ -360,12 +459,23 @@ const PAGES = [
     <div class="opt"><span class="box on"></span><b>Mark the step's NPC or mob</b><span>Skull on the mob, star on the NPC.</span></div>
     <div class="opt"><span class="box on"></span><b>Quest progress over mobs</b><span>3/8 above the mobs you still need.</span></div>
     <div class="opt"><span class="box on"></span><b>Sound when a step is done</b></div>`],
+  ['Look', `
+    <h4>Look</h4>
+    <div class="preset" style="grid-template-columns:1fr">
+      <div class="pb on"><b>Cartographer</b><span>Navy and gold like the old login screen, with faint map lines behind the steps.</span></div>
+      <div class="pb"><b>Quest Log</b><span>Parchment and dark wood like the classic quest log.</span></div>
+      <div class="pb"><b>Waystone</b><span>Carved slate with a gold inlay and a blue rune glow for where to go next.</span></div>
+    </div>`],
   ['Quests', `
     <h4>Quests</h4>
     <div class="opt"><span class="box on"></span><b>Accept guide quests for me</b><span>Hold Shift at the NPC to stop it.</span></div>
     <div class="opt"><span class="box on"></span><b>Turn in guide quests for me</b></div>
     <div class="opt"><span class="box"></span><b>Every quest, not only guide quests</b></div>
     <div class="opt"><span class="box"></span><b>Pick the reward that sells for most</b></div>
+    <div class="opt"><span class="box on"></span><b>Prefer rewards that are upgrades</b><span>Takes the reward that is better than what you wear; marks it with a green arrow.</span></div>
+    <div class="opt"><span class="box on"></span><b>Sell grey items at vendors</b></div>
+    <div class="opt"><span class="box on"></span><b>Repair at vendors</b></div>
+    <div class="opt"><span class="box on"></span><b>Train all button at your class trainer</b></div>
     <div class="opt"><span class="box on"></span><b>Nearest quest first in a block</b></div>`],
   ['Leveling pace', `
     <h4>Leveling pace</h4>
@@ -391,8 +501,8 @@ document.getElementById('main').innerHTML = DIRS.map(d => `
     <h2>${d.name}</h2>
     <p class="lede">${d.lede}</p>
     <div class="stage">
-      <div class="col">${windowHTML(d)}<div class="caption">Guide window: current block, why line, then-line, item and target buttons</div></div>
-      <div class="col">${plate}<div class="caption">In the world: skull marker and 3/8 above the mob</div>${cfgHTML(d)}<div class="caption">Settings: sidebar pages, Quick setup first</div></div>
+      <div class="col">${windowHTML(d)}<div class="caption">Guide window: click the tabs (Professions, Dungeons, Legacy) to switch what it shows</div></div>
+      <div class="col">${plate}<div class="caption">In the world: skull marker and 3/8 above the mob</div>${pickerHTML(d)}<div class="caption">Guide list (the + tab): Guides, Professions, Dungeons or Legacy</div>${cfgHTML(d)}<div class="caption">Settings: sidebar pages, Quick setup first</div></div>
     </div>
     <ul class="notes">${d.notes.map(n => `<li>${n}</li>`).join('')}</ul>
   </section>`).join('');
@@ -411,6 +521,16 @@ document.querySelectorAll('#state button').forEach(b => b.addEventListener('clic
   document.querySelectorAll('#state button').forEach(x => x.classList.toggle('on', x === b));
   document.body.className = b.dataset.s;
 }));
+
+document.querySelectorAll('.tm').forEach(t => t.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', () => {
+  if (tab.dataset.v === 'pick') { const pk = t.closest('.stage').querySelector('.pk'); if (pk) pk.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  t.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === tab));
+  t.dataset.view = tab.dataset.v;
+})));
+document.querySelectorAll('.pk').forEach(pk => pk.querySelectorAll('.seg2 span').forEach(b => b.addEventListener('click', () => {
+  pk.querySelectorAll('.seg2 span').forEach(x => x.classList.toggle('on', x === b));
+  pk.dataset.mode = b.dataset.m;
+})));
 </script>
 </body>
 </html>

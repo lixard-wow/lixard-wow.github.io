@@ -65,15 +65,43 @@ textarea { width: 100%; height: 54px; background: #070d1a; color: #9fb3d8; borde
 .menu div { padding: 4px 10px; } .menu div.on { background: rgba(217,178,90,.14); color: var(--gold2); }
 .flight { text-align: center; padding: 10px; }
 .flight b { font: 22px "Marcellus", serif; color: var(--gold2); font-weight: 400; display: block; }
+.tmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.tmnav a { border: 1px solid #b8933f; color: #f1d78d; padding: 5px 14px; text-decoration: none; font-size: 14px; background: #0f1930; }
+.tmnav a.on { background: #1b2640; color: #f3dc98; box-shadow: inset 0 -2px 0 #d9b25a; }
+.chip.done { border-color: #4e7a3c; color: #9fd08a; background: rgba(78,122,60,.15); }
+.pick.built { border-color: #3d5e30; }
+.pick .stamp { float: right; font-size: 12.5px; color: #9fd08a; border: 1px solid #4e7a3c; padding: 1px 8px; background: rgba(78,122,60,.15); }
+.pick .left { color: #e0b56a; font-size: 13px; margin: -4px 0 10px; }
+.built-list { columns: 2; column-gap: 28px; margin: 10px 0 0; padding-left: 18px; color: #c9bfa6; }
+.built-list li { margin: 3px 0; break-inside: avoid; }
+.built-list b { color: #9fd08a; font-weight: 500; }
+@media (max-width: 700px) { .built-list { columns: 1; } }
 footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
+  <nav class="tmnav"><a href="/trailmark/mockup/">Look mockup</a><a class="on" href="/trailmark/features/">Features</a><a href="/trailmark/professions/">Profession plans</a></nav>
   <h1>Trailmark: what other guides have</h1>
-  <p class="lede">A survey of the leveling and quest-guide addons for WoW Forever (and the big Classic ones players compare against), from their public pages only. Below: the addons, the eight features worth building next with a small mockup of each in the Cartographer look, and the full list of features Trailmark does not have yet. Mockups show the idea, not a final layout. <a href="/trailmark/mockup/">Look and layout mockup</a></p>
+  <p class="lede">A survey of the leveling and quest-guide addons for WoW Forever (and the big Classic ones players compare against), from their public pages only. Below: what Trailmark has built, the addons, the eight picks (all built now) with a small mockup of each in the Cartographer look, and the full list of features Trailmark does not have yet. Mockups show the idea, not a final layout.</p>
 </header>
+
+<h2>Built so far</h2>
+<p class="lede">Green marks below show what Trailmark has now. Everything is in the addon but not tested in game yet.</p>
+<ul class="built-list">
+<li><b>All 8 picks</b> below (0.16.0)</li>
+<li><b>Profession plans</b> 1-300 and gathering zones, as a tab (0.17.0, 0.17.2)</li>
+<li><b>Legacy tab</b>: points, challenges, best next, link to the right tool (0.17.0)</li>
+<li><b>Guide list selector</b>: Guides, Professions, Dungeons, Legacy (0.18.0)</li>
+<li><b>Dungeons and Legacy as tabs</b> in the guide window (0.18.0)</li>
+<li><b>Three looks</b> to pick in settings, tabs on top (0.15.0)</li>
+<li><b>Step numbers</b> and <b>XP per hour</b> with time to level (0.15.0)</li>
+<li><b>Kill progress over mobs</b>, <b>why line</b>, <b>quick setup presets</b> (0.14.0)</li>
+<li><b>Raid markers</b> on the step's mob or NPC (0.12.1)</li>
+<li><b>Leave a zone when outleveled</b> mode (0.13.0)</li>
+<li><b>Gear menu</b>, no step checkboxes, right-click to mark complete or skip (0.15.3, 0.15.4)</li>
+</ul>
 
 <h2>The other addons</h2>
 <p class="lede">Polestar Guides is the one to beat: free, open source, the most downloads of any Forever guide and the most features. Quest Pilot, RestedXP and Zygor are the other serious rivals; RestedXP and Zygor charge for most of their Forever routes.</p>
@@ -96,17 +124,17 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <tr><td class="n">Navryk, Wayfinder, Vellum</td><td>Beta</td><td>Free</td><td>small</td><td>Flight timer on the arrow, Report This Step, in-game guide editor</td></tr>
 </table></div>
 
-<h2>Build next: eight picks</h2>
+<h2>The eight picks (all built)</h2>
 <div class="picks">
 
-<div class="pick"><div class="num">1</div><h3>Vendor and trainer help</h3>
-<p>Sell grey items and repair when you open a vendor, restock food and ammo, and a Train all button at your class trainer.</p>
+<div class="pick built"><div class="num">1</div><span class="stamp">Built 0.16.0</span><h3>Vendor and trainer help</h3>
+<p>Sell grey items and repair when you open a vendor, restock food and ammo, and a Train all button at your class trainer.</p><p class="left">Not yet: restocking food and ammo.</p>
 <div class="m"><div class="hd"><b>Westfall</b><span>Sentinel Hill</span></div>
 <div class="body"><div>Thor's vendor</div><div class="mute" style="font-size:12px">Sold 14 grey items for 3g 12s · Repaired for 1g 04s · Bought 20 Ice Cold Milk</div>
 <div style="margin-top:8px">Class trainer</div><div class="mute" style="font-size:12px">4 new spells for 2g 10s</div><div style="margin-top:6px"><span class="btn p">Train all</span><span class="btn">Pick spells</span></div></div></div>
 <div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: small</span> In Polestar, LevelForge, Leveling Pro, Absolute</div></div>
 
-<div class="pick"><div class="num">2</div><h3>Also nearby</h3>
+<div class="pick built"><div class="num">2</div><span class="stamp">Built 0.16.0</span><h3>Also nearby</h3>
 <p>Kills, loot and hand-ins from later steps show up when you are close, so you don't walk past them and come back.</p>
 <div class="m"><div class="hd"><b>Westfall</b><span>Step 14 of 67</span></div>
 <div class="r cur"><svg class="i" viewBox="0 0 20 20"><path d="M4 16 15 5M12 4h4v4" stroke="#e8735a" stroke-width="2.4" fill="none"/></svg><span><span class="n">14.</span>Kill Fleshrippers for <span class="q">Patrolling Westfall</span></span><span class="x">780 xp</span></div>
@@ -115,46 +143,46 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <div class="r"><svg class="i" viewBox="0 0 20 20"><circle cx="10" cy="10" r="5" fill="#ffd34d"/></svg><span>Okra from Riverpaw Gnolls, step 19</span><span class="x">110 yd</span></div></div>
 <div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: medium</span> Polestar's standout feature, also LevelForge</div></div>
 
-<div class="pick"><div class="num">3</div><h3>Rewards that fit your gear</h3>
+<div class="pick built"><div class="num">3</div><span class="stamp">Built 0.16.0</span><h3>Rewards that fit your gear</h3>
 <p>Pick the quest reward that is an upgrade for your class and spec instead of the one that sells best, and mark upgrades on the reward.</p>
 <div class="m"><div class="hd"><b>Choose a reward</b><span>The Defias Brotherhood</span></div>
 <div class="body"><div class="reward"><span class="slot up pick2"></span><span class="slot"></span><span class="slot"></span></div>
 <div class="mute" style="font-size:12px;margin-top:6px">Picked: Chausseboots (+4 Agility, +3 Stamina over your Worn Boots). Sells best: Cloak of Valor.</div></div></div>
 <div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: medium</span> In Polestar (Pawn), Leveling Pro, 4Ever lists</div></div>
 
-<div class="pick"><div class="num">4</div><h3>Dungeons on the way</h3>
-<p>A dungeon tab for the dungeons the route passes: pick up their quests first, find the entrance, then a boss list with progress.</p>
+<div class="pick built"><div class="num">4</div><span class="stamp">Built 0.16.0, tab in 0.18.0</span><h3>Dungeons on the way</h3>
+<p>A dungeon tab for the dungeons the route passes: pick up their quests first, find the entrance, then a boss list with progress.</p><p class="left">Not yet: the Forever-only dungeons (sources disagree).</p>
 <div class="m"><div class="hd"><b>The Deadmines</b><span>17-26</span></div>
 <div class="sec" style="border-top:0">Before you go: 4 quests</div>
 <div class="r"><span></span><span><span class="q">Red Silk Bandanas</span>, Scout Riell, Sentinel Hill</span><span class="x">done</span></div>
 <div class="r"><span></span><span><span class="q">The Defias Brotherhood</span> part 7</span><span class="x">in log</span></div>
 <div class="sec">Bosses</div>
 <div class="body"><div class="mute" style="font-size:12.5px">Rhahk'Zor · Sneed · Gilnid · Mr. Smite · Cookie · Captain Greenskin · Edwin VanCleef</div><div class="bar"><i style="width:43%"></i></div><div class="mute" style="font-size:12px">3 of 7</div></div></div>
-<div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: large</span> In Quest Pilot, Polestar, 4Ever, Leveldon, RestedXP. Trailmark keeps dungeon quests out today.</div></div>
+<div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: large</span> In Quest Pilot, Polestar, 4Ever, Leveldon, RestedXP.</div></div>
 
-<div class="pick"><div class="num">5</div><h3>Class quests in the route</h3>
-<p>Weapon, totem, pet and form quests woven into the leveling path, with a heads-up when one opens.</p>
+<div class="pick built"><div class="num">5</div><span class="stamp">Built 0.16.0</span><h3>Class quests in the route</h3>
+<p>Weapon, totem, pet and form quests woven into the leveling path, with a heads-up when one opens.</p><p class="left">Left out: chains that need dungeons or zig-zag across the map (Whirlwind, Succubus, Call of Water).</p>
 <div class="m"><div class="hd"><b>Barrens</b><span>Crossroads</span></div>
 <div class="r cur"><svg class="i" viewBox="0 0 20 20"><rect x="4" y="3" width="12" height="14" fill="#c79c6e"/></svg><span><span class="n">31.</span>Warrior: Accept <span class="q">Veteran Uzzek</span></span><span class="x">level 10</span></div>
 <div class="r"><span></span><span class="d" style="grid-column:2/4">Opens Path of Defense (Defensive Stance). Uzzek is at the Far Watch Post.</span></div>
 <div class="toast" style="margin:0 10px 10px">New class quest: your trainer has something for you</div></div>
 <div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: medium-large</span> In Polestar, Alenya</div></div>
 
-<div class="pick"><div class="num">6</div><h3>Boats, zeppelins and flights</h3>
-<p>Travel steps that know the boats and zeppelins, and the waypoint turns into a landing timer while you fly.</p>
+<div class="pick built"><div class="num">6</div><span class="stamp">Built 0.16.0</span><h3>Boats, zeppelins and flights</h3>
+<p>Travel steps that know the boats and zeppelins, and the waypoint turns into a landing timer while you fly.</p><p class="left">Some dock spots still need an in-game check. No boat timetables.</p>
 <div class="m"><div class="hd"><b>On the flight</b><span>Ironforge to Menethil</span></div>
 <div class="flight"><b>Landing in 0:42</b><span class="mute">Then: hand in Report to Captain Stoutfist, 40 yd</span></div>
 <div class="sec">Next travel</div>
 <div class="r"><span></span><span>Take the boat to Theramore</span><span class="x">dock 120 yd</span></div></div>
 <div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: medium</span> In Polestar, Navryk, Alenya, Leveling Pro</div></div>
 
-<div class="pick"><div class="num">7</div><h3>Undo a skip, report a step</h3>
+<div class="pick built"><div class="num">7</div><span class="stamp">Built 0.16.0</span><h3>Undo a skip, report a step</h3>
 <p>Every skip can be undone for a few seconds, and Report this step saves where you are and what the step says, so broken steps get fixed fast.</p>
 <div class="m"><div class="body"><div class="toast" style="margin:0">Skipped step 15, The Defias Brotherhood. <a>Undo</a></div><br>
 <div class="menu"><div>Mark complete</div><div>Skip this step</div><div>Point the waypoint here</div><div class="on">Report this step</div></div></div></div>
 <div class="meta"><span class="chip">Expected: medium-high</span><span class="chip">Effort: small</span> In Polestar, Navryk, Leveldon, LevelForge</div></div>
 
-<div class="pick"><div class="num">8</div><h3>Share routes</h3>
+<div class="pick built"><div class="num">8</div><span class="stamp">Built 0.16.0</span><h3>Share routes</h3>
 <p>Turn a recorded route into a text string anyone can paste into their Trailmark, so players can share and improve routes.</p>
 <div class="m"><div class="hd"><b>Share a route</b><span>From the recorder</span></div>
 <div class="body"><textarea readonly>TM1:eJyVkk1PwzAMhv9KlTNH2kxbN1RO7MAOiANCk3JxErdhaTwlLmLa/z0dHRMHxCEXK/H7+vHrfDdZmzRH2kF8i9ZtcFdgB54RJC1kiDS7aB+SFaE+QJVUXtsKCdxZqF4ZhU7AkHOaq4IRHJWNJYfKiFwLZQyGo2VKl8c58cIopB6ZpOZG33WwEFAKGH4rSrBlc1P0E3ZmzwNTLx</textarea>
@@ -178,7 +206,7 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <tr><th colspan="5" style="color:#f3dc98">Guide content</th></tr>
 <tr><td class="n">Group-quest warnings</td><td>Elite quests flagged with a solo alternative</td><td>Polestar, Alenya, RestedXP</td><td>Medium</td><td>Small-medium</td></tr>
 <tr><td class="n">Hardcore mode</td><td>Safer route and danger-spot warnings for Hardcore characters</td><td>RestedXP, Absolute, LevelForge</td><td>Medium</td><td>Medium</td></tr>
-<tr><td class="n">Profession guides</td><td>Leveling routes for each profession</td><td>Polestar, Leveling Pro, Zygor</td><td>Medium</td><td>Large</td></tr>
+<tr><td class="n">Profession guides <span class="chip done">Built 0.17</span></td><td>Leveling routes for each profession</td><td>Polestar, Leveling Pro, Zygor</td><td>Medium</td><td>Large</td></tr>
 <tr><td class="n">Rares and treasures</td><td>Alerts and map marks for rares and treasures near the route</td><td>Polestar, Zygor</td><td>Medium</td><td>Medium</td></tr>
 <tr><td class="n">Reputation, mount, exploration guides</td><td>Side guides beyond leveling</td><td>Polestar, Leveling Pro, RestedXP</td><td>Low-medium</td><td>Large</td></tr>
 <tr><td class="n">Puzzle pictures, full quest text</td><td>Pictures for tricky spots; Shift-click shows the quest text</td><td>Follow The Arrow, Leveldon</td><td>Low</td><td>Small</td></tr>
@@ -202,7 +230,7 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <tr><th colspan="5" style="color:#f3dc98">Group</th></tr>
 <tr><td class="n">Group progress</td><td>See friends' steps, share quests they are missing, sync to one step</td><td>Polestar, Questie (tooltips)</td><td>Medium</td><td>Medium</td></tr>
 <tr><th colspan="5" style="color:#f3dc98">Other</th></tr>
-<tr><td class="n">Talent advice</td><td>Talent picks while leveling</td><td>Zygor, Leveling Pro, RestedXP</td><td>Medium</td><td>Already in your Talentwise addon: link it</td></tr>
+<tr><td class="n">Talent advice <span class="chip done">In Talentwise</span></td><td>Talent picks while leveling</td><td>Zygor, Leveling Pro, RestedXP</td><td>Medium</td><td>Already in your Talentwise addon: link it</td></tr>
 <tr><td class="n">Bag markers</td><td>Marks items you need later or can sell</td><td>Polestar, Leveldon</td><td>Low-medium</td><td>Small-medium</td></tr>
 </table></div>
 
