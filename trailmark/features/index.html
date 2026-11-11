@@ -81,6 +81,8 @@ textarea { width: 100%; height: 54px; background: #070d1a; color: #9fb3d8; borde
 .chip.skip { border-color: #5a4a44; color: #a8958d; text-decoration: line-through; }
 .chip.later { border-color: #3e5a73; color: #9fc3df; }
 .left-table td.why { color: #b9ae96; }
+details.done { margin: 26px 0 8px; border: 1px solid #3d5e30; padding: 10px 14px; background: rgba(78,122,60,.06); }
+details.done summary { cursor: pointer; color: #9fd08a; font: 18px "Marcellus", serif; }
 footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 </style>
 </head>
@@ -89,14 +91,13 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <header>
   <nav class="tmnav"><a href="/trailmark/mockup/">Look mockup</a><a class="on" href="/trailmark/features/">Features</a><a href="/trailmark/professions/">Profession plans</a><a href="/trailmark/waypoint/">Waypoint</a></nav>
   <h1>Trailmark: what other guides have</h1>
-  <p class="lede">A survey of the leveling and quest-guide addons for WoW Forever (and the big Classic ones players compare against), from their public pages only. Below: what Trailmark has built, the addons, the eight picks (all built now) with a small mockup of each in the Cartographer look, and the full list of features Trailmark does not have yet. Mockups show the idea, not a final layout.</p>
+  <p class="lede">A survey of the leveling and quest-guide addons for WoW Forever (and the big Classic ones players compare against), from their public pages only. Below: what is left to decide or build, everything already done (folded away), the other addons, and the features from them Trailmark still does not have.</p>
 </header>
 
 <h2>What's left</h2>
-<p class="lede">Everything not built yet, with what we decided. Green marks further down show what is done.</p>
+<p class="lede">Everything not built yet, with what we decided.</p>
 <div class="scroll"><table class="tbl left-table">
 <tr><th>Feature</th><th>Decision</th><th>Why</th></tr>
-<tr><td class="n">Exploration guide</td><td><span class="chip done">Built 0.21</span></td><td class="why">Ties into the Legacy exploration challenges; routes through every area of a zone.</td></tr>
 <tr><td class="n">Reputation guides</td><td><span class="chip next">Next</span></td><td class="why">Useful at 60; mounts and pets only where they come from rep.</td></tr>
 <tr><td class="n">Hardcore mode</td><td><span class="chip maybe">Maybe</span></td><td class="why">Cheap as a "safer" switch (hide group and red quests, warn on dangerous elites) if you or your players run Hardcore; skip otherwise.</td></tr>
 <tr><td class="n">Treasures</td><td><span class="chip maybe">Maybe</span></td><td class="why">Rares are done; treasure chests need their own spawn data.</td></tr>
@@ -109,7 +110,8 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <tr><td class="n">Anonymous route timing, desktop client</td><td><span class="chip skip">Skipped</span></td><td class="why">Needs an outside server or app.</td></tr>
 </table></div>
 
-<h2>Built so far</h2>
+<details class="done"><summary>Done: everything Trailmark has built (click to show)</summary>
+<h3 style="margin-top:14px">Built so far</h3>
 <p class="lede">Green marks below show what Trailmark has now. Everything is in the addon but not tested in game yet.</p>
 <ul class="built-list">
 <li><b>All 8 picks</b> below (0.16.0)</li>
@@ -131,28 +133,7 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 <li><b>Gear menu</b>, no step checkboxes, right-click to mark complete or skip (0.15.3, 0.15.4)</li>
 </ul>
 
-<h2>The other addons</h2>
-<p class="lede">Polestar Guides is the one to beat: free, open source, the most downloads of any Forever guide and the most features. Quest Pilot, RestedXP and Zygor are the other serious rivals; RestedXP and Zygor charge for most of their Forever routes.</p>
-<div class="scroll"><table class="tbl">
-<tr><th>Addon</th><th>Forever</th><th>Price</th><th>Downloads</th><th>Known for</th></tr>
-<tr><td class="n">Polestar Guides</td><td>Yes (Forever only)</td><td>Free</td><td>176K</td><td>Routes 1-60 for every start incl. Zephras Isle, walking-path arrow, boats/zeppelins/portals in travel, nearby goals from other steps, class/profession/rep/dungeon guides, merchant automation, friends' progress, 9 languages</td></tr>
-<tr><td class="n">Quest Pilot</td><td>Yes (Forever only)</td><td>Free</td><td>51K</td><td>No route: picks your next objective live, WHY button, dungeon mode, markers over quest mobs, own tracker, XP/hr</td></tr>
-<tr><td class="n">RestedXP</td><td>Yes (35-60 pending)</td><td>1-20 free, then paid</td><td>30.2M</td><td>Speedrun and dungeon-leveling routes, talent advice, hardcore guide, targeting macro</td></tr>
-<tr><td class="n">Zygor</td><td>1-30 (31-60 Classic guides)</td><td>Paid</td><td>n/a</td><td>3D arrow, travel system, starts at the right step from quest history, talent advisor, gear finder</td></tr>
-<tr><td class="n">Questie</td><td>Yes</td><td>Free</td><td>219M</td><td>Quest database on map and minimap, party progress in tooltips (not a route guide)</td></tr>
-<tr><td class="n">4Ever Leveling</td><td>Yes</td><td>Free</td><td>8.1K</td><td>Routes 1-60, class routes, dungeon atlas, best-in-slot lists, 11 languages</td></tr>
-<tr><td class="n">Leveling Pro</td><td>Yes</td><td>Not stated</td><td>5.1K</td><td>Dungeon, profession and rep guides, gear advisor with auto-equip, buys step items</td></tr>
-<tr><td class="n">WoW-Pro</td><td>Yes</td><td>Free</td><td>3.6M</td><td>Steps branch by class, race, items; own tracker; needs TomTom</td></tr>
-<tr><td class="n">Guidelime</td><td>Guides in development</td><td>Free</td><td>5.6M</td><td>Guide editor and import, guide packs</td></tr>
-<tr><td class="n">Leveldon</td><td>Beta, 1-30</td><td>Free</td><td>2.2K</td><td>Trainer stops with prices, bag markers for items needed later, optional dungeons</td></tr>
-<tr><td class="n">Alenya's Guides</td><td>Yes</td><td>Free</td><td>1.9K</td><td>Speedrun splits, timed-quest and flight timers, safe-to-abandon alerts</td></tr>
-<tr><td class="n">LevelForge</td><td>Yes</td><td>Free</td><td>1.7K</td><td>"On the way" objectives, vendor/trainer automation, guide import from other formats</td></tr>
-<tr><td class="n">Absolute Leveling</td><td>Yes</td><td>Free</td><td>1.6K</td><td>Route line on the map, skips done quests, hardcore routes</td></tr>
-<tr><td class="n">Follow The Arrow</td><td>1-30</td><td>Free</td><td>1.1M</td><td>Arrow that colors as you face the target, pictures for puzzle quests</td></tr>
-<tr><td class="n">Navryk, Wayfinder, Vellum</td><td>Beta</td><td>Free</td><td>small</td><td>Flight timer on the arrow, Report This Step, in-game guide editor</td></tr>
-</table></div>
-
-<h2>The eight picks (all built)</h2>
+<h3 style="margin-top:22px">The eight picks</h3>
 <div class="picks">
 
 <div class="pick built"><div class="num">1</div><span class="stamp">Built 0.16.0</span><h3>Vendor and trainer help</h3>
@@ -219,47 +200,43 @@ footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
 
 </div>
 
-<h2>Everything else Trailmark does not have yet</h2>
+</details>
+
+<h2>The other addons</h2>
+<p class="lede">Polestar Guides is the one to beat: free, open source, the most downloads of any Forever guide and the most features. Quest Pilot, RestedXP and Zygor are the other serious rivals; RestedXP and Zygor charge for most of their Forever routes.</p>
+<div class="scroll"><table class="tbl">
+<tr><th>Addon</th><th>Forever</th><th>Price</th><th>Downloads</th><th>Known for</th></tr>
+<tr><td class="n">Polestar Guides</td><td>Yes (Forever only)</td><td>Free</td><td>176K</td><td>Routes 1-60 for every start incl. Zephras Isle, walking-path arrow, boats/zeppelins/portals in travel, nearby goals from other steps, class/profession/rep/dungeon guides, merchant automation, friends' progress, 9 languages</td></tr>
+<tr><td class="n">Quest Pilot</td><td>Yes (Forever only)</td><td>Free</td><td>51K</td><td>No route: picks your next objective live, WHY button, dungeon mode, markers over quest mobs, own tracker, XP/hr</td></tr>
+<tr><td class="n">RestedXP</td><td>Yes (35-60 pending)</td><td>1-20 free, then paid</td><td>30.2M</td><td>Speedrun and dungeon-leveling routes, talent advice, hardcore guide, targeting macro</td></tr>
+<tr><td class="n">Zygor</td><td>1-30 (31-60 Classic guides)</td><td>Paid</td><td>n/a</td><td>3D arrow, travel system, starts at the right step from quest history, talent advisor, gear finder</td></tr>
+<tr><td class="n">Questie</td><td>Yes</td><td>Free</td><td>219M</td><td>Quest database on map and minimap, party progress in tooltips (not a route guide)</td></tr>
+<tr><td class="n">4Ever Leveling</td><td>Yes</td><td>Free</td><td>8.1K</td><td>Routes 1-60, class routes, dungeon atlas, best-in-slot lists, 11 languages</td></tr>
+<tr><td class="n">Leveling Pro</td><td>Yes</td><td>Not stated</td><td>5.1K</td><td>Dungeon, profession and rep guides, gear advisor with auto-equip, buys step items</td></tr>
+<tr><td class="n">WoW-Pro</td><td>Yes</td><td>Free</td><td>3.6M</td><td>Steps branch by class, race, items; own tracker; needs TomTom</td></tr>
+<tr><td class="n">Guidelime</td><td>Guides in development</td><td>Free</td><td>5.6M</td><td>Guide editor and import, guide packs</td></tr>
+<tr><td class="n">Leveldon</td><td>Beta, 1-30</td><td>Free</td><td>2.2K</td><td>Trainer stops with prices, bag markers for items needed later, optional dungeons</td></tr>
+<tr><td class="n">Alenya's Guides</td><td>Yes</td><td>Free</td><td>1.9K</td><td>Speedrun splits, timed-quest and flight timers, safe-to-abandon alerts</td></tr>
+<tr><td class="n">LevelForge</td><td>Yes</td><td>Free</td><td>1.7K</td><td>"On the way" objectives, vendor/trainer automation, guide import from other formats</td></tr>
+<tr><td class="n">Absolute Leveling</td><td>Yes</td><td>Free</td><td>1.6K</td><td>Route line on the map, skips done quests, hardcore routes</td></tr>
+<tr><td class="n">Follow The Arrow</td><td>1-30</td><td>Free</td><td>1.1M</td><td>Arrow that colors as you face the target, pictures for puzzle quests</td></tr>
+<tr><td class="n">Navryk, Wayfinder, Vellum</td><td>Beta</td><td>Free</td><td>small</td><td>Flight timer on the arrow, Report This Step, in-game guide editor</td></tr>
+</table></div>
+
+<h2>Still missing from the comparison</h2>
 <p class="lede">Grouped by area, most valuable first. "Expected" is how many rivals have it and how often players ask for it.</p>
 
 <div class="scroll"><table class="tbl">
 <tr><th>Feature</th><th>What you get</th><th>Who has it</th><th>Expected</th><th>Effort</th></tr>
 <tr><th colspan="5" style="color:#f3dc98">Finding the way</th></tr>
-<tr><td class="n">Screen arrow <span class="chip done">Built 0.19</span></td><td>A classic arrow with yards left, as well as the in-world marker</td><td>Almost all</td><td>High</td><td>Small</td></tr>
-<tr><td class="n">Nearest service <span class="chip done">Built 0.20</span></td><td>One click to the nearest vendor, repair, inn, flight master, trainer, bank or mailbox</td><td>Polestar</td><td>Medium</td><td>Medium</td></tr>
-<tr><td class="n">Route line on the map <span class="chip done">Built 0.20</span></td><td>The path between steps drawn on the world map</td><td>Polestar, Absolute</td><td>Medium</td><td>Medium</td></tr>
 <tr><td class="n">Walking-path arrow <span class="chip later">Later</span></td><td>Arrow that bends around corners, cliffs and caves</td><td>Polestar</td><td>Low-medium</td><td>Large</td></tr>
-<tr><td class="n">Arrival sound, facing colors <span class="chip done">Built 0.20 (sound)</span></td><td>Sound when you arrive; arrow color shows if you face the target</td><td>Quest Pilot, Follow The Arrow</td><td>Low</td><td>Small</td></tr>
-<tr><td class="n">TomTom handoff <span class="chip done">Built 0.19</span></td><td>Send the step to TomTom if you use it</td><td>WoW-Pro, Leveling Pro</td><td>Low-medium</td><td>Small</td></tr>
 <tr><th colspan="5" style="color:#f3dc98">Guide content</th></tr>
-<tr><td class="n">Group-quest warnings <span class="chip done">Built 0.20 (tags)</span></td><td>Elite quests flagged with a solo alternative</td><td>Polestar, Alenya, RestedXP</td><td>Medium</td><td>Small-medium</td></tr>
 <tr><td class="n">Hardcore mode <span class="chip maybe">Maybe</span></td><td>Safer route and danger-spot warnings for Hardcore characters</td><td>RestedXP, Absolute, LevelForge</td><td>Medium</td><td>Medium</td></tr>
-<tr><td class="n">Profession guides <span class="chip done">Built 0.17</span></td><td>Leveling routes for each profession</td><td>Polestar, Leveling Pro, Zygor</td><td>Medium</td><td>Large</td></tr>
-<tr><td class="n">Rares and treasures <span class="chip done">Built 0.20 (rares)</span> <span class="chip maybe">Treasures: maybe</span></td><td>Alerts and map marks for rares and treasures near the route</td><td>Polestar, Zygor</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Treasures <span class="chip maybe">Maybe</span></td><td>Alerts and map marks for treasure chests near the route</td><td>Polestar, Zygor</td><td>Medium</td><td>Medium</td></tr>
 <tr><td class="n">Reputation, mount, exploration guides <span class="chip next">Next</span></td><td>Side guides beyond leveling</td><td>Polestar, Leveling Pro, RestedXP</td><td>Low-medium</td><td>Large</td></tr>
 <tr><td class="n">Puzzle pictures, full quest text <span class="chip maybe">Maybe</span></td><td>Pictures for tricky spots; Shift-click shows the quest text</td><td>Follow The Arrow, Leveldon</td><td>Low</td><td>Small</td></tr>
-<tr><td class="n">In-game guide editor <span class="chip skip">Skipped</span></td><td>Write or fix steps inside the game</td><td>Wayfinder, Guidelime</td><td>Low</td><td>Medium-large</td></tr>
-<tr><th colspan="5" style="color:#f3dc98">Quests and automation</th></tr>
-<tr><td class="n">Auto flights and gossip <span class="chip done">Built 0.20</span></td><td>Takes the flight the step asks for and picks the right talk option</td><td>LevelForge, Leveling Pro</td><td>Medium</td><td>Small</td></tr>
-<tr><td class="n">Quest items <span class="chip done">Built 0.20 (markers)</span></td><td>Auto-loot quest items and keep them out of vendor sales</td><td>Wayfinder, Polestar</td><td>Low-medium</td><td>Small</td></tr>
-<tr><td class="n">Auto-equip upgrades <span class="chip done">Built 0.20</span></td><td>Equips a better quest reward out of combat</td><td>Leveling Pro</td><td>Low</td><td>Small</td></tr>
 <tr><th colspan="5" style="color:#f3dc98">Window and tracker</th></tr>
 <tr><td class="n">Languages <span class="chip later">Keys ready, translate later</span></td><td>The addon in German, French, Spanish and more</td><td>Polestar, 4Ever, Leveldon, Leveling Pro</td><td>High</td><td>Medium</td></tr>
-<tr><td class="n">Timers and alerts <span class="chip done">Built 0.20</span></td><td>Countdown on timed quests, glow on loot that starts a quest, sound when a quest is ready</td><td>Polestar, Alenya, Quest Pilot</td><td>Medium</td><td>Small</td></tr>
-<tr><td class="n">Compact mode <span class="chip done">Built 0.20</span></td><td>A one-line or see-through window while questing</td><td>Polestar, Quest Pilot</td><td>Medium</td><td>Small</td></tr>
-<tr><td class="n">Own quest tracker <span class="chip skip">Skipped</span></td><td>Replaces Blizzard's tracker, grouped by zone</td><td>Quest Pilot, WoW-Pro, Questie</td><td>Medium</td><td>Medium</td></tr>
-<tr><td class="n">Gamepad support <span class="chip skip">Skipped</span></td><td>Play the guide with a controller</td><td>Polestar</td><td>Low-medium</td><td>Medium</td></tr>
-<tr><td class="n">Profiles, tutorial, update notice <span class="chip done">Built 0.20</span></td><td>Export settings, a first-run walkthrough, a newer-version notice</td><td>Quest Pilot, Polestar</td><td>Low</td><td>Small</td></tr>
-<tr><th colspan="5" style="color:#f3dc98">Leveling stats</th></tr>
-<tr><td class="n">On pace <span class="chip done">Built 0.20</span></td><td>Ahead or behind the level the guide expects at this step</td><td>Polestar, LevelForge</td><td>Medium</td><td>Small</td></tr>
-<tr><td class="n">Kills and quests to level <span class="chip done">Built 0.20</span></td><td>How many kills or quests until the next level, session totals</td><td>Quest Pilot, Leveling Pro</td><td>Medium</td><td>Small</td></tr>
-<tr><td class="n">Rested XP <span class="chip done">Built 0.20</span></td><td>Rested bar and where to log out for rest</td><td>Polestar</td><td>Low-medium</td><td>Small</td></tr>
-<tr><td class="n">Speedrun splits <span class="chip done">Built 0.20</span></td><td>Time per zone against your best run</td><td>Alenya</td><td>Low</td><td>Small</td></tr>
-<tr><th colspan="5" style="color:#f3dc98">Group</th></tr>
-<tr><td class="n">Group progress <span class="chip done">Built 0.20</span></td><td>See friends' steps, share quests they are missing, sync to one step</td><td>Polestar, Questie (tooltips)</td><td>Medium</td><td>Medium</td></tr>
-<tr><th colspan="5" style="color:#f3dc98">Other</th></tr>
-<tr><td class="n">Talent advice <span class="chip done">In Talentwise</span></td><td>Talent picks while leveling</td><td>Zygor, Leveling Pro, RestedXP</td><td>Medium</td><td>Already in your Talentwise addon: link it</td></tr>
-<tr><td class="n">Bag markers <span class="chip done">Built 0.20</span></td><td>Marks items you need later or can sell</td><td>Polestar, Leveldon</td><td>Low-medium</td><td>Small-medium</td></tr>
 </table></div>
 
 <footer>Sources: each addon's CurseForge page and public write-ups, November 2026. Download counts as shown on those pages. Nothing here was taken from any addon's code.</footer>
