@@ -64,6 +64,9 @@ body.s-min .tm .rows, body.s-min .tm .prog, body.s-min .tm .next, body.s-min .tm
 .tm .row .ic { width: 18px; height: 18px; margin-top: 1px; }
 .tm .row .t { font-size: 14px; line-height: 1.25; }
 .tm .row .lv { font-size: 12px; margin-right: 4px; }
+.tm .row .n { font-size: 12px; margin-right: 5px; opacity: .65; }
+.tm .rate { padding: 0 10px 8px; font-size: 12px; margin-top: -4px; opacity: .8; }
+body.s-min .tm .rate { display: none; }
 .tm .row .q { color: #ffd34d; }
 .tm .row .d { grid-column: 3 / 5; font-size: 12.5px; line-height: 1.3; margin-top: 2px; }
 .tm .row .why { grid-column: 3 / 5; font-size: 12.5px; margin-top: 3px; }
@@ -291,7 +294,7 @@ function windowHTML(d) {
   const tabs = d.key === 'C' ? '' : `<div class="tabs"><span class="tab">10-15</span><span class="tab on">12-17</span><span class="tab">17-22</span><span class="tab">+</span></div>`;
   const sub = d.key === 'C'
     ? `<span class="picker">Westfall 12-17 ${GL.down}</span>`
-    : `<span>Sentinel Hill · step 14 of 67</span>`;
+    : `<span>Sentinel Hill</span>`;
   return `
   <div class="tm ${d.key}">
     ${d.key === 'B' ? '' : tabs}
@@ -301,28 +304,28 @@ function windowHTML(d) {
         <div class="zone"><b>Westfall</b>${sub}</div>
         <div class="glyphs"><span class="g">${GL.prev}</span><span class="g">${GL.next}</span><span class="g">${GL.min}</span><span class="g">${GL.gear}</span></div>
       </div>
-      <div class="prog"><span>14 / 67</span><div class="bar"><i></i></div><span>21%</span></div>
+      <div class="prog"><span>Step 14 of 67</span><div class="bar"><i></i></div><span>21%</span></div><div class="rate">18.4k xp/h · 42 min to level</div>
       <div class="notice">Most quests left in Westfall are grey or nearly grey for you. Click to go to Redridge Mountains (17-22).</div>
       <div class="rows">
+        <div class="row dim">
+          <span class="ck done"></span><span class="ic">${ICON('i-fp')}</span>
+          <span class="t"><span class="n">13.</span>Get the flight path at Sentinel Hill</span><span class="xp"></span>
+        </div>
         <div class="row cur">
           <span class="ck"></span><span class="ic">${ICON('i-kill')}</span>
-          <span class="t"><span class="lv y">14</span>Kill Fleshrippers for <span class="q">Patrolling Westfall</span></span><span class="xp">780 xp</span>
+          <span class="t"><span class="n">14.</span><span class="lv y">[14]</span>Kill Fleshrippers for <span class="q">Patrolling Westfall</span></span><span class="xp">780 xp</span>
           <div class="obj"><span>Fleshripper</span><em>3 / 8</em><span class="ob"><i style="width:37%"></i></span><span>Young Fleshripper</span><em>6 / 8</em><span class="ob"><i style="width:75%"></i></span></div>
           <div class="why">Why: Needed for Patrolling Westfall, part 2 (Gryan Stoutmantle)</div>
         </div>
         <div class="row">
           <span class="ck"></span><span class="ic">${ICON('i-accept')}</span>
-          <span class="t"><span class="lv o">16</span>Accept <span class="q">The Defias Brotherhood</span></span><span class="xp">1,050 xp</span>
+          <span class="t"><span class="n">15.</span><span class="lv o">[16]</span>Accept <span class="q">The Defias Brotherhood</span></span><span class="xp">1,050 xp</span>
           <div class="d">Gryan Stoutmantle, Sentinel Hill</div>
         </div>
         <div class="row">
           <span class="ck"></span><span class="ic">${ICON('i-turnin')}</span>
-          <span class="t"><span class="lv g1">12</span>Turn in <span class="q">The Forgotten Heirloom</span></span><span class="xp">660 xp</span>
+          <span class="t"><span class="n">16.</span><span class="lv g1">[12]</span>Turn in <span class="q">The Forgotten Heirloom</span></span><span class="xp">660 xp</span>
           <div class="d">Farmer Furlbrow, The Furlbrow Pumpkin Farm</div>
-        </div>
-        <div class="row dim">
-          <span class="ck done"></span><span class="ic">${ICON('i-fp')}</span>
-          <span class="t">Get the flight path at Sentinel Hill</span><span class="xp"></span>
         </div>
       </div>
       <div class="next">Then: Jangolode Mine, 3 quests, 420 yd north</div>
