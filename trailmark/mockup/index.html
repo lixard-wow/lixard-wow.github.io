@@ -286,6 +286,12 @@ body.s-min .tm .pane, body.s-min .tm .near { display: none !important; }
 .wpchoice { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 4px 0 8px; }
 .wpchoice span { text-align: center; font-size: 12.5px; padding: 4px 0; border: 1px solid rgba(128,128,128,.45); }
 .A .wpchoice span.on { border-color: #d9b25a; color: #f3dc98; } .B .wpchoice span.on { border-color: #8a2a1a; color: #6f160d; } .C .wpchoice span.on { border-color: #7fd0ff; color: #f0d48a; }
+
+.tm { margin-left: 62px; }
+.tm .foot.side { position: absolute; left: -58px; top: 40px; display: flex; flex-direction: column; gap: 22px; padding: 0; }
+.tm .foot.side .slot em { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); font: 10.5px "Alegreya Sans", sans-serif; font-style: normal; white-space: nowrap; color: #c9bfa6; text-shadow: 1px 1px 0 #000; }
+body.s-min .tm .foot.side { display: flex !important; }
+.caption { max-width: 392px; }
 .tmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
 .tmnav a { border: 1px solid #b8933f; color: #f1d78d; padding: 5px 14px; text-decoration: none; font-size: 14px; background: #0f1930; }
 .tmnav a.on { background: #1b2640; color: #f3dc98; box-shadow: inset 0 -2px 0 #d9b25a; }
@@ -403,7 +409,7 @@ function windowHTML(d) {
       </div>
       <div class="near"><b>Also nearby</b><div>22. Kill Harvest Watchers <em>60 yd</em></div><div>19. Collect Okra from Riverpaw Gnolls <em>110 yd</em></div></div>
       <div class="next">Then: Jangolode Mine, 3 quests, 420 yd north</div>
-      <div class="foot"><span class="slot">${BAG}<kbd>F</kbd></span><span class="slot">${CROSS}<kbd>G</kbd></span></div>
+      <div class="foot side"><span class="slot" title="Quest item button: uses the item the current step needs">${BAG}<kbd>F</kbd><em>Use item</em></span><span class="slot" title="Target button: targets the step's NPC or mob">${CROSS}<kbd>G</kbd><em>Target</em></span></div>
       </div>
       <div class="view v-prof pane">
         <div class="ph">Your professions</div>
@@ -548,7 +554,7 @@ document.getElementById('main').innerHTML = DIRS.map(d => `
     <h2>${d.name}</h2>
     <p class="lede">${d.lede}</p>
     <div class="stage">
-      <div class="col">${windowHTML(d)}<div class="caption">Guide window: click the tabs (Professions, Dungeons, Legacy) to switch what it shows</div></div>
+      <div class="col">${windowHTML(d)}<div class="caption">Guide window: click the tabs (Professions, Dungeons, Legacy) to switch what it shows. Left of it: the quest item button and the target button (F and G are example key bindings).</div></div>
       <div class="col">${worldHTML(d)}<div class="caption">Waypoint in this look (Settings > Finding the way > Waypoint: Trailmark)</div>${plate}<div class="caption">In the world: skull marker and 3/8 above the mob</div>${pickerHTML(d)}<div class="caption">Guide list (the + tab): Guides, Professions, Dungeons or Legacy</div>${cfgHTML(d)}<div class="caption">Settings: sidebar pages, Quick setup first</div></div>
     </div>
     <ul class="notes">${d.notes.map(n => `<li>${n}</li>`).join('')}</ul>
