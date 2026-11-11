@@ -259,8 +259,8 @@ body.s-min .tm .pane, body.s-min .tm .near { display: none !important; }
 .dl em { font-style: normal; opacity: .75; white-space: nowrap; } .dl em.ok { opacity: 1; color: #6aa45d; }
 .dl.mute { opacity: .7; display: block; } .dl s { opacity: .6; }
 .near { padding: 4px 10px 6px; font-size: 12.5px; } .near b { font-weight: 500; } .near div { display: flex; justify-content: space-between; opacity: .85; } .near em { font-style: normal; opacity: .7; }
-.pk { width: 330px; } .pk .seg2 { display: flex; gap: 4px; padding: 8px 10px 0; } .pk .seg2 span { flex: 1; text-align: center; font-size: 12px; padding: 3px 0; border: 1px solid rgba(128,128,128,.4); cursor: pointer; }
-.pk .pane { display: none; } .pk[data-mode="guides"] .m-guides, .pk[data-mode="profs"] .m-profs, .pk[data-mode="dungs"] .m-dungs, .pk[data-mode="legs"] .m-legs { display: block; }
+.pk { width: 330px; } .pk .seg2 { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 10px 0; } .pk .seg2 span { flex: 1 1 30%; text-align: center; font-size: 12px; padding: 3px 0; border: 1px solid rgba(128,128,128,.4); cursor: pointer; }
+.pk .pane { display: none; } .pk[data-mode="guides"] .m-guides, .pk[data-mode="profs"] .m-profs, .pk[data-mode="dungs"] .m-dungs, .pk[data-mode="legs"] .m-legs, .pk[data-mode="expl"] .m-expl, .pk[data-mode="reps"] .m-reps { display: block; }
 .pk .hint { padding: 0 10px 10px; font-size: 12px; opacity: .7; }
 .pk.A .win { color: #dfe4ee; } .pk.B .win { color: #3a2512; } .pk.C .win { color: #e4ddd0; }
 .A .card { border-color: #2f3d5c; background: #0f1930; } .A .card.on, .A .seg2 span.on { border-color: #d9b25a; color: #f3dc98; } .A .ph, .A .near b { color: #d9b25a; } .A .dl.warn, .A .hi { color: #f1d78d; }
@@ -295,6 +295,9 @@ body.s-min .tm .foot.side { display: flex !important; }
 
 .btnstate .tm .foot.side .slot { transition: opacity .2s; }
 body.b-kill .tm .s-item, body.b-none .tm .s-item, body.b-none .tm .s-target { display: none; }
+.tm .gapline { display: flex; align-items: center; gap: 8px; padding: 3px 10px 3px 12px; font-size: 11px; opacity: .7; cursor: pointer; }
+.tm .gapline i { display: inline-block; width: 18px; height: 1px; background: currentColor; opacity: .6; }
+.tm .gapline:hover { opacity: 1; }
 .tmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
 .tmnav a { border: 1px solid #b8933f; color: #f1d78d; padding: 5px 14px; text-decoration: none; font-size: 14px; background: #0f1930; }
 .tmnav a.on { background: #1b2640; color: #f3dc98; box-shadow: inset 0 -2px 0 #d9b25a; }
@@ -410,13 +413,14 @@ function windowHTML(d) {
           <span class="t"><span class="n">15.</span><span class="lv o">[16]</span>Accept <span class="q">The Defias Brotherhood</span></span><span class="xp">1,050 xp</span>
           <div class="d">Gryan Stoutmantle, Sentinel Hill</div>
         </div>
+        <div class="gapline" title="Done or passed: quests already in your log or finished. Click to show them."><i></i>4 steps done (16-19)</div>
         <div class="row">
           <span class="ic">${ICON('i-turnin')}</span>
-          <span class="t"><span class="n">16.</span><span class="lv g1">[12]</span>Turn in <span class="q">The Forgotten Heirloom</span></span><span class="xp">660 xp</span>
+          <span class="t"><span class="n">20.</span><span class="lv g1">[12]</span>Turn in <span class="q">The Forgotten Heirloom</span></span><span class="xp">660 xp</span>
           <div class="d">Farmer Furlbrow, The Furlbrow Pumpkin Farm</div>
         </div>
       </div>
-      <div class="near"><b>Also nearby</b><div>22. Kill Harvest Watchers <em>60 yd</em></div><div>19. Collect Okra from Riverpaw Gnolls <em>110 yd</em></div></div>
+      <div class="near"><b>Also nearby</b><div>22. Kill Harvest Watchers <em>60 yd</em></div><div>24. Collect Okra from Riverpaw Gnolls <em>110 yd</em></div></div>
       <div class="next">Then: Jangolode Mine, 3 quests, 420 yd north</div>
       <div class="foot side"><span class="slot s-item" title="Quest item button: uses the item the current step needs">${BAG}<kbd>F</kbd><em>Use item</em></span><span class="slot s-target" title="Target button: targets the step's NPC or mob">${CROSS}<kbd>G</kbd><em>Target</em></span></div>
       </div>
@@ -469,7 +473,7 @@ function pickerHTML(d) {
   return `
   <div class="pk ${d.key}" data-mode="guides"><div class="win">
     <div class="head"><div class="zone"><b style="display:block">Guides</b></div><div class="glyphs"><span class="g">${GL.close}</span></div></div>
-    <div class="seg2"><span data-m="guides" class="on">Guides</span><span data-m="profs">Professions</span><span data-m="dungs">Dungeons</span><span data-m="legs">Legacy</span></div>
+    <div class="seg2"><span data-m="guides" class="on">Guides</span><span data-m="profs">Professions</span><span data-m="dungs">Dungeons</span><span data-m="expl">Exploration</span><span data-m="reps">Reputation</span><span data-m="legs">Legacy</span></div>
     <div class="pane m-guides"><div class="ph">Alliance</div>
       <div class="card on"><b>Westfall</b><em>Best next</em><span>It fits level 14, you are in its zone</span></div>
       <div class="card"><b>Redridge Mountains</b><span>Levels 17-24</span></div>
@@ -480,6 +484,12 @@ function pickerHTML(d) {
     <div class="pane m-dungs"><div class="ph">For your level</div>
       <div class="card"><b>The Deadmines</b><em>17-26</em><span>5 quests: 1 done, 2 in log, 2 to pick up</span></div>
       <div class="card"><b>Wailing Caverns</b><em>17-24</em><span>6 quests: 6 to pick up</span></div></div>
+    <div class="pane m-expl"><div class="ph">Exploration</div>
+      <div class="card"><b>Westfall</b><em>9 / 12</em></div>
+      <div class="card"><b>Redridge Mountains</b><em>3 / 10</em></div></div>
+    <div class="pane m-reps"><div class="ph">Reputation</div>
+      <div class="card"><b>Stormwind</b><em>2100 / 6000</em><span>Honored</span></div>
+      <div class="card"><b>Argent Dawn</b><em>0 / 3000</em><span>Neutral</span></div></div>
     <div class="pane m-legs"><div class="ph">Legacy, 4 points to spend</div>
       <div class="card"><b>Classes: Warrior</b><em>1 / 3</em></div>
       <div class="card"><b>Professions</b><em>2 / 36</em></div></div>
@@ -564,7 +574,7 @@ document.getElementById('main').innerHTML = DIRS.map(d => `
     <p class="lede">${d.lede}</p>
     <div class="stage">
       <div class="col">${windowHTML(d)}<div class="caption">Guide window: click the tabs (Professions, Dungeons, Legacy) to switch what it shows. Left of it: the quest item button and the target button (F and G are example key bindings). They only show when the step needs them; try Step needs at the top.</div></div>
-      <div class="col">${worldHTML(d)}<div class="caption">Waypoint in this look (Settings > Finding the way > Waypoint: Trailmark)</div>${plate}<div class="caption">In the world: skull marker and 3/8 above the mob</div>${pickerHTML(d)}<div class="caption">Guide list (the + tab): Guides, Professions, Dungeons or Legacy</div>${cfgHTML(d)}<div class="caption">Settings: sidebar pages, Quick setup first</div></div>
+      <div class="col">${worldHTML(d)}<div class="caption">Waypoint in this look (Settings > Finding the way > Waypoint: Trailmark)</div>${plate}<div class="caption">In the world: skull marker and 3/8 above the mob</div>${pickerHTML(d)}<div class="caption">Guide list (the + tab): Guides, Professions, Dungeons, Exploration, Reputation or Legacy</div>${cfgHTML(d)}<div class="caption">Settings: sidebar pages, Quick setup first</div></div>
     </div>
     <ul class="notes">${d.notes.map(n => `<li>${n}</li>`).join('')}</ul>
   </section>`).join('');
