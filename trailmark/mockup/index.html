@@ -292,6 +292,9 @@ body.s-min .tm .pane, body.s-min .tm .near { display: none !important; }
 .tm .foot.side .slot em { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); font: 10.5px "Alegreya Sans", sans-serif; font-style: normal; white-space: nowrap; color: #c9bfa6; text-shadow: 1px 1px 0 #000; }
 body.s-min .tm .foot.side { display: flex !important; }
 .caption { max-width: 392px; }
+
+.btnstate .tm .foot.side .slot { transition: opacity .2s; }
+body.b-kill .tm .s-item, body.b-none .tm .s-item, body.b-none .tm .s-target { display: none; }
 .tmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
 .tmnav a { border: 1px solid #b8933f; color: #f1d78d; padding: 5px 14px; text-decoration: none; font-size: 14px; background: #0f1930; }
 .tmnav a.on { background: #1b2640; color: #f3dc98; box-shadow: inset 0 -2px 0 #d9b25a; }
@@ -311,6 +314,12 @@ body.s-min .tm .foot.side { display: flex !important; }
     <button data-s="s-fly">Flying</button>
     <button data-s="s-undo">Skip undo</button>
     <button data-s="s-min">Minimized</button>
+  </div>
+  <label>Step needs</label>
+  <div class="seg" id="bstate">
+    <button data-b="b-both" class="on">An item (both buttons)</button>
+    <button data-b="b-kill">A mob (target only)</button>
+    <button data-b="b-none">Travel (no buttons)</button>
   </div>
 </div></div>
 <main id="main"></main>
@@ -409,7 +418,7 @@ function windowHTML(d) {
       </div>
       <div class="near"><b>Also nearby</b><div>22. Kill Harvest Watchers <em>60 yd</em></div><div>19. Collect Okra from Riverpaw Gnolls <em>110 yd</em></div></div>
       <div class="next">Then: Jangolode Mine, 3 quests, 420 yd north</div>
-      <div class="foot side"><span class="slot" title="Quest item button: uses the item the current step needs">${BAG}<kbd>F</kbd><em>Use item</em></span><span class="slot" title="Target button: targets the step's NPC or mob">${CROSS}<kbd>G</kbd><em>Target</em></span></div>
+      <div class="foot side"><span class="slot s-item" title="Quest item button: uses the item the current step needs">${BAG}<kbd>F</kbd><em>Use item</em></span><span class="slot s-target" title="Target button: targets the step's NPC or mob">${CROSS}<kbd>G</kbd><em>Target</em></span></div>
       </div>
       <div class="view v-prof pane">
         <div class="ph">Your professions</div>
@@ -554,7 +563,7 @@ document.getElementById('main').innerHTML = DIRS.map(d => `
     <h2>${d.name}</h2>
     <p class="lede">${d.lede}</p>
     <div class="stage">
-      <div class="col">${windowHTML(d)}<div class="caption">Guide window: click the tabs (Professions, Dungeons, Legacy) to switch what it shows. Left of it: the quest item button and the target button (F and G are example key bindings).</div></div>
+      <div class="col">${windowHTML(d)}<div class="caption">Guide window: click the tabs (Professions, Dungeons, Legacy) to switch what it shows. Left of it: the quest item button and the target button (F and G are example key bindings). They only show when the step needs them; try Step needs at the top.</div></div>
       <div class="col">${worldHTML(d)}<div class="caption">Waypoint in this look (Settings > Finding the way > Waypoint: Trailmark)</div>${plate}<div class="caption">In the world: skull marker and 3/8 above the mob</div>${pickerHTML(d)}<div class="caption">Guide list (the + tab): Guides, Professions, Dungeons or Legacy</div>${cfgHTML(d)}<div class="caption">Settings: sidebar pages, Quick setup first</div></div>
     </div>
     <ul class="notes">${d.notes.map(n => `<li>${n}</li>`).join('')}</ul>
@@ -584,6 +593,18 @@ document.querySelectorAll('.pk').forEach(pk => pk.querySelectorAll('.seg2 span')
   pk.querySelectorAll('.seg2 span').forEach(x => x.classList.toggle('on', x === b));
   pk.dataset.mode = b.dataset.m;
 })));
+
+let bstate = 'b-both';
+document.querySelectorAll('#bstate button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#bstate button').forEach(x => x.classList.toggle('on', x === b));
+  document.body.classList.remove('b-both', 'b-kill', 'b-none');
+  bstate = b.dataset.b;
+  document.body.classList.add(bstate);
+}));
+document.querySelectorAll('#state button').forEach(b => b.addEventListener('click', () => {
+  setTimeout(() => document.body.classList.add(bstate), 0);
+}));
+document.body.classList.add('b-both');
 </script>
 </body>
 </html>
