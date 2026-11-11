@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Trailmark Feature Gaps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --page: #0d0f14; --ink: #d9cfb8; --mute: #8d8471; --line: #2a2a2e; --gold: #d9b25a; --gold2: #f3dc98; --navy: #13203a; --navy2: #0c1426; --edge: #b8933f; --soft: #2f3d5c; --t: #dfe4ee; --tm: #9ba6bd; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.5 "Alegreya Sans", system-ui, sans-serif; }
+a { color: var(--gold2); }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+header { padding: 28px 0 10px; }
+h1 { font: 30px/1.1 "Marcellus", serif; margin: 0 0 6px; color: #e9dcb8; }
+h2 { font: 23px "Marcellus", serif; margin: 34px 0 6px; color: #eadcb5; }
+h3 { font: 18px "Marcellus", serif; margin: 0 0 4px; color: var(--gold2); }
+p.lede { color: var(--mute); max-width: 820px; margin: 0 0 10px; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; }
+.tbl th, .tbl td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tbl th { color: var(--mute); font-weight: 500; }
+.tbl td.n { white-space: nowrap; color: #eadcb5; }
+.scroll { overflow-x: auto; }
+.picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; margin-top: 14px; }
+.pick { border: 1px solid #23242a; background: linear-gradient(160deg, #222a1f, #19202b 70%); padding: 16px; }
+.pick .num { font: 13px "Alegreya Sans"; color: var(--mute); }
+.pick p { margin: 4px 0 12px; color: #b9ae96; font-size: 14px; }
+.meta { font-size: 12.5px; color: var(--mute); margin-top: 10px; }
+.chip { display: inline-block; border: 1px solid #3a3730; padding: 0 6px; margin-right: 4px; font-size: 12px; color: #c9bfa6; }
+.chip.h { border-color: #6b5a2c; color: #f0d48a; }
+
+/* Cartographer mini mock */
+.m { background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='330' height='200'%3E%3Cg fill='none' stroke='%23324a74' stroke-opacity='.35'%3E%3Cpath d='M-10 50 C60 20 120 80 190 45 S300 10 350 35'/%3E%3Cpath d='M-10 150 C40 120 110 180 180 140 S290 110 350 130'/%3E%3C/g%3E%3C/svg%3E"),
+  linear-gradient(180deg, var(--navy), var(--navy2)); border: 1px solid var(--edge); box-shadow: 0 0 0 1px #050a14, 0 8px 22px rgba(0,0,0,.45); color: var(--t); font-size: 13px; max-width: 330px; }
+.m .hd { display: flex; justify-content: space-between; align-items: center; padding: 7px 10px; border-bottom: 1px solid rgba(184,147,63,.45); }
+.m .hd b { font: 16px "Marcellus", serif; color: var(--gold2); font-weight: 400; }
+.m .hd span { color: var(--tm); font-size: 12px; }
+.m .r { display: grid; grid-template-columns: 20px 1fr auto; gap: 0 8px; padding: 6px 10px; position: relative; }
+.m .r.cur { background: linear-gradient(90deg, rgba(217,178,90,.16), rgba(217,178,90,.03)); }
+.m .r.cur::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: var(--gold); }
+.m .r .i { width: 16px; height: 16px; margin-top: 1px; }
+.m .r .d { grid-column: 2 / 4; color: var(--tm); font-size: 12px; }
+.m .r .x { color: #a7c27a; font-size: 12px; white-space: nowrap; }
+.m .r .n { opacity: .6; margin-right: 4px; font-size: 12px; }
+.m .q { color: #ffd34d; }
+.m .sec { padding: 6px 10px 2px; font: 13px "Marcellus", serif; color: var(--gold); border-top: 1px dashed rgba(184,147,63,.35); }
+.m .btn { display: inline-block; border: 1px solid var(--edge); background: #0f1930; color: #f1d78d; padding: 3px 10px; font-size: 12.5px; margin: 0 6px 6px 0; }
+.m .btn.p { background: #1b2640; }
+.m .body { padding: 8px 10px 10px; }
+.m .mute { color: var(--tm); }
+.m .bar { height: 4px; background: #0a1122; border: 1px solid var(--soft); margin: 5px 0 2px; position: relative; }
+.m .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(90deg, #9a7429, #e6c063); }
+.toast { display: inline-flex; gap: 10px; align-items: center; background: #0c1426; border: 1px solid var(--edge); padding: 6px 10px; font-size: 13px; color: var(--t); margin-top: 8px; }
+.toast a { color: var(--gold2); text-decoration: underline; cursor: pointer; }
+.reward { display: flex; gap: 8px; margin-top: 4px; }
+.slot { width: 38px; height: 38px; border: 1px solid #5c4a24; background: #1d1a12; position: relative; }
+.slot.up { border-color: #3fbf3f; box-shadow: 0 0 6px rgba(63,191,63,.5); }
+.slot.up::after { content: ""; position: absolute; right: 2px; top: 2px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 8px solid #3fbf3f; }
+.slot.pick2 { outline: 2px solid var(--gold); outline-offset: 1px; }
+textarea { width: 100%; height: 54px; background: #070d1a; color: #9fb3d8; border: 1px solid var(--soft); font: 11px monospace; padding: 6px; resize: none; }
+.menu { display: inline-block; background: #0a1122; border: 1px solid var(--edge); font-size: 13px; min-width: 170px; margin-top: 8px; }
+.menu div { padding: 4px 10px; } .menu div.on { background: rgba(217,178,90,.14); color: var(--gold2); }
+.flight { text-align: center; padding: 10px; }
+.flight b { font: 22px "Marcellus", serif; color: var(--gold2); font-weight: 400; display: block; }
+footer { color: var(--mute); font-size: 13px; padding: 40px 0 60px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Trailmark: what other guides have</h1>
+  <p class="lede">A survey of the leveling and quest-guide addons for WoW Forever (and the big Classic ones players compare against), from their public pages only. Below: the addons, the eight features worth building next with a small mockup of each in the Cartographer look, and the full list of features Trailmark does not have yet. Mockups show the idea, not a final layout. <a href="/trailmark/mockup/">Look and layout mockup</a></p>
+</header>
+
+<h2>The other addons</h2>
+<p class="lede">Polestar Guides is the one to beat: free, open source, the most downloads of any Forever guide and the most features. Quest Pilot, RestedXP and Zygor are the other serious rivals; RestedXP and Zygor charge for most of their Forever routes.</p>
+<div class="scroll"><table class="tbl">
+<tr><th>Addon</th><th>Forever</th><th>Price</th><th>Downloads</th><th>Known for</th></tr>
+<tr><td class="n">Polestar Guides</td><td>Yes (Forever only)</td><td>Free</td><td>176K</td><td>Routes 1-60 for every start incl. Zephras Isle, walking-path arrow, boats/zeppelins/portals in travel, nearby goals from other steps, class/profession/rep/dungeon guides, merchant automation, friends' progress, 9 languages</td></tr>
+<tr><td class="n">Quest Pilot</td><td>Yes (Forever only)</td><td>Free</td><td>51K</td><td>No route: picks your next objective live, WHY button, dungeon mode, markers over quest mobs, own tracker, XP/hr</td></tr>
+<tr><td class="n">RestedXP</td><td>Yes (35-60 pending)</td><td>1-20 free, then paid</td><td>30.2M</td><td>Speedrun and dungeon-leveling routes, talent advice, hardcore guide, targeting macro</td></tr>
+<tr><td class="n">Zygor</td><td>1-30 (31-60 Classic guides)</td><td>Paid</td><td>n/a</td><td>3D arrow, travel system, starts at the right step from quest history, talent advisor, gear finder</td></tr>
+<tr><td class="n">Questie</td><td>Yes</td><td>Free</td><td>219M</td><td>Quest database on map and minimap, party progress in tooltips (not a route guide)</td></tr>
+<tr><td class="n">4Ever Leveling</td><td>Yes</td><td>Free</td><td>8.1K</td><td>Routes 1-60, class routes, dungeon atlas, best-in-slot lists, 11 languages</td></tr>
+<tr><td class="n">Leveling Pro</td><td>Yes</td><td>Not stated</td><td>5.1K</td><td>Dungeon, profession and rep guides, gear advisor with auto-equip, buys step items</td></tr>
+<tr><td class="n">WoW-Pro</td><td>Yes</td><td>Free</td><td>3.6M</td><td>Steps branch by class, race, items; own tracker; needs TomTom</td></tr>
+<tr><td class="n">Guidelime</td><td>Guides in development</td><td>Free</td><td>5.6M</td><td>Guide editor and import, guide packs</td></tr>
+<tr><td class="n">Leveldon</td><td>Beta, 1-30</td><td>Free</td><td>2.2K</td><td>Trainer stops with prices, bag markers for items needed later, optional dungeons</td></tr>
+<tr><td class="n">Alenya's Guides</td><td>Yes</td><td>Free</td><td>1.9K</td><td>Speedrun splits, timed-quest and flight timers, safe-to-abandon alerts</td></tr>
+<tr><td class="n">LevelForge</td><td>Yes</td><td>Free</td><td>1.7K</td><td>"On the way" objectives, vendor/trainer automation, guide import from other formats</td></tr>
+<tr><td class="n">Absolute Leveling</td><td>Yes</td><td>Free</td><td>1.6K</td><td>Route line on the map, skips done quests, hardcore routes</td></tr>
+<tr><td class="n">Follow The Arrow</td><td>1-30</td><td>Free</td><td>1.1M</td><td>Arrow that colors as you face the target, pictures for puzzle quests</td></tr>
+<tr><td class="n">Navryk, Wayfinder, Vellum</td><td>Beta</td><td>Free</td><td>small</td><td>Flight timer on the arrow, Report This Step, in-game guide editor</td></tr>
+</table></div>
+
+<h2>Build next: eight picks</h2>
+<div class="picks">
+
+<div class="pick"><div class="num">1</div><h3>Vendor and trainer help</h3>
+<p>Sell grey items and repair when you open a vendor, restock food and ammo, and a Train all button at your class trainer.</p>
+<div class="m"><div class="hd"><b>Westfall</b><span>Sentinel Hill</span></div>
+<div class="body"><div>Thor's vendor</div><div class="mute" style="font-size:12px">Sold 14 grey items for 3g 12s · Repaired for 1g 04s · Bought 20 Ice Cold Milk</div>
+<div style="margin-top:8px">Class trainer</div><div class="mute" style="font-size:12px">4 new spells for 2g 10s</div><div style="margin-top:6px"><span class="btn p">Train all</span><span class="btn">Pick spells</span></div></div></div>
+<div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: small</span> In Polestar, LevelForge, Leveling Pro, Absolute</div></div>
+
+<div class="pick"><div class="num">2</div><h3>Also nearby</h3>
+<p>Kills, loot and hand-ins from later steps show up when you are close, so you don't walk past them and come back.</p>
+<div class="m"><div class="hd"><b>Westfall</b><span>Step 14 of 67</span></div>
+<div class="r cur"><svg class="i" viewBox="0 0 20 20"><path d="M4 16 15 5M12 4h4v4" stroke="#e8735a" stroke-width="2.4" fill="none"/></svg><span><span class="n">14.</span>Kill Fleshrippers for <span class="q">Patrolling Westfall</span></span><span class="x">780 xp</span></div>
+<div class="sec">Also nearby</div>
+<div class="r"><svg class="i" viewBox="0 0 20 20"><path d="M4 16 15 5" stroke="#e8735a" stroke-width="2.4"/></svg><span>Harvest Watchers for step 22</span><span class="x">60 yd</span></div>
+<div class="r"><svg class="i" viewBox="0 0 20 20"><circle cx="10" cy="10" r="5" fill="#ffd34d"/></svg><span>Okra from Riverpaw Gnolls, step 19</span><span class="x">110 yd</span></div></div>
+<div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: medium</span> Polestar's standout feature, also LevelForge</div></div>
+
+<div class="pick"><div class="num">3</div><h3>Rewards that fit your gear</h3>
+<p>Pick the quest reward that is an upgrade for your class and spec instead of the one that sells best, and mark upgrades on the reward.</p>
+<div class="m"><div class="hd"><b>Choose a reward</b><span>The Defias Brotherhood</span></div>
+<div class="body"><div class="reward"><span class="slot up pick2"></span><span class="slot"></span><span class="slot"></span></div>
+<div class="mute" style="font-size:12px;margin-top:6px">Picked: Chausseboots (+4 Agility, +3 Stamina over your Worn Boots). Sells best: Cloak of Valor.</div></div></div>
+<div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: medium</span> In Polestar (Pawn), Leveling Pro, 4Ever lists</div></div>
+
+<div class="pick"><div class="num">4</div><h3>Dungeons on the way</h3>
+<p>A dungeon tab for the dungeons the route passes: pick up their quests first, find the entrance, then a boss list with progress.</p>
+<div class="m"><div class="hd"><b>The Deadmines</b><span>17-26</span></div>
+<div class="sec" style="border-top:0">Before you go: 4 quests</div>
+<div class="r"><span></span><span><span class="q">Red Silk Bandanas</span>, Scout Riell, Sentinel Hill</span><span class="x">done</span></div>
+<div class="r"><span></span><span><span class="q">The Defias Brotherhood</span> part 7</span><span class="x">in log</span></div>
+<div class="sec">Bosses</div>
+<div class="body"><div class="mute" style="font-size:12.5px">Rhahk'Zor · Sneed · Gilnid · Mr. Smite · Cookie · Captain Greenskin · Edwin VanCleef</div><div class="bar"><i style="width:43%"></i></div><div class="mute" style="font-size:12px">3 of 7</div></div></div>
+<div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: large</span> In Quest Pilot, Polestar, 4Ever, Leveldon, RestedXP. Trailmark keeps dungeon quests out today.</div></div>
+
+<div class="pick"><div class="num">5</div><h3>Class quests in the route</h3>
+<p>Weapon, totem, pet and form quests woven into the leveling path, with a heads-up when one opens.</p>
+<div class="m"><div class="hd"><b>Barrens</b><span>Crossroads</span></div>
+<div class="r cur"><svg class="i" viewBox="0 0 20 20"><rect x="4" y="3" width="12" height="14" fill="#c79c6e"/></svg><span><span class="n">31.</span>Warrior: Accept <span class="q">Veteran Uzzek</span></span><span class="x">level 10</span></div>
+<div class="r"><span></span><span class="d" style="grid-column:2/4">Opens Path of Defense (Defensive Stance). Uzzek is at the Far Watch Post.</span></div>
+<div class="toast" style="margin:0 10px 10px">New class quest: your trainer has something for you</div></div>
+<div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: medium-large</span> In Polestar, Alenya</div></div>
+
+<div class="pick"><div class="num">6</div><h3>Boats, zeppelins and flights</h3>
+<p>Travel steps that know the boats and zeppelins, and the waypoint turns into a landing timer while you fly.</p>
+<div class="m"><div class="hd"><b>On the flight</b><span>Ironforge to Menethil</span></div>
+<div class="flight"><b>Landing in 0:42</b><span class="mute">Then: hand in Report to Captain Stoutfist, 40 yd</span></div>
+<div class="sec">Next travel</div>
+<div class="r"><span></span><span>Take the boat to Theramore</span><span class="x">dock 120 yd</span></div></div>
+<div class="meta"><span class="chip h">Expected: high</span><span class="chip">Effort: medium</span> In Polestar, Navryk, Alenya, Leveling Pro</div></div>
+
+<div class="pick"><div class="num">7</div><h3>Undo a skip, report a step</h3>
+<p>Every skip can be undone for a few seconds, and Report this step saves where you are and what the step says, so broken steps get fixed fast.</p>
+<div class="m"><div class="body"><div class="toast" style="margin:0">Skipped step 15, The Defias Brotherhood. <a>Undo</a></div><br>
+<div class="menu"><div>Mark complete</div><div>Skip this step</div><div>Point the waypoint here</div><div class="on">Report this step</div></div></div></div>
+<div class="meta"><span class="chip">Expected: medium-high</span><span class="chip">Effort: small</span> In Polestar, Navryk, Leveldon, LevelForge</div></div>
+
+<div class="pick"><div class="num">8</div><h3>Share routes</h3>
+<p>Turn a recorded route into a text string anyone can paste into their Trailmark, so players can share and improve routes.</p>
+<div class="m"><div class="hd"><b>Share a route</b><span>From the recorder</span></div>
+<div class="body"><textarea readonly>TM1:eJyVkk1PwzAMhv9KlTNH2kxbN1RO7MAOiANCk3JxErdhaTwlLmLa/z0dHRMHxCEXK/H7+vHrfDdZmzRH2kF8i9ZtcFdgB54RJC1kiDS7aB+SFaE+QJVUXtsKCdxZqF4ZhU7AkHOaq4IRHJWNJYfKiFwLZQyGo2VKl8c58cIopB6ZpOZG33WwEFAKGH4rSrBlc1P0E3ZmzwNTLx</textarea>
+<div style="margin-top:6px"><span class="btn p">Copy</span><span class="btn">Import a route</span></div></div></div>
+<div class="meta"><span class="chip">Expected: medium-high</span><span class="chip">Effort: small-medium</span> In Polestar, Wayfinder, LevelForge, Guidelime</div></div>
+
+</div>
+
+<h2>Everything else Trailmark does not have yet</h2>
+<p class="lede">Grouped by area, most valuable first. "Expected" is how many rivals have it and how often players ask for it.</p>
+
+<div class="scroll"><table class="tbl">
+<tr><th>Feature</th><th>What you get</th><th>Who has it</th><th>Expected</th><th>Effort</th></tr>
+<tr><th colspan="5" style="color:#f3dc98">Finding the way</th></tr>
+<tr><td class="n">Screen arrow</td><td>A classic arrow with yards left, as well as the in-world marker</td><td>Almost all</td><td>High</td><td>Small</td></tr>
+<tr><td class="n">Nearest service</td><td>One click to the nearest vendor, repair, inn, flight master, trainer, bank or mailbox</td><td>Polestar</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Route line on the map</td><td>The path between steps drawn on the world map</td><td>Polestar, Absolute</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Walking-path arrow</td><td>Arrow that bends around corners, cliffs and caves</td><td>Polestar</td><td>Low-medium</td><td>Large</td></tr>
+<tr><td class="n">Arrival sound, facing colors</td><td>Sound when you arrive; arrow color shows if you face the target</td><td>Quest Pilot, Follow The Arrow</td><td>Low</td><td>Small</td></tr>
+<tr><td class="n">TomTom handoff</td><td>Send the step to TomTom if you use it</td><td>WoW-Pro, Leveling Pro</td><td>Low-medium</td><td>Small</td></tr>
+<tr><th colspan="5" style="color:#f3dc98">Guide content</th></tr>
+<tr><td class="n">Group-quest warnings</td><td>Elite quests flagged with a solo alternative</td><td>Polestar, Alenya, RestedXP</td><td>Medium</td><td>Small-medium</td></tr>
+<tr><td class="n">Hardcore mode</td><td>Safer route and danger-spot warnings for Hardcore characters</td><td>RestedXP, Absolute, LevelForge</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Profession guides</td><td>Leveling routes for each profession</td><td>Polestar, Leveling Pro, Zygor</td><td>Medium</td><td>Large</td></tr>
+<tr><td class="n">Rares and treasures</td><td>Alerts and map marks for rares and treasures near the route</td><td>Polestar, Zygor</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Reputation, mount, exploration guides</td><td>Side guides beyond leveling</td><td>Polestar, Leveling Pro, RestedXP</td><td>Low-medium</td><td>Large</td></tr>
+<tr><td class="n">Puzzle pictures, full quest text</td><td>Pictures for tricky spots; Shift-click shows the quest text</td><td>Follow The Arrow, Leveldon</td><td>Low</td><td>Small</td></tr>
+<tr><td class="n">In-game guide editor</td><td>Write or fix steps inside the game</td><td>Wayfinder, Guidelime</td><td>Low</td><td>Medium-large</td></tr>
+<tr><th colspan="5" style="color:#f3dc98">Quests and automation</th></tr>
+<tr><td class="n">Auto flights and gossip</td><td>Takes the flight the step asks for and picks the right talk option</td><td>LevelForge, Leveling Pro</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Quest items</td><td>Auto-loot quest items and keep them out of vendor sales</td><td>Wayfinder, Polestar</td><td>Low-medium</td><td>Small</td></tr>
+<tr><td class="n">Auto-equip upgrades</td><td>Equips a better quest reward out of combat</td><td>Leveling Pro</td><td>Low</td><td>Small</td></tr>
+<tr><th colspan="5" style="color:#f3dc98">Window and tracker</th></tr>
+<tr><td class="n">Languages</td><td>The addon in German, French, Spanish and more</td><td>Polestar, 4Ever, Leveldon, Leveling Pro</td><td>High</td><td>Medium</td></tr>
+<tr><td class="n">Timers and alerts</td><td>Countdown on timed quests, glow on loot that starts a quest, sound when a quest is ready</td><td>Polestar, Alenya, Quest Pilot</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Compact mode</td><td>A one-line or see-through window while questing</td><td>Polestar, Quest Pilot</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Own quest tracker</td><td>Replaces Blizzard's tracker, grouped by zone</td><td>Quest Pilot, WoW-Pro, Questie</td><td>Medium</td><td>Medium</td></tr>
+<tr><td class="n">Gamepad support</td><td>Play the guide with a controller</td><td>Polestar</td><td>Low-medium</td><td>Medium</td></tr>
+<tr><td class="n">Profiles, tutorial, update notice</td><td>Export settings, a first-run walkthrough, a newer-version notice</td><td>Quest Pilot, Polestar</td><td>Low</td><td>Small</td></tr>
+<tr><th colspan="5" style="color:#f3dc98">Leveling stats</th></tr>
+<tr><td class="n">On pace</td><td>Ahead or behind the level the guide expects at this step</td><td>Polestar, LevelForge</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Kills and quests to level</td><td>How many kills or quests until the next level, session totals</td><td>Quest Pilot, Leveling Pro</td><td>Medium</td><td>Small</td></tr>
+<tr><td class="n">Rested XP</td><td>Rested bar and where to log out for rest</td><td>Polestar</td><td>Low-medium</td><td>Small</td></tr>
+<tr><td class="n">Speedrun splits</td><td>Time per zone against your best run</td><td>Alenya</td><td>Low</td><td>Small</td></tr>
+<tr><th colspan="5" style="color:#f3dc98">Group</th></tr>
+<tr><td class="n">Group progress</td><td>See friends' steps, share quests they are missing, sync to one step</td><td>Polestar, Questie (tooltips)</td><td>Medium</td><td>Medium</td></tr>
+<tr><th colspan="5" style="color:#f3dc98">Other</th></tr>
+<tr><td class="n">Talent advice</td><td>Talent picks while leveling</td><td>Zygor, Leveling Pro, RestedXP</td><td>Medium</td><td>Already in your Talentwise addon: link it</td></tr>
+<tr><td class="n">Bag markers</td><td>Marks items you need later or can sell</td><td>Polestar, Leveldon</td><td>Low-medium</td><td>Small-medium</td></tr>
+</table></div>
+
+<footer>Sources: each addon's CurseForge page and public write-ups, November 2026. Download counts as shown on those pages. Nothing here was taken from any addon's code.</footer>
+</div>
+</body>
+</html>
