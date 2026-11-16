@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Trailmark UX Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=IM+Fell+English&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --page: #0d0f14; --ink: #d9cfb8; --mute: #8d8471; --line: #2a2a2e; --gold: #d9b25a; --gold2: #f3dc98; --navy: #13203a; --navy2: #0c1426; --edge: #b8933f; --soft: #2f3d5c; --t: #dfe4ee; --tm: #9ea8bf; --bad: #e8775b; --good: #9fd08a; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.55 "Alegreya Sans", system-ui, sans-serif; }
+a { color: var(--gold2); }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px 60px; }
+header { padding: 28px 0 10px; }
+h1 { font: 30px/1.1 "Marcellus", serif; margin: 0 0 6px; color: #e9dcb8; }
+h2 { font: 23px "Marcellus", serif; margin: 40px 0 6px; color: #eadcb5; }
+h3 { font: 18px "Marcellus", serif; margin: 0 0 6px; color: var(--gold2); font-weight: 400; }
+p.lede { color: var(--mute); max-width: 820px; margin: 0 0 10px; }
+.tmnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.tmnav a { border: 1px solid #b8933f; color: #f1d78d; padding: 5px 14px; text-decoration: none; font-size: 14px; background: #0f1930; }
+.tmnav a.on { background: #1b2640; color: #f3dc98; box-shadow: inset 0 -2px 0 #d9b25a; }
+.chip { display: inline-block; border: 1px solid #3a3730; padding: 0 6px; margin-right: 4px; font-size: 12px; color: #c9bfa6; white-space: nowrap; }
+.chip.high { border-color: #8a3a2a; color: #f0a08a; background: rgba(138,58,42,.15); }
+.chip.med { border-color: #8a6a2a; color: #f0d48a; background: rgba(138,106,42,.12); }
+.chip.low { border-color: #3a4a5a; color: #a9bdd0; }
+.chip.cl { border-color: #6b5a2c; color: #f3dc98; }
+.chip.cx { border-color: #4e6a8a; color: #b9d0ea; }
+.chip.both { border-color: #4e7a3c; color: #9fd08a; background: rgba(78,122,60,.15); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; margin-top: 12px; }
+.card { border: 1px solid #23242a; background: linear-gradient(160deg, #1b2130, #15181f 70%); padding: 12px 14px; }
+.card b { font: 16px "Marcellus", serif; color: var(--gold2); font-weight: 400; display: block; }
+.card .v { font-size: 13px; margin: 2px 0 6px; }
+.card .v.ok { color: var(--good); } .card .v.mid { color: #f0d48a; } .card .v.no { color: var(--bad); }
+.card p { margin: 0; font-size: 13.5px; color: #b9ae96; }
+ol.top { padding-left: 22px; max-width: 900px; }
+ol.top li { margin: 6px 0; }
+ol.top b { color: var(--gold2); font-weight: 500; }
+.scroll { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; min-width: 900px; }
+.tbl th, .tbl td { text-align: left; padding: 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tbl th { color: var(--mute); font-weight: 500; }
+.tbl td.n { white-space: nowrap; color: #eadcb5; }
+.tbl code { font-size: 12.5px; color: #c9bfa6; }
+.tbl .fix { color: #c8d6a8; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 12px; align-items: start; }
+@media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
+.lbl { font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; }
+.lbl.new { color: var(--good); }
+.note { font-size: 13.5px; color: #b9ae96; margin-top: 8px; max-width: 900px; }
+
+.m { background: linear-gradient(180deg, var(--navy), var(--navy2)); border: 1px solid var(--edge); box-shadow: 0 0 0 1px #050a14, 0 8px 22px rgba(0,0,0,.45); color: var(--t); font-size: 13px; max-width: 340px; }
+.m .hd { display: flex; justify-content: space-between; align-items: center; padding: 7px 10px; border-bottom: 1px solid rgba(184,147,63,.45); }
+.m .hd b { font: 16px "Marcellus", serif; color: var(--gold2); font-weight: 400; }
+.m .hd span { color: var(--tm); font-size: 12px; letter-spacing: 3px; }
+.m .r { display: grid; grid-template-columns: 20px 1fr auto; gap: 0 8px; padding: 6px 10px; position: relative; }
+.m .r.cur { background: linear-gradient(90deg, rgba(217,178,90,.16), rgba(217,178,90,.03)); }
+.m .r.cur::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: var(--gold); }
+.m .r.big .t { font-size: 15px; }
+.m .r.big .d { font-size: 13.5px; color: var(--t); }
+.m .r.cur.soft { background: linear-gradient(90deg, rgba(217,178,90,.08), rgba(217,178,90,.02)); }
+.m .r .i { width: 16px; height: 16px; margin-top: 2px; border-radius: 50%; }
+.m .r .d { grid-column: 2 / 4; color: var(--tm); font-size: 12px; }
+.m .r .x { color: #a7c27a; font-size: 12px; white-space: nowrap; }
+.m .r.later .t { color: #b9c0cf; }
+.m .r.later .d { color: #8a93a8; }
+.m .q { color: #ffd34d; }
+.m .bar { height: 4px; background: #0a1122; border: 1px solid var(--soft); margin: 4px 10px 6px; position: relative; }
+.m .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 38%; background: linear-gradient(90deg, #9a7429, #e6c063); }
+.m .prog { display: flex; justify-content: space-between; padding: 4px 10px 0; font-size: 12px; color: var(--tm); }
+.m .foot { border-top: 1px dashed rgba(184,147,63,.3); padding: 5px 10px; font-size: 11.5px; color: #8a93a8; }
+.m .foot kbd { font: inherit; color: var(--gold2); border: 1px solid #3a4560; padding: 0 4px; }
+
+.menu { display: inline-block; background: #0a1122; border: 1px solid var(--edge); font-size: 13.5px; min-width: 230px; padding: 3px 0; }
+.menu div { padding: 4px 12px; color: var(--t); }
+.menu div.sep { padding: 0; margin: 4px 8px; border-top: 1px solid #2a3550; }
+.menu div.cap { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #8a93a8; padding: 4px 12px 1px; }
+.menu div.warn { color: #f2d68c; }
+.menu div.dup { color: #f0a08a; text-decoration: underline wavy #c0563f; text-underline-offset: 3px; }
+
+.set { display: grid; grid-template-columns: 150px 1fr; background: linear-gradient(180deg, var(--navy), var(--navy2)); border: 1px solid var(--edge); min-height: 330px; font-size: 13px; color: var(--t); }
+.set .nav { border-right: 1px solid #22304d; padding: 6px 0; }
+.set .nav div { padding: 4px 12px; color: var(--tm); }
+.set .nav div.on { color: var(--gold2); background: rgba(217,178,90,.12); box-shadow: inset 3px 0 0 var(--gold); }
+.set .nav div.grp { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #6f7a92; padding: 9px 12px 2px; }
+.set .nav .search { margin: 2px 8px 6px; border: 1px solid #2f3d5c; background: #0a1122; color: #8a93a8; padding: 3px 7px; font-size: 12px; }
+.set .pg { padding: 10px 14px; }
+.set .pg h4 { font: 15px "Marcellus", serif; color: var(--gold2); margin: 0 0 6px; font-weight: 400; }
+.set .pg .sh { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin: 9px 0 3px; }
+.set .pg .o { padding: 2px 0 2px 20px; position: relative; }
+.set .pg .o::before { content: ""; position: absolute; left: 0; top: 6px; width: 11px; height: 11px; border: 1px solid #5c6a88; background: #0a1122; }
+.set .pg .o.on::before { background: var(--gold); border-color: var(--gold); }
+.set .pg .o.odd { color: #f0a08a; }
+.set .pg .more { color: #8a93a8; font-size: 12px; padding-top: 4px; }
+
+.sw { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 640px; }
+.sw td, .sw th { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+.sw th { color: var(--mute); font-weight: 500; }
+.sw .s { display: inline-block; padding: 2px 10px; min-width: 150px; }
+.sw .r { font-variant-numeric: tabular-nums; }
+.sw .bad { color: var(--bad); } .sw .good { color: var(--good); }
+.lks { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 14px; margin-top: 12px; }
+.lk { border: 1px solid; font-size: 13.5px; padding-bottom: 6px; box-shadow: 0 8px 22px rgba(0,0,0,.4); }
+.lkh { font-size: 17px; padding: 7px 10px; border-bottom: 1px solid; }
+.lkr { display: flex; gap: 8px; padding: 3px 10px; }
+.lkr .g { width: 14px; text-align: center; }
+.dimr { font-size: 12.5px; padding-top: 6px; }
+.legend { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; min-width: 620px; }
+.legend td, .legend th { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.legend th { color: var(--mute); font-weight: 500; }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; }
+.pal { display: flex; height: 26px; margin: 8px 0 4px; border: 1px solid #000; }
+.pal i { flex: 1; }
+.palname { font: 16px "Marcellus", serif; color: var(--gold2); }
+.palsub { font-size: 13px; color: #b9ae96; }
+footer { margin-top: 40px; color: var(--mute); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <nav class="tmnav"><a href="/trailmark/mockup/">Look mockup</a><a href="/trailmark/features/">Features</a><a href="/trailmark/professions/">Profession plans</a><a href="/trailmark/waypoint/">Waypoint</a><a class="on" href="/trailmark/review/">UX review</a></nav>
+  <h1>Trailmark UX review</h1>
+  <p class="lede">Two separate reviews of Trailmark 0.47.73, one by Claude and one by Codex (neither saw the other's notes), read straight from the addon's code: layout, menus, settings, colors and how friendly it is to a new player. Both read the code, not the game, so sizes and colors are what the code sets. Each finding says who flagged it, and the last column is the verdict after checking the code.</p>
+  <p class="lede"><span class="chip cl">Claude</span><span class="chip cx">Codex</span><span class="chip both">Both</span> &nbsp; <span class="chip high">High</span><span class="chip med">Medium</span><span class="chip low">Low</span></p>
+</header>
+
+<h2>Verdict</h2>
+<div class="cards" id="verdict">
+  <div class="card"><b>Guide window</b><div class="v mid">Mostly good</div><p>Clean and compact, but the current step barely stands out, and the "Next step" arrow quietly marks steps done.</p></div>
+  <div class="card"><b>Menus</b><div class="v mid">Mostly good</div><p>The gear menu is short now. The step menu shows "Open in quest log" twice and mixes safe and risky actions.</p></div>
+  <div class="card"><b>Settings</b><div class="v no">Needs work</div><p>11 pages, but one page holds about 25 options and several options live on the wrong page. No search.</p></div>
+  <div class="card"><b>Colors</b><div class="v mid">Mostly good</div><p>All four feel like WoW, but three are dark with a gold accent and look alike. Tasks have no color language. Grey text fails contrast in two looks.</p></div>
+  <div class="card"><b>Friendliness</b><div class="v mid">Mostly good</div><p>Setup and the tour are solid, but some helpers act on their own (restock spends gold, Fastest flips six switches) without saying so, and a few help lines are stale.</p></div>
+</div>
+
+<h2>Do these first</h2>
+<ol class="top" id="top5">
+  <li><b>Make the current step unmistakable:</b> bigger title and action line, later steps muted, lighter row tint.</li>
+  <li><b>Stop surprises:</b> the "Next step" arrow becomes a "Mark done" check, Fastest shows which helpers it turns on, restock appears in setup, the supply warning becomes a card instead of moving your waypoint.</li>
+  <li><b>Fix the step menu:</b> one "Open in quest log", grouped items, clearer names, Abandon last.</li>
+  <li><b>Colors:</b> one color per task kind in every look, a distinct accent per look, and fix every text color under 4.5:1 (prices on Quest Log included).</li>
+  <li><b>Reorganize settings:</b> split Finding the way, group the sidebar, one reward choice instead of two switches, add search.</li>
+</ol>
+
+<h2>All findings</h2>
+<div class="scroll">
+<table class="tbl" id="findings">
+<tr><th>#</th><th>Area</th><th>Level</th><th>Who</th><th>Finding</th><th>Suggested change</th><th>Verdict</th></tr>
+<tr><td class="n">1</td><td>Step menu</td><td><span class="chip high">High</span></td><td><span class="chip both">Both</span></td><td>"Open in quest log" is listed twice when the quest is in your log; both do the same thing. Up to 10 items in one flat list, with Abandon between Point here and Report. <code>Window.lua:113-158</code></td><td class="fix">One "Open in quest log". Three groups with dividers; Report and Abandon last. See mockup 1.</td><td>Agree</td></tr>
+<tr><td class="n">2</td><td>Step menu</td><td><span class="chip med">Medium</span></td><td><span class="chip cx">Codex</span></td><td>"Do it anyway" turns on low-level quests for the whole guide, not one step. "Do this quest again" sounds like the game quest becomes repeatable. "Start from here" also clears skip marks after that step. <code>Engine.lua:1520, 1605</code></td><td class="fix">"Show low-level quests in this guide", "Guide a friend through this quest", "Restart from this step..." with a line saying what gets cleared.</td><td>Agree</td></tr>
+<tr><td class="n">3</td><td>Header</td><td><span class="chip high">High</span></td><td><span class="chip cx">Codex</span></td><td>The right arrow says "Next step" but marks the current step done. Someone browsing ahead changes their progress. <code>Window.lua:1215</code>, <code>Locale.lua:345</code></td><td class="fix">Use a check mark with the tooltip "Mark this step done"; keep arrows only for looking ahead.</td><td>Agree</td></tr>
+<tr><td class="n">4</td><td>Guide window</td><td><span class="chip high">High</span></td><td><span class="chip both">Both</span></td><td>Current and later steps use the same size (12) and quest color; only a 3 px bar and a tint mark the current one. The action line under the title is smaller than the title. <code>Window.lua:398, 487</code></td><td class="fix">Current title 14, its action line 13; later steps muted. See mockup 4.</td><td>Agree</td></tr>
+<tr><td class="n">5</td><td>Guide window</td><td><span class="chip med">Medium</span></td><td><span class="chip cx">Codex</span></td><td>"Steps shown" is not the real size: groups, travel legs, cards and log rows add rows, and the window grows with no scroll. Reminders can push the current step down. <code>Window.lua:1502-1728</code></td><td class="fix">Rename to "Upcoming steps", cap the height around 480 px with scrolling, fold reminders into one "Also worth doing" line.</td><td>Partly: rename and the height cap yes; the default of 3 is your call</td></tr>
+<tr><td class="n">6</td><td>Settings</td><td><span class="chip high">High</span></td><td><span class="chip both">Both</span></td><td>"Finding the way" holds 22 to 25 controls, including quest-flow switches, sounds and rare alerts. Trainer switches are on Vendors; "Nearest quest first" is on Window. <code>Options.lua:178-332</code></td><td class="fix">Split into Route, Finding the way, Buttons and targets, Sounds and alerts; rename Vendors to "Vendors and trainers". See mockup 2.</td><td>Agree</td></tr>
+<tr><td class="n">7</td><td>Settings</td><td><span class="chip med">Medium</span></td><td><span class="chip both">Both</span></td><td>11 pages in one flat list mixing settings (Quests), reference (Icons, Quest list) and actions (Tools, 27 buttons). No search. <code>Options.lua:144</code></td><td class="fix">Group the sidebar: Play, Character, Window, More, plus a search box.</td><td>Agree</td></tr>
+<tr><td class="n">8</td><td>Settings</td><td><span class="chip med">Medium</span></td><td><span class="chip cx">Codex</span></td><td>"Also nearby", "Show other quests to do right here", "Point out finished quests nearby" and "Pick up quests while you are at the giver" sound alike and sit on two pages.</td><td class="fix">One "Nearby quests" group on the Route page: "Combine nearby objectives", "Pick up nearby guide quests", "Show nearby turn-ins".</td><td>Agree</td></tr>
+<tr><td class="n">9</td><td>Settings</td><td><span class="chip high">High</span></td><td><span class="chip cx">Codex</span></td><td>Picking Fastest also turns on six other options (auto accept, auto turn-in, auto reward, nearest first, travel legs, auto mark); switching back does not undo them. Setup says "saved for this character" but helpers are account-wide. <code>Options.lua:122-131</code></td><td class="fix">Show the six switches on the Fastest card as "Also turns on: ..." with an undo; setup summary says "Style and talents: this character. Helpers: all characters."</td><td>Agree (checked in code)</td></tr>
+<tr><td class="n">10</td><td>Settings</td><td><span class="chip med">Medium</span></td><td><span class="chip cx">Codex</span></td><td>Rewards are one decision spread over two switches ("sells for most" + "prefer upgrades") plus an equip switch.</td><td class="fix">One choice "Quest reward": Ask me / Upgrade, else best price / Best price. Then "Wear chosen upgrades".</td><td>Agree</td></tr>
+<tr><td class="n">11</td><td>Defaults</td><td><span class="chip high">High</span></td><td><span class="chip cx">Codex</span></td><td>Restock is on by default: 20 food, 20 drinks, 1000 ammo, 20 pet food, up to 25% of your gold per visit, and setup never mentions it. <code>Core.lua:50-54</code></td><td class="fix">Add it to setup with the amounts shown, or default it off.</td><td>Agree (checked in code); your call on the default</td></tr>
+<tr><td class="n">12</td><td>Alerts</td><td><span class="chip high">High</span></td><td><span class="chip cx">Codex</span></td><td>"Warn before a long stretch" can move the waypoint to a vendor up to 1000 yd away when bags have 2 free slots. A warning should not steer you. <code>Supplies.lua:141, 188</code></td><td class="fix">Card "Bags almost full: 2 slots free" with Go to vendor / Dismiss, like the trainer card.</td><td>Agree</td></tr>
+<tr><td class="n">13</td><td>Colors</td><td><span class="chip high">High</span></td><td><span class="chip both">Both</span></td><td>Dim text: Cartographer 3.7:1, Waystone 2.8:1. Quest Log green 3.0, red 3.7, accent 4.3. Dark looks use Blizzard red and grey levels at 3.5 to 4.2. <code>Theme.lua</code></td><td class="fix">New values in mockup 3 (all 4.5 or more).</td><td>Agree. Codex suggested brighter dims (#a6afc2); Claude keeps them below the muted color so dim still reads as less important</td></tr>
+<tr><td class="n">14</td><td>Colors</td><td><span class="chip high">High</span></td><td><span class="chip cx">Codex</span></td><td>Gold, silver and copper amounts are hard-coded light colors: about 1.4, 1.2 and 1.0:1 on Quest Log parchment, so prices vanish. <code>Locale.lua:180-182</code></td><td class="fix">Amount in the text color with the coin icons after it.</td><td>Agree (checked in code)</td></tr>
+<tr><td class="n">15</td><td>Colors</td><td><span class="chip med">Medium</span></td><td><span class="chip cx">Codex</span></td><td>The 20% gold tint on the current row lowers the text on it: Waystone muted to about 3.7, Grove dim to 3.2. <code>Window.lua:570</code></td><td class="fix">Tint to 8%; let the bar and the larger title do the marking.</td><td>Agree</td></tr>
+<tr><td class="n">16</td><td>Colors</td><td><span class="chip high">High</span></td><td><span class="chip cl">Claude</span></td><td>Every objective uses the single "kill" color, so kill, loot, gather and use look the same. Three looks are dark with a gold accent and look alike. <code>Window.lua:74</code></td><td class="fix">One color per task kind in every look, and a distinct material and accent per look. See mockups 5 and 6.</td><td>Your idea, worked out by Claude</td></tr>
+<tr><td class="n">17</td><td>Help text</td><td><span class="chip med">Medium</span></td><td><span class="chip both">Both</span></td><td>Stale text: the no-guide message says click the gear and pick Guides (left click opens Settings now); Compact's tooltip points at a gear-menu entry that moved; the tour says Shift-click jumps to a step, but it opens the quest log. <code>Locale.lua:351, 715, 926, 928</code></td><td class="fix">Empty window: "Choose a guide to begin" with a button. Fix the tour and tooltips.</td><td>Agree</td></tr>
+<tr><td class="n">18</td><td>Help text</td><td><span class="chip med">Medium</span></td><td><span class="chip cl">Claude</span></td><td>Right-click and Shift-click on steps are only taught once, in the first-run tour.</td><td class="fix">A small footer hint that hides after a few right-clicks. See mockup 4.</td><td>Claude</td></tr>
+<tr><td class="n">19</td><td>Setup</td><td><span class="chip med">Medium</span></td><td><span class="chip cx">Codex</span></td><td>The Fastest description is 349 characters (others about 130); quest-level labels are 42 to 47 characters; "Main quests" sounds like the "Main quest line" style.</td><td class="fix">Short Fastest blurb; thresholds under "Advanced"; rename to "Normal quest range".</td><td>Agree</td></tr>
+<tr><td class="n">20</td><td>Other windows</td><td><span class="chip med">Medium</span></td><td><span class="chip cx">Codex</span></td><td>Dungeon and profession headings get about 150 to 190 px with no wrap; the 149-character Forever note in Reputation sits in an 18 px single-line row with no tooltip.</td><td class="fix">Two-line titles, wrapped notes at 12, full text on hover.</td><td>Agree; needs a look in game</td></tr>
+<tr><td class="n">21</td><td>Talents</td><td><span class="chip med">Medium</span></td><td><span class="chip cx">Codex</span></td><td>"Save build" also makes it the active build, and with auto placement on it can spend points right away. <code>TalentPlanner.lua:382</code></td><td class="fix">"Save" and "Use this build" as two buttons; say "Auto spending is on" when used.</td><td>Agree</td></tr>
+<tr><td class="n">22</td><td>Menus</td><td><span class="chip low">Low</span></td><td><span class="chip cx">Codex</span></td><td>Menus close 0.5 s after the mouse leaves them; long settings lists have no visible scrollbar. <code>Widgets.lua:458, 490</code></td><td class="fix">Keep menus open until a click or Escape; show a thin scrollbar.</td><td>Agree. Codex also asked for keyboard menu navigation; skip, WoW menus are mouse-first</td></tr>
+</table>
+</div>
+
+<h2>What the changes would look like</h2>
+
+<h3>1. Step right-click menu</h3>
+<div class="pair">
+  <div><div class="lbl">Now</div>
+    <div class="menu">
+      <div>Mark complete</div><div>Skip this step</div><div>Do this quest again (help a friend)</div><div>Start from here</div><div class="dup">Open in quest log</div><div>Point the waypoint here</div><div class="warn">Abandon quest</div><div class="dup">Open in quest log</div><div>Report this step</div>
+    </div>
+  </div>
+  <div><div class="lbl new">Suggested</div>
+    <div class="menu">
+      <div class="cap">This step</div><div>Mark done</div><div>Skip this step</div><div>Point the waypoint here</div><div>Restart from this step...</div>
+      <div class="sep"></div>
+      <div class="cap">Quest</div><div>Open in quest log</div><div>Guide a friend through this quest</div>
+      <div class="sep"></div>
+      <div>Report this step</div><div class="warn">Abandon quest...</div>
+    </div>
+  </div>
+</div>
+
+<h3 style="margin-top:28px">2. Settings sidebar and the Finding the way page</h3>
+<div class="pair">
+  <div><div class="lbl">Now</div>
+    <div class="set">
+      <div class="nav"><div>Leveling</div><div>Quests</div><div class="on">Finding the way</div><div>Vendors</div><div>Talents</div><div>Stat weights</div><div>Window</div><div>Look</div><div>Icons</div><div>Quest list</div><div>Tools</div></div>
+      <div class="pg"><h4>Finding the way</h4>
+        <div class="o on">Point the waypoint at each step</div><div class="o">Show the way with</div><div class="o">Waypoint / Arrow style</div><div class="o">Waypoint size</div><div class="o on">Route through flight paths</div><div class="o">Use my hearthstone</div><div class="o">Use class teleports</div>
+        <div class="sh">World map</div><div class="o on">Route line on the world map</div>
+        <div class="sh">Targets and items</div><div class="o on">Target button</div><div class="o">Mark the step's NPC or mob</div><div class="o on">Quest item button</div><div class="o on">Quest progress over mobs</div>
+        <div class="o odd">Point out finished quests nearby</div><div class="o odd">Pick up quests at the giver</div><div class="o odd">Dungeon quests on the way</div><div class="o odd">Other quests to do right here</div><div class="o odd">List quests off the route</div><div class="o odd">Quest log click shows it in the guide</div>
+        <div class="more">+ Sounds and alerts (4)</div>
+      </div>
+    </div>
+    <p class="note">Red items are quest-flow switches filed under "Targets and items".</p>
+  </div>
+  <div><div class="lbl new">Suggested</div>
+    <div class="set">
+      <div class="nav"><div class="search">Search settings...</div>
+        <div class="grp">Play</div><div>Leveling style</div><div>Quests</div><div class="on">Route</div><div>Finding the way</div><div>Buttons and targets</div>
+        <div class="grp">Character</div><div>Talents</div><div>Stat weights</div><div>Vendors and trainers</div>
+        <div class="grp">Window</div><div>Window</div><div>Look</div><div>Sounds and alerts</div>
+        <div class="grp">More</div><div>Icon guide</div><div>Quest list</div><div>Tools</div></div>
+      <div class="pg"><h4>Route</h4>
+        <div class="sh">Order</div><div class="o on">Nearest quest first in a block</div><div class="o on">Also nearby</div>
+        <div class="sh">Pick up on the way</div><div class="o on">Pick up quests at the giver</div><div class="o on">Dungeon quests on the way</div><div class="o on">Other quests to do right here</div>
+        <div class="sh">Your quest log</div><div class="o on">Point out finished quests nearby</div><div class="o">List quests off the route</div><div class="o on">Quest log click shows it in the guide</div>
+      </div>
+    </div>
+    <p class="note">Finding the way keeps waypoint, arrow, travel and the map line. Buttons and targets gets the four target and item switches.</p>
+  </div>
+</div>
+
+<h3 style="margin-top:28px">3. Colors</h3>
+<p class="note">Contrast is against each look's window background. 4.5 is the usual line for body text; dim text is used for distances, hints and later steps, so it matters.</p>
+<div class="scroll">
+<table class="sw">
+<tr><th>Look</th><th>Color</th><th>Now</th><th>Ratio</th><th>Suggested</th><th>Ratio</th></tr>
+<tr><td>Cartographer</td><td>dim</td><td><span class="s" style="background:#131f39;color:#6d778e">Distance 120 yd</span></td><td class="r bad">3.7</td><td><span class="s" style="background:#131f39;color:#7f89a0">Distance 120 yd</span></td><td class="r good">4.7</td></tr>
+<tr><td>Waystone</td><td>dim</td><td><span class="s" style="background:#2d2c2a;color:#757063">Distance 120 yd</span></td><td class="r bad">2.8</td><td><span class="s" style="background:#2d2c2a;color:#999487">Distance 120 yd</span></td><td class="r good">4.6</td></tr>
+<tr><td>Quest Log</td><td>done</td><td><span class="s" style="background:#ccb282;color:#4f6b2b">Step done</span></td><td class="r bad">3.0</td><td><span class="s" style="background:#ccb282;color:#3d4b1b">Step done</span></td><td class="r good">4.6</td></tr>
+<tr><td>Quest Log</td><td>kill</td><td><span class="s" style="background:#ccb282;color:#992d19">Kill 8 Murlocs</span></td><td class="r bad">3.7</td><td><span class="s" style="background:#ccb282;color:#812518">Kill 8 Murlocs</span></td><td class="r good">4.6</td></tr>
+<tr><td>Quest Log</td><td>blaze</td><td><span class="s" style="background:#ccb282;color:#892819">Current step</span></td><td class="r bad">4.3</td><td><span class="s" style="background:#ccb282;color:#802518">Current step</span></td><td class="r good">4.7</td></tr>
+<tr><td>Quest Log</td><td>travel</td><td><span class="s" style="background:#ccb282;color:#234f75">Fly to Lakeshire</span></td><td class="r bad">4.2</td><td><span class="s" style="background:#ccb282;color:#1e486b">Fly to Lakeshire</span></td><td class="r good">4.7</td></tr>
+<tr><td>Waystone</td><td>level red</td><td><span class="s" style="background:#2d2c2a;color:#ff1919">[30] Too hard</span></td><td class="r bad">3.6</td><td><span class="s" style="background:#2d2c2a;color:#ff5a4a">[30] Too hard</span></td><td class="r good">4.5</td></tr>
+<tr><td>Waystone</td><td>level grey</td><td><span class="s" style="background:#2d2c2a;color:#7f7f7f">[8] Trivial</span></td><td class="r bad">3.5</td><td><span class="s" style="background:#2d2c2a;color:#9a9a9a">[8] Trivial</span></td><td class="r good">5.0</td></tr>
+<tr><td>Grove</td><td>all text</td><td colspan="4" class="good">Passes everywhere (dim 4.7, body 10.7). No change.</td></tr>
+</table>
+</div>
+
+<h3 style="margin-top:28px">4. Guide window</h3>
+<div class="pair">
+  <div><div class="lbl">Now</div>
+    <div class="m">
+      <div class="hd"><b>Elwynn Forest</b><span>&#9664; &#9654; &#9881;</span></div>
+      <div class="prog"><span>Step 14 / 92</span><span>On pace</span></div><div class="bar"><i></i></div>
+      <div class="r cur"><span class="i" style="background:#d9b25a"></span><span class="t q">Kobold Camp Cleanup</span><span class="x">450 XP</span><span class="d">Kill 10 Kobold Vermin &middot; 3/10</span></div>
+      <div class="r"><span class="i" style="background:#8cbcdb"></span><span class="t q">Investigate Echo Ridge</span><span class="x">575 XP</span><span class="d">Kill 10 Kobold Workers</span></div>
+      <div class="r"><span class="i" style="background:#9ea8bf"></span><span class="t q">Brotherhood of Thieves</span><span class="x">650 XP</span><span class="d">Collect 12 Red Burlap Bandanas</span></div>
+    </div>
+  </div>
+  <div><div class="lbl new">Suggested</div>
+    <div class="m">
+      <div class="hd"><b>Elwynn Forest</b><span>&#9664; &#10003; &#9881;</span></div>
+      <div class="prog"><span>Step 14 / 92</span><span>On pace</span></div><div class="bar"><i></i></div>
+      <div class="r cur big soft"><span class="i" style="background:#d9b25a"></span><span class="t q">Kobold Camp Cleanup</span><span class="x">450 XP</span><span class="d">Kill 10 Kobold Vermin &middot; 3/10</span></div>
+      <div class="r later"><span class="i" style="background:#8cbcdb"></span><span class="t">Investigate Echo Ridge</span><span class="x">575 XP</span><span class="d">Kill 10 Kobold Workers</span></div>
+      <div class="r later"><span class="i" style="background:#9ea8bf"></span><span class="t">Brotherhood of Thieves</span><span class="x">650 XP</span><span class="d">Collect 12 Red Burlap Bandanas</span></div>
+      <div class="foot"><kbd>Right-click</kbd> a step for more &middot; <kbd>Shift-click</kbd> to jump</div>
+    </div>
+    <p class="note">The current step and its action line are larger, the row tint is lighter, the header arrow that marked steps done is now a check mark, and later steps are muted so the eye lands on what to do now. The hint hides after a few right-clicks.</p>
+  </div>
+</div>
+
+<h3 style="margin-top:34px">5. One color language for every look</h3>
+<p class="note">Today every objective uses a single "kill" color (<code>Window.lua:74</code> maps all objective steps to kill), so "kill 10 boars" and "pick up 8 crates" look the same. Suggested: each kind of task gets one color meaning, the same in every look. Each look gets its own shade so it stays readable (4.8:1 or more on its background), but red always means kill.</p>
+<div class="scroll"><table class="legend"><tr><th></th><th>Means</th><th>Used for</th><th>Why this color</th></tr><tr><td><span class="dot" style="background:#fac72e"></span></td><td>Quest</td><td>Accept and turn in</td><td>Blizzard's own quest yellow, the "!" and "?" players already know.</td></tr><tr><td><span class="dot" style="background:#e46258"></span></td><td>Kill</td><td>Kill an NPC or mob</td><td>Red is the hostile color on WoW nameplates.</td></tr><tr><td><span class="dot" style="background:#ea943e"></span></td><td>Loot</td><td>Items that drop from kills</td><td>Orange sits between kill (red) and gather (green): you kill, then loot.</td></tr><tr><td><span class="dot" style="background:#79c95e"></span></td><td>Gather</td><td>Pick up from the world: crates, plants, ore</td><td>Green like herb nodes and gathering.</td></tr><tr><td><span class="dot" style="background:#ab75d1"></span></td><td>Use</td><td>Use a quest item or click an object</td><td>Violet like the arcane item-use glow.</td></tr><tr><td><span class="dot" style="background:#599ecf"></span></td><td>Go and talk</td><td>Travel, talk, flights, hearth</td><td>Blue like flight paths and the map.</td></tr><tr><td><span class="dot" style="background:#6eadb9"></span></td><td>Train</td><td>Class trainer, level goals, spells</td><td>Teal, kept apart from the travel blue.</td></tr></table></div>
+<p class="note">Kept apart on purpose: quest level numbers keep Blizzard's difficulty colors (red, orange, yellow, green, grey), shown only on the level tag like <span style="color:#ff5a4a">[30]</span>. Task colors go on the step icon and the objective line. The Icons page in Settings would show this table as the legend.</p>
+<div class="lks"><div class="lk" style="background:#131f39;border-color:#b8933f;color:#e0e5ef"><div class="lkh" style="border-color:#b8933f;color:#f3dc98;font-family:'Marcellus',serif">Cartographer</div><div class="lkr"><span class="g" style="color:#fac72e">!</span><span style="color:#fac72e">Accept: Kobold Camp Cleanup</span></div><div class="lkr"><span class="g" style="color:#e46258">&#9876;</span><span style="color:#e46258">Kill 10 Kobold Vermin 3/10</span></div><div class="lkr"><span class="g" style="color:#ea943e">&#10022;</span><span style="color:#ea943e">Loot 6 Gold Dust from Kobolds</span></div><div class="lkr"><span class="g" style="color:#79c95e">&#9752;</span><span style="color:#79c95e">Gather 8 Milly's Harvest</span></div><div class="lkr"><span class="g" style="color:#ab75d1">&#10039;</span><span style="color:#ab75d1">Use the Flare Gun at the tower</span></div><div class="lkr"><span class="g" style="color:#599ecf">&#10148;</span><span style="color:#599ecf">Talk to Marshal McBride</span></div><div class="lkr"><span class="g" style="color:#6eadb9">&#9670;</span><span style="color:#6eadb9">Train: 3 new spells</span></div><div class="lkr dimr" style="color:#7f89a0">120 yd &middot; 450 XP</div></div><div class="lk" style="background:#ccb282;border-color:#3a230f;color:#231405"><div class="lkh" style="border-color:#3a230f;color:#5a1a0e;font-family:'IM Fell English',serif">Quest Log</div><div class="lkr"><span class="g" style="color:#554002">!</span><span style="color:#554002">Accept: Kobold Camp Cleanup</span></div><div class="lkr"><span class="g" style="color:#7f1c15">&#9876;</span><span style="color:#7f1c15">Kill 10 Kobold Vermin 3/10</span></div><div class="lkr"><span class="g" style="color:#65380b">&#10022;</span><span style="color:#65380b">Loot 6 Gold Dust from Kobolds</span></div><div class="lkr"><span class="g" style="color:#244918">&#9752;</span><span style="color:#244918">Gather 8 Milly's Harvest</span></div><div class="lkr"><span class="g" style="color:#5b2a7e">&#10039;</span><span style="color:#5b2a7e">Use the Flare Gun at the tower</span></div><div class="lkr"><span class="g" style="color:#1d4663">&#10148;</span><span style="color:#1d4663">Talk to Marshal McBride</span></div><div class="lkr"><span class="g" style="color:#26484f">&#9670;</span><span style="color:#26484f">Train: 3 new spells</span></div><div class="lkr dimr" style="color:#4f3821">120 yd &middot; 450 XP</div></div><div class="lk" style="background:#25292d;border-color:#4f8f93;color:#e1e4e6"><div class="lkh" style="border-color:#4f8f93;color:#7fd3d3;font-family:'Marcellus SC',serif">Waystone</div><div class="lkr"><span class="g" style="color:#fac72e">!</span><span style="color:#fac72e">Accept: Kobold Camp Cleanup</span></div><div class="lkr"><span class="g" style="color:#e7726a">&#9876;</span><span style="color:#e7726a">Kill 10 Kobold Vermin 3/10</span></div><div class="lkr"><span class="g" style="color:#ea943e">&#10022;</span><span style="color:#ea943e">Loot 6 Gold Dust from Kobolds</span></div><div class="lkr"><span class="g" style="color:#79c95e">&#9752;</span><span style="color:#79c95e">Gather 8 Milly's Harvest</span></div><div class="lkr"><span class="g" style="color:#b281d5">&#10039;</span><span style="color:#b281d5">Use the Flare Gun at the tower</span></div><div class="lkr"><span class="g" style="color:#599ecf">&#10148;</span><span style="color:#599ecf">Talk to Marshal McBride</span></div><div class="lkr"><span class="g" style="color:#6eadb9">&#9670;</span><span style="color:#6eadb9">Train: 3 new spells</span></div><div class="lkr dimr" style="color:#9aa1a8">120 yd &middot; 450 XP</div></div><div class="lk" style="background:#1a221b;border-color:#5b6e4c;color:#d1d6c6"><div class="lkh" style="border-color:#5b6e4c;color:#b9c690;font-family:'Marcellus',serif">Grove</div><div class="lkr"><span class="g" style="color:#d9c07e">!</span><span style="color:#d9c07e">Accept: Kobold Camp Cleanup</span></div><div class="lkr"><span class="g" style="color:#d98478">&#9876;</span><span style="color:#d98478">Kill 10 Kobold Vermin 3/10</span></div><div class="lkr"><span class="g" style="color:#d9a066">&#10022;</span><span style="color:#d9a066">Loot 6 Gold Dust from Kobolds</span></div><div class="lkr"><span class="g" style="color:#94bf7f">&#9752;</span><span style="color:#94bf7f">Gather 8 Milly's Harvest</span></div><div class="lkr"><span class="g" style="color:#b393c9">&#10039;</span><span style="color:#b393c9">Use the Flare Gun at the tower</span></div><div class="lkr"><span class="g" style="color:#83a9c4">&#10148;</span><span style="color:#83a9c4">Talk to Marshal McBride</span></div><div class="lkr"><span class="g" style="color:#8db5b3">&#9670;</span><span style="color:#8db5b3">Train: 3 new spells</span></div><div class="lkr dimr" style="color:#8d977f">120 yd &middot; 450 XP</div></div><div class="lk" style="background:#1f1a17;border-color:#8a5a34;color:#e6ddd3"><div class="lkh" style="border-color:#8a5a34;color:#e0a060;font-family:'Marcellus',serif">Forge (new)</div><div class="lkr"><span class="g" style="color:#fac72e">!</span><span style="color:#fac72e">Accept: Kobold Camp Cleanup</span></div><div class="lkr"><span class="g" style="color:#e35d54">&#9876;</span><span style="color:#e35d54">Kill 10 Kobold Vermin 3/10</span></div><div class="lkr"><span class="g" style="color:#ea943e">&#10022;</span><span style="color:#ea943e">Loot 6 Gold Dust from Kobolds</span></div><div class="lkr"><span class="g" style="color:#79c95e">&#9752;</span><span style="color:#79c95e">Gather 8 Milly's Harvest</span></div><div class="lkr"><span class="g" style="color:#a971d0">&#10039;</span><span style="color:#a971d0">Use the Flare Gun at the tower</span></div><div class="lkr"><span class="g" style="color:#599ecf">&#10148;</span><span style="color:#599ecf">Talk to Marshal McBride</span></div><div class="lkr"><span class="g" style="color:#6eadb9">&#9670;</span><span style="color:#6eadb9">Train: 3 new spells</span></div><div class="lkr dimr" style="color:#a39587">120 yd &middot; 450 XP</div></div></div>
+<h3 style="margin-top:34px">6. Make the looks different from each other</h3>
+<p class="note">Cartographer, Waystone and Grove are all dark with a gold accent, so they read as one look in three shades. Suggested: tie each look to one real WoW material with its own accent. No gradients, no neon, no purple-to-blue. Each strip runs darkest to accent.</p>
+<div class="cards"><div class="card"><div class="palname">Cartographer</div><div class="pal"><i style="background:#0c1426"></i><i style="background:#131f39"></i><i style="background:#2f3d5c"></i><i style="background:#b8933f"></i><i style="background:#f3dc98"></i></div><div class="palsub">Navy and brass, the old login screen. Kept as is.</div></div><div class="card"><div class="palname">Quest Log</div><div class="pal"><i style="background:#3a230f"></i><i style="background:#8a6a3c"></i><i style="background:#ccb282"></i><i style="background:#e3d1a8"></i><i style="background:#5a1a0e"></i></div><div class="palsub">Parchment and dark ink, the classic quest log. Kept, with darker ink for green and red.</div></div><div class="card"><div class="palname">Waystone</div><div class="pal"><i style="background:#121517"></i><i style="background:#25292d"></i><i style="background:#3c434a"></i><i style="background:#4f8f93"></i><i style="background:#7fd3d3"></i></div><div class="palsub">Cold granite with a teal rune glow instead of gold, so it stops looking like a grey Cartographer.</div></div><div class="card"><div class="palname">Grove</div><div class="pal"><i style="background:#121813"></i><i style="background:#1a221b"></i><i style="background:#2c3a2c"></i><i style="background:#5b6e4c"></i><i style="background:#b9c690"></i></div><div class="palsub">Deep moss and lichen. Still soft and low contrast, but green all the way through instead of grey with sage.</div></div><div class="card"><div class="palname">Forge (new, optional)</div><div class="pal"><i style="background:#120f0d"></i><i style="background:#1f1a17"></i><i style="background:#3a2f28"></i><i style="background:#8a5a34"></i><i style="background:#e0a060"></i></div><div class="palsub">Dark iron and ember: a warm dark look, nice for Horde and dwarf players.</div></div></div>
+
+<footer>Reviewed 2026-11-16 from Trailmark 0.47.73 code. Nothing on this page has been built yet.</footer>
+</div>
+</body>
+</html>
