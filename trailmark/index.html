@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trailmark guide · Lixard's WoW Addons</title>
+<meta name="description" content="A free step-by-step leveling guide for WoW Forever. It tells you what to do next, points the way, and handles the busywork at quest givers, vendors and trainers.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Source+Sans+3:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css?v=6">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="slit" aria-hidden="true"></span><span class="brand-name">Lixard</span><span class="brand-sub">WoW addons</span></a>
+    <nav class="site-nav" aria-label="Site"><a href="/#addons">Addons</a><a href="/#install">Install</a><a href="https://github.com/lixard-wow/">GitHub</a></nav>
+  </div>
+  <div class="scutes" aria-hidden="true"></div>
+</header>
+<main id="main">
+  <section class="guide-hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="slit" aria-hidden="true"></span>User guide <span class="tag tag-dev" style="margin-left:6px">In development</span></p>
+      <h1>Trailmark</h1>
+      <p class="lede">A free step-by-step leveling guide for WoW Forever. It tells you what to do next, points the way, and handles the busywork at quest givers, vendors and trainers.</p>
+      <div class="actions"><a class="btn" href="#install">How to install</a><a class="btn" href="/trailmark/mockup/">Mock up</a></div>
+      <ul class="facts"><li><span>Command</span><code>/trail</code></li><li><span>Game</span>WoW Forever</li><li><span>Language</span>English</li></ul>
+    </div>
+  </section>
+  <div class="wrap guide">
+    <aside class="toc"><nav aria-label="On this page"><p>On this page</p><ol><li><a href="#status">In development</a></li><li><a href="#features">Features</a></li><li><a href="#install">Installing</a></li><li><a href="#start">Getting started</a></li><li><a href="#settings">Settings</a></li><li><a href="#commands">Commands</a></li><li><a href="#faq">Tips and FAQ</a></li></ol></nav></aside>
+    <div class="guide-body">
+<section id="status" data-toc="In development">
+  <h2>In development</h2>
+  <p>Trailmark is in development and not released yet. It changes almost every day, so this page gives an overview instead of every setting. Names and options may still move around.</p>
+</section>
+<section id="features" data-toc="Features">
+  <h2>Features</h2>
+  <h3>The guide window</h3>
+  <ul>
+    <li><strong>Three leveling styles:</strong> <strong>Everything</strong> (every step of every zone, side quests and grey quests too), <strong>Main quest line</strong> (the same without side quests) and <strong>Fastest leveling</strong> (quests near your level in the quickest zone order for your race and class). The style is set per character.</li>
+    <li><strong>Written routes:</strong> every zone has its own route for Alliance and Horde, followed top to bottom. Quests you do in one place are shown together as a block.</li>
+    <li><strong>Next zone:</strong> when a zone is done, the window offers the next one. When a zone's main quests are done, it shows the side quests left at your level.</li>
+    <li><strong>Step tools:</strong> right-click a step to mark it done, skip it, restart from it, point the waypoint at it or abandon its quest. Hover a step to see why it's waiting.</li>
+    <li><strong>Also in your log:</strong> quests you carry that the route isn't doing right now. Click one to follow it.</li>
+    <li><strong>Five looks:</strong> Cartographer, Quest Log, Waystone, Grove and Forge.</li>
+  </ul>
+  <h3>Finding the way</h3>
+  <ul>
+    <li><strong>Waypoint:</strong> when Blizzard shows a quest marker for the step, Trailmark tracks that quest so you follow Blizzard's own marker. Other steps get Trailmark's map pin. You can use an in-world marker or a screen arrow.</li>
+    <li><strong>Travel planner:</strong> for far steps it plans the way through flight paths you know, your hearthstone, boats, zeppelins, the tram and class teleports, and shows the plan in a Getting there panel. On the flight map, the flight to take is marked.</li>
+    <li><strong>Route line</strong> through your next steps on the world map.</li>
+    <li><strong>Go to the nearest</strong> repair, food and drink, vendor, innkeeper, flight master, class trainer, bank or mailbox.</li>
+  </ul>
+  <h3>Less busywork</h3>
+  <ul>
+    <li>Accept guide quests and turn in finished ones for you (hold Shift to stop it), pick the best reward and wear upgrades.</li>
+    <li>Take the guide's flight, skip the chat at flight masters, vendors and trainers, and buy items a quest asks for.</li>
+    <li>Sell grey items, repair, restock food, drink, ammo and pet food, and open clams and other containers.</li>
+    <li>A target button and a quest item button next to the window, quest progress over mobs, and a warning before a long stretch when your bags are full or your gear is worn.</li>
+    <li>A reminder when your class trainer has new spells, and a Train all button.</li>
+  </ul>
+  <h3>Talents</h3>
+  <p>A talent build per class and spec, a panel beside the talent window, the next talents marked on the tree, and a reminder when you have points to spend. Trailmark can place the points for you, or you click Learn yourself.</p>
+  <h3>Tabs</h3>
+  <ul>
+    <li><strong>Journey:</strong> time to your next level and to 60, your road to 60, this zone's progress and what's coming up (talents, trainer, riding, flight paths).</li>
+    <li><strong>Dungeons:</strong> dungeons for your level with their quests. <strong>Pick up all</strong> opens a guide that takes you to every quest giver, then the entrance, then the turn-ins.</li>
+    <li><strong>Professions:</strong> profession leveling plans.</li>
+    <li><strong>Reputation:</strong> reputation plans per faction.</li>
+    <li><strong>Explore:</strong> areas you haven't explored yet.</li>
+    <li><strong>Legacy:</strong> Legacy challenges and points.</li>
+    <li><strong>Party:</strong> party members with Trailmark see each other's guide and step, and can share quests the others are missing.</li>
+  </ul>
+  <h3>Recorder and shared routes</h3>
+  <p>The recorder saves your quests, flights, hearth and notes while you play. Turn a recording into a route code and send it to a friend; their code is added under <strong>Shared routes</strong> in the guide list.</p>
+</section>
+<section id="install" data-toc="Installing">
+  <h2>Installing</h2>
+  <p>There's no public download yet. Once Trailmark is released, install it with the CurseForge app: search for <strong>Trailmark</strong>.</p>
+  <p>To install from a zip, copy the <code>Trailmark</code> folder into <code>World of Warcraft\_forever_\Interface\AddOns</code>.</p>
+  <p>Restart the game the first time, since a reload doesn't load new addons.</p>
+</section>
+<section id="start" data-toc="Getting started">
+  <h2>Getting started</h2>
+  <ol class="steps">
+    <li>Log in. A short setup opens after a moment: pick a leveling style, a talent build, how the way is shown and which helpers to turn on.</li>
+    <li>Press <strong>Finish</strong>. Trailmark loads a zone that fits your character and, if you ticked it, a short tour of the window starts.</li>
+    <li>Type <code>/trail guides</code> to pick another zone.</li>
+    <li>Type <code>/trail</code> to show or hide the window. Left-click the gear for settings, right-click it for the quick menu.</li>
+  </ol>
+  <div class="note"><p>Run the setup again any time with <code>/trail setup</code>.</p></div>
+</section>
+<section id="settings" data-toc="Settings">
+  <h2>Settings</h2>
+  <p>Settings are split into pages in four groups. The search box fades pages that don't match.</p>
+  <h3>Play</h3>
+  <dl class="settings">
+    <dt>Leveling</dt><dd>The leveling style: Everything, Main quest line or Fastest leveling.</dd>
+    <dt>Quests</dt><dd>Which quest levels Fastest leveling uses, auto accept and turn-in, flights and chat skipping, quest rewards, wearing upgrades, opening containers and marking items a later step needs.</dd>
+    <dt>Route</dt><dd>Nearest quest first in a block, later quests you can do here, dungeon quests on the way, nearby turn-ins, quests off the route, the zone complete panel and quest log clicks.</dd>
+    <dt>Finding the way</dt><dd>Waypoint or screen arrow and its style, waypoint size, routing through flight paths, hearthstone and class teleports, the route line and the map pin.</dd>
+    <dt>Buttons and targets</dt><dd>Target button, marking the step's mob or NPC, quest item button and quest progress over mobs.</dd>
+    <dt>Party</dt><dd>Party progress, sharing quests with your party and telling your party about quest progress.</dd>
+  </dl>
+  <h3>Character</h3>
+  <dl class="settings">
+    <dt>Talents</dt><dd>Build panel, marks on the tree, placing points for you and the on-screen reminder.</dd>
+    <dt>Stat weights</dt><dd>The stat weights used to judge rewards and upgrades for your class.</dd>
+    <dt>Vendors and trainers</dt><dd>Selling greys, repairing, the supply warning, Train all, new spell reminders, buying quest items and restocking.</dd>
+  </dl>
+  <h3>Window</h3>
+  <dl class="settings">
+    <dt>Window</dt><dd>Show, lock, minimap button, scale, width, steps shown, font size, compact rows, step numbers, why line, group quest marks, XP per hour, pace and fading in combat.</dd>
+    <dt>Look</dt><dd>Pick one of the five looks.</dd>
+    <dt>Sounds and alerts</dt><dd>Sounds, the ready-to-turn-in and arrival sounds, and rare alerts.</dd>
+  </dl>
+  <h3>More</h3>
+  <dl class="settings">
+    <dt>Icon guide</dt><dd>What each step icon means.</dd>
+    <dt>Quest list</dt><dd>Every quest in your guides with a search; click one to open its guide.</dd>
+    <dt>Tools</dt><dd>Setup, settings profiles, sharing routes, the recorder, missing quests and other helpers.</dd>
+  </dl>
+</section>
+<section id="commands" data-toc="Commands">
+  <h2>Commands</h2>
+  <div class="table-box"><table><thead><tr><th scope="col">Type this</th><th scope="col">To do this</th></tr></thead><tbody>
+    <tr><td><code>/trail</code></td><td>Show or hide the guide window (<code>/trailmark</code> works too); <code>/trail help</code> lists the commands</td></tr>
+    <tr><td><code>/trail guides</code></td><td>Pick a guide</td></tr>
+    <tr><td><code>/trail next</code></td><td>Mark the current step done</td></tr>
+    <tr><td><code>/trail back</code></td><td>Go back one step</td></tr>
+    <tr><td><code>/trail skip</code></td><td>Skip the current step</td></tr>
+    <tr><td><code>/trail config</code></td><td>Open the settings</td></tr>
+    <tr><td><code>/trail setup</code></td><td>Run the setup for this character again</td></tr>
+    <tr><td><code>/trail tour</code></td><td>Show the first-run tips again</td></tr>
+    <tr><td><code>/trail new</code></td><td>Show what changed in recent versions</td></tr>
+    <tr><td><code>/trail journey</code></td><td>Open the Journey tab</td></tr>
+    <tr><td><code>/trail dungeons</code></td><td>Dungeons for your level</td></tr>
+    <tr><td><code>/trail professions</code></td><td>Profession leveling</td></tr>
+    <tr><td><code>/trail rep</code></td><td>Reputation plans (<code>/trail rep &lt;faction&gt;</code> opens one faction)</td></tr>
+    <tr><td><code>/trail explore</code></td><td>Areas you haven't explored yet</td></tr>
+    <tr><td><code>/trail legacy</code></td><td>Legacy challenges and points</td></tr>
+    <tr><td><code>/trail party</code></td><td>Show party progress</td></tr>
+    <tr><td><code>/trail near repair</code></td><td>Go to the nearest repair (also <code>food</code>, <code>vendor</code>, <code>inn</code>, <code>flight</code>, <code>trainer</code>, <code>bank</code>, <code>mail</code>)</td></tr>
+    <tr><td><code>/trail travel</code></td><td>Show known flight paths and the travel plan</td></tr>
+    <tr><td><code>/trail rares</code></td><td>Rares near you</td></tr>
+    <tr><td><code>/trail talents</code></td><td>Open talent builds (also <code>/tw</code>); add <code>learn</code>, <code>all</code>, <code>plan</code>, <code>reminder</code> or <code>reset</code></td></tr>
+    <tr><td><code>/trail drop</code></td><td>Drop the quests of a zone you're leaving</td></tr>
+    <tr><td><code>/trail turnins</code></td><td>List finished quests and their turn-ins</td></tr>
+    <tr><td><code>/trail splits</code></td><td>Time spent in each guide</td></tr>
+    <tr><td><code>/trail rec</code></td><td>Open the route recorder</td></tr>
+    <tr><td><code>/trail share</code></td><td>Share or add a recorded route</td></tr>
+    <tr><td><code>/trail profile</code></td><td>Export or import settings</td></tr>
+    <tr><td><code>/trail extras</code></td><td>List quests you found that the guides don't have yet (<code>export</code> to copy, <code>clear</code> to empty)</td></tr>
+    <tr><td><code>/trail reports</code></td><td>List saved step reports (<code>clear</code> to remove)</td></tr>
+    <tr><td><code>/trail reset</code></td><td>Move the guide window back to the middle right</td></tr>
+  </tbody></table></div>
+</section>
+<section id="faq" class="faq" data-toc="Tips and FAQ">
+  <h2>Tips and FAQ</h2>
+  <details><summary>How do I stop auto accept for one quest?</summary><p>Hold Shift while you talk to the NPC.</p></details>
+  <details><summary>Can I change the leveling style later?</summary><p>Yes, on the <strong>Leveling</strong> settings page. It's saved per character.</p></details>
+  <details><summary>A step is wrong. How do I tell you?</summary><p>Right-click the step and pick <strong>Report this step</strong>. <code>/trail reports</code> lists what you saved.</p></details>
+  <details><summary>When will it be released?</summary><p>When testing on WoW Forever is done.</p></details>
+</section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Made by Lixard &middot; <a href="https://github.com/lixard-wow">github.com/lixard-wow</a></p>
+    <p>World of Warcraft is a trademark of Blizzard Entertainment. These addons are not affiliated with or endorsed by Blizzard.</p>
+  </div>
+</footer>
+<script>
+var links = Array.prototype.slice.call(document.querySelectorAll(".toc a"));
+var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+function mark() {
+  var i = 0;
+  secs.forEach(function (s, n) { if (s && s.getBoundingClientRect().top < 140) i = n; });
+  links.forEach(function (a, n) { a.classList.toggle("on", n === i); });
+}
+addEventListener("scroll", mark, { passive: true }); mark();
+</script>
+</body>
+</html>

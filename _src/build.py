@@ -7,6 +7,8 @@ CF = "https://www.curseforge.com/projects/"
 ADDONS = [
     dict(name="LixardUI", status="dev", repo="LixardUI", cf=None, guide="lixardui/", mockup="/lixardui/mockup/", cmd="/lui", game="Retail · Forever",
          desc="A complete replacement for the game's interface in one look: unit, party and raid frames, action bars, bags, chat, minimap, world map and quest tracker, tooltips, info bars, skins for Blizzard's windows and an addon manager."),
+    dict(name="Trailmark", status="dev", repo="Trailmark", cf=None, guide="trailmark/", mockup="/trailmark/mockup/", cmd="/trail", game="Forever",
+         desc="A free step-by-step leveling guide for WoW Forever: written routes for every zone in three styles, a waypoint on Blizzard's quest markers, a travel planner, auto accept and turn-in, talents, and tabs for dungeons, professions and reputation."),
     dict(name="Plateau", status="beta", repo="Plateau", cf="1749349", guide="plateau/", cmd="/plt", game="Retail · Forever",
          desc="Fast, readable enemy nameplates built for Midnight's addon rules. Cast bars that follow your interrupt, threat colors for your role, enemy type colors, and a settings window where you click and drag a live sample plate."),
     dict(name="Keyfolio", status="released", repo="Keyfolio", cf="1769983", guide=None, cmd="/kf", game="Retail",
