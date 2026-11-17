@@ -36,14 +36,13 @@ section.dir .lede { color: var(--page-mute); margin: 4px 0 18px; max-width: 820p
   radial-gradient(ellipse at 80% 90%, rgba(90,110,140,.16), transparent 60%),
   linear-gradient(160deg, #2a3324, #1b2230 70%); }
 .stage .col { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-.caption { font-size: 12px; color: #a59c88; margin-top: -6px; }
+.caption { font-size: 12px; color: #a59c88; margin-top: -6px; max-width: 392px; }
 .notes { margin: 14px 0 0; padding-left: 18px; color: #b9ae96; max-width: 900px; }
 .notes li { margin: 3px 0; }
 
-/* ===== shared window skeleton ===== */
-.tm { position: relative; width: 330px; font-family: "Alegreya Sans", sans-serif; }
+.tm { position: relative; width: 330px; font-family: "Alegreya Sans", sans-serif; margin-left: 62px; }
 .tm .tabs { display: flex; gap: 2px; padding-left: 10px; }
-.tm .tab { font-size: 12px; padding: 2px 10px; cursor: default; white-space: nowrap; }
+.tm .tab { font-size: 11.5px; padding: 2px 7px; cursor: pointer; white-space: nowrap; }
 .tm .win { position: relative; }
 .tm .head { display: flex; align-items: center; gap: 8px; padding: 8px 10px; }
 .tm .zone { flex: 1; min-width: 0; }
@@ -55,12 +54,10 @@ section.dir .lede { color: var(--page-mute); margin: 4px 0 18px; max-width: 820p
 .tm .prog { display: flex; align-items: center; gap: 10px; padding: 0 10px 8px; font-size: 12px; }
 .tm .bar { flex: 1; height: 4px; position: relative; }
 .tm .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 21%; }
-.tm .notice { margin: 0 10px 8px; padding: 6px 8px; font-size: 13px; display: none; }
-body.s-out .tm .notice { display: block; }
+.tm .notice { margin: 0 10px 8px; padding: 6px 8px; font-size: 13px; display: none !important; }
 .tm .rows { padding: 2px 0 6px; }
 body.s-min .tm .rows, body.s-min .tm .prog, body.s-min .tm .next, body.s-min .tm .foot { display: none; }
 .tm .row { display: grid; grid-template-columns: 20px 1fr auto; gap: 0 8px; padding: 7px 10px 7px 12px; position: relative; }
-.tm .row .ck { width: 14px; height: 14px; margin-top: 2px; }
 .tm .row .ic { width: 18px; height: 18px; margin-top: 1px; }
 .tm .row .t { font-size: 14px; line-height: 1.25; }
 .tm .row .lv { font-size: 12px; margin-right: 4px; }
@@ -81,7 +78,6 @@ body.s-min .tm .rate { display: none; }
 .tm .slot svg { width: 24px; height: 24px; }
 .tm .slot kbd { position: absolute; right: 2px; top: 1px; font: 10px "Alegreya Sans"; }
 
-/* nameplate */
 .plate { width: 200px; text-align: center; padding: 10px 0 4px; }
 .plate .cnt { font: 700 15px "Alegreya Sans"; color: #ffd34d; text-shadow: 0 0 2px #000, 0 0 2px #000, 1px 1px 0 #000; }
 .plate .nm { font: 13px "Alegreya Sans"; color: #f2d0c8; text-shadow: 1px 1px 0 #000; display: flex; align-items: center; justify-content: center; gap: 6px; }
@@ -89,7 +85,6 @@ body.s-min .tm .rate { display: none; }
 .plate .hp i { position: absolute; inset: 0 30% 0 0; background: linear-gradient(#d23a2a, #8f1c12); }
 .skull { width: 16px; height: 16px; }
 
-/* settings */
 .cfg { width: 600px; max-width: 100%; display: grid; grid-template-columns: 150px 1fr; }
 .cfg .ch { grid-column: 1 / 3; display: flex; align-items: center; gap: 8px; padding: 8px 10px; }
 .cfg .ch b { flex: 1; font: 17px "Marcellus", serif; }
@@ -115,7 +110,6 @@ body.s-min .tm .rate { display: none; }
 .cfg .foot2 { display: flex; gap: 8px; margin-top: 12px; }
 .cfg .btn { padding: 5px 12px; font-size: 13px; }
 
-/* ===== A: Cartographer (navy + gold, map lines) ===== */
 .A .tab { background: #101a2e; color: #8b93a6; border: 1px solid #2e3a55; border-bottom: 0; }
 .A .tab.on { background: #15223d; color: #f1d78d; border-color: #b8933f; box-shadow: inset 0 2px 0 #d9b25a; padding-top: 4px; margin-top: -2px; }
 .A .win, .A.cfg { background:
@@ -131,8 +125,6 @@ body.s-min .tm .rate { display: none; }
 .A .notice { background: rgba(217,178,90,.12); border: 1px solid rgba(217,178,90,.45); color: #f1d78d; }
 .A .row.cur { background: linear-gradient(90deg, rgba(217,178,90,.16), rgba(217,178,90,.03)); }
 .A .row.cur::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 3px; background: #d9b25a; }
-.A .row .ck { border: 1px solid #4b5a7d; background: #0a1122; }
-.A .row .ck.done { background: #3c6a3a; border-color: #6aa45d; }
 .A .row .lv.g1 { color: #3fbf3f; } .A .row .lv.y { color: #ffd34d; } .A .row .lv.o { color: #ff8c26; }
 .A .row .why { color: #c9b27a; }
 .A .row .xp { color: #a7c27a; }
@@ -153,7 +145,6 @@ body.s-min .tm .rate { display: none; }
 .A.cfg .sl .track { background: #0a1122; border: 1px solid #2f3d5c; } .A.cfg .sl .track i { background: #d9b25a; }
 .A.cfg .btn { background: #0f1930; border: 1px solid #b8933f; color: #f1d78d; }
 
-/* ===== B: Quest Log (parchment) ===== */
 .B .tab { background: #c9a86c; color: #5b3a1d; border: 1px solid #3b230f; border-bottom: 0; font-family: "Marcellus", serif; }
 .B .tab.on { background: #ddc28c; color: #3a1d08; box-shadow: inset 0 2px 0 #8a2a1a; padding-top: 4px; margin-top: -2px; }
 .B .win, .B.cfg { color: #3a2512; border: 1px solid #3b230f; box-shadow: 0 0 0 3px #5b3a1d, 0 0 0 4px #2a170a, 0 12px 30px rgba(0,0,0,.55);
@@ -170,8 +161,6 @@ body.s-min .tm .rate { display: none; }
 .B .row { padding-left: 14px; }
 .B .row.cur { background: rgba(255,248,225,.45); }
 .B .row.cur::before { content: ""; position: absolute; left: 4px; top: 10px; width: 0; height: 0; border-left: 6px solid #8a2a1a; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
-.B .row .ck { border: 1px solid #6d5032; background: rgba(255,248,225,.5); }
-.B .row .ck.done { background: #4e6b2b; border-color: #2e4416; }
 .B .row .t { color: #2e1a08; font-family: "Alegreya Sans"; }
 .B .row .q { color: #6f160d; font-weight: 700; }
 .B .row .lv.g1 { color: #2f7a1f; } .B .row .lv.y { color: #8a6a00; } .B .row .lv.o { color: #b0520c; }
@@ -196,7 +185,6 @@ body.s-min .tm .rate { display: none; }
 .B.cfg .sl { color: #2e1a08; } .B.cfg .sl .track { background: rgba(91,58,29,.25); } .B.cfg .sl .track i { background: #8a2a1a; }
 .B.cfg .btn { background: #8a2a1a; border: 1px solid #4a0f08; color: #fbe7bd; }
 
-/* ===== C: Waystone (slate + gold engraving + rune glow) ===== */
 .C .tab { background: #1c1b1a; color: #a8a090; border: 1px solid #4a453c; border-bottom: 0; }
 .C .tab.on { background: #2c2a27; color: #f0d48a; box-shadow: inset 0 2px 0 #7fd0ff; padding-top: 4px; margin-top: -2px; }
 .C .win, .C.cfg { color: #e4ddd0; border: 1px solid #0b0b0c;
@@ -207,15 +195,12 @@ body.s-min .tm .rate { display: none; }
 .C .head { padding: 8px 10px; background: linear-gradient(180deg, rgba(0,0,0,.25), transparent); }
 .C .zone b { color: #f0d48a; font-family: "Marcellus SC", serif; font-size: 17px; }
 .C .zone span { color: #a8a090; }
-.C .picker { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #5e574b; background: #1c1b1a; color: #d8c690; padding: 2px 8px; font-size: 12px; }
 .C .g { color: #c8b27a; }
 .C .prog { color: #a8a090; }
 .C .bar { background: #121211; border: 1px solid #4a453c; height: 6px; } .C .bar i { background: linear-gradient(90deg, #2c7fb8, #7fd0ff); box-shadow: 0 0 6px rgba(127,208,255,.6); }
 .C .notice { background: rgba(127,208,255,.08); border: 1px solid rgba(127,208,255,.4); color: #bfe6ff; }
 .C .row.cur { background: rgba(240,212,138,.08); box-shadow: inset 0 1px 0 rgba(240,212,138,.18), inset 0 -1px 0 rgba(240,212,138,.18); }
 .C .row.cur::before { content: ""; position: absolute; left: 3px; top: 9px; width: 6px; height: 6px; transform: rotate(45deg); background: #7fd0ff; box-shadow: 0 0 6px #7fd0ff; }
-.C .row .ck { border: 1px solid #6b6455; background: #151514; }
-.C .row .ck.done { background: #3d5f2c; border-color: #7aa45d; }
 .C .row .lv.g1 { color: #45c845; } .C .row .lv.y { color: #ffd34d; } .C .row .lv.o { color: #ff8c26; }
 .C .row .d { color: #a8a090; } .C .row .why { color: #9fd6f5; } .C .row .xp { color: #b6c98a; }
 .C .obj em { color: #a8a090; font-style: normal; }
@@ -245,8 +230,6 @@ body.s-min .tm .rate { display: none; }
 
 .tm .view, .tm .zone b, .tm .zone span { display: none; }
 .tm[data-view="guide"] .v-guide, .tm[data-view="prof"] .v-prof, .tm[data-view="dung"] .v-dung, .tm[data-view="leg"] .v-leg { display: block; }
-.tm .tab { cursor: pointer; font-size: 11.5px; padding: 2px 7px; }
-.tm .notice { display: none !important; }
 body.s-out .tm .n-out, body.s-fly .tm .n-fly, body.s-undo .tm .n-undo { display: block !important; }
 body.s-min .tm .pane, body.s-min .tm .near { display: none !important; }
 .pane { padding: 6px 10px 10px; font-size: 13px; }
@@ -287,13 +270,10 @@ body.s-min .tm .pane, body.s-min .tm .near { display: none !important; }
 .wpchoice span { text-align: center; font-size: 12.5px; padding: 4px 0; border: 1px solid rgba(128,128,128,.45); }
 .A .wpchoice span.on { border-color: #d9b25a; color: #f3dc98; } .B .wpchoice span.on { border-color: #8a2a1a; color: #6f160d; } .C .wpchoice span.on { border-color: #7fd0ff; color: #f0d48a; }
 
-.tm { margin-left: 62px; }
 .tm .foot.side { position: absolute; left: -58px; top: 40px; display: flex; flex-direction: column; gap: 22px; padding: 0; }
 .tm .foot.side .slot em { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); font: 10.5px "Alegreya Sans", sans-serif; font-style: normal; white-space: nowrap; color: #c9bfa6; text-shadow: 1px 1px 0 #000; }
 body.s-min .tm .foot.side { display: flex !important; }
-.caption { max-width: 392px; }
 
-.btnstate .tm .foot.side .slot { transition: opacity .2s; }
 body.b-kill .tm .s-item, body.b-none .tm .s-item, body.b-none .tm .s-target { display: none; }
 .tm .gapline { display: flex; align-items: center; gap: 8px; padding: 3px 10px 3px 12px; font-size: 11px; opacity: .7; cursor: pointer; }
 .tm .gapline i { display: inline-block; width: 18px; height: 1px; background: currentColor; opacity: .6; }
@@ -356,7 +336,6 @@ const DIRS = [
   { key: 'C', name: 'C. Waystone', lede: 'Carved slate with a gold inlay, and a faint blue rune glow for "where to go now" (current step, progress, the why line). Feels like the stones on old Azeroth roads.',
     notes: ['Slate: one tiled noise TGA tinted grey; gold inlay is three 1-px lines.', 'Blue is used for one meaning only: "this is where you are going". Gold is the frame.'] },
 ];
-
 
 const WP = {
   A: { tint: '#e0b85c', glow: '#f2cc73', text: '#f5e0a3',
